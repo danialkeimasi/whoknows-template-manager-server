@@ -1,0 +1,140 @@
+[
+	{
+    	"values"	: {
+    					"movie": "`db(movie)`"
+    				  },
+		"titles"	: ["`var.movie.name` was released in ......",
+						"`var.movie.name` in ...... was released"],
+        "answer"	: ["`var.movie.name`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "titles_fa"	: ["`var.movie.name` در سال ...... منتشر شده است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "completing",
+		"tags"		: [],
+		"number"	: 101,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"movie": "`db(movie)`",
+    					"movies": "`db(movie, NOC)`"
+    				  },
+		"titles"	: ["`var.movie.name` was released in which year",
+						"what is the release year of `var.movie.name`",
+						"in which year `var.movie.name` was released"],
+        "answer"	: ["`var.movie.release_year`"],
+        "choices"	: ["`var.movies.release_year`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "titles_fa"	: ["فیلم `var.movie.name` در چه سالی منتشر شد",
+        				"در چه سالی فیلم `var.movie.name` منتشر شده است",
+        				"سال انتشار فیلم `var.movie.name` کدام است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"tags"		: [],
+		"number"	: 102,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"movie": "`db(movie)`",
+    					"year": "`rand(var.movie.release_year - 1, var.movie.release_year + 1)`"
+    				  },
+		"titles"	: ["`var.movie.name` was released in `var.year`"],
+        "answer"	: ["`var.movie.name == var.year`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "titles_fa"	: ["فیلم `var.movie.name` در سال `var.year` منتشر شده است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 103,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"count": "`rand(2, 4)`",
+    					"movie": "`db(movie)`",
+    					"year": "`rand(var.movie.release_year - 1, var.movie.release_year + 1)`",
+    					"movies": "`db(movie[(movie.release_year <= var.movie.release_year + 1) && (var.movie.release_year - 1 <= movie.release_year)], var.count)`"
+    				  },
+		"titles"	: ["`' , '.join(var.movies.name)` were released in `var.year`"],
+        "answer"	: ["`all([x == var.year for x in var.movies.release_year])`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "titles_fa"	: ["فیلم های `' , '.join(var.movies.name)` در سال `var.year` منتشر شده اند"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 104,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"count": "`rand(2, 4)`",
+    					"movie": "`db(movie)`",
+    					"year": "`rand(var.movie.release_year - 1, var.movie.release_year + 1)`",
+    					"movies": "`db(movie[movie.release_year == var.year)], NOS)`",
+    				  	"years": "`rand(var.movie.release_year - 10, var.movie.release_year + 10, [], NOC)`"
+    				  },
+		"titles"	: ["`' , '.join(var.movies.name)` were released in which year",
+						"in which year `' , '.join(var.movies.name)` were released",
+						"what is release year of `' , '.join(var.movies.name)`"],
+        "answer"	: ["`var.year`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "choices"	: ["`var.years`"],
+        "titles_fa"	: [" فیلم های`' , '.join(var.movies.name)` در چه سالی منتشر شد",
+        				"در چه سالی فیلم های `' , '.join(var.movies.name)` منتشر شده است",
+        				"سال انتشار فیلم های `' , '.join(var.movies.name)` کدام است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"tags"		: [],
+		"number"	: 105,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"movies": "`db(movie[(movie.release_year <= var.movie.release_year + 1) && (var.movie.release_year - 1 <= movie.release_year)], var.count)`",
+    				  	"years": "`list(set(var.movies.release_year)) + rand(var.movies.release_year[0] - 10, var.movies.release_year[0] + 10, [list(set(var.movies.release_year))], NOC - len(list(set(var.movies.release_year))))`"
+    				  },
+		"titles"	: ["select all the years that `' , '.join(var.movies.name)` were released in"],
+        "answer"	: ["`list(set(var.movies.release_year))`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "choices"	: ["`var.years`"],
+        "titles_fa"	: ["سال هایی که فیلم های `' , '.join(var.movies.name)` در آنها منتشر شده اند را انتخاب کنید"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "selective",
+		"tags"		: [],
+		"number"	: 106,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"movie": "`db(movie)`",
+    				  	"movie2": "`db(movie[movie.release_year != var.movie.release_year])`",
+    					"year": "`rand(var.movie.release_year - 10, var.movie.release_year + 10)`",
+    				  	"year2": "`rand(var.movie2.release_year - 10, var.movie2.release_year + 10)`"
+    				  },
+		"titles"	: ["`var.movie.name` was released in `var.year` and `var.movie2.name` was released in `var.year2`"],
+        "answer"	: ["`var.movie.release_year == var.year and var.movie2.release_year == var.year2`"],
+        "helps"		: ["`make_help('movie', var.movie, ['release_year'], 'en')`"],
+        "titles_fa"	: ["`var.movie.name` در سال `var.year` و `var.movie2.name` در سال `var.year2` منتشر شده است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, ['release_year'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 107,
+		"comment"	: ""
+	},{
+    	"values"	: {
+    					"movie": "`db(movie)`",
+    				  	"movies": "`db(movie[movie.release_year == var.movie.release_year])`",
+						"falseAnswer": "`db(movie[movie.release_year != var.movie.release_year])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.falseAnswer`"],
+        "titles_fa"	: ["کدام فیلم در سال `var.movie.release_year` منتشر نشده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"tags"		: [],
+		"number"	: 108,
+		"comment"	: ""
+	}
+]

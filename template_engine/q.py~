@@ -1,0 +1,6 @@
+from TemplateEngine import *
+
+ts = json.load(open('templates.json', encoding='utf-8'))
+q, p = template_engine(ts[0])
+
+json.dump([q], open('q.json', 'w+'))

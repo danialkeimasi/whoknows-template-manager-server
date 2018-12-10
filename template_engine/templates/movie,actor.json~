@@ -1,0 +1,31 @@
+[
+	{
+		"values"	: {
+						"NOA" : "`rand(1, NOS)`",
+						"actor" : "`db(actor[[isinstance(x, list) and len(x) > 3 for x in actor.movies]])`",
+						"movies" : "`db(movie, NOS - var.NOA)`"
+		},
+		"titles"	: ["How many of the following videos `var.actor.name` played?"],
+		"subtitle"	: ["`choose(var.actor.movies, var.NOA) + to_list(choose(var.movies.name, NOS - var.NOA))`"],
+		"answer"	: ["`var.NOA`"],
+		"choices"	: ["`rand(0, NOS, NOC, var.NOA)`"],
+		"titles_fa"	: ["`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	},
+	{
+		"values"	: {
+						"actor" : "`db(actor[(actor.height > 1)])`",
+						"actors" : "`db(actor[[x and x < var.actor.height - 0.1 for x in actor.height]], NOS)`",
+						"HT" :  "`var.actor.height - 0.05`"
+		},
+		"titles"	: ["The height of the cast below is greater than `var.HT`"],
+		"answer"	: ["`var.actor.name`"],
+		"choices"	: ["`var.actors.name`"],
+		"titles_fa"	: ["کدام یک از بازیگران زیر قد بالای `var.HT` دارند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 2
+	}
+]

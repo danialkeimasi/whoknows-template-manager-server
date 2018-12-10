@@ -1,0 +1,30 @@
+[
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"leagues": "`(list(set(list(footballTeam.league))))`",
+						"RL": "`var.leagues.remove(str(var.team.league))`",
+						"CL": "`var.leagues`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.league`"],
+        "choices"	: ["`choose(var.CL, 3)`"],
+        "titles_fa"	: ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams" : "`db(footballTeam,NOC)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.name`"],
+        "choices"	: ["`var.teams.name`"],
+        "titles_fa"	: ["کدام یک از تیم های زیر در لیگ `var.team.league` است"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 2
+	}
+]

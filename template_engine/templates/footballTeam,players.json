@@ -1,0 +1,85 @@
+[
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"players": "`var.team.players.remove(var.team.captain)`",
+						"p": "`var.team.players`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.captain`"],
+        "choices"	: ["`choose(var.p,3)`"],
+        "titles_fa"	: ["نام کاپیتان تیم `var.team.name` چیست"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.captain != var.team.captain], NOC)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.name`"],
+        "choices"	: ["`var.teams.name`"],
+        "titles_fa"	: ["`var.team.captain` نام کاپیتان کدام تیم است"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 2
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"players": "`var.team.players.remove(var.team.penalty)`",
+						"p": "`var.team.players`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.penalty`"],
+        "choices"	: ["`choose(var.p,3)`"],
+        "titles_fa"	: ["چه کسی عمدتا پنالتی های تیم `var.team.name` را میزند"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 3
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"players": "`var.team.players.remove(var.team.penalty)`",
+						"p": "`var.team.players`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.leftCorner`"],
+        "choices"	: ["`choose(var.p,3)`"],
+        "titles_fa"	: ["چه کسی عمدتا کرنر چپ تیم  `var.team.name` را میزند"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 4
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"players": "`var.team.players.remove(var.team.penalty)`",
+						"p": "`var.team.players`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.rightCorner`"],
+        "choices"	: ["`choose(var.p,3)`"],
+        "titles_fa"	: ["چه کسی عمدتا کرنر راست تیم `var.team.name` را میزند"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 5
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"players": "`var.team.players.remove(var.team.captain)`",
+						"p": "`var.team.players`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`choose(var.p,3)`"],
+        "choices"	: ["`var.team.captain`"],
+        "titles_fa"	: ["بازیکنانی کهکاپیتان تیم `var.team.name` نیستند را انتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 6
+	}
+]

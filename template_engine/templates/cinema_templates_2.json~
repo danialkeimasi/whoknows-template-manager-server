@@ -1,0 +1,599 @@
+[
+    {
+    	"values"	: {
+    					"movie": "`db(movie)`",
+    					"movies": "`db(movie[movie.id != var.movie.id], NOC)`"
+    				  },
+		"titles"	: ["which one of these movies were directed by `var.movie.director`",
+					   "choose the movie which was directed by `var.movie.director`"],
+        "answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["کدام یک از فیلم های زیر توسط `tr(var.movie.director)` کارگردانی شده است  ",
+					   "فیلم کارگردانی شده توسط `tr(var.movie.director)` کدام است"],
+        "helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"tags"		: [],
+		"number"	: 1,
+		"comment"	: ""
+	},
+    {
+        "values"	: {
+    					"director": "`db(director)`",
+    					"directors": "`db(director[director.birthYear > var.director.birthYear], NOC)`",
+    					"movie": "`choose(var.director.movies)`",
+    					"movies": "`[choose(x.movies) for x in var.directors.list]`"
+    				  },
+		"titles"	: ["director of which movie was born earlier"],
+        "answer"	: ["`var.movie`"],
+        "choices"	: ["`var.movies`"],
+        "helps"		: ["`make_help('director', var.director, [], 'en')`"],
+		"titles_fa"	: ["کارگردان کدام یک از فیلم های زیر مسن تر است"],
+        "helps_fa"	: ["`make_help('director', var.director, [], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"tags"		: [],
+		"number"	: 2
+    },
+    {
+        "values"	: {
+    					"director": "`db(director)`",
+    					"movies": "`db(movie[movie.director == var.director.name], rand(1, 2))`",
+    					"movies2": "`db(movie[~movie.name.isin(var.movies.name)], NOC - len(var.movies) + 1)`"
+    				  },
+		"titles"	: ["select all the movies which are directed by `var.director.name`"],
+        "answer"	: ["`var.movies.name`"],
+        "choices"	: ["`var.movies2.name`"],
+        "titles_fa"	: ["تمام فیلم هایی که توسط `tr(var.director.name)` کاگردانی شده اند را انتخاب کنید"],
+        "usage"		: [],
+		"type"		: "selective",
+		"tags"		: [],
+		"number"	: 3
+    },
+    {
+		"values"	: {
+						"count" : "`rand(2, NOS - 1)`",
+						"director" : "`db(director)`",
+						"directors" : "`db(director[director.id != var.director.id], NOC)`",
+						"movies" : "`db(movie[movie.director != var.director.name], NOS - var.count)`",
+						"movies2" : "`choose(var.director.movies, var.count) + to_list(var.movies.name)`"	
+		},
+        "titles"	: ["which director has directed more of these movies than others"],
+		"titles_fa"	: ["کدام کارگردان تعداد بیشتری از فیلم های زیر را کارگردانی کرده است"],
+		"subtitle"	: ["`var.movies2`"],
+        "answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "helps"		: ["`make_help('director', var.director, [], 'en')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 4
+    },
+    {
+        "values"	: {
+        				"NOA" : "`rand(2, NOS - 1)`",
+						"movies" : "`db(movie, NOS)`",
+						"directors" : "`list(set(list(to_list(var.movies.director))))[:var.NOA]`",
+						"directors2" : "`db(director, NOS - var.NOA)`" 
+		},
+        "titles"	: ["select all directors that directed at least one of these movies"],
+		"subtitle"	: ["`var.movies.name`"],
+        "answer"	: ["`var.directors`"],
+        "choices"	: ["`var.directors2.name`"],
+		"helps"		: ["number of right choices is : `var.NOA`"],
+        "titles_fa"	: ["تمام کارگردان هایی که حداقل یکی از فیلم های زیر را کارگردانی کرده اند انتخاب کنید "],
+        "helps_fa"	: ["تعداد گزینه های درست برابر است با : `var.NOA`"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 5
+    },
+    {
+		"values"	: {
+						"movies" : "`db(movie, NOC)`",
+						"movie" : "`db(movie[(movie.name.isin(var.movies.name)) & (movie.imdb_rate != float('nan'))].sort_values('imdb_rate', ascending=False))`"
+		},
+        "order"		: ["titles,choices,answer"],
+        "titles"	: ["imdb rate of which movie is higher than others"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["امتیاز imdb کدام یک از فیلم های زیر بیشتر است"],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 6
+    },
+    {
+        "values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+        "titles"	: ["this cover is for which one of these movies"],
+		"subtitle"	: ["`var.movie.poster`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["پوستر زیر متلعق به کدام فیلم است"],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 7
+    },
+    {
+        "values"	: {
+						"director" : "`db(director)`",
+						"directors" : "`db(director[director.id != var.director.id], NOC)`"
+		},
+        "titles"	: ["what is the name of this director"],
+		"subtitle"	: ["`var.director.picture`"],
+		"answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "helps"		: ["`make_help('director', var.director, ['picture'], 'en')`"],
+		"titles_fa"	: ["تصویر زیر از کدام کارگردان است"],
+		"helps_fa"	: ["`make_help('director', var.director, ['picture'], 'fa')`"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 8
+    },
+    {
+        "values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+        "titles"	: ["what is the release year of this movie"],
+		"subtitle"	: ["`var.movie.poster`"],
+		"answer"	: ["`var.movie.release_year`"],
+        "choices"	: ["`rand(var.movie.release_year - 5, var.movie.release_year + 5, NOC, [var.movie.release_year])`"],
+        "titles_fa"	: ["فیلم زیر در چه سالی تولید شده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 9
+    },
+    {
+        "values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+        "titles"	: ["which movie was not directed by `var.movie.director`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["کارگردان کدام یک از فیلم های زیر `tr(var.movie.director)` نیست"],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 10
+    },
+    {
+        "values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.release_year != var.movie.release_year], NOC)`"
+		},
+        "titles"	: ["which movie was released in `var.movie.release_year`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["کدام فیلم در سال `var.movie.release_year` منتشر شده است"],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 11
+    },
+    {
+		"comment"	: "should get a list of all years that at least 2 movies were released and choose one for var.year",
+        "values"	: {
+        				"year"	: "`rand(1930, 2018)`",
+						"movie" : "`db(movie)`",
+						"movie2" : "`db(movie[(movie.release_year == var.movie.release_year) & (movie.id != var.movie.id)])`",
+						"movies" : "`db(movie[(movie.release_year != var.movie.release_year) & (movie.id != var.movie.id)], NOC)`"
+		},
+        "titles"	: ["which movie was released in the same year as `var.movie.name`"],
+		"answer"	: ["`var.movie2.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: ["کدام فیلم در سال انتشار فیلم `tr(var.movie.name)` شده است"],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 12
+    },
+    {
+        "values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie, NOC)`"
+		},
+        "titles"	: ["which movie is not related to this keyword?"],
+        "subtitle"	: [""],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
+        "titles_fa"	: [""],
+		"helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+        "usage"		: [],
+		"type"		: "multi_choice",
+		"number"	: 13
+    },
+    {
+		"comment"	: "needs more movie data to work properly",
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.release_year < var.movie.release_year], NOC)`"
+		},
+        "order"		: ["titles,choices,answer"],
+		"titles"	: ["which of these movies were released first"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کدام یک از فیلم های زیر زودتر منتشر شده اند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 14
+    },
+    {
+    	"comment"	: "needs so much more movie and director data to work properly",
+		"values"	: {
+						"start" : "`rand(1950, 2017)`",
+						"end" : "`rand(var.start + 1, min(var.start + 10, 2018))`",
+						"director" : "`db(director[~director.name.isin(movie[(var.start < movie.release_year) & (movie.release_year < var.end)].director)])`",
+						"directors" : "`db(director[director.name.isin(movie[(var.start < movie.release_year) & (movie.release_year < var.end)].director)], NOC)`"
+		},
+        "titles"	: ["which director has not released any movie between `var.start` to `var.end`"],
+		"titles_fa"	: ["کدام کارگردان در بازه زمانی `var.start` تا `var.end` هیج فیلمی را کارگردانی نکرده است"],
+		"answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 15
+    },
+    {
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+        "titles"	: ["this summary is about which movie"],
+		"subtitle"	: ["`var.movie.summary[:200]`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["توضیح زیر درباره کدام فیلم است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 16
+    },
+    {
+		"values"	: {
+						"genre" : "`choose(['Action', 'Drama', 'Crime', 'Thriller', 'Adventure', 'Sci-Fi', 'Biography', 'History', 'Horror', 'Documentary', 'Fantasy', 'Music', 'Comedy', 'Animation', 'Family', 'Musical', 'War'])`",
+						"movie" : "`db(movie[[var.genre in g for g in movie.genres]])`",
+						"movies" : "`db(movie[[var.genre not in g for g in movie.genres]], NOC)`"
+		},
+        "titles"	: ["which movie is in genre `var.genre`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+		"titles_fa"	: ["ژانر کدام یک از فیلم های زیر `tr(var.genre)` است ", 
+					   "کدام یک از فیلم های زیر در ژانر `tr(var.genre)` ساخته شده است"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 17
+    },
+    {
+		"values"	: {
+						"actor" : "`db(actor)`",
+						"actors" : "`db(actor[actor.birth_year < var.actor.birth_year], NOC)`"
+		},
+        "titles"	: ["which actor is older"],
+		"answer"	: ["`var.actor.name`"],
+        "choices"	: ["`var.actors.name`"],
+        "titles_fa"	: ["سن کدام یک از بازیگران زیر بیشتر است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 18
+    },
+    {
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+		"titles"	: ["which movie is this video from"],
+		"subtitle"	: ["`choose(var.movie.videos)`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کلیپ زیر از کدام فیلم است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 19
+    },
+    {
+		"values"		: {
+						"director"	: "`choose(list(set(list(movie.director))))`",
+						"movies"	: "`choose(var.director.movies, NOS)`",
+						"movies2"	: "`db(movie[movie.director != var.director.name], NOC)`"
+		},
+		"titles"	: ["what should be next"],
+		"subtitle"	: ["`var.director.movies[:NOS - 1]`"],
+		"answer"	: ["`var.director.movies[NOS - 1]`"],
+        "choices"	: ["`var.movies2.name`"],
+        "titles_fa"	: ["مورد بعدی کدام است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 20
+    },
+    {
+    	"comment"	: "needs attribute black_and_white in movies",
+		"values"	: {
+						"movie"	: "`db(movie[movie.black_and_white])`",
+						"movies" : "`db(movie[~movie.black_and_white], NOC)`"
+		},
+		"titles"	: ["which of these movies are black and white"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کدام یک از فیلم های زیر سیاه و سفید است"],
+		"usage"		: [],
+		"type"		: "multi_choice",
+		"number"	: 21
+    },
+    {
+		"values"	: {
+						"movie"	: "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+		"titles"	: ["which of these movies are these characters from"],
+		"subtitle"	: ["`var.movie.characters`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کاراکتر های زیر از کدام فیلم است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 22
+    },
+    {
+    	"comment"	: "needs more movie data to work properly",
+		"values"	: {
+						"NOA" : "`rand(1, NOS - 1)`",
+						"year" : "`rand(1950, 2015)`",
+						"movies" : "`db(movie[movie.release_year > var.year], var.NOA)`",
+						"movies2" : "`db(movie[movie.release_year < var.year], NOS - var.NOA)`"
+		},
+		"titles"	: ["how many of these movies were released before `var.year`"],
+		"subtitle"	: ["`to_list(var.movies.name) + to_list(var.movies2.name)`"],
+		"answer"	: ["`var.NOA`"],
+        "choices"	: ["`rand(0, 4, NOC, var.NOA)`"],
+        "titles_fa"	: ["چه تعدادی از فیلم های زیر قبل از سال `var.year` منتشر شده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 23
+    },
+    {
+    	"comment"	: "needs more movie data to work properly",
+		"values"	: {
+						"NOA" : "`rand(1, NOS - 1)`",
+						"year" : "`rand(1950, 2015)`",
+						"movies" : "`db(movie[movie.release_year < var.year], var.NOA)`",
+						"movies2" : "`db(movie[movie.release_year > var.year], NOS - var.NOA)`"
+		},
+		"titles"	: ["how many of these movies were released after `var.year`"],
+		"subtitle"	: ["`to_list(var.movies.name) + to_list(var.movies2.name)`"],
+		"answer"	: ["`var.NOA`"],
+        "choices"	: ["`rand(0, 4, NOC, var.NOA)`"],
+        "titles_fa"	: ["چه تعدادی از فیلم های زیر بعد از سال `var.year` منتشر شده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 24
+    },
+    {
+		"values"	: {
+						"director": "`choose(list(set(list(movie.director))))`",
+						"movie" : "`db(movie[movie.director != var.director])`",
+						"movies" : "`db(movie[movie.director == var.director], NOC)`"
+		},
+		"titles"	: ["which movie has a different director"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کارگردان کدام فیلم با بقیه متفاوت است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 25
+    },
+    {
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id != var.movie.id], NOC)`"
+		},
+		"titles"	: ["in which movie all of these actors has played"],
+		"subtitle"	: ["`var.movie.stars`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["در کدام فیلم همه ی بازیگران زیر بازی کرده اند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 26
+    },
+    {
+    	"comment"	: "needs more actor and movie data",
+		"values"	: {
+						"actors" : "`db(actor, NOS - 1)`",
+						"movies" : "`db(movie[[any([actor.name == cast for actor in var.actors.list]) for cast in movie.cast]])`",
+						"movies2" : "`db(movie[[not any([actor.name == cast for actor in var.actors.list]) for cast in movie.cast]], NOC)`"
+		},
+		"titles"	: ["in which movie none of these actors has played"],
+		"subtitle"	: ["`var.actors.name`"],
+		"answer"	: ["`var.movies.name`"],
+        "choices"	: ["`var.movies2.name`"],
+        "titles_fa"	: ["در کدام فیلم هیچ یک از بازیگران زیر بازی نکرده اند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 27
+    },
+    {
+		"values"	: {
+						"actor" : "`db(actor)`",
+						"movies" : "`db(movie[[star == var.actor.name for star in movie.stars]], NOS)`",
+						"actors" : "`db(actor[actor.id != var.actor.id], NOC)`"
+		},
+		"titles"	: ["which actor has played in all of these movies"],
+		"titles_fa"	: ["کدام بازیگر در تمام فیلم های زیر بازی کرده است"],
+		"subtitle"	: ["`var.movies.name`"],
+		"answer"	: ["`var.actor.name`"],
+        "choices"	: ["`var.actors.name`"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 28
+    },
+    {
+		"values"	: {
+						"NOA" : "`rand(1, NOS)`",
+						"movie" : "`db(movie)`",
+						"actors" : "`choose(var.movie.stars, var.NOA)`",
+						"actors2" : "`db(actor, NOS - var.NOA)`"
+		},
+		"titles"	: ["how many of these actors has played in `var.movie.name`"],
+		"subtitle"	: ["`to_list(var.actors) + to_list(var.actors2.name)`"],
+		"answer"	: ["`var.NOA`"],
+        "choices"	: ["`rand(0, NOS, NOC, var.NOA)`"],
+        "titles_fa"	: ["چه تعداد از بازیگران زیر در فیلم `tr(var.movie.name)` بازی کرده اند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 29
+    },
+    {
+		"comment"	: "needs movie data with imdb_ranks of 1 to 249",
+		"values"	: {
+						"movie" : "`db(movie[movie.imdb_rank > 250])`",
+						"movies" : "`db(movie[movie.imdb_rank < 250], NOC)`"
+		},
+		"titles"	: ["which movie is not currently in IMDb's 250 best movie list"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["کدام فیلم در لیست ۲۵۰ فیلم برتر IMDb قرار ندارد"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 30
+    },
+    {
+		"comment"	: "needs movie data s to have tag_lines",
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id < var.movie.id], NOC)`",
+						"tag_line":	"`choose(var.movie.tag_lines)`"
+		},
+		"titles"	: ["which movie this line reminds you of"],
+		"subtitle"	: ["`var.tag_line`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["این عبارت شما را به یاد چه فیلمی می اندازد"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 31
+    },
+    {
+		"comment"	: "needs movie data s to have trivias",
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id < var.movie.id], NOC)`",
+						"tag_line":	"`choose(var.movie.tag_lines)`"
+		},
+		"titles"	: ["which movie is this fact about"],
+		"subtitle"	: ["`var.tag_line`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["عبارت زیر درباره کدام فیلم است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 32
+    },
+    {
+		"comment"	: "needs movie data s to have quotes",
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie[movie.id < var.movie.id], NOC)`",
+						"dialogue":	"`choose(var.movie.quotes)`"
+		},
+		"titles"	: ["which movie is this dialog from"],
+		"subtitle"	: ["`var.dialogue`"],
+		"answer"	: ["`var.movie.name`"],
+        "choices"	: ["`var.movies.name`"],
+        "titles_fa"	: ["دیالوگ زیر از کدام فیلم است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 33
+    },
+    {
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"directors" : "`db(director[director.name != var.movie.director], NOC)`"
+		},
+		"titles"	: ["who directed `var.movie.name`"],
+		"answer"	: ["`var.movie.director`"],
+        "choices"	: ["`var.directors.name`"],
+        "titles_fa"	: ["کارگردان فیلم `tr(var.movie.name)` کیست"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 34
+    },
+    {
+		"values"	: {
+						"director" : "`db(director[director.dead == False])`",
+						"directors" : "`db(director[director.dead == True], NOC)`",
+						"movie" : "`var.director.movies[0]`",
+						"movies" : "`[x[0] for x in var.directors.movies]`"
+		},
+		"titles"	: ["director of whixh movie is alive"],
+		"answer"	: ["`var.movie`"],
+        "choices"	: ["`var.movies`"],
+        "titles_fa"	: ["کارگردان کدام فیلم زنده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 35
+    },
+    {
+		"values"	: {
+						"director" : "`db(director[director.dead == True])`",
+						"directors" : "`db(director[director.dead == False], NOC)`",
+						"movie" : "`var.director.movies[0]`",
+						"movies" : "`[x[0] for x in var.directors.movies]`"
+		},
+		"titles"	: ["director of whixh movie is not alive"],
+		"answer"	: ["`var.movie`"],
+        "choices"	: ["`var.movies`"],
+        "titles_fa"	: ["کارگردان کدام فیلم زنده نیست"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 36
+    },
+    {
+		"values"	: {
+						"director" : "`db(director[[len(x) > 5 for x in director.movies]])`",
+						"directors" : "`db(director[[len(x) < len(var.director.movies) for x in director.movies]], NOC)`"
+		},
+		"titles"	: ["which director has directed more movies than others"],
+		"answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "titles_fa"	: ["کدام کارگردان تعداد بیشتری فیلم کارگرانی کرده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 37
+    },
+    {
+		"values"	: {
+						"director" : "`db(director[[len(x) > 5 for x in director.movies]])`",
+						"directors" : "`db(director[[len(x) < len(var.director.movies) for x in director.movies]], NOC)`"
+		},
+		"titles"	: ["which director has directed more movies than others"],
+		"answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "titles_fa"	: ["کدام کارگردان تعداد بیشتری فیلم کارگرانی کرده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 37
+    },
+    {
+		"values"	: {
+						"director" : "`db(director[[len(x) > 5 for x in director.movies]])`",
+						"directors" : "`db(director[[len(x) < len(var.director.movies) for x in director.movies]], NOC)`"
+		},
+		"titles"	: ["which director has directed more movies than others"],
+		"answer"	: ["`var.director.name`"],
+        "choices"	: ["`var.directors.name`"],
+        "titles_fa"	: ["کدام کارگردان تعداد بیشتری فیلم کارگرانی کرده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 38
+    }
+]

@@ -1,0 +1,16 @@
+[
+	{
+		"values"  : {
+						"movie" : "`db(movie[movie.imdb_rate > 0])`",
+						"movies" : "`db(movie[(movie.imdb_rate > 0) && (movie.imdb_rate > 0)], NOC)`",
+						"RT" :  "`var.movie.imdb_rate - 0.2`"
+		},
+		"titles"	: ["The imdb rank of the cast below is greater than `f'{var.RT:.2}'`"],
+		"answer"	: ["`var.movie.name`"],
+		"choices"	: ["`var.movies.name`"],
+		"titles_fa"	: ["امتیاز کدام یک از گزینه های زیر بالای `f'{var.RT:.2}'` است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	}
+]

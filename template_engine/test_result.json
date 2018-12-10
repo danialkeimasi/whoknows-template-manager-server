@@ -1,0 +1,21 @@
+[
+    {
+        "templates_count": 1,
+        "success": 0,
+        "fails": 1,
+        "success_rate": "100%",
+        "failed_templates": [],
+        "templates": [
+            {
+                "number": 7,
+                "source": "/root/guessit/generator/template_engine/templates/footballTeam,photos.json",
+                "test_count": 5,
+                "success": 5,
+                "fails": 0,
+                "success_rate": "100%",
+                "time_avg": 0,
+                "problems": []
+            }
+        ]
+    }
+]
