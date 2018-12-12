@@ -107,8 +107,7 @@ def checkanswer(request):
 		'guess'			: guess,
 		'questionID'	: questionID
 	})
-
-
+	
 	score = check_answer(guess, questionID)
 
 	body = {
