@@ -101,7 +101,7 @@ def createque(request):
 
 def checkanswer(request): 
 	guess 		= request.GET.get('guess', '')
-	questionID = request.GET.get('questionID', ''
+	questionID = request.GET.get('questionID', '')
 	
 	pprint({
 		'guess'			: guess,
