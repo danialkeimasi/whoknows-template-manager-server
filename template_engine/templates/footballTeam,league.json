@@ -17,7 +17,7 @@
 	{
 		"values"	: {
 						"team" : "`db(footballTeam)`",
-						"teams" : "`db(footballTeam,NOC)`"
+						"teams" : "`db(footballTeam[footballTeam.league != var.team.league],NOC)`"
 		},
         "titles"	: ["xx"],
 		"answer"	: ["`var.team.name`"],
@@ -26,5 +26,59 @@
         "usage"		: ["contest"],
 		"type"		: "multi_choice",
 		"number"	: 2
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"league" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.league == var.league.league`"],
+        "titles_fa"	: ["تیم `var.team.name` در لیگ  `var.league.league` فعالیت میکند"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 3,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"league" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.league == var.league.league`"],
+        "titles_fa"	: ["تیم `var.team.name` در لیگ  `var.league.league` فعالیت میکند"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 4,
+		"comment"	: ""
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.teams.name`"],
+        "choices"	: ["`var.team.name`"],
+        "titles_fa"	: ["تیم هایی که در یک لیگ فعالیت دارند راانتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 5
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.teams.name`"],
+        "choices"	: ["`var.team.name`"],
+        "titles_fa"	: ["تیم هایی که در لیگ `var.teams.league` فعالیت دارند را انتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 6
 	}
 ]

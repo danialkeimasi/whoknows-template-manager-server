@@ -91,5 +91,151 @@
 		"usage"		: ["contest"],
 		"type"		: "multi_choice",
 		"number"	: 7
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.picture == var.logo.picture`"],
+		"subtitle"	: ["`var.team.picture`"],
+        "titles_fa"	: ["لوگوی زیر مربوط به تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 8,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.picture == var.logo.picture`"],
+		"subtitle"	: ["`var.team.picture`"],
+        "titles_fa"	: ["لوگوی زیر مربوط به تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 9,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.homeKit == var.logo.homeKit`"],
+		"subtitle"	: ["`var.team.homeKit`"],
+        "titles_fa"	: ["تصویر زیر لباس اول(خانگی)تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 10,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.homeKit == var.logo.homeKit`"],
+		"subtitle"	: ["`var.team.homeKit`"],
+        "titles_fa"	: ["تصویر زیر لباس اول(خانگی)تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 11,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.awayKit == var.logo.awayKit`"],
+		"subtitle"	: ["`var.team.awayKit`"],
+        "titles_fa"	: ["تصویر زیر لباس دوم تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 12,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.awayKit == var.logo.awayKit`"],
+		"subtitle"	: ["`var.team.awayKit`"],
+        "titles_fa"	: ["تصویر زیر لباس دوم تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 13,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.goalkeeperKit == var.logo.goalkeeperKit`"],
+		"subtitle"	: ["`var.team.goalkeeperKit`"],
+        "titles_fa"	: ["تصویر زیر لباس دروازه بان تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 14,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"logo" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.goalkeeperKit == var.logo.goalkeeperKit`"],
+		"subtitle"	: ["`var.team.goalkeeperKit`"],
+        "titles_fa"	: ["تصویر زیر لباس دروازه بان تیم `var.team.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 15,
+		"comment"	: ""
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.league != var.team.league], 1)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.homeKit,var.team.awayKit`"],
+        "choices"	: ["`var.team.homeKit,var.team.awayKit,var.teams.homeKit,var.teams.awayKit`"],
+        "titles_fa"	: ["لباس های تیم `var.team.name` را انتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 16
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.teams.picture`"],
+        "choices"	: ["`var.team.picture,var.teams.picture`"],
+        "titles_fa"	: ["تیم هایی که در یک لیگ فعالیت دارند را انتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 17
 	}
 ]

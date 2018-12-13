@@ -2,196 +2,286 @@
     {
         "data": [],
         "data_id": [],
-        "number": 7,
+        "number": 16,
         "titles": [
-            "xx`"
+            "xx"
         ],
         "titles_fa": [
-            "لوگوی تیم Fulham کدام است"
+            "لباس های تیم GFC Ajaccio را انتخاب کنید"
         ],
         "choices": [
-            "https://cdn.sofifa.org/teams/10/light/113876.png",
-            "https://cdn.sofifa.org/teams/10/light/1596.png",
-            "https://cdn.sofifa.org/teams/10/light/112115.png",
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/0_199_0.png",
+                "https://cdn.sofifa.org/kits/19/1_199_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer": [
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "choices_fa": [
-            "https://cdn.sofifa.org/teams/10/light/113876.png",
-            "https://cdn.sofifa.org/teams/10/light/1596.png",
-            "https://cdn.sofifa.org/teams/10/light/112115.png",
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/0_199_0.png",
+                "https://cdn.sofifa.org/kits/19/1_199_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer_fa": [
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer_type": "image",
         "subtitle_type": "empty",
-        "type": "multi_choice",
-        "title": "xx`",
-        "title_fa": "لوگوی تیم Fulham کدام است",
+        "type": "selective",
+        "title": "xx",
+        "title_fa": "لباس های تیم GFC Ajaccio را انتخاب کنید",
         "tags": [
             "footballTeam"
         ],
         "active": true,
-        "_id": "5c0e6409ac0e161ac59d285b"
+        "_id": "5c128ce8ac0e16761f901a5d"
     },
     {
         "data": [],
         "data_id": [],
-        "number": 7,
+        "number": 16,
         "titles": [
-            "xx`"
+            "xx"
         ],
         "titles_fa": [
-            "لوگوی تیم Fulham کدام است"
+            "لباس های تیم Dalkurd FF را انتخاب کنید"
         ],
         "choices": [
-            "https://cdn.sofifa.org/teams/10/light/1475.png",
-            "https://cdn.sofifa.org/teams/10/light/73.png",
-            "https://cdn.sofifa.org/teams/10/light/112115.png",
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
+            ]
         ],
         "answer": [
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
+            ]
         ],
         "choices_fa": [
-            "https://cdn.sofifa.org/teams/10/light/1475.png",
-            "https://cdn.sofifa.org/teams/10/light/73.png",
-            "https://cdn.sofifa.org/teams/10/light/112115.png",
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
+            ]
         ],
         "answer_fa": [
-            "https://cdn.sofifa.org/teams/10/light/144.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
+            ]
         ],
         "answer_type": "image",
         "subtitle_type": "empty",
-        "type": "multi_choice",
-        "title": "xx`",
-        "title_fa": "لوگوی تیم Fulham کدام است",
+        "type": "selective",
+        "title": "xx",
+        "title_fa": "لباس های تیم Dalkurd FF را انتخاب کنید",
         "tags": [
             "footballTeam"
         ],
         "active": true,
-        "_id": "5c0e640eac0e161ac59d285c"
+        "_id": "5c128cedac0e16761f901a5e"
     },
     {
         "data": [],
         "data_id": [],
-        "number": 7,
+        "number": 16,
         "titles": [
-            "xx`"
+            "xx"
         ],
         "titles_fa": [
-            "لوگوی تیم Real Betis کدام است"
+            "لباس های تیم Östersunds FK را انتخاب کنید"
         ],
         "choices": [
-            "https://cdn.sofifa.org/teams/10/light/69.png",
-            "https://cdn.sofifa.org/teams/10/light/39.png",
-            "https://cdn.sofifa.org/teams/10/light/467.png",
-            "https://cdn.sofifa.org/teams/10/light/449.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/0_73_0.png",
+                "https://cdn.sofifa.org/kits/19/1_73_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
+            ]
         ],
         "answer": [
-            "https://cdn.sofifa.org/teams/10/light/449.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
+            ]
         ],
         "choices_fa": [
-            "https://cdn.sofifa.org/teams/10/light/69.png",
-            "https://cdn.sofifa.org/teams/10/light/39.png",
-            "https://cdn.sofifa.org/teams/10/light/467.png",
-            "https://cdn.sofifa.org/teams/10/light/449.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/0_73_0.png",
+                "https://cdn.sofifa.org/kits/19/1_73_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
+            ]
         ],
         "answer_fa": [
-            "https://cdn.sofifa.org/teams/10/light/449.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
+                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
+            ]
         ],
         "answer_type": "image",
         "subtitle_type": "empty",
-        "type": "multi_choice",
-        "title": "xx`",
-        "title_fa": "لوگوی تیم Real Betis کدام است",
+        "type": "selective",
+        "title": "xx",
+        "title_fa": "لباس های تیم Östersunds FK را انتخاب کنید",
         "tags": [
             "footballTeam"
         ],
         "active": true,
-        "_id": "5c0e6413ac0e161ac59d285d"
+        "_id": "5c128cf2ac0e16761f901a5f"
     },
     {
         "data": [],
         "data_id": [],
-        "number": 7,
+        "number": 16,
         "titles": [
-            "xx`"
+            "xx"
         ],
         "titles_fa": [
-            "لوگوی تیم FC Barcelona کدام است"
+            "لباس های تیم Kashima Antlers را انتخاب کنید"
         ],
         "choices": [
-            "https://cdn.sofifa.org/teams/10/light/111393.png",
-            "https://cdn.sofifa.org/teams/10/light/112172.png",
-            "https://cdn.sofifa.org/teams/10/light/111397.png",
-            "https://cdn.sofifa.org/teams/10/light/241.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/0_69_0.png",
+                "https://cdn.sofifa.org/kits/19/1_69_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ]
         ],
         "answer": [
-            "https://cdn.sofifa.org/teams/10/light/241.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ]
         ],
         "choices_fa": [
-            "https://cdn.sofifa.org/teams/10/light/111393.png",
-            "https://cdn.sofifa.org/teams/10/light/112172.png",
-            "https://cdn.sofifa.org/teams/10/light/111397.png",
-            "https://cdn.sofifa.org/teams/10/light/241.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/0_69_0.png",
+                "https://cdn.sofifa.org/kits/19/1_69_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ]
         ],
         "answer_fa": [
-            "https://cdn.sofifa.org/teams/10/light/241.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
+                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
+            ]
         ],
         "answer_type": "image",
         "subtitle_type": "empty",
-        "type": "multi_choice",
-        "title": "xx`",
-        "title_fa": "لوگوی تیم FC Barcelona کدام است",
+        "type": "selective",
+        "title": "xx",
+        "title_fa": "لباس های تیم Kashima Antlers را انتخاب کنید",
         "tags": [
             "footballTeam"
         ],
         "active": true,
-        "_id": "5c0e6417ac0e161ac59d285e"
+        "_id": "5c128cf8ac0e16761f901a60"
     },
     {
         "data": [],
         "data_id": [],
-        "number": 7,
+        "number": 16,
         "titles": [
-            "xx`"
+            "xx"
         ],
         "titles_fa": [
-            "لوگوی تیم SD Eibar کدام است"
+            "لباس های تیم GFC Ajaccio را انتخاب کنید"
         ],
         "choices": [
-            "https://cdn.sofifa.org/teams/10/light/481.png",
-            "https://cdn.sofifa.org/teams/10/light/449.png",
-            "https://cdn.sofifa.org/teams/10/light/110316.png",
-            "https://cdn.sofifa.org/teams/10/light/467.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/0_111393_0.png",
+                "https://cdn.sofifa.org/kits/19/1_111393_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer": [
-            "https://cdn.sofifa.org/teams/10/light/467.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "choices_fa": [
-            "https://cdn.sofifa.org/teams/10/light/481.png",
-            "https://cdn.sofifa.org/teams/10/light/449.png",
-            "https://cdn.sofifa.org/teams/10/light/110316.png",
-            "https://cdn.sofifa.org/teams/10/light/467.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/0_111393_0.png",
+                "https://cdn.sofifa.org/kits/19/1_111393_0.png"
+            ],
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer_fa": [
-            "https://cdn.sofifa.org/teams/10/light/467.png"
+            [
+                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
+                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
+            ]
         ],
         "answer_type": "image",
         "subtitle_type": "empty",
-        "type": "multi_choice",
-        "title": "xx`",
-        "title_fa": "لوگوی تیم SD Eibar کدام است",
+        "type": "selective",
+        "title": "xx",
+        "title_fa": "لباس های تیم GFC Ajaccio را انتخاب کنید",
         "tags": [
             "footballTeam"
         ],
         "active": true,
-        "_id": "5c0e641cac0e161ac59d285f"
+        "_id": "5c128cfdac0e16761f901a61"
     }
 ]

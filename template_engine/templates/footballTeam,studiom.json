@@ -26,5 +26,19 @@
         "usage"		: ["contest"],
 		"type"		: "multi_choice",
 		"number"	: 2
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"studiom" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.studiom == var.studiom.studiom`"],
+        "titles_fa"	: ["`var.studiom.studiom` استادیوم خانگی تیم `var.team.studiom` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 3,
+		"comment"	: ""
 	}
 ]

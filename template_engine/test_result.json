@@ -7,7 +7,7 @@
         "failed_templates": [],
         "templates": [
             {
-                "number": 7,
+                "number": 16,
                 "source": "/root/guessit/generator/template_engine/templates/footballTeam,photos.json",
                 "test_count": 5,
                 "success": 5,

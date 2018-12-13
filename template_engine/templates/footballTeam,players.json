@@ -81,5 +81,89 @@
         "usage"		: ["contest"],
 		"type"		: "selective",
 		"number"	: 6
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.name != var.team.name], NOC)`",
+						"players": "`list(itertools.chain.from_iterable( var.teams.players))`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`choose(var.team.players)`"],
+        "choices"	: ["`choose(var.players, 3)`"],
+        "titles_fa"	: ["کدام یک از بازیکنان زیر عضو تیم `var.team.name` است"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 7
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.name != var.team.name], NOC)`",
+						"player": "`choose(var.team.players)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.team.name`"],
+        "choices"	: ["`var.teams.name`"],
+        "titles_fa"	: ["`var.player` در کدام تیم بازی میکند"],
+        "usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 8
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"captain" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.captain == var.captain.captain`"],
+        "titles_fa"	: ["نام کاپیتان تیم `var.team.name`, `var.captain.name` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 9,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"captain" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.captain == var.captain.captain`"],
+        "titles_fa"	: ["نام کاپیتان تیم `var.team.name`, `var.captain.captain` است"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 10,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"player" : "`db(footballTeam[footballTeam.name != var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.players == var.player.players`"],
+        "titles_fa"	: ["`choose(var.player.players)`  در تیم `var.team.name` بازی میکند"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 11,
+		"comment"	: ""
+	},
+	{
+    	"values"	: {
+    					"team": "`db(footballTeam)`",
+						"player" : "`db(footballTeam[footballTeam.name == var.team.name])`"
+    				  },
+		"titles"	: ["xx"],
+        "answer"	: ["`var.team.players == var.player.players`"],
+        "titles_fa"	: ["`choose(var.player.players)`  در تیم `var.team.name` بازی میکند"],
+		"usage"		: ["contest"],
+		"type"		: "true_false",
+		"tags"		: [],
+		"number"	: 12,
+		"comment"	: ""
 	}
 ]
