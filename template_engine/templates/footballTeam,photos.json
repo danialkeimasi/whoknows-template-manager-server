@@ -228,7 +228,7 @@
 	{
 		"values"	: {
 						"team" : "`db(footballTeam)`",
-						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`"
+						"teams": "`db(footballTeam[footballTeam.league != varhteam.league], NOC)`"
 		},
         "titles"	: ["xx"],
 		"answer"	: ["`var.teams.picture`"],
