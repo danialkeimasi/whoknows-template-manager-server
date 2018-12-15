@@ -165,5 +165,20 @@
 		"tags"		: [],
 		"number"	: 12,
 		"comment"	: ""
+	},
+	{
+		"values"	: {
+						"team" : "`db(footballTeam)`",
+						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`",
+						"NOA": "`rand(1,3)`",
+						"choices": "`choose(var.team.players, NOA)`"
+		},
+        "titles"	: ["xx"],
+		"answer"	: ["`var.choices`"],
+        "choices"	: ["`var.choices`", "choose(var.teams.players, 4 - NOA"],
+        "titles_fa"	: ["بازیکنانی که در تیم `var.team.name` بازی میکنند را انتخاب کنید"],
+        "usage"		: ["contest"],
+		"type"		: "selective",
+		"number"	: 13
 	}
 ]
