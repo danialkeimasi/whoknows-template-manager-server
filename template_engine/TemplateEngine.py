@@ -92,7 +92,8 @@ def islink(value):
 
 
 def mongo_to_json(list_of_objects):
-	"""Converts MongoDB's ID objects to str so it can be json serializable
+	"""
+	Converts MongoDB's ID objects to str so it can be json serializable
 	"""
 	if not isinstance(list_of_objects, list):
 		list_of_objects = [list_of_objects]
@@ -104,9 +105,16 @@ def mongo_to_json(list_of_objects):
 	return list_of_objects
 
 
-def all_values(dictionary):
-	"""Rcurcively returns all values in a nested dict
+def all_values(dictionary : dict):
 	"""
+	Rcurcively returns all values in a nested dict
+
+	Parameters
+	----------
+	dictionary : dict
+		dict item that is needed to be uncompress!!!
+	"""
+
 	for value in dictionary.values():
 		if isinstance(value, dict):
 			yield from all_values(value)
@@ -122,7 +130,7 @@ def download(url, local_filename=None):
 	----------
 	url : str
 		file's url to be downloaded
-	local_filename : str
+	local_filename : str , optional
 		name of file after download (defualt is None which means it's name will be given from end of url)
 	"""
 
