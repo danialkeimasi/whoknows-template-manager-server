@@ -92,7 +92,7 @@ def islink(value):
 
 
 def mongo_to_json(list_of_objects):
-	"""
+	"""Converts MongoDB's ID objects to str so it can be json serializable
 	"""
 	if not isinstance(list_of_objects, list):
 		list_of_objects = [list_of_objects]
