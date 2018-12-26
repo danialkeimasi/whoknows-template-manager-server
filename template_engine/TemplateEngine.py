@@ -209,9 +209,7 @@ def initialization(mode='partial'):
 
 	logger.info('initialization is done.')
 
-/ **
 
-*/
 def load_data(dbname):
 	logger.info(f'def load_data(dbname={dbname})')
 
