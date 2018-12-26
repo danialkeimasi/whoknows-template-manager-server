@@ -153,6 +153,9 @@ def download(url, local_filename=None):
 
 
 def add_question_to_mongo(question):
+	"""
+	Inserts the given question 
+	"""
 	# should send auestion/new request instead of directly adding it to database
 	# requests.post('localhost:3000/question/new', json={ 'question': question })
 	mongo.GuessIt.question.insert(question)
