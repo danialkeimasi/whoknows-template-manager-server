@@ -287,6 +287,14 @@ def used_datasets(template):
 
 
 def load_used_datasets(template):
+	"""
+	Loads used datasets in given template into dataset's global variables
+
+	Parameters
+	----------
+	template : dict
+		template that it's datasets are needed to be loaded
+	"""
 	problems = []
 
 	if memuseme() > 1300:
@@ -299,6 +307,10 @@ def load_used_datasets(template):
 	return problems
 
 def excluce_datasets(template, ILMIN=0, ILMAX=1):
+	"""
+	exclude (remove) some parts of used datasets of given template, based on given level (ILMIN , ILMAX)
+	
+	"""
 	for dataset in used_datasets(template):
 		if globals()[dataset] is None:
 
@@ -444,21 +456,6 @@ def tr(phrases, home='en', target='fa'):
 
 	return translation if return_list else translation[0]
 	#text = finglish.f2p(text)
-
-
-
-"""
-class Data:
-	def __init__(self, doc, column):
-		self.content = doc[column]
-		self.doc = doc[9]
-
-	def __repr__(self):
-		if isinstance(self.content, list):
-			return self.content
-		else:
-			return str(self.content)
-"""
 
 
 def to_list(data):
