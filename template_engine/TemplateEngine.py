@@ -42,7 +42,8 @@ templates = []
 
 
 def find_format(data):
-	"""Finds the format of given text, if it's a link then returns link's format else text
+	"""
+	Finds the format of given text, if it's a link then returns link's format else text
 	
 	Formats
 		image : png, jpg, jpeg, gif
@@ -53,6 +54,7 @@ def find_format(data):
 				"http://www.host.com/image.jpg" ---> image
 				"http://www.host.com/audio.mp3" ---> audio
 	"""
+
 	if not isinstance(data, list):
 		data = [data]
 	if len(data) == 0:
@@ -70,7 +72,8 @@ def find_format(data):
 
 
 def isnumber(value):
-	"""Checks if value is a number
+	"""
+	Checks if value is a number
 	"""
 	try:
 		_ = float(value)
@@ -82,7 +85,8 @@ def isnumber(value):
 
 
 def islink(value):
-	"""Checks if value is a url
+	"""
+	Checks if value is a url
 	"""
 	if isinstance(value, str):
 		if value.find('http') != -1:
@@ -105,7 +109,7 @@ def mongo_to_json(list_of_objects):
 	return list_of_objects
 
 
-def all_values(dictionary : dict):
+def all_values(dictionary: dict):
 	"""
 	Rcurcively returns all values in a nested dict
 
@@ -150,7 +154,7 @@ def download(url, local_filename=None):
 
 def add_question_to_mongo(question):
 	# should send auestion/new request instead of directly adding it to database
-	#requests.post('localhost:3000/question/new', json={ 'question': question })
+	# requests.post('localhost:3000/question/new', json={ 'question': question })
 	mongo.GuessIt.question.insert(question)
 
 
