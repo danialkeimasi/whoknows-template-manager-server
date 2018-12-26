@@ -115,7 +115,7 @@ def all_values(dictionary):
 
 
 def download(url, local_filename=None):
-	"""Downloads the given url 
+	"""Downloads the given url
 	"""
 	if local_filename is None:
 		local_filename = url.split('/')[-1]
