@@ -309,8 +309,17 @@ def load_used_datasets(template):
 def excluce_datasets(template, ILMIN=0, ILMAX=1):
 	"""
 	exclude (remove) some parts of used datasets of given template, based on given level (ILMIN , ILMAX)
-	
+
+	Parameters
+	----------
+	template : dict
+		template that it's datasets needs to be excluded
+	ILMIN : int
+		minimum of internal level
+	ILMAX : int
+		maxsimum of internal level	
 	"""
+
 	for dataset in used_datasets(template):
 		if globals()[dataset] is None:
 
@@ -328,7 +337,19 @@ def excluce_datasets(template, ILMIN=0, ILMAX=1):
 
 
 def choose(items, count=None):
-	#print('choose', str(items)[:20], count)
+	"""
+	Return a random sebset of given items with length of count as a list(returns only one item if count is None, Not as a list)
+
+	Parameters
+	----------
+	template : dict
+		template that it's datasets needs to be excluded
+	ILMIN : int
+		minimum of internal level
+	ILMAX : int
+		maxsimum of internal level	
+	"""
+	
 	random.shuffle(items)
 	if count:
 		return items[:count]
@@ -358,6 +379,9 @@ def choose(items, count=None):
 
 
 def make_help(data_name, data, exceptions=[], language='en'):
+	"""
+	
+	"""
 	#print(data_name, data, exceptions, language)
 
 	#data_id = data.id
