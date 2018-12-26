@@ -42,7 +42,8 @@ templates = []
 
 
 def find_format(data):
-	"""finds the format 
+	"""finds the format of given data
+	
 	"""
 	if not isinstance(data, list):
 		data = [data]
