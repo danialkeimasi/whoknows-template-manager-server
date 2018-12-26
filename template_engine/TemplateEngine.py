@@ -380,8 +380,20 @@ def choose(items, count=None):
 
 def make_help(data_name, data, exceptions=[], language='en'):
 	"""
-	
+	Return helps for question, based on given data_name and language
+
+	Parameters
+	----------
+	data_name : str
+		name of data that we need helps about it
+	data : *
+		****
+	exceptions : list
+		****
+	language : str
+		language of needed helps
 	"""
+	
 	#print(data_name, data, exceptions, language)
 
 	#data_id = data.id
