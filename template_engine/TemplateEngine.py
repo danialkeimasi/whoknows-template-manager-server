@@ -211,6 +211,21 @@ def initialization(mode='partial'):
 
 
 def load_data(dbname):
+	"""
+	Loads the given dataset and returns it
+	
+	Parameters
+	----------
+	dbname : str
+		name of dataset
+	"""
+
+	"""
+	TODO : 
+		- get path for loading dataset
+		- download dataset from server
+	"""
+
 	logger.info(f'def load_data(dbname={dbname})')
 
 	problems = []
@@ -246,7 +261,18 @@ def load_data(dbname):
 
 
 def used_datasets(template):
-	# BUG : does not find datasetss that had been used in meddle of code. example : director[(movie.name....)]
+	"""
+	Returns a list of used datasets in the given template
+
+	Parameters
+	----------
+	template : dict
+		template that it's datasets are needed
+	"""
+	
+	"""
+	# BUG : does not find datasets that had been used in middle of code. example : director[(movie.name....)]
+	"""
 
 	used_dataset = []
 	if 'values' not in template:
