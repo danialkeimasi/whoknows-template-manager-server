@@ -123,8 +123,9 @@ def download(url, local_filename=None):
 	url : str
 		file's url to be downloaded
 	local_filename : str
-		name of file after download
+		name of file after download (defualt is None which means it's name will be given from end of url)
 	"""
+
 	if local_filename is None:
 		local_filename = url.split('/')[-1]
 	else:
