@@ -70,7 +70,7 @@ def find_format(data):
 
 
 def isnumber(value):
-	"""Checks if value is a numnber
+	"""Checks if value is a number
 	"""
 	try:
 		_ = float(value)
@@ -82,6 +82,8 @@ def isnumber(value):
 
 
 def islink(value):
+	"""Checks if value is a url
+	"""
 	if isinstance(value, str):
 		if value.find('http') != -1:
 			return True
@@ -90,6 +92,8 @@ def islink(value):
 
 
 def mongo_to_json(list_of_objects):
+	"""
+	"""
 	if not isinstance(list_of_objects, list):
 		list_of_objects = [list_of_objects]
 
