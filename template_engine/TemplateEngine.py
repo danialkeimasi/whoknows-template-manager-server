@@ -42,8 +42,16 @@ templates = []
 
 
 def find_format(data):
-	"""Finds the format of given data
-	http://www.goo
+	"""Finds the format of given text, if it's a link then returns link's format else text
+	
+	Formats
+		image : png, jpg, jpeg, gif
+		audio : mp3
+		video : mp4
+
+		Examples :
+				"http://www.host.com/image.jpg" ---> image
+				"http://www.host.com/audio.mp3" ---> audio
 	"""
 	if not isinstance(data, list):
 		data = [data]
