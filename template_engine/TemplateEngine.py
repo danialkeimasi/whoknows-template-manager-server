@@ -59,7 +59,6 @@ def find_format(data):
 		return 'none'
 	for val in data:
 		val = str(val)
-		#print(val, [val.find(f) != -1 for f in ['.png', '.jpg', '.jpeg']])
 		if any([val.lower().find(f) != -1 for f in ['.png', '.jpg', '.jpeg', '.gif']]):
 			return 'image'
 		if any([val.lower().find(f) != -1 for f in ['.mp3']]):
@@ -71,10 +70,13 @@ def find_format(data):
 
 
 def isnumber(value):
+	"""Checks if value is a numnber
+	"""
 	try:
 		_ = float(value)
 		return True
-	except: pass
+	except:
+		pass
 
 	return False
 
