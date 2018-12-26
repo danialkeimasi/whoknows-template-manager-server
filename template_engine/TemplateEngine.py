@@ -152,22 +152,32 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def add_question_to_mongo(question):
+def add_question_to_mongo(question: dict):
 	"""
-	Inserts the given question 
-	"""
+	Inserts the given question to questions's database in MongoDB
+	
 	# should send auestion/new request instead of directly adding it to database
 	# requests.post('localhost:3000/question/new', json={ 'question': question })
+	"""
+
 	mongo.GuessIt.question.insert(question)
 
 
-def add_template_to_mongo(template):
+def add_template_to_mongo(template: dict):
+	"""
+	Inserts the given template to templates's database in MongoDB
+	
 	# should send auestion/new request instead of directly adding it to database
-	#requests.post('localhost:3000/question/new', json={ 'question': question })
+	# requests.post('localhost:3000/question/new', json={ 'question': question })
+	"""
+	
 	mongo.GuessIt.template.insert(template)
 
 
 def initialization(mode='partial'):
+	"""
+	"""
+	
 	logger.info('initializating ...')
 
 	#if mode == 'full':
