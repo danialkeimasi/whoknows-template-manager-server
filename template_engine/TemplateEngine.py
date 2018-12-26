@@ -105,6 +105,8 @@ def mongo_to_json(list_of_objects):
 
 
 def all_values(dictionary):
+	"""Rcurcively returns all values in a nested dict
+	"""
 	for value in dictionary.values():
 		if isinstance(value, dict):
 			yield from all_values(value)
