@@ -176,6 +176,7 @@ def add_template_to_mongo(template: dict):
 
 def initialization(mode='partial'):
 	"""
+	Initialize needed variables for making a new question
 	"""
 	
 	logger.info('initializating ...')
