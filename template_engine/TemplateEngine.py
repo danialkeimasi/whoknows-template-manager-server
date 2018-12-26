@@ -177,6 +177,11 @@ def add_template_to_mongo(template: dict):
 def initialization(mode='partial'):
 	"""
 	Initialize needed variables for making a new question, loads translation dataset
+
+	Parameters
+	----------
+	mode : str, optional
+		full mode is for first time , partial is for start of creating a new question
 	"""
 	
 	logger.info('initializating ...')
