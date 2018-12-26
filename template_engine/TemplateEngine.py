@@ -42,8 +42,8 @@ templates = []
 
 
 def find_format(data):
-	"""finds the format of given data
-	
+	"""Finds the format of given data
+	http://www.goo
 	"""
 	if not isinstance(data, list):
 		data = [data]
