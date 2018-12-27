@@ -1162,6 +1162,7 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 
 
 def template_to_mongo():
+	
 	logger.info('trying to inserting templates from file into mongo ...')
 	templates = get_templates_list()
 	mongo.GuessIt.template.drop()
