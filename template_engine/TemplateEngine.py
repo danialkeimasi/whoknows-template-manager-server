@@ -668,7 +668,10 @@ def evaluate(text, exp, storage=[], key=None):
 		expression part of text
 	text : str
 		str which is neede to be evaluated
-	storege :
+	storege : *
+		***
+	key : *
+		***
 	
 	"""
 
@@ -702,6 +705,18 @@ def evaluate(text, exp, storage=[], key=None):
 
 def parse(items, storage=[], key=None, mode=''):
 	"""
+	Gets a list of items and evaluate every code part of it's strings
+	Example : 
+		['2 + 2 = `2 + 2`', ...] ---> ['2 + 2 = 4', ...]
+
+	Parameters
+	----------
+	items : list
+		items to be parsed
+	storege : *
+		***
+	key : *
+		***
 	
 	"""
 
