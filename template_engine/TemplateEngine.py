@@ -458,7 +458,9 @@ def miss(word, rate=0.2):
 	Parameters
 	----------
 	word : str
-		 
+		wanted word to be changed
+	ratio : float, optional
+		ratio = (number of ?) / (number of character) # word.count('?') / len(word)
 	"""
 	raw_word = word.replace(' ', '')
 	word = list(word)
