@@ -1135,7 +1135,16 @@ def check_answer(guess, questionID):
 
 def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text', 'empty']):
 	"""
-	
+	Create questions based on given tags and conditions
+
+	Parameters
+	----------
+	tags : list
+		tags of wanted questions
+	question_count : int
+		number of wanted questions
+	subtitle_type : list
+		specify valid subtitle_type s for wanted questions
 	"""
 	
 	questions = mongo_to_json(list(mongo.GuessIt.question.find()))
