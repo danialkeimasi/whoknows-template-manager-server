@@ -894,40 +894,6 @@ def check_question(question):
 	return problems
 
 
-def inspect_template(template):
-	"""
-	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
-
-	Parameters
-	----------
-	template : dict
-		wanted template to be inspected
-	"""
-
-	lookup = {}
-
-	attemps = 3
-	fail = 0
-	success = 0
-
-	start = time.time()
-	for i in range(attemps):
-		try:
-			question, problem = template_engine(template)
-			success += 1
-		except:
-			pass
-
-	end = time.time()
-
-	lookup['success'] 	= (succes / attemps) * 100
-	lookup['time'] 		= (end - start) / success
-	lookup['potential'] = 0
-	lookup['problems']	= []
-
-	return lookup
-
-
 def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=False, data_id=[]):
 	"""
 	Generate a question with the given template and conditions
@@ -1213,12 +1179,16 @@ def get_templates_list(tags=None):
 	return chosen_templates
 
 
-
 def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	"""
-	
-	"""
+	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
 
+	Parameters
+	----------
+	template : dict
+		wanted template to be inspected
+	"""
+	
 	initialization(mode='full')
 
 	#pprint(template_engine(templates[:][0], reload_question=True,
