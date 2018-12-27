@@ -495,7 +495,7 @@ def tr(phrases, home='en', target='fa'):
 
 	Parameters
 	----------
-	
+	phrases : list, str
 	"""
 
 	return phrases
