@@ -571,9 +571,9 @@ def db(doc, count=1, return_problems=False):
 	doc : dataframe
 		dataframe that we want to choose from
 	count : int
-		number of items which is needed
+		number of items which is needed (default is 1)
 	return_problems : bool
-		
+		specify whether this function should return the problems or not
 	"""
 
 	logger.info(f'def db(doc=doc, count={count})')
@@ -602,24 +602,28 @@ def db(doc, count=1, return_problems=False):
 	logger.info(f'def db => done')
 	return data
 
-"""
-def db(doc, count=1, column=None, value=None):
-	if isinstance(doc, pd.core.frame.Series):
-		data = list(doc.sample(count))
-
-		for i, _ in enumerate(data):
-			if isinstance(data[i], float) and data[i] != float('nan') and data[i] == int(data[i]):
-				data[i] = int(data[i])
-
-	elif isinstance(doc, pd.core.frame.DataFrame):
-		if isinstance(value, pd.core.frame.Series):
-			value = list(value.sample(1))[0]
-		data = doc[doc[column] == value].sample(count)
-
-	return data
-"""
 
 def rand(start, end, count=1, exceptions=[], save=True, try_count=10000):
+	"""
+	Return a list of random numbers in range of [start , ... , end], Returns only one number(not list) of count is not given
+
+	Parameters
+	----------
+	start : int, float
+		specify the start of range
+	end : int, float
+		specify the end of range
+	count : int
+		number of random numbers that is needed
+	exceptions : list
+		list of numbers which is needed to be excluded from range
+	save : bool
+
+	try_count : int
+		maximum number of try for finding random numbers (default is 10000)
+		this must not exist
+	"""
+
 	logger.info(f'def rand(start={start}, end={end}, count={count}, exceptions={exceptions}, save={save})')
 
 	#global r
