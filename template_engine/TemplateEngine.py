@@ -828,12 +828,17 @@ def check_global_constants():
 	if not ILMIN < ILMAX:
 		problems += ['ILMIN is bigger than ILMAX!... ILMIN must be smaller than ILMAX']
 
-	return len(problems) == 0, problems
+	return problems
 
 
 def check_template(template):
 	"""
-	Checks a template to has all neccessarary
+	Checks if a template has all of necessary parts and returns every problem in template if there is any
+
+	Parameters
+	----------
+	template : dict
+		wanted template to be checked
 	"""
 
 	problems = []
@@ -846,10 +851,19 @@ def check_template(template):
 	#if not 'choices' in template:
 	#	problems += ['choices is empty!']
 
-	return len(problems) == 0, problems
+	return problems
 
 
 def check_question(question):
+	"""
+	Checks if a question has all of necessary parts and returns every problem in template if there is any
+
+	Parameters
+	----------
+	template : dict
+		wanted template to be checked
+	"""
+
 	problems = []
 
 	if 'choices' in question:
@@ -880,7 +894,6 @@ def check_question(question):
 	return problems
 
 
-
 def inspect_template(template):
 
 	lookup = {}
@@ -905,7 +918,6 @@ def inspect_template(template):
 	lookup['problems']	= []
 
 	return lookup
-
 
 
 def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=False, data_id=[]):
@@ -933,8 +945,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	else:
 		question['data_id']			= []
 
-	if not check_template(template)[0] or not check_global_constants()[0]:
-		logger.info(check_template(template)[1] + check_global_constants())
+	if check_template(template) or check_global_constants():
+		logger.info(check_template(template) + check_global_constants())
 		return
 
 	problems += load_used_datasets(template)
