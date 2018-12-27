@@ -895,6 +895,14 @@ def check_question(question):
 
 
 def inspect_template(template):
+	"""
+	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
+
+	Parameters
+	----------
+	template : dict
+		wanted template to be inspected
+	"""
 
 	lookup = {}
 
@@ -921,6 +929,10 @@ def inspect_template(template):
 
 
 def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=False, data_id=[]):
+	"""
+	
+	"""
+
 	problems = []
 
 	initialization(mode='full')
