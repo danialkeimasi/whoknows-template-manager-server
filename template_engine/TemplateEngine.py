@@ -1160,10 +1160,10 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 
 	return chosen_questions[:min(question_count, len(chosen_questions))]
 
-
+"""
 def template_to_mongo():
 	"""
-	
+	Insert all templates to MongoDB
 	"""
 
 	logger.info('trying to inserting templates from file into mongo ...')
@@ -1174,7 +1174,7 @@ def template_to_mongo():
 		add_template_to_mongo(template)
 
 	logger.info('templates inserted to mongo successfully')
-
+"""
 
 
 def get_templates_list(tags=None):	#gets templates list from mongo and filters it by their tags
