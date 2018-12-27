@@ -453,7 +453,7 @@ def make_help(data_name, data, exceptions=[], language='en'):
 
 def miss(word, rate=0.2):
 	"""
-	
+	Returns guven word with 
 	"""
 	raw_word = word.replace(' ', '')
 	word = list(word)
