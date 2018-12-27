@@ -701,6 +701,10 @@ def evaluate(text, exp, storage=[], key=None):
 
 
 def parse(items, storage=[], key=None, mode=''):
+	"""
+	
+	"""
+
 	if isinstance(items, str):
 		items = [items]
 
