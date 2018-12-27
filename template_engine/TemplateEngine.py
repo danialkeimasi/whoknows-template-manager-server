@@ -530,7 +530,7 @@ def tr(phrases, home='en', target='fa'):
 
 def to_list(data):
 	"""
-	Return 
+	Returns a list from 
 	"""
 	
 	if not isinstance(data, list):
