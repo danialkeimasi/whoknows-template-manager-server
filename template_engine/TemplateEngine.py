@@ -473,6 +473,8 @@ def miss(word, rate=0.2):
 
 
 def mess(word):
+	"""
+	"""
 	forbiden_chars = [' ']
 	letters = [c for c in word if not c in forbiden_chars]
 	random.shuffle(letters)
