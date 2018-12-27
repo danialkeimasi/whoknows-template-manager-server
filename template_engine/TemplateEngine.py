@@ -530,13 +530,16 @@ def tr(phrases, home='en', target='fa'):
 
 def to_list(data):
 	"""
-	Returns a list from 
-	"""
-	
-	if not isinstance(data, list):
-		data = [data]
+	Returns data itself if it is a list, otherwise returns a list containing the data
 
-	return data
+	Parameters
+	----------
+	data : list, any
+		data that is needed to be converted to list
+	"""
+
+	return data isinstance(data, list) else [data]
+
 
 class obj_class():
 	def __init__(self, exp=None):
