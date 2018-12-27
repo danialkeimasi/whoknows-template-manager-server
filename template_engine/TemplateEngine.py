@@ -393,7 +393,7 @@ def make_help(data_name, data, exceptions=[], language='en'):
 	language : str
 		language of needed helps
 	"""
-	
+
 	#print(data_name, data, exceptions, language)
 
 	#data_id = data.id
@@ -452,6 +452,9 @@ def make_help(data_name, data, exceptions=[], language='en'):
 
 
 def miss(word, rate=0.2):
+	"""
+	
+	"""
 	raw_word = word.replace(' ', '')
 	word = list(word)
 	miss_count = int(rate * len(raw_word) + 0.5)
