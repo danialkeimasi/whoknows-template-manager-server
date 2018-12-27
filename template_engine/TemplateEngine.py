@@ -743,7 +743,6 @@ def check_tag_math(template, question={}):
 		return True
 
 
-
 def find_tags(template, question={}):
 
 	tags = ['movie', 'music']
