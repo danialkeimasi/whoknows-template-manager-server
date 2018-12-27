@@ -491,11 +491,16 @@ def mess(word):
 
 def tr(phrases, home='en', target='fa'):
 	"""
-	Translate given phrase from home language to target language
+	Translate given phrase or phrases from home language to target language
 
 	Parameters
 	----------
-	phrases : list, str
+	phrases : list, str, int, float
+		phrase or phrases needed to be translated
+	home : str
+		language of given phrase (default is en: english)
+	target : str
+		target language of phrase
 	"""
 
 	return phrases
@@ -524,6 +529,10 @@ def tr(phrases, home='en', target='fa'):
 
 
 def to_list(data):
+	"""
+	Return 
+	"""
+	
 	if not isinstance(data, list):
 		data = [data]
 
