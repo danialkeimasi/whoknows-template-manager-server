@@ -1162,9 +1162,9 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 
 """
 def template_to_mongo():
-	"""
+	'''
 	Insert all templates to MongoDB
-	"""
+	'''
 
 	logger.info('trying to inserting templates from file into mongo ...')
 	templates = get_templates_list()
