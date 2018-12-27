@@ -738,12 +738,33 @@ def parse(items, storage=[], key=None, mode=''):
 
 
 def check_tag_math(template, question={}):
+	"""
+	Checks if given template should has the 'math' tag
+	
+	Parameters
+	----------
+	tempalte : dict
+		wanted tmplate to be checked
+	question : dict
+		***
+	"""
+
 	if any(['expression' in title for title in template['titles']]) and \
 		any([any([item in title for item in ['+', '*', '-', '/']]) in title for title in template['titles']]):
 		return True
-
+	return False
 
 def find_tags(template, question={}):
+	"""
+	Returns related tags for given template
+
+	Parameters
+	----------
+	template : dict
+		wanted template to be checked
+	question : dict
+		***
+	"""
 
 	tags = ['movie', 'music']
 
@@ -762,9 +783,11 @@ def find_tags(template, question={}):
 
 	return founded_tags
 
-
+"""
 def decode_question(question):
+	"""
 
+	"""
 	for part in question_parts:
 
 		if part in question:
@@ -781,8 +804,13 @@ def decode_question(question):
 
 	return question
 
+"""
 
 def check_global_constants():
+	"""
+	Checks conditional values of a question to be right
+	"""
+
 	problems = []
 
 	if not 2 <= NOC <= 6:
@@ -804,6 +832,10 @@ def check_global_constants():
 
 
 def check_template(template):
+	"""
+	Checks a template to has all neccessarary
+	"""
+
 	problems = []
 	if not 'titles' in template:
 		problems += ['titles is empty!']
