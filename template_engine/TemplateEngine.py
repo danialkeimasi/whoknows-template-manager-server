@@ -936,6 +936,17 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	---------
 	template : dict
 		template of question
+	NOC : int
+		number of choices
+	ILMIN : int
+		minimum of internal level
+	ILMAX : int
+		maximum of internal level
+	NOS : int
+		number of subtitles
+	reload_question : bool
+		number of choices
+	
 	"""
 	
 	problems = []
