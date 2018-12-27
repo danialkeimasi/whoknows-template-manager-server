@@ -453,7 +453,7 @@ def make_help(data_name, data, exceptions=[], language='en'):
 
 def miss(word, rate=0.2):
 	"""
-	Gets a word and replace some it's characters with ? and Returns the new word
+	Gets a word and replace some of it's characters with ? and Returns the new word
 
 	Parameters
 	----------
@@ -462,6 +462,7 @@ def miss(word, rate=0.2):
 	ratio : float, optional
 		ratio = (number of ?) / (number of character) = word.count('?') / len(word)
 	"""
+	
 	raw_word = word.replace(' ', '')
 	word = list(word)
 	miss_count = int(rate * len(raw_word) + 0.5)
@@ -474,7 +475,14 @@ def miss(word, rate=0.2):
 
 def mess(word):
 	"""
+	Gets a word and shuffle it's characters
+
+	Parameters
+	----------
+	word : str
+		wanted word to be changed
 	"""
+	
 	forbiden_chars = [' ']
 	letters = [c for c in word if not c in forbiden_chars]
 	random.shuffle(letters)
@@ -482,6 +490,10 @@ def mess(word):
 
 
 def tr(phrases, home='en', target='fa'):
+	"""
+	
+	"""
+
 	return phrases
 	if not isinstance(phrases, list): phrases = [phrases]
 	else: return_list = True
