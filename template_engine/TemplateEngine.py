@@ -945,8 +945,9 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	NOS : int
 		number of subtitles
 	reload_question : bool
-		number of choices
-	
+		specify whether question should be generated with random data or given data id's (defalst is False)
+	data_id : list
+		data id's that should be used for reloading question if reload_question is True
 	"""
 	
 	problems = []
@@ -1113,6 +1114,17 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 
 def check_answer(guess, questionID):
+	"""
+	evaluate the score of given 'guess' for question with 'questionID'
+
+	Parameters
+	----------
+	guess : *
+		quess to be evaluated
+	questionID : str
+		id of question that needs to checked with guess
+	"""
+
 	answer = mongo.GuessIt.question.find_one({'_id': ObjectId(questionID)})['answer']
 	score = 0
 	if answer[0] == guess:
@@ -1122,6 +1134,10 @@ def check_answer(guess, questionID):
 
 
 def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text', 'empty']):
+	"""
+	
+	"""
+	
 	questions = mongo_to_json(list(mongo.GuessIt.question.find()))
 	chosen_questions = []
 
