@@ -1177,7 +1177,16 @@ def template_to_mongo():
 """
 
 
-def get_templates_list(tags=None):	#gets templates list from mongo and filters it by their tags
+def get_templates_list(tags=None):
+	"""
+	Loads wanted tempaltes from file and return them as a list
+
+	Parameters
+	----------
+	tags : list
+		specifies tags of wanted templates
+	"""
+
 	templates = []
 	for template_file in glob.glob(f'{project_dir}/generator/template_engine/templates/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
@@ -1206,6 +1215,9 @@ def get_templates_list(tags=None):	#gets templates list from mongo and filters i
 
 
 def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
+	"""
+	
+	"""
 
 	initialization(mode='full')
 
