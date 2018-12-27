@@ -541,7 +541,13 @@ def to_list(data):
 	return data isinstance(data, list) else [data]
 
 
-class obj_class():
+class DataManager():
+	"""
+	Data Manager class for working with datasets and accessing it's data easier
+
+	
+	"""
+
 	def __init__(self, exp=None):
 		if exp:
 			for k in exp[0]:
@@ -551,12 +557,25 @@ class obj_class():
 					setattr(self, k, [exp[i][k] for i in range(len(exp))])
 
 			if len(exp) > 1:
-				setattr(self, 'list', [obj_class([item]) for item in exp])
+				setattr(self, 'list', [DataManager([item]) for item in exp])
 		else:
 			pass
 
 
 def db(doc, count=1, return_problems=False):
+	"""
+	Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
+
+	Paarmeters
+	----------
+	doc : dataframe
+		dataframe that we want to choose from
+	count : int
+		number of items which is needed
+	return_problems : bool
+		
+	"""
+
 	logger.info(f'def db(doc=doc, count={count})')
 
 	if count == 0:
@@ -832,7 +851,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	globals()['reload_question']	= reload_question
 	globals()['data_id_count']  	= 0
 	globals()['question'] 			= {}
-	globals()['var']				= obj_class()
+	globals()['var']				= DataManager()
 	global question
 	global var
 
@@ -874,7 +893,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 					return_type = type(exp)
 
 				if isinstance(exp[0], dict):
-					obj = obj_class(exp)
+					obj = DataManager(exp)
 				else:
 					obj = exp if return_type == 'list' else exp[0]
 
