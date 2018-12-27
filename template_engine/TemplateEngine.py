@@ -621,7 +621,7 @@ def rand(start, end, count=1, exceptions=[], save=True, try_count=10000):
 
 	try_count : int
 		maximum number of try for finding random numbers (default is 10000)
-		this must not exist
+		this must not exist -- BAD algorithm
 	"""
 
 	logger.info(f'def rand(start={start}, end={end}, count={count}, exceptions={exceptions}, save={save})')
@@ -657,6 +657,15 @@ def rand(start, end, count=1, exceptions=[], save=True, try_count=10000):
 
 
 def evaluate(text, exp, storage=[], key=None):
+	"""
+	Get a text and replace expression(exp) part of it with eval(exp)
+
+	Parameters
+	----------
+	text : str
+		text 
+	"""
+
 	logger.info(f'def evaluate:')
 
 	e = eval(exp)
