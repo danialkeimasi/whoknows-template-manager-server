@@ -663,7 +663,7 @@ def evaluate(text, exp, storage=[], key=None):
 	Parameters
 	----------
 	text : str
-		str which is neede too be
+		str which is neede too be evaluated
 	"""
 
 	logger.info(f'def evaluate:')
