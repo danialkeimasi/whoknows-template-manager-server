@@ -491,10 +491,15 @@ def mess(word):
 
 def tr(phrases, home='en', target='fa'):
 	"""
+	Translate given phrase from home language to target language
+
+	Parameters
+	----------
 	
 	"""
 
 	return phrases
+
 	if not isinstance(phrases, list): phrases = [phrases]
 	else: return_list = True
 
