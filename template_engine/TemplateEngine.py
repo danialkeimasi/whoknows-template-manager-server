@@ -1228,16 +1228,16 @@ def project_checkup():
 
 	"""
 	checkup = {
-		'templates': {
-			
-		}
+		'templates': [],
+
 	}
 	for template_file in glob.glob(f'{templates_dir}/*.json'):
 		templates = json.load(open(template_file, encoding="utf-8"))
-
+		checkup['templates'] += [{template_file:len(templates)}]
+		
 		
 
-	return
+	return checkup
 
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
@@ -1268,6 +1268,7 @@ if use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 if __name__ == '__main__':
 
+	print(project_checkup)
 	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
