@@ -18,8 +18,6 @@ import tqdm
 import itertools
 
 
-#from templateTools import *
-
 class Monitoring:
 	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
 	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
