@@ -186,12 +186,7 @@ def initialization(mode='partial'):
 		if mode == 'full':
 			globals()[dataset + 'db'] = None
 
-	if mode == 'full':
-		try:
-			globals()['translation' + 'db'] = load_data('translation')
-		except:
-			logger.error(f'could not load translation db')
-
+	
 	logger.info('initialization is done.')
 
 
@@ -490,6 +485,12 @@ def tr(phrases, home='en', target='fa'):
 	"""
 
 	return phrases
+
+	if 'translationdb' not in globals() or not globals()['translationdb']:
+		try:
+			globals()['translation' + 'db'] = load_data('translation')
+		except:
+			logger.error(f'could not load translation db')
 
 	if not isinstance(phrases, list): phrases = [phrases]
 	else: return_list = True
@@ -882,16 +883,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 	initialization(mode='full')
 
-	"""
-	globals()['var']				= DataManager()
-	global question
-	global var
-
-
-
-	question['data'] = []
-	"""
-
+	
 	question = {
 		'NOC'		: NOC,
 		'NOS'		: NOS,
