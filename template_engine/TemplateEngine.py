@@ -12,7 +12,6 @@ from bson.objectid import ObjectId
 from pprint import pprint
 import copy
 import glob
-from time import *
 #import finglish
 import argparse
 import tqdm
@@ -902,11 +901,12 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'number'	: template['number'] if 'number' in template else - 1,
 		'templateID': str(template['_id']) if '_id' in template else -1
 	}
+	var = DataManager()
 
 	if check_template(template) or check_global_constants(question):
 		logger.info(check_template(template) + check_global_constants(question))
 		return
-
+	
 	problems += load_used_datasets(template)
 	if problems:
 		return question, problems
@@ -987,7 +987,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 			except Exception as error:
 				problems += [f'there is a problem in section {section} ... {error}']
-
 
 	if 'choices' in question:
 		question['choices'] += question['answer']
