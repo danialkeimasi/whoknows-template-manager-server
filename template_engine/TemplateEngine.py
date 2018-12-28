@@ -1093,7 +1093,7 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 	return chosen_questions[:min(question_count, len(chosen_questions))]
 
 
-def get_templates_list(tags=None):
+def get_templates_list(tags=None, numbers=None, source=None):
 	"""
 	Loads wanted tempaltes from file and return them as a list
 
@@ -1103,22 +1103,25 @@ def get_templates_list(tags=None):
 		specifies tags of wanted templates
 	"""
 
-	templates = []
+	chosen_templates = []
 	for template_file in glob.glob(f'{templates_dir}/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
 		for template in new_templates:
 			template['source'] = template_file
-		templates += new_templates
+		chosen_templates += new_templates
+	
+	if tags is not None:
+		chosen_templates = [x for x in chosen_templates if any(tag in find_tags(template) for tag in tags)]
+		
+	if numbers is not None:
+		chosen_templates = [x for x in chosen_templates if x['number'] in args.numbers]
 
-	if tags is None:
-		return templates
+	if source is not None:
+		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in args.source)]
 
-	chosen_templates = []
+	
 
-	for template in templates:
-		if any(tag in find_tags(template) for tag in tags):
-			chosen_templates += [template]
-
+	
 	"""
 	for template in templates:
 		if any('tags' in keys for keys in template):
@@ -1224,7 +1227,8 @@ def project_checkup():
 	Checks every necessary part of project and configs to be ok and work fine and return the results
 	
 	TODO : check the template folder and templates and return the number of templates and ...
-	
+	TODO : check datasets
+
 	"""
 
 	return
@@ -1274,7 +1278,8 @@ if __name__ == '__main__':
 
 
 	if args.test != False:
-		chosen_templates = get_templates_list() if len(args.test) == 0 else [template for template in get_templates_list() if template['number'] in args.test]
+		chosen_templates = get_templates_list(numbers=args.test, source=args.source)
+		 if len(args.test) == 0 else [template for template in get_templates_list() if template['number'] in ]
 
 		if args.source:
 			chosen_templates = [chosen_template for chosen_template in chosen_templates if any(chosen_template['source'].find(source) != -1 for source in args.source)]
