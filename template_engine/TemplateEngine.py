@@ -1154,7 +1154,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 	for template in templates:
 		
-		print(f"\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : ")
+		print(f"{'-' * 50}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : ")
 
 		templates_test[template['number']] = {
 			'problems': []
