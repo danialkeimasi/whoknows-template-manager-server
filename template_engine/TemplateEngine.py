@@ -1170,8 +1170,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 			#pprint(question, indent=4)
 
-			if not problems:
-				logger.info(f'SUCCESSFULL')
+			if not problem: logger.info(f'SUCCESSFULL')
 
 				if CONFIG.use_mongo: add_question_to_mongo(question)
 
