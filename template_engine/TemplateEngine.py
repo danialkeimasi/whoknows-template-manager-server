@@ -894,11 +894,13 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	"""
 
 	question = {
-		'NOC'	: NOC,
-		'NOS'	: NOS,
-		'ILMIN'	: ILMIN,
-		'ILMAX' : ILMAX,
-		'active': False
+		'NOC'		: NOC,
+		'NOS'		: NOS,
+		'ILMIN'		: ILMIN,
+		'ILMAX' 	: ILMAX,
+		'active'	: False,
+		'number'	: template['number'] if 'number' in template else - 1,
+		'templateID': str(template['_id']) if '_id' in template else -1
 	}
 
 	if check_template(template) or check_global_constants(question):
@@ -915,10 +917,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 	if '_id' in template:
 		question['template']		= str(template['_id'])
-
-	question['number'] = 0
-	if 'number' in template:
-		question['number']		  	= template['number']
 
 	if 'values' in template:
 		for key in template['values']:
