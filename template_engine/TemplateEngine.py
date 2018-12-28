@@ -230,7 +230,7 @@ def load_data(dbname):
 
 		except Exception as error:
 
-			problems += [f'could not open dataset {dbname} from {project_dir}/datasets/ directory because {error}']
+			problems += [f'could not open dataset {dbname} from {Config.project_dir}/datasets/ directory because {error}']
 
 			break
 
@@ -286,7 +286,7 @@ def load_used_datasets(template):
 	if memuseme() > 1300:
 		initialization()
 
-	for dataset in [re.search('.*?/([a-zA-Z]*?)db.json', address).group(1) for address in glob.glob(f'{project_dir}/datasets/*.json')]:#used_datasets(template):
+	for dataset in [re.search('.*?/([a-zA-Z]*?)db.json', address).group(1) for address in glob.glob(f'{Config.project_dir}/datasets/*.json')]:#used_datasets(template):
 		if f'{dataset}db' not in globals() or globals()[f'{dataset}db'] is None:
 			globals()[dataset + 'db'], new_problems = load_data(dataset)
 			problems += new_problems
@@ -1101,7 +1101,7 @@ def get_templates_list(tags=[], numbers=[], sources=[]):
 	"""
 
 	chosen_templates = []
-	for template_file in glob.glob(f'{templates_dir}/*.json'):
+	for template_file in glob.glob(f'{Config.templates_dir}/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
 		for template in new_templates:
 			template['source'] = template_file
@@ -1188,7 +1188,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 		if problems: logger.info(f'FAILED')
 
-		json.dump(mongo_to_json(questions), open(f'{questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+		json.dump(mongo_to_json(questions), open(f'{Config.questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
 
 
@@ -1231,7 +1231,7 @@ def project_checkup():
 		'templates': [],
 		'datasets' : [],
 	}
-	for template_file in glob.glob(f'{templates_dir}/*.json'):
+	for template_file in glob.glob(f'{Config.templates_dir}/*.json'):
 		templates = json.load(open(template_file, encoding="utf-8"))
 		file_name = re.sub('.*/', '', template_file)
 		checkup['templates'] += [{
@@ -1275,7 +1275,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
 					handlers=[
-						logging.FileHandler(f'{project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{Config.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
