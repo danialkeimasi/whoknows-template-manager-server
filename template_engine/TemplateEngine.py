@@ -901,19 +901,19 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'number'	: template['number'] if 'number' in template else - 1,
 		'templateID': str(template['_id']) if '_id' in template else -1
 	}
-	var = DataManager()
-
-	if check_template(template) or check_global_constants(question):
-		logger.info(check_template(template) + check_global_constants(question))
-		return
 	
-	problems += load_used_datasets(template)
-	if problems:
-		return question, problems
+
+	with check_template(template) + check_global_constants(question) + load_used_datasets(template) as problems:
+		if problems:
+			logger.info(problems)
+			return question, problems
 	
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
 	if CONFIG.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+
+
+	var = DataManager()
 
 	if 'values' in template:
 		for key in template['values']:
