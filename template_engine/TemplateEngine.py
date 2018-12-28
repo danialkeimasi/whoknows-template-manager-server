@@ -20,7 +20,7 @@ import itertools
 
 from pympler import refbrowser
 tr = tracker.SummaryTracker()
-ib.main()
+tr.print_diff()
 
 #from templateTools import *
 
