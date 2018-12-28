@@ -883,6 +883,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 	initialization(mode='full')
 
+	"""
 	globals()['NOC']				= NOC
 	globals()['NOS']				= NOS
 	globals()['ILMAX']  			= ILMAX
@@ -897,7 +898,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 
 	question['data'] = []
-
+	"""
+	
 	if reload_question:
 		question['data_id']			= data_id
 	else:
@@ -1277,7 +1279,7 @@ class CONFIG:
 	use_mongo			= False
 
 
-logging.basicCONFIG(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
+logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
 					handlers=[
