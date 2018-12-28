@@ -1230,7 +1230,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
 					handlers=[
-						logging.FileHandler(f'{project_dir}/generator/template_engine/template_engine.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
