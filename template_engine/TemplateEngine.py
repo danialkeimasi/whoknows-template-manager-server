@@ -1159,7 +1159,7 @@ def arg_parse():
 
 	if args.checkup:
 		logger.critical('Checkup results : ')
-		logger.critical(json.dumps(project_checkup()))
+		logger.critical(json.dumps(project_checkup(), indent=4))
 	
 	if args.test != False:
 		chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
