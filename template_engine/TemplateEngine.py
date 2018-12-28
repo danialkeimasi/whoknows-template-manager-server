@@ -1154,7 +1154,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 	for template in templates:
 		
-		print(f"{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 80}")
+		print(f"\n\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 80}\n")
 
 		templates_test[template['number']] = {
 			'problems': []
@@ -1175,7 +1175,6 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 				if CONFIG.use_mongo: add_question_to_mongo(question)
 
-
 			for problem in problems:
 
 				logger.error(problem)
@@ -1184,6 +1183,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 				#test_result['templates'][-1]['problems'] = problems
 
+		print("\n{'*' * 80}")
 		if problems: logger.info(f'FAILED')
 
 		json.dump(mongo_to_json(questions), open(f'{CONFIG.questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
