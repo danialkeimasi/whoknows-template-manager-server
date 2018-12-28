@@ -769,26 +769,26 @@ def find_tags(template, question={}):
 	return founded_tags
 
 
-def check_global_constants():
+def check_global_constants(question):
 	"""
 	Checks conditional values of a question to be right
 	"""
 
 	problems = []
 
-	if not 2 <= NOC <= 6:
+	if not 2 <= question['NOC'] <= 6:
 		problems += ['NOC is wrong!... NOC range is between 2 to 6']
 
-	if not 2 <= NOS <= 6:
+	if not 2 <= question['NOS'] <= 6:
 		problems += ['NOS is wrong!... NOS range is between 2 to 6']
 
-	if not 0 < ILMAX <= 1:
+	if not 0 < question['ILMAX'] <= 1:
 		problems += ['ILMAX is wrong!... ILMAX range is between 0 to 1']
 
-	if not 0 <= ILMIN < 1:
+	if not 0 <= question['ILMIN'] < 1:
 		problems += ['ILMIN is wrong!... ILMIN range is between 0 to 1']
 
-	if not ILMIN < ILMAX:
+	if not question['ILMIN'] < question['ILMAX']:
 		problems += ['ILMIN is bigger than ILMAX!... ILMIN must be smaller than ILMAX']
 
 	return problems
@@ -900,8 +900,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'ILMAX'	: ILMAX
 	}
 
-	if check_template(template) or check_global_constants():
-		logger.info(check_template(template) + check_global_constants())
+	if check_template(template) or check_global_constants(question):
+		logger.info(check_template(template) + check_global_constants(question))
 		return
 
 	problems += load_used_datasets(template)
