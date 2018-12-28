@@ -181,11 +181,12 @@ def initialization(mode='partial'):
 	#	globals()['datasets'] = [re.search('.*\\\\(.*)db\.json', file_name).group(1) for file_name in glob.glob(f'{db_directory}*.json')]
 	#	logger.info(f"all datasets that were found: {', '.join(globals()['datasets'])}")
 
+	"""
 	for dataset in datasets:
 		globals()[dataset] = None
 		if mode == 'full':
 			globals()[dataset + 'db'] = None
-
+	"""
 	
 	logger.critical('initialization is done.')
 
