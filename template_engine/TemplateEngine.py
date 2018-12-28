@@ -1213,7 +1213,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	}
 
 	if save_result:
-		json.dump(mongo_to_json(test_result), open(f'{project_dir}/generator/template_engine/test_result.json', 'w+', encoding='utf-8'), indent=4)
+		json.dump(mongo_to_json(test_result), open('{generator_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
 
 
 	return test_result
