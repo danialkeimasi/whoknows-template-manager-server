@@ -568,17 +568,10 @@ def db(doc, count=1, return_problems=False):
 	if count == 0:
 		return []
 	try:
-		if reload_question:
-			global data_id_count
-			data = doc[doc.id == question['data_id'][data_id_count]]
-			data_id_count += 1
-		else:
-			if len(doc.index) < count:
-				raise 'not enough data for db to choose'
+		if len(doc.index) < count:
+			raise NotEnoug'not enough data for db to choose'
 
-			data = doc.sample(count)
-			#question['data_id'].insert(0, list(data.id)[0])
-			#question['data'] += data.to_dict('records')
+		data = doc.sample(count)
 
 	except Exception as error:
 		logger.error(f'def db => {error}')
