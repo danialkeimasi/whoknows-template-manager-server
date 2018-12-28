@@ -303,7 +303,7 @@ def excluce_datasets(template, ILMIN=0, ILMAX=1):
 	"""
 
 	for dataset in used_datasets(template):
-		if globals()[dataset] is None:
+		if dataset not in globals() or globals()[dataset] is None:
 
 			try:
 				if len(globals()[dataset + 'db'].index)*(ILMAX - ILMIN) > 10:
