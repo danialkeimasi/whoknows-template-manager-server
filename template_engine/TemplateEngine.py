@@ -1243,10 +1243,11 @@ def project_checkup():
 			dataset = json.load(open(dataset_file, encoding="utf-8"))
 		except Exception as error:
 			dataset = None
+
 		
 		file_name = re.sub('.*/', '', dataset_file)
 		checkup['datasets'] += [{
-			file_name: len(dataset) if dataset else f'0 ... Error while loadnig ---> {error}'
+			file_name: len(dataset) if dataset else '0 ... Error while loadnig ---> {error}'
 		}]
 		
 
