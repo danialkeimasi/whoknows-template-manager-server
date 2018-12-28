@@ -1150,10 +1150,10 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	questions = []
 
 	templates_test = {}
-	
+
 	for template in templates:
 		
-		print(f"\n\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
+		print(f"\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
 
 		templates_test[template['number']] = {
 			'problems': []
@@ -1181,7 +1181,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 				#test_result['templates'][-1]['problems'] = problems
 
-		print(f"\n{'*' * 80}\n\n")
+		print(f"\n{'*' * 80}\n")
 
 		if problems: logger.info(f'FAILED')
 
