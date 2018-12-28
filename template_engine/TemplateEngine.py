@@ -573,7 +573,7 @@ def db(doc, count=1, return_problems=False):
 		return []
 	try:
 		if len(doc.index) < count:
-			raise NotEnoughtData('not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
+			raise NotEnoughtData(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
 
 		data = doc.sample(count)
 
