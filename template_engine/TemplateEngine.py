@@ -222,7 +222,7 @@ def load_data(dbname):
 		try:
 			logger.info(f'trying to load {dbname} dataset from hard disk...')
 
-			data = pd.DataFrame(json.load(open(f'{Config.dataset_dir}/{dbname}db.json', encoding='utf-8')))
+			data = pd.DataFrame(json.load(open(f'{CONFIG.dataset_dir}/{dbname}db.json', encoding='utf-8')))
 
 			logger.info(f'loading {dbname} dataset is done.')
 
@@ -230,7 +230,7 @@ def load_data(dbname):
 
 		except Exception as error:
 
-			problems += [f'could not open dataset {dbname} from {Config.project_dir}/datasets/ directory because {error}']
+			problems += [f'could not open dataset {dbname} from {CONFIG.project_dir}/datasets/ directory because {error}']
 
 			break
 
@@ -286,7 +286,7 @@ def load_used_datasets(template):
 	if memuseme() > 1300:
 		initialization()
 
-	for dataset in [re.search('.*?/([a-zA-Z]*?)db.json', address).group(1) for address in glob.glob(f'{Config.project_dir}/datasets/*.json')]:#used_datasets(template):
+	for dataset in [re.search('.*?/([a-zA-Z]*?)db.json', address).group(1) for address in glob.glob(f'{CONFIG.project_dir}/datasets/*.json')]:#used_datasets(template):
 		if f'{dataset}db' not in globals() or globals()[f'{dataset}db'] is None:
 			globals()[dataset + 'db'], new_problems = load_data(dataset)
 			problems += new_problems
@@ -426,7 +426,7 @@ def make_help(data_name, data, exceptions=[], language='en'):
 				#'tag_line'		: "`choose(data.tag_line)`"
 			}
 		}
-	}[data_name][Config.language]
+	}[data_name][CONFIG.language]
 
 	for key in [key for key in helps.keys() if key not in exceptions]:
 		try:
@@ -910,7 +910,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	problems += load_used_datasets(template)
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
-	if Config.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+	if CONFIG.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
 
 	if '_id' in template:
 		question['template']		= str(template['_id'])
@@ -1101,7 +1101,7 @@ def get_templates_list(tags=[], numbers=[], sources=[]):
 	"""
 
 	chosen_templates = []
-	for template_file in glob.glob(f'{Config.templates_dir}/*.json'):
+	for template_file in glob.glob(f'{CONFIG.templates_dir}/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
 		for template in new_templates:
 			template['source'] = template_file
@@ -1175,7 +1175,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 			if not problems:
 				logger.info(f'SUCCESSFULL')
 
-				if Config.use_mongo: add_question_to_mongo(question)
+				if CONFIG.use_mongo: add_question_to_mongo(question)
 
 
 			for problem in problems:
@@ -1188,7 +1188,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 		if problems: logger.info(f'FAILED')
 
-		json.dump(mongo_to_json(questions), open(f'{Config.questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+		json.dump(mongo_to_json(questions), open(f'{CONFIG.questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
 
 
@@ -1213,7 +1213,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	}
 
 	if save_result:
-		json.dump(mongo_to_json(test_result), open(f'{Config.result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
+		json.dump(mongo_to_json(test_result), open(f'{CONFIG.result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
 
 
 	return test_result
@@ -1221,7 +1221,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 def project_checkup():
 	"""
-	Checks every necessary part of project and configs to be ok and work fine and return the results
+	Checks every necessary part of project and CONFIGs to be ok and work fine and return the results
 	
 	TODO : check the template folder and templates and return the number of templates and ...
 	TODO : check datasets
@@ -1231,14 +1231,14 @@ def project_checkup():
 		'templates': [],
 		'datasets' : [],
 	}
-	for template_file in glob.glob(f'{Config.templates_dir}/*.json'):
+	for template_file in glob.glob(f'{CONFIG.templates_dir}/*.json'):
 		templates = json.load(open(template_file, encoding="utf-8"))
 		file_name = re.sub('.*/', '', template_file)
 		checkup['templates'] += [{
 			file_name: len(templates)
 		}]
 	
-	for dataset_file in glob.glob(f'{Config.dataset_dir}/*.json'):
+	for dataset_file in glob.glob(f'{CONFIG.dataset_dir}/*.json'):
 		
 		file_name = re.sub('.*/', '', dataset_file)
 		error = ''
@@ -1260,7 +1260,13 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
 
-class Config:
+class CONFIG:
+	"""
+	Configurations and settings of project
+
+	TODO : should use a config file to load it
+	"""
+
 	debug				= not True
 	project_dir			= re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
 	templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
@@ -1271,19 +1277,18 @@ class Config:
 	use_mongo			= False
 
 
-
-logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
+logging.basicCONFIG(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
 					handlers=[
-						logging.FileHandler(f'{Config.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+						logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
 
 logger = logging.getLogger('TemplateEngine')
 
 
-if Config.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
+if CONFIG.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 
 if __name__ == '__main__':
