@@ -1093,7 +1093,7 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 	return chosen_questions[:min(question_count, len(chosen_questions))]
 
 
-def get_templates_list(tags=None, numbers=None, source=None):
+def get_templates_list(tags=None, numbers=None, sources=None):
 	"""
 	Loads wanted tempaltes from file and return them as a list
 
@@ -1117,7 +1117,7 @@ def get_templates_list(tags=None, numbers=None, source=None):
 		chosen_templates = [x for x in chosen_templates if x['number'] in numbers]
 
 	if source is not None:
-		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in source)]
+		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in sources)]
 
 	
 
