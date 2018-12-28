@@ -1188,7 +1188,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 		if problems: logger.info(f'FAILED')
 
-		json.dump(mongo_to_json(questions), open(f'{}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+		json.dump(mongo_to_json(questions), open(f'{questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
 
 
@@ -1235,7 +1235,8 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 
 debug				= not True
 project_dir			= re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)) #'/root/guessit'
-templates_dir		= f'{project_dir}/guessit-generator/template_engine/templates'
+templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
+questions_dir 		= f'{project_dir}/guessit-generator/template_engine'
 language			= 'fa'
 use_mongo			= False
 
