@@ -288,7 +288,7 @@ def load_used_datasets(template):
 	if memuseme() > 1300:
 		initialization()
 
-	for dataset in [re.search('.*?/([a-zA-Z0-]*?)db.json', address).group(1) for address in glob.glob(f'{CONFIG.project_dir}/datasets/*.json')]:#used_datasets(template):
+	for dataset in [re.search('.*?/([a-zA-Z0-9]*?)db.json', address).group(1) for address in glob.glob(f'{CONFIG.project_dir}/datasets/*.json')]:#used_datasets(template):
 		if f'{dataset}db' not in globals() or globals()[f'{dataset}db'] is None:
 			globals()[dataset + 'db'], new_problems = load_data(dataset)
 			problems += new_problems
