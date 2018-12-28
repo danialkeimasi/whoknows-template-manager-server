@@ -1222,7 +1222,7 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
 debug				= not True
-project_dir			= '/root/guessit'
+project_dir			= ['/root/guessit', '~/guessit'][1]
 language			= 'fa'
 use_mongo			= False
 
