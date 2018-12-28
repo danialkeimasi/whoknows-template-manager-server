@@ -175,7 +175,7 @@ def initialization(mode='partial'):
 		full mode is for first time , partial is for start of creating a new question
 	"""
 	
-	logger.info('initializating ...')
+	logger.critical('initializating ...')
 
 	#if mode == 'full':
 	#	globals()['datasets'] = [re.search('.*\\\\(.*)db\.json', file_name).group(1) for file_name in glob.glob(f'{db_directory}*.json')]
@@ -187,7 +187,7 @@ def initialization(mode='partial'):
 			globals()[dataset + 'db'] = None
 
 	
-	logger.info('initialization is done.')
+	logger.critical('initialization is done.')
 
 
 def load_data(dbname):
