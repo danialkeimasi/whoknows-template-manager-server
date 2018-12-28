@@ -909,9 +909,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
-	if CONFIG.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-
-
 	var = DataManager()
 
 	if 'values' in template:
@@ -932,7 +929,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 					obj = exp if return_type == 'list' else exp[0]
 
 				setattr(var, key, obj)
-
 
 				logger.info(obj)
 
