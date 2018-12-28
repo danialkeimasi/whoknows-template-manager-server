@@ -1246,7 +1246,7 @@ def project_checkup():
 		
 		file_name = re.sub('.*/', '', dataset_file)
 		checkup['datasets'] += [{
-			file_name: len(dataset) if dataset else 'Error while loadnig ... {error}'
+			file_name: len(dataset) if dataset else '0 ... Error while loadnig ---> {error}'
 		}]
 		
 
