@@ -1003,7 +1003,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 
 	for template in templates:
 		
-		print(f"\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
+		logger.info(f"\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
 
 		templates_test[template['number']] = {
 			'problems': []
@@ -1029,7 +1029,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 
 				#test_result['templates'][-1]['problems'] = problems
 
-		print(f"\n{'*' * 80}\n")
+		logger.info(f"\n{'*' * 80}\n")
 
 		if problems: logger.info(f'FAILED')
 
@@ -1158,15 +1158,15 @@ def arg_parse():
 	args = parser.parse_args()
 
 	if args.checkup:
-		print('Checkup results : ')
-		pprint(project_checkup())
+		logger.critical('Checkup results : ')
+		logger.critical(json.dumps(project_checkup()))
 	
 	if args.test != False:
 		chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
 
 		test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
 
-		pprint(test_result)
+		logger.critical(test_result)
 	else:
 		pass
 
