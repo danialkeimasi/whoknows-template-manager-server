@@ -1265,7 +1265,13 @@ class Config():
 	
 	@property
 	def debug(self):
-		return 
+		return self.__debug
+	
+	@property
+	def debug(self):
+		return self.__debug
+	
+
 config = {
 	'debug'					: not True
 	'project_dir'			: re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
