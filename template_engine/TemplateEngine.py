@@ -28,14 +28,6 @@ cpuuse		= lambda : psutil.cpu_percent()
 memuse		= lambda : psutil.virtual_memory()[2]
 
 
-
-#username = password = name = 'online6731'
-#token	= ''
-
-
-#print(movie, director, sep='\n\n', end='\\n\n')
-
-
 questions = []
 
 templates = []
