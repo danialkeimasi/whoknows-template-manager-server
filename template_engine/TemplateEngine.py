@@ -916,8 +916,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 			logger.info(f'parsing values ..... *** {key} ***')
 			try:
 				#parse(template['values'][key], v, key, 'values')
-				exp = eval(template['values'][key][1:-1])
-
+				exp = eval(template['values'][key].replace('`', ''))
+				
 				return_type = 'list'
 				if not isinstance(exp, list):
 					exp = [exp]
@@ -974,7 +974,9 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 						problems += [f'there is a problem in section {section} ... {error}']
 						break
 	
-	"""
+	""" 
+	#copy english part of question to empty persian parts
+	
 	for section in ['choices', 'answer', 'subtitle']:
 		if section in template and f'{section}_fa' not in template:
 			try:
