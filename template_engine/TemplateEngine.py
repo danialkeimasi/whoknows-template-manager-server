@@ -1132,6 +1132,7 @@ def get_templates_list(tags=None):
 class TemplateTestFailed(Exception):
 	pass
 
+
 def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	"""
 	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
