@@ -1160,7 +1160,8 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 		logger.info(f"Testing template number : {template['number']}")
 
 		for j in range(try_count):
-
+			
+			
 			question, problems = template_engine(template)
 
 			questions += [question]
