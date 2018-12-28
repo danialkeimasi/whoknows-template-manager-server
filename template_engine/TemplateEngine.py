@@ -979,23 +979,17 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 			try:
 				question[f'{section}_fa'] = [tr(item) for item in question[section]]
 
-
 			except Exception as error:
 				problems += [f'there is a problem in section {section} ... {error}']
 
-	if 'choices' in question:
-		question['choices'] += question['answer']
+	question['choices'] += question['answer'] if 'choices' in question else []
 
-	if 'choices_fa' in question:
-		question['choices_fa'] += question['answer_fa']
+	question['choices_fa'] += question['answer_fa'] if 'choices_fa' in question else []
 
 	question['answer_type'] = find_format(question['answer'])
 
-	if 'subtitle' in question:
-		question['subtitle_type'] = find_format(question['subtitle'])
-	else:
-		question['subtitle_type'] = 'empty'
-
+	question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
+	
 	question['type'] = template['type']
 
 	question['title'] = random.choice(question['titles'])
