@@ -1259,6 +1259,7 @@ def project_checkup():
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
+
 class Config:
 	debug				= not True
 	project_dir			= re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
