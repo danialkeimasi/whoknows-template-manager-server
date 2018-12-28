@@ -903,7 +903,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	}
 	
 
-	problems += check_template(template) + check_global_constants(question) + load_used_datasets(template) as problems:
+	problems += check_template(template) + check_global_constants(question) + load_used_datasets(template)
 	if problems:
 		logger.info(problems)
 		return question, problems
