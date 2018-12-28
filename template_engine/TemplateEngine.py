@@ -531,7 +531,7 @@ def to_list(data):
 		data that is needed to be converted to list
 	"""
 
-	return data if pisinstance(data, list) else [data]
+	return data if isinstance(data, list) else [data]
 
 
 class DataManager():
