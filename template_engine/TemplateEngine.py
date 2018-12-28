@@ -1166,7 +1166,7 @@ def arg_parse():
 
 		test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
 
-		logger.critical(test_result)
+		logger.critical(json.dumps(test_result, indent=4))
 	else:
 		pass
 
