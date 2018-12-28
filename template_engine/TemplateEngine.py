@@ -1110,14 +1110,14 @@ def get_templates_list(tags=None, numbers=None, sources=None):
 			template['source'] = template_file
 		chosen_templates += new_templates
 	
-	if tags is not None:
+	if tags:
 		chosen_templates = [x for x in chosen_templates if any((tag in find_tags(x)) for tag in tags)]
 		
-	if numbers is not None:
+	if numbers:
 		chosen_templates = [x for x in chosen_templates if x['number'] in numbers]
 
-	if source is not None:
-		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in sources)]
+	if sources:
+		chosen_templates = [x for x in chosen_templates if any((x['source'].find(source) != -1) for source in sources)]
 
 	
 
@@ -1278,7 +1278,7 @@ if __name__ == '__main__':
 
 
 	if args.test != False:
-		chosen_templates = get_templates_list(numbers=args.test, source=args.source)
+		chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
 
 		test_result = test_templates(chosen_templates, try_count=args.count)
 
