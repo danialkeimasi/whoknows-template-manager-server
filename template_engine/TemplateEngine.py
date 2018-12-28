@@ -910,7 +910,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	problems += load_used_datasets(template)
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
-	if config['debug']: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
+	if debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
 
 	if '_id' in template:
 		question['template']		= str(template['_id'])
@@ -1259,30 +1259,16 @@ def project_checkup():
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
-class Config():
-	def __init__():
-		pass
-	
-	@property
-	def debug(self):
-		return self.__debug
-	
-	@property
-	def debug(self):
-		return self.__debug
-	
+class Config:
+	debug				= not True
+	project_dir			= re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
+	templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
+	questions_dir		= f'{project_dir}/guessit-generator/template_engine'
+	result_dir			= f'{project_dir}/guessit-generator/template_engine'
+	dataset_dir			= f'{project_dir}/datasets'
+	language			= 'fa'
+	use_mongo			= False
 
-config = {
-	'debug'					: not True
-	'project_dir'			: re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
-	'templates_dir'			: f'{project_dir}/guessit-generator/template_engine/templates'
-	'questions_dir'			: f'{project_dir}/guessit-generator/template_engine'
-	'result_dir'			: f'{project_dir}/guessit-generator/template_engine'
-	'dataset_dir'			: f'{project_dir}/datasets'
-	'language'				: 'fa'
-	'use_mongo'				: False
-
-}
 
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
