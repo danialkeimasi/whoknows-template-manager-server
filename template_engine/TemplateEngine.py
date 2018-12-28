@@ -187,12 +187,6 @@ def initialization(mode='partial'):
 		if mode == 'full':
 			globals()[dataset + 'db'] = None
 
-	for var in template_arrays:
-		globals()[var] = []
-
-	for var in template_dicts:
-		globals()[var] = {}
-
 	if mode == 'full':
 		try:
 			globals()['translation' + 'db'] = load_data('translation')
