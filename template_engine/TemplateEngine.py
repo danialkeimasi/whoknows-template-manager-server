@@ -979,7 +979,7 @@ class TemplateTestFailed(Exception):
 	pass
 
 
-def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
+def test_templates(templates, try_count=5, rounds_count=1, save_result=True, debug=False):
 	"""
 	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
 
@@ -1009,7 +1009,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 		logger.info(f"Testing template number : {template['number']}")
 
-		for j in range(try_count):
+		for _ in range(try_count):
 			
 			question, problems = template_engine(template)
 
@@ -1019,8 +1019,6 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 			if not problems: logger.info(f'SUCCESSFULL')
 			
-			if CONFIG.use_mongo: add_question_to_mongo(question)
-
 			for problem in problems:
 
 				logger.error(problem)
@@ -1137,9 +1135,7 @@ logger = logging.getLogger('TemplateEngine')
 if CONFIG.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 
-if __name__ == '__main__':
-
-	
+def arg_parse():	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
@@ -1147,6 +1143,9 @@ if __name__ == '__main__':
 
 	parser.add_argument('--checkup', dest='checkup', default=False, action='store_true',
 		            	help='checkup every necessary part of project to work fine')
+
+	parser.add_argument('--debug', dest='debug', default=False, action='store_true',
+		            	help='specify debug flag in template_engine')
 
 	parser.add_argument('-source', type=str, nargs='+', dest='source', default=False,
 		            	help='sources of templates to test')
@@ -1156,7 +1155,6 @@ if __name__ == '__main__':
 
 	args = parser.parse_args()
 
-
 	if args.checkup:
 		print('Checkup results : ')
 		pprint(project_checkup())
@@ -1164,10 +1162,12 @@ if __name__ == '__main__':
 	if args.test != False:
 		chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
 
-		test_result = test_templates(chosen_templates, try_count=args.count)
+		test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
 
 		pprint(test_result)
 	else:
 		pass
-		#test_result = test_templates()
 
+
+if __name__ == '__main__':
+	arg_parse()
