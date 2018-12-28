@@ -1279,11 +1279,7 @@ if __name__ == '__main__':
 
 	if args.test != False:
 		chosen_templates = get_templates_list(numbers=args.test, source=args.source)
-		 if len(args.test) == 0 else [template for template in get_templates_list() if template['number'] in ]
-
-		if args.source:
-			chosen_templates = [chosen_template for chosen_template in chosen_templates if any(chosen_template['source'].find(source) != -1 for source in args.source)]
-
+		
 		test_result = test_templates(chosen_templates, try_count=args.count)
 
 		pprint(test_result)
