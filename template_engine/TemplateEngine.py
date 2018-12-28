@@ -902,7 +902,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'number'	: template['number'] if 'number' in template else - 1,
 		'templateID': str(template['_id']) if '_id' in template else -1
 	}
-
+	
 	if check_template(template) or check_global_constants(question):
 		logger.info(check_template(template) + check_global_constants(question))
 		return
