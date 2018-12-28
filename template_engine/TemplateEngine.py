@@ -777,28 +777,6 @@ def find_tags(template, question={}):
 
 	return founded_tags
 
-"""
-def decode_question(question):
-	"""
-
-	"""
-	for part in question_parts:
-
-		if part in question:
-
-			logger.info(part)
-
-			question[part]   = question[part]
-
-	for part in ['order']:
-
-		if part in question:
-
-			question[part]   = question[part][0]
-
-	return question
-
-"""
 
 def check_global_constants():
 	"""
@@ -1120,22 +1098,6 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 
 	return chosen_questions[:min(question_count, len(chosen_questions))]
 
-"""
-def template_to_mongo():
-	'''
-	Insert all templates to MongoDB
-	'''
-
-	logger.info('trying to inserting templates from file into mongo ...')
-	templates = get_templates_list()
-	mongo.GuessIt.template.drop()
-	mongo.GuessIt.question.drop()
-	for template in templates:
-		add_template_to_mongo(template)
-
-	logger.info('templates inserted to mongo successfully')
-"""
-
 
 def get_templates_list(tags=None):
 	"""
@@ -1256,20 +1218,11 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 
 
-template_arrays  = ['t', 'a', 'c', 'r', 'h', 's']
-
-template_dicts   = ['v']
-
-
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
 question_parts = ['order', 'values', 'titles', 'subtitle', 'answer', 'choices', 'helps',
 				  'tags', 'check', 'titles_fa', 'subtitle_fa', 'answer_fa', 'choices_fa', 'helps_fa']
-
-executive_sections = ['titles', 'subtitle', 'answer', 'choices', 'helps',
-					 'titles_fa', 'subtitle_fa', 'helps_fa', 'check']
-
 
 
 debug				= not True
