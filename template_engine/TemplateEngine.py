@@ -884,9 +884,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	"""
 	
 	problems = []
-
-	initialization(mode='full')
-
 	
 	question = {
 		'NOC'		: NOC,
@@ -1130,8 +1127,6 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	if not templates:
 		raise TemplateTestFailed('There is no template to test!')
 	
-	initialization(mode='full')
-
 	#pprint(template_engine(templates[:][0], reload_question=True,
 	#					data_id=['22168547476411738720', '22168547476411738720', '11237477244815026935', '22168547476411738720']))
 
