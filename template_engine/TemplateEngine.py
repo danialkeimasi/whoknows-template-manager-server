@@ -1111,7 +1111,7 @@ def get_templates_list(tags=None, numbers=None, source=None):
 		chosen_templates += new_templates
 	
 	if tags is not None:
-		chosen_templates = [x for x in chosen_templates if any(tag in find_tags(template) for tag in tags)]
+		chosen_templates = [x for x in chosen_templates if any(tag in find_tags(x) for tag in tags)]
 		
 	if numbers is not None:
 		chosen_templates = [x for x in chosen_templates if x['number'] in args.numbers]
