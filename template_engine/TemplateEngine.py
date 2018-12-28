@@ -1151,7 +1151,10 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 	templates_test = {}
 
+
 	for template in templates:
+		
+		print(f"Testing template number={template['number']} source={template['source']}")
 
 		templates_test[template['number']] = {
 			'problems': []
@@ -1160,7 +1163,6 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 		logger.info(f"Testing template number : {template['number']}")
 
 		for j in range(try_count):
-			
 			
 			question, problems = template_engine(template)
 
