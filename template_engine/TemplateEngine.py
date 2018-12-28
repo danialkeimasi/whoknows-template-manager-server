@@ -222,7 +222,7 @@ def load_data(dbname):
 		try:
 			logger.info(f'trying to load {dbname} dataset from hard disk...')
 
-			data = pd.DataFrame(json.load(open(f'{dataset_dir}/{dbname}db.json', encoding='utf-8')))
+			data = pd.DataFrame(json.load(open(f'{Config.dataset_dir}/{dbname}db.json', encoding='utf-8')))
 
 			logger.info(f'loading {dbname} dataset is done.')
 
@@ -426,7 +426,7 @@ def make_help(data_name, data, exceptions=[], language='en'):
 				#'tag_line'		: "`choose(data.tag_line)`"
 			}
 		}
-	}[data_name][language]
+	}[data_name][Config.language]
 
 	for key in [key for key in helps.keys() if key not in exceptions]:
 		try:
@@ -1175,7 +1175,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 			if not problems:
 				logger.info(f'SUCCESSFULL')
 
-				if use_mongo: add_question_to_mongo(question)
+				if Config.use_mongo: add_question_to_mongo(question)
 
 
 			for problem in problems:
@@ -1213,7 +1213,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	}
 
 	if save_result:
-		json.dump(mongo_to_json(test_result), open(f'{result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
+		json.dump(mongo_to_json(test_result), open(f'{Config.result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
 
 
 	return test_result
@@ -1238,7 +1238,7 @@ def project_checkup():
 			file_name: len(templates)
 		}]
 	
-	for dataset_file in glob.glob(f'{dataset_dir}/*.json'):
+	for dataset_file in glob.glob(f'{Config.dataset_dir}/*.json'):
 		
 		file_name = re.sub('.*/', '', dataset_file)
 		error = ''
@@ -1282,7 +1282,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 logger = logging.getLogger('TemplateEngine')
 
 
-if use_mongo: mongo = MongoClient('mongodb://localhost:27017')
+if Config.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 
 if __name__ == '__main__':
