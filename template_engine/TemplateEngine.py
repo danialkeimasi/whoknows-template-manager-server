@@ -1111,13 +1111,13 @@ def get_templates_list(tags=None, numbers=None, source=None):
 		chosen_templates += new_templates
 	
 	if tags is not None:
-		chosen_templates = [x for x in chosen_templates if any(tag in find_tags(x) for tag in tags)]
+		chosen_templates = [x for x in chosen_templates if any((tag in find_tags(x)) for tag in tags)]
 		
 	if numbers is not None:
-		chosen_templates = [x for x in chosen_templates if x['number'] in args.numbers]
+		chosen_templates = [x for x in chosen_templates if x['number'] in numbers]
 
 	if source is not None:
-		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in args.source)]
+		chosen_templates = [x for x in chosen_templates if any(x['source'].find(source) != -1 for source in source)]
 
 	
 
@@ -1279,7 +1279,7 @@ if __name__ == '__main__':
 
 	if args.test != False:
 		chosen_templates = get_templates_list(numbers=args.test, source=args.source)
-		
+
 		test_result = test_templates(chosen_templates, try_count=args.count)
 
 		pprint(test_result)
