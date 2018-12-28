@@ -306,6 +306,7 @@ def load_used_datasets(template):
 			problems += new_problems
 	return problems
 
+
 def excluce_datasets(template, ILMIN=0, ILMAX=1):
 	"""
 	exclude (remove) some parts of used datasets of given template, based on given level (ILMIN , ILMAX)
@@ -333,7 +334,6 @@ def excluce_datasets(template, ILMIN=0, ILMAX=1):
 
 			#globals()[dataset] = globals()[dataset + 'db']
 			#globals()[dataset].dropna()
-
 
 
 def choose(items, count=None):
@@ -753,6 +753,7 @@ def check_tag_math(template, question={}):
 		any([any([item in title for item in ['+', '*', '-', '/']]) in title for title in template['titles']]):
 		return True
 	return False
+
 
 def find_tags(template, question={}):
 	"""
@@ -1188,7 +1189,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	template : dict
 		wanted template to be inspected
 	"""
-	
+
 	initialization(mode='full')
 
 	#pprint(template_engine(templates[:][0], reload_question=True,
