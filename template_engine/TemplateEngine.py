@@ -1233,7 +1233,10 @@ def project_checkup():
 	}
 	for template_file in glob.glob(f'{templates_dir}/*.json'):
 		templates = json.load(open(template_file, encoding="utf-8"))
-		checkup['templates'] += [{template_file:len(templates)}]
+		file_name = re.sub('.*/', '', template_file)
+		checkup['templates'] += [{
+			file_name: len(templates)
+		}]
 		
 		
 
@@ -1244,7 +1247,7 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
 debug				= not True
-project_dir			= re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)) #'/root/guessit'
+project_dir			= re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/root/guessit'
 templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
 questions_dir		= f'{project_dir}/guessit-generator/template_engine'
 result_dir			= f'{project_dir}/guessit-generator/template_engine'
