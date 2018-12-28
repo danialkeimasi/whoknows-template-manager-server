@@ -1104,7 +1104,7 @@ def get_templates_list(tags=None):
 	"""
 
 	templates = []
-	for template_file in glob.glob(f'{project_dir}/generator/template_engine/templates/*.json'):
+	for template_file in glob.glob(f'{project_dir}/template_engine/templates/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
 		for template in new_templates:
 			template['source'] = template_file
