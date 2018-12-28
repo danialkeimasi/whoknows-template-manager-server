@@ -1285,12 +1285,13 @@ if use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 if __name__ == '__main__':
 
-	print('Checkup results : ')
-	pprint(project_checkup())
 	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
+		            	default=False, help='test the templates and make questions')
+
+	parser.add_argument('--checkup', '--test_templates', nargs='*', type=int, dest='test',
 		            	default=False, help='test the templates and make questions')
 
 	parser.add_argument('-source', type=str, nargs='+', dest='source', default=False,
@@ -1309,5 +1310,7 @@ if __name__ == '__main__':
 
 		pprint(test_result)
 	else:
-		pass
+		print('Checkup results : ')
+		pprint(project_checkup())
+	
 		#test_result = test_templates()
