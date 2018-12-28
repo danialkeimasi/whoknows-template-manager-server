@@ -1,287 +1,168 @@
 [
     {
-        "data": [],
-        "data_id": [],
-        "number": 16,
+        "NOC": 3,
+        "NOS": 4,
+        "ILMIN": 0,
+        "ILMAX": 0.1,
+        "active": false,
+        "number": 1,
+        "templateID": -1,
         "titles": [
-            "xx"
+            "How many of the following videos `var.actor.name` played?"
         ],
         "titles_fa": [
-            "لباس های تیم GFC Ajaccio را انتخاب کنید"
+            "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"
         ],
         "choices": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/0_199_0.png",
-                "https://cdn.sofifa.org/kits/19/1_199_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
+            1,
+            0,
+            3,
+            4
         ],
         "answer": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
+            4
         ],
-        "choices_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/0_199_0.png",
-                "https://cdn.sofifa.org/kits/19/1_199_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "answer_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "answer_type": "image",
-        "subtitle_type": "empty",
-        "type": "selective",
-        "title": "xx",
-        "title_fa": "لباس های تیم GFC Ajaccio را انتخاب کنید",
+        "subtitle": [],
+        "choices_fa": [],
+        "answer_type": "text",
+        "subtitle_type": "none",
+        "type": "multi_choice",
+        "title": "How many of the following videos `var.actor.name` played?",
+        "title_fa": "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است",
         "tags": [
-            "footballTeam"
+            "actor",
+            "movie"
         ],
-        "active": true,
-        "_id": "5c128ce8ac0e16761f901a5d"
+        "problems": [
+            "there is a problem in parsing values : actor ..... list index out of range",
+            "there is a problem in parsing values : movies ..... list index out of range",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor'"
+        ]
     },
     {
-        "data": [],
-        "data_id": [],
-        "number": 16,
+        "NOC": 3,
+        "NOS": 4,
+        "ILMIN": 0,
+        "ILMAX": 0.1,
+        "active": false,
+        "number": 1,
+        "templateID": -1,
         "titles": [
-            "xx"
+            "How many of the following videos `var.actor.name` played?"
         ],
         "titles_fa": [
-            "لباس های تیم Dalkurd FF را انتخاب کنید"
+            "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"
         ],
         "choices": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
-            ]
+            3,
+            1,
+            0,
+            4
         ],
         "answer": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
-            ]
+            4
         ],
-        "choices_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
-            ]
-        ],
-        "answer_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113876_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113876_0.png"
-            ]
-        ],
-        "answer_type": "image",
-        "subtitle_type": "empty",
-        "type": "selective",
-        "title": "xx",
-        "title_fa": "لباس های تیم Dalkurd FF را انتخاب کنید",
+        "subtitle": [],
+        "choices_fa": [],
+        "answer_type": "text",
+        "subtitle_type": "none",
+        "type": "multi_choice",
+        "title": "How many of the following videos `var.actor.name` played?",
+        "title_fa": "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است",
         "tags": [
-            "footballTeam"
+            "actor",
+            "movie"
         ],
-        "active": true,
-        "_id": "5c128cedac0e16761f901a5e"
+        "problems": [
+            "there is a problem in parsing values : actor ..... list index out of range",
+            "there is a problem in parsing values : movies ..... list index out of range",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
+            "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor'"
+        ]
     },
     {
-        "data": [],
-        "data_id": [],
-        "number": 16,
+        "NOC": 3,
+        "NOS": 4,
+        "ILMIN": 0,
+        "ILMAX": 0.1,
+        "active": true,
+        "number": 2,
+        "templateID": -1,
         "titles": [
-            "xx"
+            "The height of the cast below is greater than 1.8"
         ],
         "titles_fa": [
-            "لباس های تیم Östersunds FK را انتخاب کنید"
+            "کدام یک از بازیگران زیر قد بالای 1.8 دارند"
         ],
         "choices": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/0_73_0.png",
-                "https://cdn.sofifa.org/kits/19/1_73_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
-            ]
+            "Toshie Negishi",
+            "Robin Meloy",
+            "Tia Texada",
+            "Johnny Hallyday"
         ],
         "answer": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
-            ]
+            "Johnny Hallyday"
         ],
-        "choices_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/0_73_0.png",
-                "https://cdn.sofifa.org/kits/19/1_73_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
-            ]
-        ],
-        "answer_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_113173_0.png",
-                "https://cdn.sofifa.org/kits/19/1_113173_0.png"
-            ]
-        ],
-        "answer_type": "image",
+        "choices_fa": [],
+        "answer_type": "text",
         "subtitle_type": "empty",
-        "type": "selective",
-        "title": "xx",
-        "title_fa": "لباس های تیم Östersunds FK را انتخاب کنید",
+        "type": "multi_choice",
+        "title": "The height of the cast below is greater than 1.8",
+        "title_fa": "کدام یک از بازیگران زیر قد بالای 1.8 دارند",
         "tags": [
-            "footballTeam"
-        ],
-        "active": true,
-        "_id": "5c128cf2ac0e16761f901a5f"
+            "actor"
+        ]
     },
     {
-        "data": [],
-        "data_id": [],
-        "number": 16,
+        "NOC": 3,
+        "NOS": 4,
+        "ILMIN": 0,
+        "ILMAX": 0.1,
+        "active": true,
+        "number": 2,
+        "templateID": -1,
         "titles": [
-            "xx"
+            "The height of the cast below is greater than 1.7"
         ],
         "titles_fa": [
-            "لباس های تیم Kashima Antlers را انتخاب کنید"
+            "کدام یک از بازیگران زیر قد بالای 1.7 دارند"
         ],
         "choices": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/0_69_0.png",
-                "https://cdn.sofifa.org/kits/19/1_69_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ]
+            "Lisa Banes",
+            "Denise Dowse",
+            "Christian Patey",
+            "Zac Efron"
         ],
         "answer": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ]
+            "Zac Efron"
         ],
-        "choices_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/0_69_0.png",
-                "https://cdn.sofifa.org/kits/19/1_69_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ]
-        ],
-        "answer_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_101147_0.png",
-                "https://cdn.sofifa.org/kits/19/1_101147_0.png"
-            ]
-        ],
-        "answer_type": "image",
+        "choices_fa": [],
+        "answer_type": "text",
         "subtitle_type": "empty",
-        "type": "selective",
-        "title": "xx",
-        "title_fa": "لباس های تیم Kashima Antlers را انتخاب کنید",
+        "type": "multi_choice",
+        "title": "The height of the cast below is greater than 1.7",
+        "title_fa": "کدام یک از بازیگران زیر قد بالای 1.7 دارند",
         "tags": [
-            "footballTeam"
-        ],
-        "active": true,
-        "_id": "5c128cf8ac0e16761f901a60"
-    },
-    {
-        "data": [],
-        "data_id": [],
-        "number": 16,
-        "titles": [
-            "xx"
-        ],
-        "titles_fa": [
-            "لباس های تیم GFC Ajaccio را انتخاب کنید"
-        ],
-        "choices": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/0_111393_0.png",
-                "https://cdn.sofifa.org/kits/19/1_111393_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "answer": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "choices_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/0_111393_0.png",
-                "https://cdn.sofifa.org/kits/19/1_111393_0.png"
-            ],
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "answer_fa": [
-            [
-                "https://cdn.sofifa.org/kits/19/0_110316_0.png",
-                "https://cdn.sofifa.org/kits/19/1_110316_0.png"
-            ]
-        ],
-        "answer_type": "image",
-        "subtitle_type": "empty",
-        "type": "selective",
-        "title": "xx",
-        "title_fa": "لباس های تیم GFC Ajaccio را انتخاب کنید",
-        "tags": [
-            "footballTeam"
-        ],
-        "active": true,
-        "_id": "5c128cfdac0e16761f901a61"
+            "actor"
+        ]
     }
 ]

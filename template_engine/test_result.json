@@ -1,16 +1,34 @@
 [
     {
-        "templates_count": 1,
-        "success": 0,
+        "templates_count": 2,
+        "success": 1,
         "fails": 1,
-        "success_rate": "100%",
-        "failed_templates": [],
+        "success_rate": "50%",
+        "failed_templates": [
+            1
+        ],
         "templates": [
             {
-                "number": 16,
-                "source": "/root/guessit/generator/template_engine/templates/footballTeam,photos.json",
-                "test_count": 5,
-                "success": 5,
+                "number": 1,
+                "source": "/home/flc/guessit/guessit-generator/template_engine/templates/movie,actor.json",
+                "test_count": 2,
+                "success": 0,
+                "fails": 2,
+                "success_rate": "0%",
+                "time_avg": 0,
+                "problems": [
+                    "there is a problem in parsing values : actor ..... list index out of range *** count = 26",
+                    "there is a problem in section titles ... 'DataManager' object has no attribute 'actor' *** count = 130",
+                    "there is a problem in parsing values : movies ..... list index out of range *** count = 26",
+                    "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor' *** count = 130",
+                    "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor' *** count = 26"
+                ]
+            },
+            {
+                "number": 2,
+                "source": "/home/flc/guessit/guessit-generator/template_engine/templates/movie,actor.json",
+                "test_count": 2,
+                "success": 2,
                 "fails": 0,
                 "success_rate": "100%",
                 "time_avg": 0,
