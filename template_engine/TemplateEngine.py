@@ -1222,11 +1222,10 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
 debug				= not True
-project_dir			= '/root/guessit'
+project_dir			= re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)) #'/root/guessit'
 language			= 'fa'
 use_mongo			= False
 
-print(re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)))
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
