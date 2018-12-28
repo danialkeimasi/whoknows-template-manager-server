@@ -1271,6 +1271,7 @@ if use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 if __name__ == '__main__':
 
+	print('Checkup results : ')
 	pprint(project_checkup())
 	
 	parser = argparse.ArgumentParser(description='Process some integers.')
