@@ -1227,8 +1227,16 @@ def project_checkup():
 	TODO : check datasets
 
 	"""
+	checkup = {
+		'templates': {
+			
+		}
+	}
+	for template_file in glob.glob(f'{templates_dir}/*.json'):
+		templates = json.load(open(template_file, encoding="utf-8"))
 
-	
+		
+
 	return
 
 
