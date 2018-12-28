@@ -17,11 +17,7 @@
                 "success_rate": "0%",
                 "time_avg": 0,
                 "problems": [
-                    "there is a problem in parsing values : actor ..... list index out of range *** count = 26",
-                    "there is a problem in section titles ... 'DataManager' object has no attribute 'actor' *** count = 130",
-                    "there is a problem in parsing values : movies ..... list index out of range *** count = 26",
-                    "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor' *** count = 130",
-                    "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor' *** count = 26"
+                    "there is a problem in parsing values : actor ..... list index out of range *** count = 2"
                 ]
             },
             {

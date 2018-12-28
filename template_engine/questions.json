@@ -6,48 +6,7 @@
         "ILMAX": 0.1,
         "active": false,
         "number": 1,
-        "templateID": -1,
-        "titles": [
-            "How many of the following videos `var.actor.name` played?"
-        ],
-        "titles_fa": [
-            "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"
-        ],
-        "choices": [
-            1,
-            0,
-            3,
-            4
-        ],
-        "answer": [
-            4
-        ],
-        "subtitle": [],
-        "choices_fa": [],
-        "answer_type": "text",
-        "subtitle_type": "none",
-        "type": "multi_choice",
-        "title": "How many of the following videos `var.actor.name` played?",
-        "title_fa": "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است",
-        "tags": [
-            "actor",
-            "movie"
-        ],
-        "problems": [
-            "there is a problem in parsing values : actor ..... list index out of range",
-            "there is a problem in parsing values : movies ..... list index out of range",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor'"
-        ]
+        "templateID": -1
     },
     {
         "NOC": 3,
@@ -56,48 +15,7 @@
         "ILMAX": 0.1,
         "active": false,
         "number": 1,
-        "templateID": -1,
-        "titles": [
-            "How many of the following videos `var.actor.name` played?"
-        ],
-        "titles_fa": [
-            "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"
-        ],
-        "choices": [
-            3,
-            1,
-            0,
-            4
-        ],
-        "answer": [
-            4
-        ],
-        "subtitle": [],
-        "choices_fa": [],
-        "answer_type": "text",
-        "subtitle_type": "none",
-        "type": "multi_choice",
-        "title": "How many of the following videos `var.actor.name` played?",
-        "title_fa": "`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است",
-        "tags": [
-            "actor",
-            "movie"
-        ],
-        "problems": [
-            "there is a problem in parsing values : actor ..... list index out of range",
-            "there is a problem in parsing values : movies ..... list index out of range",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section titles_fa ... 'DataManager' object has no attribute 'actor'",
-            "there is a problem in section subtitle ... 'DataManager' object has no attribute 'actor'"
-        ]
+        "templateID": -1
     },
     {
         "NOC": 3,
@@ -114,13 +32,13 @@
             "کدام یک از بازیگران زیر قد بالای 1.8 دارند"
         ],
         "choices": [
-            "Toshie Negishi",
-            "Robin Meloy",
-            "Tia Texada",
-            "Johnny Hallyday"
+            "Enzo Cannavale",
+            "Ronit Elkabetz",
+            "Th&eacute;odore Pellerin",
+            "Denis Leary"
         ],
         "answer": [
-            "Johnny Hallyday"
+            "Denis Leary"
         ],
         "choices_fa": [],
         "answer_type": "text",
@@ -141,26 +59,26 @@
         "number": 2,
         "templateID": -1,
         "titles": [
-            "The height of the cast below is greater than 1.7"
+            "The height of the cast below is greater than 1.6"
         ],
         "titles_fa": [
-            "کدام یک از بازیگران زیر قد بالای 1.7 دارند"
+            "کدام یک از بازیگران زیر قد بالای 1.6 دارند"
         ],
         "choices": [
-            "Lisa Banes",
-            "Denise Dowse",
-            "Christian Patey",
-            "Zac Efron"
+            "Pili Groyne",
+            "Atharvaa Murali",
+            "Sully Boyar",
+            "Loretta Young"
         ],
         "answer": [
-            "Zac Efron"
+            "Loretta Young"
         ],
         "choices_fa": [],
         "answer_type": "text",
         "subtitle_type": "empty",
         "type": "multi_choice",
-        "title": "The height of the cast below is greater than 1.7",
-        "title_fa": "کدام یک از بازیگران زیر قد بالای 1.7 دارند",
+        "title": "The height of the cast below is greater than 1.6",
+        "title_fa": "کدام یک از بازیگران زیر قد بالای 1.6 دارند",
         "tags": [
             "actor"
         ]
