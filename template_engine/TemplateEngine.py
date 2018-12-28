@@ -1104,13 +1104,14 @@ def get_templates_list(tags=None):
 	"""
 
 	templates = []
-	for template_file in glob.glob(f'{project_dir}/guessit-generator/template_engine/templates/*.json'):
+	for template_file in glob.glob(f'{templates_dir}/*.json'):
 		new_templates = json.load(open(template_file, encoding="utf-8"))
 		for template in new_templates:
 			template['source'] = template_file
 		templates += new_templates
 
-	if tags is None: return templates
+	if tags is None:
+		return templates
 
 	chosen_templates = []
 
@@ -1224,6 +1225,7 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 
 debug				= not True
 project_dir			= re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)) #'/root/guessit'
+templates_dir		= f'{project_dir}/guessit-generator/template_engine/templates'
 language			= 'fa'
 use_mongo			= False
 
