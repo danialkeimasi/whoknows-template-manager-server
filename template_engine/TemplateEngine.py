@@ -905,7 +905,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		return
 
 	problems += load_used_datasets(template)
-	if probems:
+	if problems:
 		return
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
