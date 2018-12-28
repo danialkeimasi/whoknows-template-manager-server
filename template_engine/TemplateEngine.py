@@ -1213,7 +1213,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	}
 
 	if save_result:
-		json.dump(mongo_to_json(test_result), open('{generator_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
+		json.dump(mongo_to_json(test_result), open('{result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
 
 
 	return test_result
@@ -1236,7 +1236,8 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
 debug				= not True
 project_dir			= re.sub('guessit/.*', 'guessit/', os.path.realpath(__file__)) #'/root/guessit'
 templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
-questions_dir 		= f'{project_dir}/guessit-generator/template_engine'
+questions_dir		= f'{project_dir}/guessit-generator/template_engine'
+result_dir			= f'{project_dir}/guessit-generator/template_engine'
 language			= 'fa'
 use_mongo			= False
 
