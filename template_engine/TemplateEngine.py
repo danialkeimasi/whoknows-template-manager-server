@@ -727,7 +727,7 @@ def check_question(question):
 	return problems
 
 
-def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=False, data_id=[]):
+def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, debug=False, reload_question=False, data_id=[]):
 	"""
 	Generate a question with the given template and conditions
 	
@@ -763,8 +763,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	
 
 	problems += check_template(template) + check_global_constants(question) + load_used_datasets(template)
-	if problems:
-		return question, problems
+	if problems and not debug: return question, problems
 	
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
@@ -793,11 +792,12 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 			except Exception as error:
 				problems += [f'there is a problem in parsing values : {key} ..... {error}']
+				if not debug: return question, problems
 
 	for section in ['titles', 'titles_fa', 'helps', 'helps_fa']:
 		if section in template:
 			question[section] = []
-			for i, item in enumerate(template[section]):
+			for _, item in enumerate(template[section]):
 				if isinstance(item, str) and re.search(r'.*?(`.*?`).*?', item):
 					try_count = 5
 					while isinstance(item, str) and re.search(r'.*?(`.*?`).*?', item) and try_count:
@@ -812,6 +812,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 						except Exception as error:
 							problems += [f'there is a problem in section {section} ... {error}']
+							if not debug: return question, problems
 
 					question[section] += to_list(item)
 				else:
@@ -831,6 +832,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 					except Exception as error:
 						problems += [f'there is a problem in section {section} ... {error}']
+						if not debug: return question, problems
 						break
 	
 	""" 
@@ -1011,7 +1013,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 
 		for _ in range(try_count):
 			
-			question, problems = template_engine(template)
+			question, problems = template_engine(template, debug=debug)
 
 			questions += [question]
 
