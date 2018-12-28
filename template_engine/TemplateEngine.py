@@ -18,8 +18,6 @@ import argparse
 import tqdm
 import itertools
 
-from pympler import tracker
-tr = tracker.SummaryTracker()
 
 #from templateTools import *
 
@@ -1324,5 +1322,3 @@ if __name__ == '__main__':
 		pass
 		#test_result = test_templates()
 
-
-tr.print_diff()
