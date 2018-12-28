@@ -973,7 +973,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 					except Exception as error:
 						problems += [f'there is a problem in section {section} ... {error}']
 						break
-
+	
+	"""
 	for section in ['choices', 'answer', 'subtitle']:
 		if section in template and f'{section}_fa' not in template:
 			try:
@@ -981,7 +982,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 			except Exception as error:
 				problems += [f'there is a problem in section {section} ... {error}']
-
+	"""
+	
 	question['choices'] += question['answer'] if 'choices' in question else []
 
 	question['choices_fa'] += question['answer_fa'] if 'choices_fa' in question else []
