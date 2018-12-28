@@ -1226,7 +1226,7 @@ project_dir			= '/root/guessit'
 language			= 'fa'
 use_mongo			= False
 
-print(re.sub('.*?guessit/.*', '.*?guessit/', os.path.realpath(__file__)))
+print(re.sub('(.*?)guessit/.*', 'guessit/', os.path.realpath(__file__)))
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
