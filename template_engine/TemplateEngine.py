@@ -18,7 +18,7 @@ import argparse
 import tqdm
 import itertools
 
-from pympler import refbrowser
+from pympler import tracker
 tr = tracker.SummaryTracker()
 tr.print_diff()
 
