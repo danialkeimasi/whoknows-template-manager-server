@@ -1225,7 +1225,7 @@ debug				= not True
 project_dir			= '/root/guessit'
 language			= 'fa'
 use_mongo			= False
-
+print(os.path.realpath(__file__))
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
@@ -1242,6 +1242,7 @@ if use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 if __name__ == '__main__':
 
+	
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
