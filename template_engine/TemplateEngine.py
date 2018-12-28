@@ -18,8 +18,10 @@ import argparse
 import tqdm
 import itertools
 
-from pympler import summary
-ib = refbrowser.InteractiveBrowser(root)
+from pympler import refbrowser
+tr = tracker.SummaryTracker()
+ib.main()
+
 #from templateTools import *
 
 
