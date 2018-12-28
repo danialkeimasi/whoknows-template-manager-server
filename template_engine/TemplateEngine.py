@@ -986,9 +986,11 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 				problems += [f'there is a problem in section {section} ... {error}']
 	"""
 	
-	question['choices'] += question['answer'] if 'answer' in question else []
-
-	question['choices_fa'] += question['answer_fa'] if 'answer_fa' in question else []
+	if 'choices_fa' in question:
+		question['choices_fa'] += question['answer_fa'] if 'answer_fa' in question else []
+	
+	if 'choices' in question:
+		question['choices'] += question['answer'] if 'answer' in question else []
 
 	question['answer_type'] = find_format(question['answer'])
 
