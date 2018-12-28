@@ -20,7 +20,6 @@ import itertools
 
 from pympler import tracker
 tr = tracker.SummaryTracker()
-tr.print_diff()
 
 #from templateTools import *
 
@@ -1324,3 +1323,6 @@ if __name__ == '__main__':
 	else:
 		pass
 		#test_result = test_templates()
+
+
+tr.print_diff()
