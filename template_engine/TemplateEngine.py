@@ -1239,10 +1239,14 @@ def project_checkup():
 		}]
 	
 	for dataset_file in glob.glob(f'{dataset_dir}/*.json'):
-		dataset = json.load(open(dataset_file, encoding="utf-8"))
+		try:
+			dataset = json.load(open(dataset_file, encoding="utf-8"))
+		except Exception as error:
+			dataset = None
+		
 		file_name = re.sub('.*/', '', dataset_file)
 		checkup['datasets'] += [{
-			file_name: len(dataset)
+			file_name: len(dataset) if dataset else 'Error while loadnig ... {error}'
 		}]
 		
 
