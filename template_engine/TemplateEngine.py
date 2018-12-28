@@ -905,6 +905,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		return
 
 	problems += load_used_datasets(template)
+	if probems:
+		break
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
 	if CONFIG.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
