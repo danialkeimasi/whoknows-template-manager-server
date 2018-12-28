@@ -1225,7 +1225,9 @@ debug				= not True
 project_dir			= '/root/guessit'
 language			= 'fa'
 use_mongo			= False
-print(os.path.realpath(__file__))
+
+print(re.replace(os.path.realpath(__file__)))
+
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
 					level=logging.WARNING,
