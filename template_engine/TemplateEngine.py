@@ -222,7 +222,7 @@ def load_data(dbname):
 		try:
 			logger.info(f'trying to load {dbname} dataset from hard disk...')
 
-			data = pd.DataFrame(json.load(open(f'{project_dir}/datasets/{dbname}db.json', encoding='utf-8')))
+			data = pd.DataFrame(json.load(open(f'{dataset_dir}/{dbname}db.json', encoding='utf-8')))
 
 			logger.info(f'loading {dbname} dataset is done.')
 
@@ -1229,7 +1229,7 @@ def project_checkup():
 	"""
 	checkup = {
 		'templates': [],
-
+		'datasets' : [],
 	}
 	for template_file in glob.glob(f'{templates_dir}/*.json'):
 		templates = json.load(open(template_file, encoding="utf-8"))
@@ -1237,7 +1237,13 @@ def project_checkup():
 		checkup['templates'] += [{
 			file_name: len(templates)
 		}]
-		
+	
+	for dataset_file in glob.glob(f'{dataset_dir}/*.json'):
+		dataset = json.load(open(dataset_file, encoding="utf-8"))
+		dataset_name = re.sub('.*/', '', dataset_file)
+		checkup['templates'] += [{
+			file_name: len(templates)
+		}]
 		
 
 	return checkup
@@ -1251,6 +1257,7 @@ project_dir			= re.sub('guessit/.*', 'guessit', os.path.realpath(__file__)) #'/r
 templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
 questions_dir		= f'{project_dir}/guessit-generator/template_engine'
 result_dir			= f'{project_dir}/guessit-generator/template_engine'
+dataset_dir			= f'{project_dir}/datasets'
 language			= 'fa'
 use_mongo			= False
 
