@@ -1129,6 +1129,9 @@ def get_templates_list(tags=None):
 	return chosen_templates
 
 
+class TemplateTestFailed(Exception):
+	pass
+
 def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 	"""
 	Inspect a template and generate question with it to check it's performance and find it's problems and return the results
@@ -1139,6 +1142,9 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 		wanted template to be inspected
 	"""
 
+	if not templates:
+		raise TemplateTestFailed('There is no template to test!')
+	
 	initialization(mode='full')
 
 	#pprint(template_engine(templates[:][0], reload_question=True,
