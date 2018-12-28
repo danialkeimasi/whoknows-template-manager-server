@@ -897,7 +897,8 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'NOC'	: NOC,
 		'NOS'	: NOS,
 		'ILMIN'	: ILMIN,
-		'ILMAX'	: ILMAX
+		'ILMAX' : ILMAX,
+		'active': False
 	}
 
 	if check_template(template) or check_global_constants(question):
@@ -906,7 +907,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 	problems += load_used_datasets(template)
 	if problems:
-		return {}, problems
+		return question, problems
 	
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
