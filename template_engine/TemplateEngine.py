@@ -902,7 +902,7 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 		'number'	: template['number'] if 'number' in template else - 1,
 		'templateID': str(template['_id']) if '_id' in template else -1
 	}
-	
+
 	if check_template(template) or check_global_constants(question):
 		logger.info(check_template(template) + check_global_constants(question))
 		return
@@ -914,9 +914,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	excluce_datasets(template, ILMIN=ILMIN, ILMAX=ILMAX)
 
 	if CONFIG.debug: logging.info(f'memory usage : all = {memuse()} %  -  me = {memuseme()} MB')
-
-	if '_id' in template:
-		question['template']		= str(template['_id'])
 
 	if 'values' in template:
 		for key in template['values']:
@@ -942,7 +939,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 			except Exception as error:
 				problems += [f'there is a problem in parsing values : {key} ..... {error}']
-
 
 	for section in ['titles', 'titles_fa', 'helps', 'helps_fa']:
 		if section in template:
