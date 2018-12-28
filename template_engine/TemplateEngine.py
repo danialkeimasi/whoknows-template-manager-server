@@ -20,16 +20,11 @@ import itertools
 
 #from templateTools import *
 
-
-memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
-cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
-cpuuse		= lambda : psutil.cpu_percent()
-memuse		= lambda : psutil.virtual_memory()[2]
-
-
-questions = []
-
-templates = []
+class Monitoring:
+	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
+	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
+	cpuuse		= lambda : psutil.cpu_percent()
+	memuse		= lambda : psutil.virtual_memory()[2]
 
 
 def find_format(data):
