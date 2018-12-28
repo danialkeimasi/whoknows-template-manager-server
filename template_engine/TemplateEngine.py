@@ -136,54 +136,6 @@ def download(url, local_filename=None):
 	return local_filename
 
 
-def add_question_to_mongo(question: dict):
-	"""
-	Inserts the given question to questions's database in MongoDB
-	
-	# should send auestion/new request instead of directly adding it to database
-	# requests.post('localhost:3000/question/new', json={ 'question': question })
-	"""
-
-	mongo.GuessIt.question.insert(question)
-
-
-def add_template_to_mongo(template: dict):
-	"""
-	Inserts the given template to templates's database in MongoDB
-	
-	# should send auestion/new request instead of directly adding it to database
-	# requests.post('localhost:3000/question/new', json={ 'question': question })
-	"""
-	
-	mongo.GuessIt.template.insert(template)
-
-"""
-def initialization(mode='partial'):
-	'''
-	Initialize needed variables for making a new question, loads translation dataset
-
-	Parameters
-	----------
-	mode : str, optional
-		full mode is for first time , partial is for start of creating a new question
-	'''
-	
-	logger.critical('initializating ...')
-
-	#if mode == 'full':
-	#	globals()['datasets'] = [re.search('.*\\\\(.*)db\.json', file_name).group(1) for file_name in glob.glob(f'{db_directory}*.json')]
-	#	logger.info(f"all datasets that were found: {', '.join(globals()['datasets'])}")
-
-	'''
-	for dataset in datasets:
-		globals()[dataset] = None
-		if mode == 'full':
-			globals()[dataset + 'db'] = None
-	'''
-	
-	logger.critical('initialization is done.')
-"""
-
 def load_data(dbname):
 	"""
 	Loads the given dataset and returns it
@@ -314,7 +266,6 @@ def excluce_datasets(template, ILMIN=0, ILMAX=1):
 
 			#globals()[dataset] = globals()[dataset + 'db']
 			#globals()[dataset].dropna()
-
 
 
 def choose(items, count=None):
@@ -638,87 +589,6 @@ def rand(start, end, count=1, exceptions=[], save=True, try_count=10000):
 			return randoms[0] if count == 1 else randoms
 
 	logger.error(f'def rand => could not find random numbers after {try_count} circle')
-
-
-def evaluate(text, exp, storage=[], key=None):
-	"""
-	Get a text and replace expression(exp) part of it with eval(exp)
-
-	Parameters
-	----------
-	text : str
-		str which is neede to be evaluated
-	exp : str
-		expression part of text
-	text : str
-		str which is neede to be evaluated
-	storege : *
-		***
-	key : *
-		***
-	
-	"""
-
-	logger.info(f'def evaluate:')
-
-	e = eval(exp)
-
-	if isinstance(e, set):
-		e = list(e)
-
-	if key:
-		storage[key] = e
-		globals()[f'v_{key}'] = e
-		setattr(globals()['var'], key, e)
-	else:
-		if isinstance(e, list):
-			storage += e
-		else:
-			storage += [e]
-
-	if not isinstance(e, list):
-		e = [str(e)]
-	e = list(map(str, list(e)))
-
-	text = text.replace(f'`{exp}`', str(e), 1)
-
-	logger.info(e)
-
-	return text
-
-
-def parse(items, storage=[], key=None, mode=''):
-	"""
-	Gets a list of items and evaluate every code part of it's strings
-	Example : 
-		['2 + 2 = `2 + 2`', ...] ---> ['2 + 2 = 4', ...]
-
-	Parameters
-	----------
-	items : list
-		items to be parsed
-	storege : *
-		***
-	key : *
-		***
-	
-	"""
-
-	if isinstance(items, str):
-		items = [items]
-
-	for i, item in enumerate(items):
-		while 1:
-
-			rex = re.search(r'.*?`(.*?)`.*?', items[i])
-			if rex:
-				exp = rex.group(1)
-				items[i] = evaluate(items[i], exp, storage, key)
-
-			else:
-				break
-
-	return items
 
 
 def check_tag_math(template, question={}):
@@ -1259,6 +1129,7 @@ logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 						logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
 						logging.StreamHandler()
 					])
+
 
 logger = logging.getLogger('TemplateEngine')
 
