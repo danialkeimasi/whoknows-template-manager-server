@@ -1221,10 +1221,6 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
 
-question_parts = ['order', 'values', 'titles', 'subtitle', 'answer', 'choices', 'helps',
-				  'tags', 'check', 'titles_fa', 'subtitle_fa', 'answer_fa', 'choices_fa', 'helps_fa']
-
-
 debug				= not True
 project_dir			= '/root/guessit'
 language			= 'fa'
