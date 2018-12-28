@@ -1291,7 +1291,7 @@ if __name__ == '__main__':
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
 		            	default=False, help='test the templates and make questions')
 
-	parser.add_argument('--checkup', type=str, nargs='+', dest='checkup', default=False,
+	parser.add_argument('--checkup', type=bool, nargs='+', dest='checkup', default=False,
 		            	help='checkup every necessary part of project to work fine')
 
 	parser.add_argument('-source', type=str, nargs='+', dest='source', default=False,
