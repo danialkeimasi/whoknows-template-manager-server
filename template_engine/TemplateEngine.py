@@ -1183,7 +1183,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 				#test_result['templates'][-1]['problems'] = problems
 
-		print(f"\n{'*' * 80}\n")
+		print(f"\n{'*' * 80}\n\n")
 
 		if problems: logger.info(f'FAILED')
 
