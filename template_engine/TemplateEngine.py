@@ -1240,9 +1240,9 @@ def project_checkup():
 	
 	for dataset_file in glob.glob(f'{dataset_dir}/*.json'):
 		dataset = json.load(open(dataset_file, encoding="utf-8"))
-		dataset_name = re.sub('.*/', '', dataset_file)
-		checkup['templates'] += [{
-			file_name: len(templates)
+		file_name = re.sub('.*/', '', dataset_file)
+		checkup['datasets'] += [{
+			file_name: len(dataset)
 		}]
 		
 
