@@ -884,13 +884,6 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 	initialization(mode='full')
 
 	"""
-	globals()['NOC']				= NOC
-	globals()['NOS']				= NOS
-	globals()['ILMAX']  			= ILMAX
-	globals()['ILMIN']  			= ILMIN
-	globals()['reload_question']	= reload_question
-	globals()['data_id_count']  	= 0
-	globals()['question'] 			= {}
 	globals()['var']				= DataManager()
 	global question
 	global var
@@ -899,11 +892,13 @@ def template_engine(template, NOC=3, ILMIN=0, ILMAX=0.1, NOS=4, reload_question=
 
 	question['data'] = []
 	"""
-	
-	if reload_question:
-		question['data_id']			= data_id
-	else:
-		question['data_id']			= []
+
+	question = {
+		'NOC'	: NOC,
+		'NOS'	: NOS,
+		'ILMIN'	: ILMIN,
+		'ILMAX'	: ILMAX
+	}
 
 	if check_template(template) or check_global_constants():
 		logger.info(check_template(template) + check_global_constants())
