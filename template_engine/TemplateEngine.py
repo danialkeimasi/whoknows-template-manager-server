@@ -549,6 +549,10 @@ class DataManager():
 			pass
 
 
+class NotEnoughtData(Exception):
+	pass
+
+
 def db(doc, count=1, return_problems=False):
 	"""
 	Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
@@ -569,7 +573,7 @@ def db(doc, count=1, return_problems=False):
 		return []
 	try:
 		if len(doc.index) < count:
-			raise NotEnoug'not enough data for db to choose'
+			raise NotEnoughtData('not enough data for db function to choose from')
 
 		data = doc.sample(count)
 
