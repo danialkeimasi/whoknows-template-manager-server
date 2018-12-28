@@ -275,11 +275,14 @@ def load_used_datasets(template):
 	----------
 	template : dict
 		template that it's datasets are needed to be loaded
+
+
+	TODO : remove old datasets in ram if it's full
 	"""
+	
 	problems = []
 
 	'''
-	TODO : remove old datasets in ram if it's full
 	if memuseme() > 1300:
 		initialization()
 	'''
