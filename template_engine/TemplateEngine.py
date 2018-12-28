@@ -1283,7 +1283,7 @@ executive_sections = ['titles', 'subtitle', 'answer', 'choices', 'helps',
 debug				= not True
 project_dir			= '/root/guessit'
 language			= 'fa'
-use_mongo			= True
+use_mongo			= False
 
 logging.basicConfig(format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
 					datefmt='%H:%M:%S',
