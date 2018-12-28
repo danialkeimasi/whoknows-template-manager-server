@@ -164,16 +164,16 @@ def add_template_to_mongo(template: dict):
 	
 	mongo.GuessIt.template.insert(template)
 
-
+"""
 def initialization(mode='partial'):
-	"""
+	'''
 	Initialize needed variables for making a new question, loads translation dataset
 
 	Parameters
 	----------
 	mode : str, optional
 		full mode is for first time , partial is for start of creating a new question
-	"""
+	'''
 	
 	logger.critical('initializating ...')
 
@@ -181,15 +181,15 @@ def initialization(mode='partial'):
 	#	globals()['datasets'] = [re.search('.*\\\\(.*)db\.json', file_name).group(1) for file_name in glob.glob(f'{db_directory}*.json')]
 	#	logger.info(f"all datasets that were found: {', '.join(globals()['datasets'])}")
 
-	"""
+	'''
 	for dataset in datasets:
 		globals()[dataset] = None
 		if mode == 'full':
 			globals()[dataset + 'db'] = None
-	"""
+	'''
 	
 	logger.critical('initialization is done.')
-
+"""
 
 def load_data(dbname):
 	"""
@@ -278,8 +278,11 @@ def load_used_datasets(template):
 	"""
 	problems = []
 
+	'''
+	TODO : remove old datasets in ram if it's full
 	if memuseme() > 1300:
 		initialization()
+	'''
 
 	for dataset in [re.search('.*?/([a-zA-Z0-9]*?)db.json', address).group(1) for address in glob.glob(f'{CONFIG.project_dir}/datasets/*.json') if re.search('.*?/([a-zA-Z0-9]*?)db.json', address)]:#used_datasets(template):
 		if f'{dataset}db' not in globals() or globals()[f'{dataset}db'] is None:
