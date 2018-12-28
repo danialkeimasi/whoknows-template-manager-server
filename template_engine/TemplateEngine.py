@@ -1093,7 +1093,7 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
 	return chosen_questions[:min(question_count, len(chosen_questions))]
 
 
-def get_templates_list(tags=None, numbers=None, sources=None):
+def get_templates_list(tags=[], numbers=[], sources=[]):
 	"""
 	Loads wanted tempaltes from file and return them as a list
 
