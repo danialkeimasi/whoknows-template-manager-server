@@ -1221,8 +1221,10 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 def project_checkup():
 	"""
 	Checks every necessary part of project and configs to be ok and work fine and return the results
-	"""
 	
+	TODO : check the template folder and templates and return the number of templates and ...
+	
+	"""
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
