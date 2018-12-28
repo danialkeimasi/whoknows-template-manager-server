@@ -1156,7 +1156,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 	templates_test = {}
 
-	for template in tqdm.tqdm(templates):
+	for template in templates:
 
 		templates_test[template['number']] = {
 			'problems': []
@@ -1188,7 +1188,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 		if problems: logger.info(f'FAILED')
 
-		json.dump(mongo_to_json(questions), open(f'{project_dir}/generator/template_engine/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+		json.dump(mongo_to_json(questions), open(f'{}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
 
 
@@ -1218,6 +1218,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True):
 
 	return test_result
 
+
 def project_checkup():
 	"""
 	Checks every necessary part of project and configs to be ok and work fine and return the results
@@ -1225,6 +1226,9 @@ def project_checkup():
 	TODO : check the template folder and templates and return the number of templates and ...
 	
 	"""
+
+	return
+
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
 			'country', 'book', 'name', 'word', 'volleyballTeam'] #should be done automatically by searching db_directory
