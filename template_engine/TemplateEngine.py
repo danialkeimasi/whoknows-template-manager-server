@@ -438,7 +438,6 @@ def tr(phrases, home='en', target='fa'):
 		target language of phrase
 	"""
 
-	return phrases
 	'''
 	if 'translationdb' not in globals() or not globals()['translationdb']:
 		try:
@@ -468,6 +467,8 @@ def tr(phrases, home='en', target='fa'):
 	return translation if return_list else translation[0]
 	#text = finglish.f2p(text)
 	'''
+
+	return phrases
 
 
 def to_list(data):
