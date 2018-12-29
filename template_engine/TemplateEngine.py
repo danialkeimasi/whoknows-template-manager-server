@@ -299,9 +299,7 @@ def choose(items, count=None):
 	if not items or not rand(0, len(items) - 1, count, [], False):
 		return []
 
-
-
-	if count == None:
+	if count is None:
 		selected_indices = rand(0, len(items) - 1, 1, [], False)
 	else:
 		selected_indices = rand(0, len(items) - 1, count, [], False)
