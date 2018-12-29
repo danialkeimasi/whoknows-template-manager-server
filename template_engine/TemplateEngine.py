@@ -14,7 +14,6 @@ import copy
 import glob
 #import finglish
 import argparse
-import tqdm
 import itertools
 
 
@@ -312,6 +311,7 @@ def choose(items, count=None):
 
 	return selected_items
 	'''
+
 
 def make_help(data_name, data, exceptions=[], language='en'):
 	"""
