@@ -442,7 +442,7 @@ def tr(phrases, home='en', target='fa'):
 	"""
 
 	return phrases
-
+	'''
 	if 'translationdb' not in globals() or not globals()['translationdb']:
 		try:
 			globals()['translation' + 'db'] = load_data('translation')
@@ -470,6 +470,7 @@ def tr(phrases, home='en', target='fa'):
 
 	return translation if return_list else translation[0]
 	#text = finglish.f2p(text)
+	'''
 
 
 def to_list(data):
@@ -1146,7 +1147,7 @@ if CONFIG.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 def arg_parse():
 	"""
 	"""
-		
+
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
