@@ -206,10 +206,16 @@ def used_datasets(template):
 
 	joint_code = ' '.join(template['values'].values())
 	while joint_code.find('db') != -1:
-		if re.search('db\(([a-zA-Z]*).*\)', joint_code):
-			used_dataset += [re.search('db\(([a-zA-Z]*).*\)', joint_code).group(1)]
+		if re.search(r'db\(([a-zA-Z]*).*\)', joint_code):
+			used_dataset += [re.search(r'db\(([a-zA-Z]*).*\)', joint_code).group(1)]
 		joint_code = joint_code[joint_code.find('db') + 2:]
 	return used_dataset
+
+
+def list_all_datasets():
+	db_name_pattern = '.*?/([a-zA-Z0-9]*?)db.json'
+	db_file_pattern = f'{CONFIG.project_dir}/datasets/*.json'
+	return [re.search(db_name_pattern, address).group(1) for address in glob.glob(db_file_pattern) if re.search(db_name_pattern, address)]
 
 
 def load_used_datasets(template):
@@ -232,7 +238,7 @@ def load_used_datasets(template):
 		initialization()
 	'''
 
-	for dataset in [re.search('.*?/([a-zA-Z0-9]*?)db.json', address).group(1) for address in glob.glob(f'{CONFIG.project_dir}/datasets/*.json') if re.search('.*?/([a-zA-Z0-9]*?)db.json', address)]:#used_datasets(template):
+	for dataset in list_all_datasets():#used_datasets(template):
 		if f'{dataset}db' not in globals() or globals()[f'{dataset}db'] is None:
 			globals()[dataset + 'db'], new_problems = load_data(dataset)
 			problems += new_problems
