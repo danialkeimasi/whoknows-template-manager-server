@@ -1143,7 +1143,10 @@ logger = logging.getLogger('TemplateEngine')
 if CONFIG.use_mongo: mongo = MongoClient('mongodb://localhost:27017')
 
 
-def arg_parse():	
+def arg_parse():
+	"""
+	"""
+		
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
