@@ -1,34 +1,37 @@
 [
     {
         "templates_count": 2,
-        "success": 1,
+        "success": 2,
         "fails": 1,
-        "success_rate": "50%",
+        "success_rate": "30%",
         "failed_templates": [
-            1
+            1,
+            2
         ],
         "templates": [
             {
                 "number": 1,
                 "source": "/home/flc/guessit/guessit-generator/template_engine/templates/movie,actor.json",
-                "test_count": 2,
+                "test_count": 5,
                 "success": 0,
-                "fails": 2,
+                "fails": 5,
                 "success_rate": "0%",
                 "time_avg": 0,
                 "problems": [
-                    "there is a problem in parsing values : actor ..... list index out of range *** count = 2"
+                    "there is a problem in parsing values : actor ..... list index out of range *** count = 5"
                 ]
             },
             {
                 "number": 2,
                 "source": "/home/flc/guessit/guessit-generator/template_engine/templates/movie,actor.json",
-                "test_count": 2,
-                "success": 2,
-                "fails": 0,
-                "success_rate": "100%",
+                "test_count": 5,
+                "success": 3,
+                "fails": 2,
+                "success_rate": "60%",
                 "time_avg": 0,
-                "problems": []
+                "problems": [
+                    "section \"choices\" has wrong values *** count = 2"
+                ]
             }
         ]
     }
