@@ -293,7 +293,8 @@ def choose(items, count=None):
 		return items[:count]
 	else:
 		return items[0]
-
+	
+	'''
 	return items[random.randint(0, len(items))]
 
 	if not items or not rand(0, len(items) - 1, count, [], False):
@@ -310,7 +311,7 @@ def choose(items, count=None):
 		selected_items = selected_items[0]
 
 	return selected_items
-
+	'''
 
 def make_help(data_name, data, exceptions=[], language='en'):
 	"""
