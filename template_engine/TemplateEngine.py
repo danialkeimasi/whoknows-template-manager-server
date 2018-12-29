@@ -581,7 +581,7 @@ def rand(start, end, count=1, exceptions=[], save=True, try_count=10000):
 
 	randoms = []
 
-	for i in range(10000):
+	for _ in range(10000):
 		newrand = random.randint(start, end)
 
 		if not newrand in exceptions and not newrand in randoms:
