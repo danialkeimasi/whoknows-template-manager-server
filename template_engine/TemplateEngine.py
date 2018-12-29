@@ -715,7 +715,7 @@ def check_question(question):
 				problems += ['section "choices" has wrong values']
 
 	for section in question:
-		for item in setion if isinstance(section, list) else [section]:
+		for item in section if isinstance(section, list) else [section]:
 			if any([item.find(x) != -1 for x in ['None', 'NaN', 'null']]):
 				problems += [f'section "{section}" has wrong values']
 
