@@ -306,10 +306,8 @@ def choose(items, count=None):
 	else:
 		selected_indices = rand(0, len(items) - 1, count, [], False)
 
-	selected_items = []
-	for i in selected_indices:
-		selected_items += [items[random.randint(0, len(items))]]
-
+	selected_items = [items[random.randint(0, len(items))] for _ in selected_indices]
+	
 	if count == None:
 		selected_items = selected_items[0]
 
