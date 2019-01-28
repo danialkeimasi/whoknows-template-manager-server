@@ -3,7 +3,7 @@ import random
 import re
 import json
 import multiprocessing as mp
-import psutil
+#import psutil
 import os
 import logging
 import requests
@@ -17,11 +17,11 @@ import argparse
 import itertools
 
 
-class Monitoring:
-	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
-	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
-	cpuuse		= lambda : psutil.cpu_percent()
-	memuse		= lambda : psutil.virtual_memory()[2]
+#class Monitoring:
+#	memuseme	= lambda : int(psutil.Process(os.getpid()).memory_info()[0] / 2. ** 30 * 1024)
+#	cpuuseme	= lambda : psutil.Process(os.getpid()).cpu_percent()
+#	cpuuse		= lambda : psutil.cpu_percent()
+#	memuse		= lambda : psutil.virtual_memory()[2]
 
 
 def find_format(data):
