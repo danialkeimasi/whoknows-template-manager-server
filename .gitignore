@@ -132,3 +132,4 @@ npm-debug.log
 .venv/
 
 # End of https://www.gitignore.io/api/python
+.vscode/settings.json
