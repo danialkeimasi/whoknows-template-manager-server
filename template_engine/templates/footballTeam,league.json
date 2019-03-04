@@ -35,7 +35,7 @@
 		"choices_selective"       : ["choose(var.teams.name, 4-ans_cnt)"],
         "__usage"				  : ["contest"],
 		"number"				  : 2,
-		"__level"                 : 1
+		"__level"                 : 2
 	},
 
 
