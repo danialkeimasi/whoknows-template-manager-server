@@ -1,0 +1,3 @@
+# guessit-question-manager
+
+generates questions by the given data and templates ...
