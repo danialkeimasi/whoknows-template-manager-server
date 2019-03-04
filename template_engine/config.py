@@ -9,10 +9,10 @@ class CONFIG:
 	"""
 
 	debug				= not True
-	project_dir			= 'd:/Programming/Python/whoKnows3'
-	templates_dir 		= f'{project_dir}/guessit-generator/template_engine/templates'
-	questions_dir		= f'{project_dir}/guessit-generator/template_engine'
-	result_dir			= f'{project_dir}/guessit-generator/template_engine'
+	project_dir			= 'D:/Programming/Python/whoKnows'
+	templates_dir 		= f'{project_dir}/guessit-question-manager/template_engine/templates'
+	questions_dir		= f'{project_dir}/guessit-question-manager/template_engine'
+	result_dir			= f'{project_dir}/guessit-question-manager/template_engine'
 	dataset_dir			= f'{project_dir}/datasets'
 	language			= 'fa'
 	use_mongo			= False
