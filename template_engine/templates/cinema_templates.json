@@ -1,23 +1,34 @@
 [
     {
     	"values"	: {
-    					"movie": "`db(movie)`",
-    					"movies": "`db(movie[movie.id != var.movie.id], NOC)`"
-    				  },
-		"titles"	: ["which one of these movies were directed by `var.movie.director`",
-					   "choose the movie which was directed by `var.movie.director`"],
-        "answer"	: ["`var.movie.name`"],
-        "choices"	: ["`var.movies.name`"],
-        "helps"		: ["`make_help('movie', var.movie, [], 'en')`"],
-        "titles_fa"	: ["کدام یک از فیلم های زیر توسط `tr(var.movie.director)` کارگردانی شده است  ",
-					   "فیلم کارگردانی شده توسط `tr(var.movie.director)` کدام است"],
-        "helps_fa"	: ["`make_help('movie', var.movie, [], 'fa')`"],
+    					"movie": "db(movie)",
+						"movies": "db(movie[movie.id != var.movie.id], NOC)",
+						"true_or_false": "rand([True,False])"
+					  },
+		"titles_true_false"   :  ["The movie `var.movie.name` was directed by `var.movie.director`"],
+		"titles_writing"      :	 ["which one of these movies were directed by `var.movie.director`",
+			 					  "choose the movie which was directed by `var.movie.director`"],		  
+		"titles_multichoices"	:  ["which one of these movies were directed by `var.movie.director`",
+									"choose the movie which was directed by `var.movie.director`"],
+		"answer_true_false"     :  "`var.True_or_False`" ,
+		"answer_multichoices"	: ["`var.movie.name`"],
+		"answer_writing"		: ["`var.movie.name`"],
+
+		"choices_true_false"   : ["True", "False"],
+		"choices_multichoices" : ["`var.movies.name`"],
+		"choices_writing"	   : [" "],
+		"choices_selective"    : ["`var.movies.name`"],
+
 		"usage"		: ["contest"],
 		"type"		: "multi_choice",
 		"tags"		: [],
 		"number"	: 1,
 		"comment"	: ""
-	},
+	}
+
+
+	,
+
     {
         "values"	: {
     					"director": "`db(director)`",
@@ -610,3 +621,4 @@
 		"number"	: 38
     }
 ]
+

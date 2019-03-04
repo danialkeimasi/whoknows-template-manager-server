@@ -1,9 +1,9 @@
 [
 	{
 		"values"	: {
-						"team" : "`db(footballTeam)`",
-						"players": "`var.team.players.remove(var.team.captain)`",
-						"p": "`var.team.players`"
+						"team" : "db(footballTeam)",
+						"players": "var.team.players.remove(var.team.captain)",
+						"p": "var.team.players"
 		},
         "titles"	: ["xx"],
 		"answer"	: ["`var.team.captain`"],
@@ -15,8 +15,8 @@
 	},
 	{
 		"values"	: {
-						"team" : "`db(footballTeam)`",
-						"teams": "`db(footballTeam[footballTeam.captain != var.team.captain], NOC)`"
+						"team" : "db(footballTeam)",
+						"teams": "db(footballTeam[footballTeam.captain != var.team['captain']], NOC)"
 		},
         "titles"	: ["xx"],
 		"answer"	: ["`var.team.name`"],

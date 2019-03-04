@@ -2,8 +2,8 @@
 	{
 		"values"  : {
 						"movie" : "`db(movie[movie.imdb_rate > 0])`",
-						"movies" : "`db(movie[(movie.imdb_rate > 0) && (movie.imdb_rate > 0)], NOC)`",
-						"RT" :  "`var.movie.imdb_rate - 0.2`"
+						"RT" :  "`var.movie.imdb_rate - 0.2`",
+						"movies" : "`db(movie[(movie.imdb_rate > 0) && (movie.imdb_rate < var.RT)], NOC)`"
 		},
 		"titles"	: ["The imdb rank of the cast below is greater than `f'{var.RT:.2}'`"],
 		"answer"	: ["`var.movie.name`"],
@@ -12,5 +12,6 @@
 		"usage"		: ["contest"],
 		"type"		: "multi_choice",
 		"number"	: 1
+		
 	}
 ]

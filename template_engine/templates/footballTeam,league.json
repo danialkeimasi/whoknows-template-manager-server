@@ -1,19 +1,33 @@
 [
 	{
 		"values"	: {
-						"team" : "`db(footballTeam)`",
-						"leagues": "`(list(set(list(footballTeam.league))))`",
-						"RL": "`var.leagues.remove(str(var.team.league))`",
-						"CL": "`var.leagues`"
+						"team" : "db(footballTeam)",
+						"leagues": "(list(set(list(footballTeam.league))))",
+						"CL": "var.leagues",
+						"True_or_False": "rand([True,False])"
 		},
-        "titles"	: ["xx"],
-		"answer"	: ["`var.team.league`"],
-        "choices"	: ["`choose(var.CL, 3)`"],
-        "titles_fa"	: ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
-        "usage"		: ["contest"],
-		"type"		: "multi_choice",
-		"number"	: 1
+		"title_true_false"        : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `choose(var.CL, 1)` فعالیت میکند2" , "3" , "42"], 
+		"title_multichoices"      : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
+		"title_writing"      	  : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
+		"answer_multichoices"	  : ["var.team.league"],
+		"answer_writing"		  : ["var.team.league"],
+		"answer_true_false"       : ["var.True_or_False"],
+		"choices_multichoices"    : ["choose(var.CL, 3)"],
+        "__usage"				  : ["contest"],
+		"number"				  : 1,
+		"score_multichoices"      : 0,
+		"score_true_false"	      : 0,
+		"score_writing"			  : 0,
+		"score_selective"		  : 0,
+		"__level"                 : 1
 	},
+
+
+
+
+
+
+
 	{
 		"values"	: {
 						"team" : "`db(footballTeam)`",
@@ -70,15 +84,17 @@
 	},
 	{
 		"values"	: {
-						"team" : "`db(footballTeam)`",
-						"teams": "`db(footballTeam[footballTeam.league != var.team.league], NOC)`"
+						"team1" : "`db(footballTeam)`",			
+						"team" : "`db(footballTeam[footballTeam.league != var.team1.league], 1)`",
+						"teams": "`db(footballTeam[footballTeam.league == var.team1.league], NOC)`"
 		},
         "titles"	: ["xx"],
 		"answer"	: ["`var.teams.name`"],
         "choices"	: ["`var.team.name`"],
-        "titles_fa"	: ["تیم هایی که در لیگ `var.teams.league` فعالیت دارند را انتخاب کنید"],
+        "titles_fa"	: ["تیم هایی که در لیگ `var.team1.league` فعالیت دارند را انتخاب کنید"],
         "usage"		: ["contest"],
 		"type"		: "selective",
-		"number"	: 6
+		"number"	: 6,
+		"level"		: "``"
 	}
 ]
