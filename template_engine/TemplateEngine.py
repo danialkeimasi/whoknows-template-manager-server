@@ -395,7 +395,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 			logger.info(f'FAILED')
 
 		json.dump(mongo_to_json(questions), 
-			open(f'{CONFIG.questions_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+			open(f'{CONFIG.result_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
 	test_result = {
 		'templates_count'	: len(templates),
