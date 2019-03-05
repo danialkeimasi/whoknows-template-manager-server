@@ -11,6 +11,7 @@ import glob
 import argparse
 import itertools
 from difflib import SequenceMatcher
+
 from checkTemplates import *
 from exceptions import *
 from checkTags import *
