@@ -240,7 +240,7 @@ def find_tags(template, question={}):
 def parse(template , question , var, QT):
 	problems = []
 
-	for section in ['__usage' , 'number' , '__level']:
+	for section in ['__usage' , '__number' , '__level']:
 		setattr(var, section, template[section])
 
 
@@ -347,7 +347,7 @@ def get_templates_list(tags=[], numbers=[], sources=[]):
 		chosen_templates = [x for x in chosen_templates if any((tag in find_tags(x)) for tag in tags)]
 		
 	if numbers:
-		chosen_templates = [x for x in chosen_templates if x['number'] in numbers]
+		chosen_templates = [x for x in chosen_templates if x['__number'] in numbers]
 
 	if sources:
 		chosen_templates = [x for x in chosen_templates if any((x['source'].find(source) != -1) for source in sources)]
@@ -377,13 +377,13 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 	questions = []
 	templates_test = {}
 	for template in templates:
-		logger.info(f"\n{'*' * 80}\nTesting template number={template['number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
+		logger.info(f"\n{'*' * 80}\nTesting template number={template['__number']} source={re.sub('.*/', '', template['source'])} : \n{'-' * 40}\n")
 
-		templates_test[template['number']] = {
+		templates_test[template['__number']] = {
 			'problems': []
 		}
 
-		logger.info(f"Testing template number : {template['number']}")
+		logger.info(f"Testing template number : {template['__number']}")
 
 		for _ in range(try_count):	
 			question, problems = template_engine(template, debug=debug)
@@ -393,7 +393,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 			
 			for problem in problems:
 				logger.error(problem)
-				templates_test[template['number']]['problems'] += problems
+				templates_test[template['__number']]['problems'] += problems
 
 		logger.info(f"\n{'*' * 80}\n")
 		if problems:
@@ -404,19 +404,19 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
 
 	test_result = {
 		'templates_count'	: len(templates),
-		'success'			: len(set([question['number'] for question in questions if not question['active']])),
-		'fails'				: len(set([question['number'] for question in questions if question['active']])),
+		'success'			: len(set([question['__number'] for question in questions if not question['active']])),
+		'fails'				: len(set([question['__number'] for question in questions if question['active']])),
 		'success_rate'		: str(int(len([True for question in questions if question['active']]) / (len(templates) * try_count) * 100)) + '%',
-		'failed_templates'	: sorted(list(set([question['number'] for question in questions if not question['active']]))),
+		'failed_templates'	: sorted(list(set([question['__number'] for question in questions if not question['active']]))),
 		'templates'			: [{
-			'number'		: template['number'],
+			'__number'		: template['__number'],
 			'source'		: template['source'],
 			'test_count'	: try_count,
-			'success'		: len([True for question in questions if question['active'] and question['number'] == template['number']]),
-			'fails'			: len([True for question in questions if not question['active'] and question['number'] == template['number']]),
-			'success_rate'	: str(int(len([True for question in questions if question['active'] and question['number'] == template['number']]) / (try_count) * 100)) + '%',
+			'success'		: len([True for question in questions if question['active'] and question['__number'] == template['__number']]),
+			'fails'			: len([True for question in questions if not question['active'] and question['__number'] == template['__number']]),
+			'success_rate'	: str(int(len([True for question in questions if question['active'] and question['__number'] == template['__number']]) / (try_count) * 100)) + '%',
 			'time_avg'		: 0,
-			'problems'		: [problem + f" *** count = {templates_test[template['number']]['problems'].count(problem)}" for problem in list(set(templates_test[template['number']]['problems']))],
+			'problems'		: [problem + f" *** count = {templates_test[template['__number']]['problems'].count(problem)}" for problem in list(set(templates_test[template['__number']]['problems']))],
 		} for template in templates]
 	}
 
@@ -556,7 +556,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 		'NOC'		   : NOC,
 		'NOS'		   : NOS,
 		'active'	   : True,
-		'number'	   : template['number'] if 'number' in template else - 1,
+		'__number'	   : template['__number'] if '__number' in template else - 1,
 		'templateID'   : str(template['_id']) if '_id' in template else -1,
 		'TIME'		   : TIME,
 		'SCORE'		   : SCORE
@@ -602,7 +602,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 
 if __name__ == '__main__':
 	arg_parse()
-	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['number']==6][0]
+	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
 
 	print('\n---\n@input_Template:')
 	pprint(qaleb)
