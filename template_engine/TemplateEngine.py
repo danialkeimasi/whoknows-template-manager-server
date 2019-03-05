@@ -262,6 +262,7 @@ def parse(template , question , var, QT):
 				exp = re.search(regStr, question[section]).group(1)
 				question[section] = question[section].replace(f'`{exp}`', eval(exp)[0]) 
 		else:
+			print(question)
 			raise WrongTypeForTemplate()
 
 
@@ -271,6 +272,7 @@ def parse(template , question , var, QT):
 		if templateSec in template:
 			question[section] = eval(template[templateSec][0])
 		else:
+			print(question)
 			raise WrongTypeForTemplate()
 
 
@@ -281,6 +283,7 @@ def parse(template , question , var, QT):
 			question[section] = eval(template[templateSec][0])
 		else:
 			if QT in ['multichoices', 'selective']:
+				print(question)
 				raise WrongTypeForTemplate()
 
 
@@ -545,7 +548,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 	
 	if QT==None:
 		QT= rand(['multichoices', 'writing', 'true_false', 'selective'])   
-		QT= 'true_false'
+		QT= 'multichoices'
 	print(f'template_engine()\t-----> QT: {QT}')
 	problems = []
 	question = {
@@ -599,14 +602,14 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 
 if __name__ == '__main__':
 	arg_parse()
-	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['number']==1][0]
+	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['number']==6][0]
 
-	print('\n\n@input_Template:')
+	print('\n---\n@input_Template:')
 	pprint(qaleb)
 
-	print('\n\n@funcRun:')
+	print('\n---\n@funcRun:')
 	out = template_engine(qaleb)
 
-	print('\n\n@output:')
+	print('\n---\n@output:')
 	pprint(out)
 	
