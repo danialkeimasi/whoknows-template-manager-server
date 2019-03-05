@@ -95,7 +95,7 @@
 		"values"	: {
 						"team" : "db(footballTeam)",	
 						"team1" : "db(footballTeam[footballTeam.league != var.team1.league])",
-						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)"
 					},
         "title_multichoices"	: ["`var.team.coach` مربی کدام تیم است؟" , "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟"],
 		"title_writing"			: ["`var.team.coach` مربی چه تیمی است؟" , "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"],
@@ -128,7 +128,7 @@
 		"__usage"				: ["contest"],
 		"__number"				: 6,
 		"__level"				: 2
-	}
+	},
 
 
 
