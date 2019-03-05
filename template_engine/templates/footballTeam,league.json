@@ -7,7 +7,7 @@
 						"CL": "var.leagues",
 						"True_or_False": "rand([True,False])"
 		},
-		"title_true_false"        : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `choose(var.CL, 1)` فعالیت میکند2" , "3" , "42"], 
+		"title_true_false"        : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `choose(var.CL)` فعالیت میکند2" , "3" , "42"], 
 		"title_multichoices"      : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `choose(var.team_same.name)` در کدام لیگ فعالیت میکنند؟" ],
 		"title_writing"      	  : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
 		"answer_multichoices"	  : ["var.team.league"],
@@ -18,22 +18,19 @@
 		"__number"				  : 1,
 		"__level"                 : 1
 	},
-
-
-
 	{
 		"values"	: {
-						"team" : "db(footballTeam)",
-						"teams" : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-						"teams_same" : "db(footballTeam[footballTeam.league == var.team.league])",
-						"ans_cnt" : "rand(range(1,4))"
+						"team" 		 : "db(footballTeam)",
+						"ans_cnt" 	 : "rand(range(1,4))",
+						"teams"      : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"teams_same" : "db(footballTeam[footballTeam.league == var.team.league] , var.ans_cnt)"
 		},
 		"title_selective"         : ["از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟"],
 		"title_multichoices"      : ["کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟"],
 		"answer_multichoices"	  : ["var.team.name"],
-		"answer_selective"		  : ["choose(var.teams_same.name, ans_cnt)"],
+		"answer_selective"		  : ["to_list(var.teams_same.name)"],
 		"choices_multichoices"    : ["var.teams.name"],
-		"choices_selective"       : ["choose(var.teams.name, 4-ans_cnt)"],
+		"choices_selective"       : ["choose(var.teams.name, 4 - var.ans_cnt)"],
         "__usage"				  : ["contest"],
 		"__number"				  : 2,
 		"__level"                 : 1

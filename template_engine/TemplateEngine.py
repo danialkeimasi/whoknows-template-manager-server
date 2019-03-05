@@ -17,6 +17,9 @@ from exceptions import *
 from checkTags import *
 from config import *
 
+
+def to_list(data):
+	return data if isinstance(data, list) else [data]
 class DataManager():
 	"""
 	Data Manager class for working with datasets and accessing it's data easier
@@ -189,6 +192,7 @@ def db(doc, count=None, return_problems=False):
 	data = data.to_dict('records')
 	logger.info(f'def db => done')
 	
+	print('BBBAAA', data)
 	return DataManager(data[0] if count == None else data)
 
 
@@ -555,8 +559,8 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 	'''
 	
 	if QT==None:
-		QT= rand(['multichoices', 'writing', 'true_false', 'selective'])   
-		QT= 'selective'
+		QT= rand(['multichoices', 'writing', 'true_false', 'selective'])
+
 	print(f'template_engine()\t-----> QT: {QT}')
 	problems = []
 	question = {
@@ -606,21 +610,20 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 		elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
 		elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
 
-
-	# print('mumu')
 	return question, problems
 
 
 if __name__ == '__main__':
 	arg_parse()
-	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==2][0]
+	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
 
 	print('\n---\n@input_Template:')
 	pprint(qaleb)
 
 	print('\n---\n@funcRun:')
-	out = template_engine(qaleb)
+
+	types = ['multichoices', 'writing', 'true_false', 'selective']
+	out = template_engine(qaleb, QT=types[0])
 
 	print('\n---\n@output:')
 	pprint(out)
-	
