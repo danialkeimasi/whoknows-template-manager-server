@@ -8,7 +8,7 @@ class CONFIG:
 
     TODO : should use a config file to load it
     """
-
+    
     debug = not True
     project_dir = 'D:/Programming/Python/whoKnows'
     templates_dir = f'{project_dir}/guessit-question-manager/template_engine/templates'
