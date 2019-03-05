@@ -18,20 +18,28 @@ from checkTags import *
 from config import *
 
 class DataManager():
-	'''
+	"""
 	Data Manager class for working with datasets and accessing it's data easier
-	'''
-	def __init__(self, exp=[]):
+	
+	"""
 
-		if isinstance(exp, dict):
-			for key, value in exp.items():
-				setattr(self, key, value)
-		
-		elif isinstance(exp, list):
-			self = [DataManager(item) for item in exp]
-			
-		elif isinstance(exp, str):
-			self = exp
+	def __init__(self, exp=None):
+		if exp:
+			if not isinstance(exp, list):
+				exp = [exp]
+
+			for k in exp[0]:
+				if len(exp) == 1:
+					setattr(self, k, exp[0][k])
+				else:
+					setattr(self, k, [exp[i][k] for i in range(len(exp))])
+
+			if len(exp) > 1:
+				setattr(self, 'list', [DataManager([item]) for item in exp])
+		else:
+			pass
+
+	
 
 
 def find_format(data):
@@ -548,7 +556,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 	
 	if QT==None:
 		QT= rand(['multichoices', 'writing', 'true_false', 'selective'])   
-		QT= 'multichoices'
+		QT= 'selective'
 	print(f'template_engine()\t-----> QT: {QT}')
 	problems = []
 	question = {
@@ -597,12 +605,15 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 		if find_format(question['subtitle']) == 'video': question['TIME'] +=4
 		elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
 		elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
+
+
+	# print('mumu')
 	return question, problems
 
 
 if __name__ == '__main__':
 	arg_parse()
-	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
+	qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==2][0]
 
 	print('\n---\n@input_Template:')
 	pprint(qaleb)
