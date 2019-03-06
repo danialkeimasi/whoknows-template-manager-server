@@ -12,6 +12,7 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
+from DataManager import *
 from checkTemplates import *
 from exceptions import *
 from checkTags import *
@@ -20,28 +21,6 @@ from config import *
 
 def to_list(data):
 	return data if isinstance(data, list) else [data]
-class DataManager():
-	"""
-	Data Manager class for working with datasets and accessing it's data easier
-	
-	"""
-
-	def __init__(self, exp=None):
-		if exp:
-			if not isinstance(exp, list):
-				exp = [exp]
-
-			for k in exp[0]:
-				if len(exp) == 1:
-					setattr(self, k, exp[0][k])
-				else:
-					setattr(self, k, [exp[i][k] for i in range(len(exp))])
-
-			if len(exp) > 1:
-				setattr(self, 'list', [DataManager([item]) for item in exp])
-
-	
-
 
 def find_format(data):
 	'''
