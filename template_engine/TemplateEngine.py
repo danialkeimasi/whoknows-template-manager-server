@@ -39,8 +39,6 @@ class DataManager():
 
 			if len(exp) > 1:
 				setattr(self, 'list', [DataManager([item]) for item in exp])
-		else:
-			pass
 
 	
 
@@ -139,9 +137,9 @@ def used_datasets(template):
 		if re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val):
 			dbname = re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val).group(1)
 			print(f'used_datasets()\t\t-----> {dbname}')
-			used_datasets.append(dbname)	
+			used_datasets.append(dbname)
 	
-	return used_datasets
+	return list(set(used_datasets))
 
 
 def choose(items, count=None):
@@ -192,7 +190,6 @@ def db(doc, count=None, return_problems=False):
 	data = data.to_dict('records')
 	logger.info(f'def db => done')
 	
-	print('BBBAAA', data)
 	return DataManager(data[0] if count == None else data)
 
 
@@ -529,7 +526,8 @@ def load_used_datasets(template):
 	list_ = used_datasets(template)
 	print(f'load_used_datasets()\t-----> {list_}')
 	
-	for x in list_:		
+	for x in list_:
+		print('lalala', x)
 		globals()[x] = load_data(x)
 	
 	return []
@@ -558,7 +556,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 		data id's that should be used for reloading question if reload_question is True
 	'''
 	
-	if QT==None:
+	if QT == None:
 		QT= rand(['multichoices', 'writing', 'true_false', 'selective'])
 
 	print(f'template_engine()\t-----> QT: {QT}')
@@ -576,19 +574,16 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 
 	globals()['NOC'] = NOC
 
-	load_used_datasets(template)
 	problems += check_template(template, QT) + check_global_constants(question) + load_used_datasets(template)
 	
 	var = DataManager()
 	parse(template , question , var , QT)
 
-	question['subtitle']
 	question['answer_type'] = find_format(question['answer'])
-
 	question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
-	
 	question['tags']  = find_tags(template, question)
 	problems += check_question(question ,QT)	
+	
 	if problems:
 		question['active'] = False
 		question['problems'] = problems
@@ -623,7 +618,7 @@ if __name__ == '__main__':
 	print('\n---\n@funcRun:')
 
 	types = ['multichoices', 'writing', 'true_false', 'selective']
-	out = [template_engine(qaleb, QT=typ) for typ in types]
-
+	# out = [template_engine(qaleb, QT=typ) for typ in types]
+	out = template_engine(qaleb, QT=types[0])
 	print('\n---\n@output:')
 	pprint(out)
