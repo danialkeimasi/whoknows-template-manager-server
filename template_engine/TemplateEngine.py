@@ -286,7 +286,7 @@ def parse(template , question , var, QT):
 
 	if templateSec != "choices_true_false" and QT != "true_false" and templateSec != "subtitle": problems += f"{templateSec} is empty"
 	print(f'parse()\t\t\t-----> problems is {problems}')
-	return 0
+	return question
 
 
 def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text', 'empty']):
@@ -456,19 +456,19 @@ def arg_parse():
 	parser = argparse.ArgumentParser(description='Process some integers.')
 
 	parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
-		            	default=False, help='test the templates and make questions')
+						default=False, help='test the templates and make questions')
 
 	parser.add_argument('--checkup', dest='checkup', default=False, action='store_true',
-		            	help='checkup every necessary part of project to work fine')
+						help='checkup every necessary part of project to work fine')
 
 	parser.add_argument('--debug', dest='debug', default=False, action='store_true',
-		            	help='specify debug flag in template_engine')
+						help='specify debug flag in template_engine')
 
 	parser.add_argument('-source', type=str, nargs='+', dest='source', default=False,
-		            	help='sources of templates to test')
+						help='sources of templates to test')
 
 	parser.add_argument('-count', type=int, default=5, dest='count',
-		            	help='number of test for each template')
+						help='number of test for each template')
 
 	args = parser.parse_args()
 	if args.checkup:
@@ -552,16 +552,17 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 	}
 
 	globals()['NOC'] = NOC
-
-	problems += check_template(template, QT) + check_global_constants(question) + load_used_datasets(template)
+	
+	problems += load_used_datasets(template)
+	problems += check_template(template, QT) + check_global_constants(question)
 	
 	var = DataManager()
-	parse(template , question , var , QT)
+	question = parse(template , question , var , QT)
 
 	question['answer_type'] = find_format(question['answer'])
 	question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
 	question['tags']  = find_tags(template, question)
-	problems += check_question(question ,QT)	
+	problems += check_question(question ,QT)
 	
 	if problems:
 		question['active'] = False
@@ -597,6 +598,7 @@ if __name__ == '__main__':
 	print('\n---\n@funcRun:')
 
 	types = ['multichoices', 'writing', 'true_false', 'selective']
+	
 	# out = [template_engine(qaleb, QT=typ) for typ in types]
 	out = template_engine(qaleb, QT=types[0])
 	print('\n---\n@output:')

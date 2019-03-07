@@ -30,7 +30,9 @@ class DataManager():
 					setattr(self, k, exp[0][k])
 				else:
 					setattr(self, k, [exp[i][k] for i in range(len(exp))])
-
+	
+	
+	@property
 	def one(self):
 		'''
 		choose random from a list of DataManagers by len of 1
