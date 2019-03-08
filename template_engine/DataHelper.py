@@ -6,7 +6,7 @@ def randChoose(li, number):
 	return randli[:number]
 
 
-class DataManager():
+class DataHelper():
 	'''
 	Data Manager class for working with datasets and accessing it's data easier
 	'''
@@ -15,7 +15,6 @@ class DataManager():
 	def __init__(self, exp=None):
 		'''
 		constract a DataManager
-		
 		'''
 		self.exp = exp
 
@@ -47,7 +46,7 @@ class DataManager():
 		'''
 		choose random from a list of DataManagers by len of "num"
 		'''
-		return DataManager(randChoose(self.pylist, num))
+		return DataHelper(randChoose(self.pylist, num))
 
 	@property
 	def pylist(self):
@@ -61,5 +60,5 @@ class DataManager():
 		'''
 		converts the DataManager object to a dataManager List
 		'''
-		return [DataManager([item]) for item in self.exp]
+		return [DataHelper([item]) for item in self.exp]
 

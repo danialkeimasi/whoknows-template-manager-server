@@ -12,7 +12,7 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
-from DataManager import *
+from DataHelper import *
 from checkTemplates import *
 from exceptions import *
 from checkTags import *
@@ -163,7 +163,7 @@ def db(doc, count=None, return_problems=False):
     data = data.to_dict('records')
     logger.info(f'def db => done')
     
-    return DataManager(data[0] if count == None else data)
+    return DataHelper(data[0] if count == None else data)
 
 
 def rand(needList, count=0, exceptions=[]):
@@ -553,7 +553,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     problems += load_used_datasets(template)
     problems += check_template(template, QT) + check_global_constants(question)
     
-    var = DataManager()
+    var = DataHelper()
     question = parse(template , question , var , QT)
 
     question['answer_type'] = find_format(question['answer'])
