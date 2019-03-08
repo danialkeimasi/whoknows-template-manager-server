@@ -580,7 +580,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     1 if len(question['title']) > 40 else 0	
     
     if question['subtitle']:  
-        if find_format(question['subtitle']) == 'video': question['TIME'] +=4
+        if find_format(question['subtitle']) == 'video'  : question['TIME'] +=4
         elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
         elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
 
