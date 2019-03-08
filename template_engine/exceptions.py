@@ -9,3 +9,5 @@ class WrongTypeForTemplate(Exception):
 	'''
 		when you can't generate a question by the template
 	'''
+	pass
+
