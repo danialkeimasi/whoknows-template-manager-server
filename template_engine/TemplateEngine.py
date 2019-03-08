@@ -119,22 +119,18 @@ def used_datasets(template):
     return list(set(used_datasets))
 
 
-def choose(items, count=None):
+def choose(items, count=0):
     '''
     Return a random sebset of given items with length of count as a list(returns only one item if count is None, Not as a list)
 
     Parameters
     ----------
-    template : dict
-        template that it's datasets needs to be excluded
-    ILMIN : int
-        minimum of internal level
-    ILMAX : int
-        maxsimum of internal level	
+    items : list
+        a list of items that we want to choose from
+    count : int
+        number of random numbers that is needed
     '''
-    items = items[:]
-    random.shuffle(items)
-    return items[0] if count is None else items[:count]
+    return rand(needList=items, count=count)
     
 
 def db(doc, count=None, return_problems=False):
@@ -170,23 +166,17 @@ def db(doc, count=None, return_problems=False):
     return DataManager(data[0] if count == None else data)
 
 
-def rand(needList, count=0, exceptions=[], save=True, try_count=10000):
+def rand(needList, count=0, exceptions=[]):
     '''
 	Return a list of random numbers in range of [start , ... , end], Returns only one number(not list) of count is not given
 	Parameters
 	----------
-	start : int, float
-		specify the start of range
-	end : int, float
-		specify the end of range
-	count : int
+	needList   : list
+        a list of items that we want to choose from
+	count      : int
 		number of random numbers that is needed
 	exceptions : list
 		list of numbers which is needed to be excluded from range
-	save : bool
-	try_count : int
-		maximum number of try for finding random numbers (default is 10000)
-		this must not exist -- BAD algorithm
 	'''
     
     for item in ['needList', 'exceptions']:
