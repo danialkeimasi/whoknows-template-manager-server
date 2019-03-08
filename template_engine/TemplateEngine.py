@@ -20,11 +20,19 @@ from config import *
 
 
 def to_list(data):
+    '''
+    if data is not a list, return it as a list
+    '''
     return data if isinstance(data, list) else [data]
 
 def find_format(data):
     '''
-    Finds the format of given text, if it's a link then returns link's format else text
+    Finds the format of given data, if it's a link then returns link's format else text
+    
+    P-S:
+        If data is a list by self (more than one item),
+        We know that all of them have same format,
+        So, we just find the format of first one.
     
     Formats
         image : png, jpg, jpeg, gif
@@ -47,7 +55,6 @@ def find_format(data):
         return 'audio'
     if any([val.lower().find(f) != -1 for f in ['.mp4']]):
         return 'video'
-
     else:
         return 'text'
 
@@ -86,7 +93,7 @@ def load_data(dbname):
             logger.info(f'loading {dbname} dataset is done.')
             break
         except Exception as error:
-            problems += [f'could not open dataset {dbname} from {CONFIG.project_dir}/datasets/ directory because {error}']
+            problems += [f'could not open dataset {dbname} from {CONFIG.dataset_dir} directory because {error}']
 
     print(f'load_data()\t\t-----> problems is {problems}')
     return data
@@ -100,16 +107,13 @@ def used_datasets(template):
     ----------
     template : dict
         template that it's datasets are needed
-    
-    # BUG : does not find datasets that had
-    # BUG : does not find datasets that had been used in middle of code. example : director[(movie.name....)]
     '''
-    used_datasets = []
+
     if 'values' not in template:
         print('used_datasets()\t\t-----> no value')
         return []
 
-    used_datasets=[]
+    used_datasets = []
     for val in template['values'].values():
         if re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val):
             dbname = re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val).group(1)
@@ -133,28 +137,28 @@ def choose(items, count=0):
     return rand(needList=items, count=count)
     
 
-def db(doc, count=None, return_problems=False):
+def db(doc, count=0):
     '''
     Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
 
-    Paarmeters
+    Parmeters
     ----------
     doc : dataframe
         dataframe that we want to choose from
     count : int
         number of items which is needed (default is 1)
-    return_problems : bool
-        specify whether this function should return the problems or not
     '''
-    logger.info(f'def db(doc=doc, count={count})')
+
+    logger.info(f'db(): count={count}')
+    
     if count == 0:
         return []
 
     try:
-        if len(doc.index) < (count if count != None else 1):
+        if len(doc.index) < (count if count != 0 else 1):
             raise NotEnoughtData(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
 
-        data = doc.sample(count if count != None else 1)
+        data = doc.sample(count if count != 0 else 1)
 
     except Exception as error:
         logger.error(f'def db => {error}')
@@ -163,7 +167,7 @@ def db(doc, count=None, return_problems=False):
     data = data.to_dict('records')
     logger.info(f'def db => done')
     
-    return DataHelper(data[0] if count == None else data)
+    return DataHelper(data[0] if count == 0 else data)
 
 
 def rand(needList, count=0, exceptions=[]):
@@ -184,16 +188,14 @@ def rand(needList, count=0, exceptions=[]):
             raise ValueError(f'rand(): wrong type for {item} - you use {type(locals()[item])}')
     
     if len(needList) - len(exceptions) < count:
-        raise ValueError(f'rand(): error- you choose {count} from {len(needList) - len(exceptions)}')
+        raise ValueError(f'rand(): error- you choose {count} from {len(needList) - len(exceptions)}')    
     
+    needList = list(set(needList) - set(exceptions))
 
-    # 1- first we make sure that 'needList' is instance from list
-    # 2- make a copy from list
-    # 3- sub the set of needList from exceptions
-    needList = list(set(list(needList)[:]) - set(exceptions))
+    choicesList = random.sample(range(len(needList)), 1 if count == 0 else count)
 
-    random.shuffle(needList)
-    return (needList[0] if count == 0 else needList[:count])
+    resultList = [needList[i] for i in choicesList]
+    return resultList[0] if count == 0 else resultList
     
 
 def find_tags(template, question={}):
