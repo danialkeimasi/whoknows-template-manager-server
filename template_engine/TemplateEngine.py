@@ -12,8 +12,8 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
-from DataHelper import *
 from checkTemplates import *
+from DataHelper import *
 from exceptions import *
 from checkTags import *
 from config import *
