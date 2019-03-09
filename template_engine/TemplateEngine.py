@@ -12,6 +12,11 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
+
+from tools import choose
+from tools import rand
+from tools import to_list
+
 from checkTemplates import *
 from DataHelper import *
 from exceptions import *
@@ -19,11 +24,6 @@ from checkTags import *
 from config import *
 
 
-def to_list(data):
-    '''
-    if data is not a list, return it as a list
-    '''
-    return data if isinstance(data, list) else [data]
 
 def find_format(data):
     '''
@@ -122,20 +122,6 @@ def used_datasets(template):
     
     return list(set(used_datasets))
 
-
-def choose(items, count=0):
-    '''
-    Return a random sebset of given items with length of count as a list(returns only one item if count is None, Not as a list)
-
-    Parameters
-    ----------
-    items : list
-        a list of items that we want to choose from
-    count : int
-        number of random numbers that is needed
-    '''
-    return rand(needList=items, count=count)
-    
 
 def db(doc, count=0):
     '''
