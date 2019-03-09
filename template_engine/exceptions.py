@@ -11,3 +11,6 @@ class WrongTypeForTemplate(Exception):
 	'''
 	pass
 
+class NoTitle(Exception):
+	pass
+
