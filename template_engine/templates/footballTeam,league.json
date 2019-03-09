@@ -33,15 +33,9 @@
 		"answer_multichoices"	  : ["var.team.name"],
 		"answer_selective"		  : ["var.teams_same.choose(NOC).name"],
 		"choices_multichoices"    : ["var.teams.name"],
-<<<<<<< HEAD
-<<<<<<< HEAD
 		"choices_selective"       : ["var.teams.choose(4-ans_cnt).name"],
-=======
 		"choices_selective"       : ["choose(var.teams.name, 4 - var.ans_cnt)"],
->>>>>>> parent of 66540d6... Update footballTeam,league.json
-=======
 		"choices_selective"       : ["choose(var.teams.name, 4 - var.ans_cnt)"],
->>>>>>> parent of 66540d6... Update footballTeam,league.json
         "__usage"				  : ["contest"],
 		"__number"				  : 2,
 		"__level"                 : 1
@@ -176,7 +170,7 @@
 		"__usage"				: ["contest"],
 		"__number"				: 8,
 		"__level"				: 2
-	}
+	},
 
 
 
@@ -198,7 +192,7 @@
 		"__usage"				: ["contest"],
 		"__number"				: 9,
 		"__level"				: 2
-	}
+	},
 
 
 	{
@@ -222,7 +216,7 @@
 		"__usage"				: ["contest"],
 		"__number"				: 10,
 		"__level"				: 2
-	}
+	},
 
 
 
