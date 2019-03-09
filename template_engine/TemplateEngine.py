@@ -201,7 +201,7 @@ def parse(template , question , var, QT):
             ra = ''
             if QT == "true_false":
                 ra = (rand(range(1, len(template[templateSec])//2 + 1) ) -1) * 2 + int(not var.True_or_False)
-            question[section] = template[templateSec][ra]
+                question[section] = template[templateSec][ra]
 
             
             regStr = '[^`]*?`([^`]*?)`[^`]*?'
@@ -566,6 +566,6 @@ if __name__ == '__main__':
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
     # out = [template_engine(qaleb, QT=typ) for typ in types]
-    out = template_engine(qaleb, QT=types[3])
+    out = template_engine(qaleb, QT=types[0])
     print('\n---\n@output:')
     pprint(out)
