@@ -150,12 +150,10 @@ def db(doc, count=0):
     '''
 
     logger.info(f'db(): count={count}')
-    
-    if count == 0:
-        return []
 
     try:
         if len(doc.index) < (count if count != 0 else 1):
+            logger.info(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
             raise NotEnoughtData(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
 
         data = doc.sample(count if count != 0 else 1)
@@ -169,34 +167,6 @@ def db(doc, count=0):
     
     return DataHelper(data[0] if count == 0 else data)
 
-
-def rand(needList, count=0, exceptions=[]):
-    '''
-	Return a list of random numbers in range of [start , ... , end], Returns only one number(not list) of count is not given
-	Parameters
-	----------
-	needList   : list
-        a list of items that we want to choose from
-	count      : int
-		number of random numbers that is needed
-	exceptions : list
-		list of numbers which is needed to be excluded from range
-	'''
-    
-    for item in ['needList', 'exceptions']:
-        if (not isinstance(locals()[item], list) and not isinstance(locals()[item], range)):
-            raise ValueError(f'rand(): wrong type for {item} - you use {type(locals()[item])}')
-    
-    if len(needList) - len(exceptions) < count:
-        raise ValueError(f'rand(): error- you choose {count} from {len(needList) - len(exceptions)}')    
-    
-    needList = list(set(needList) - set(exceptions))
-
-    choicesList = random.sample(range(len(needList)), 1 if count == 0 else count)
-
-    resultList = [needList[i] for i in choicesList]
-    return resultList[0] if count == 0 else resultList
-    
 
 def find_tags(template, question={}):
     '''
@@ -226,15 +196,16 @@ def find_tags(template, question={}):
 
 def parse(template , question , var, QT):
     problems = []
-
     for section in ['__usage' , '__number' , '__level']:
         setattr(var, section, template[section])
 
 
     if 'values' in template:
         for key, value in template['values'].items():
+            logger.info(f'{key} is going to eval')
             setattr(var, key, eval(value))
-
+        
+            
     for section in ['title']:
         templateSec = section + '_' + QT
         question[section] = choose(template[templateSec])
@@ -589,7 +560,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
 
 if __name__ == '__main__':
     arg_parse()
-    qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==2][0]
+    qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
 
     print('\n---\n@input_Template:')
     pprint(qaleb)
