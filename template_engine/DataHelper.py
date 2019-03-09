@@ -1,17 +1,5 @@
 import random
-
-def to_list(data):
-    '''
-    if data is not a list, return it as a list
-    '''
-    return data if isinstance(data, list) else [data]
-
-def randChoose(li, number):
-	print('fff', li)
-	randli = li[:]
-	random.shuffle(randli)
-	return randli[:number]
-
+import tools
 
 class DataHelper():
 	'''
@@ -50,16 +38,16 @@ class DataHelper():
 			work same as choose(1)
 		
 		'''
-		return randChoose(self.dmlist, 1)
+		return tools.choose(self.dhlist, 1)
 	
 	def choose(self, num):
 		'''
 		choose random from a list of DataManagers by len of "num"
 		'''
 		if isinstance(self.exp, list):
-			return randChoose(self.exp, num)
+			return tools.choose(self.exp, num)
 		else:
-			return DataHelper(randChoose(self.pylist, num))
+			return DataHelper(tools.choose(self.pylist, num))
 
 	@property
 	def pylist(self):
@@ -69,7 +57,7 @@ class DataHelper():
 		return self.exp
 	
 	@property
-	def dmlist(self):
+	def dhlist(self):
 		'''
 		converts the DataManager object to a dataManager List
 		'''
