@@ -89,7 +89,7 @@ def check_question(question , QT):
 
 		for choice in choices:
 			choice = str(choice)
-			if any([choice.find(item) != -1 for item in ['None', 'NaN', 'null']]) or (choice.find(question['answer']) != -1):
+			if any([choice.find(item) != -1 for item in ['None', 'NaN', 'null']]) or (choice.find(question['answer'])[0] != -1):
 				print(f"*****{choice.find(question['answer'])}")
 				problems += ['section "choices" has wrong values']
 		if (QT != "writing" or QT != "true_false") and choices==[] : 
