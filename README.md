@@ -1,4 +1,4 @@
-# guessit-question-manager
+# Guessit Question Manager
 
 ## what can it do?
 generates questions by the given data and templates.
