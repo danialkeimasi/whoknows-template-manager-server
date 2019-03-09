@@ -194,20 +194,23 @@ def parse(template , question , var, QT):
             
     for section in ['title']:
         templateSec = section + '_' + QT
-        question[section] = choose(template[templateSec])
-
-        if QT == "true_false":
-            ra = (rand(range(1, len(template[templateSec])//2 + 1) ) -1) * 2 + int(not var.True_or_False)
-            question[section] = template[templateSec][ra]
         
         if templateSec in template:
+            question[section] = choose(template[templateSec])
+            
+            ra = ''
+            if QT == "true_false":
+                ra = (rand(range(1, len(template[templateSec])//2 + 1) ) -1) * 2 + int(not var.True_or_False)
+            question[section] = template[templateSec][ra]
+
+            
             regStr = '[^`]*?`([^`]*?)`[^`]*?'
             while re.search(regStr, question[section]):
                 exp = re.search(regStr, question[section]).group(1)
                 question[section] = question[section].replace(f'`{exp}`', eval(exp)[0]) 
         else:
             print(question)
-            raise WrongTypeForTemplate(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
+            raise NoTitle(f'Wrong Type (QT) For Template in parse(), {templateSec} not found in template.')
 
 
     for section in ['answer']:
@@ -513,7 +516,14 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     problems += check_template(template, QT) + check_global_constants(question)
     
     var = DataHelper()
-    question = parse(template , question , var , QT)
+    
+    try:
+        question = parse(template , question , var , QT)
+    except NoTitle as error:
+        logging.info(error)
+
+        question['active'] = False
+        return question, problems
 
     question['answer_type'] = find_format(question['answer'])
     question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
@@ -556,6 +566,6 @@ if __name__ == '__main__':
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
     # out = [template_engine(qaleb, QT=typ) for typ in types]
-    out = template_engine(qaleb, QT=types[0])
+    out = template_engine(qaleb, QT=types[3])
     print('\n---\n@output:')
     pprint(out)
