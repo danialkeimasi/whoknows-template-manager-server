@@ -568,6 +568,6 @@ if __name__ == '__main__':
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
     out = [template_engine(qaleb, QT=typ) for typ in types]
-    question = template_engine(qaleb, QT=types[0])
+    # question = template_engine(qaleb, QT=types[0])
     print('\n---\n@output:')
     pprint(out)
