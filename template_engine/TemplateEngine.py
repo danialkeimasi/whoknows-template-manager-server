@@ -95,7 +95,7 @@ def load_data(dbname):
         except Exception as error:
             problems += [f'could not open dataset {dbname} from {CONFIG.dataset_dir} directory because {error}']
 
-    print(f'load_data()\t\t-----> problems is {problems}')
+    logger.info(f'load_data()\t\t-----> problems is {problems}')
     return data
 
 
@@ -110,14 +110,14 @@ def used_datasets(template):
     '''
 
     if 'values' not in template:
-        print('used_datasets()\t\t-----> no value')
+        logger.info('used_datasets()\t\t-----> no value')
         return []
 
     used_datasets = []
     for val in template['values'].values():
         if re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val):
             dbname = re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val).group(1)
-            print(f'used_datasets()\t\t-----> {dbname}')
+            logger.info(f'used_datasets()\t\t-----> {dbname}')
             used_datasets.append(dbname)
     
     return list(set(used_datasets))
@@ -209,7 +209,7 @@ def parse(template , question , var, QT):
                 exp = re.search(regStr, question[section]).group(1)
                 question[section] = question[section].replace(f'`{exp}`', eval(exp)[0]) 
         else:
-            print(question)
+            logger.info(question)
             raise NoTitle(f'Wrong Type (QT) For Template in parse(), {templateSec} not found in template.')
 
 
@@ -219,7 +219,7 @@ def parse(template , question , var, QT):
         if templateSec in template:
             question[section] = eval(template[templateSec][0])
         else:
-            print(question)
+            logger.info(question)
             raise WrongTypeForTemplate(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
 
@@ -230,7 +230,7 @@ def parse(template , question , var, QT):
             question[section] = eval(template[templateSec][0])
         else:
             if QT in ['multichoices', 'selective']:
-                print(question)
+                logger.info(question)
                 raise WrongTypeForTemplate(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
 
@@ -244,7 +244,7 @@ def parse(template , question , var, QT):
 
 
     if templateSec != "choices_true_false" and QT != "true_false" and templateSec != "subtitle": problems += f"{templateSec} is empty"
-    print(f'parse()\t\t\t-----> problems is {problems}')
+    logger.info(f'parse()\t\t\t-----> problems is {problems}')
     return question
 
 
@@ -370,7 +370,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
     if save_result:
         json.dump(mongo_to_json(test_result), open(f'{CONFIG.result_dir}/test_result.json', 'w+', encoding='utf-8'), indent=4)
 
-    print(f'test_templates()\t-----> problems is {problems}')
+    logger.info(f'test_templates()\t-----> problems is {problems}')
     return test_result
 
 
@@ -462,10 +462,9 @@ def similar(a,b):
 
 def load_used_datasets(template):
     list_ = used_datasets(template)
-    print(f'load_used_datasets()\t-----> {list_}')
+    logger.info(f'load_used_datasets()\t-----> {list_}')
     
     for x in list_:
-        print('lalala', x)
         globals()[x] = load_data(x)
     
     return []
@@ -497,7 +496,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     if QT == None:
         QT= rand(['multichoices', 'writing', 'true_false', 'selective'])
 
-    print(f'template_engine()\t-----> QT: {QT}')
+    logger.info(f'template_engine()\t-----> QT: {QT}')
     problems = []
     question = {
         'QuestionType' : QT,
@@ -537,7 +536,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     else:
         question['active'] = True
 
-    print(f'template_engine()\t-----> problems is {problems}')
+    logger.info(f'template_engine()\t-----> problems is {problems}')
     
     ans = 'maret'
     question['score'] = score_compare(ans , question , QT) 	
@@ -567,7 +566,7 @@ if __name__ == '__main__':
 
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
-    out = [template_engine(qaleb, QT=typ) for typ in types]
-    # question = template_engine(qaleb, QT=types[0])
+    # out = [template_engine(qaleb, QT=typ) for typ in types]
+    out = template_engine(qaleb, QT=types[0])
     print('\n---\n@output:')
     pprint(out)
