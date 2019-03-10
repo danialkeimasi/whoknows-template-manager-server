@@ -133,3 +133,4 @@ npm-debug.log
 
 # End of https://www.gitignore.io/api/python
 .vscode/settings.json
+template_engine/.vscode/settings.json
