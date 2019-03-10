@@ -204,7 +204,7 @@ def parse(template , question , var, QT):
                 question[section] = template[templateSec][ra]
 
             
-            regStr = '[^`]*?`([^`]*?)`[^`]*?'
+            regStr = r'[^`]*?`([^`]*?)`[^`]*?'
             while re.search(regStr, question[section]):
                 exp = re.search(regStr, question[section]).group(1)
                 question[section] = question[section].replace(f'`{exp}`', eval(exp)[0]) 
