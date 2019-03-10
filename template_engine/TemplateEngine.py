@@ -12,7 +12,6 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
-
 from tools import choose
 from tools import rand
 from tools import to_list
@@ -86,7 +85,7 @@ def load_data(dbname):
     problems = []
     data = pd.DataFrame()
 
-    while 'run_before_break':
+    while 'run_to_break':
         try:
             logger.info(f'trying to load {dbname} dataset from hard disk...')
             data = pd.DataFrame(json.load(open(f'{CONFIG.dataset_dir}/{dbname}db.json', encoding='utf-8')))
