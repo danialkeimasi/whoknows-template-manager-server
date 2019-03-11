@@ -1,5 +1,5 @@
 import random
-from template_engine import tools
+from template_engine.tools import choose
 
 class DataHelper():
 	'''
@@ -38,16 +38,16 @@ class DataHelper():
 			work same as choose(1)
 		
 		'''
-		return tools.choose(self.dhlist, 1)
+		return choose(self.dhlist, 1)
 	
 	def choose(self, num):
 		'''
 		choose random from a list of DataManagers by len of "num"
 		'''
 		if isinstance(self.exp, list):
-			return tools.choose(self.exp, num)
+			return choose(self.exp, num)
 		else:
-			return DataHelper(tools.choose(self.pylist, num))
+			return DataHelper(choose(self.pylist, num))
 
 	@property
 	def pylist(self):
