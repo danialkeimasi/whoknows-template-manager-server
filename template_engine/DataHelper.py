@@ -1,5 +1,5 @@
 import random
-import tools
+from template_engine import tools
 
 class DataHelper():
 	'''

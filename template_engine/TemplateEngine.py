@@ -12,15 +12,13 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 
-from tools import choose
-from tools import rand
-from tools import to_list
+from template_engine.tools import choose, rand, to_list
 
-from checkTemplates import *
-from DataHelper import *
-from exceptions import *
-from checkTags import *
-from config import *
+from template_engine.checkTemplates import *
+from template_engine.DataHelper import *
+from template_engine.exceptions import *
+from template_engine.checkTags import *
+from template_engine.config import *
 
 
 

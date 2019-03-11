@@ -2,6 +2,9 @@ from flask import Flask, request
 import json
 from pprint import pprint
 
+# from template_engine.TemplateEngine import create_question, check_answer, get_templates_list
+# from template_engine.TemplateEngine import TemplateEngine
+
 app = Flask(__name__)
 
 URLS_CONST = {
