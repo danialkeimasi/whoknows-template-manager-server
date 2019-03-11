@@ -11,7 +11,7 @@ import glob
 import argparse
 import itertools
 from difflib import SequenceMatcher
-
+import functools
 from template_engine.tools import choose, rand, to_list
 
 from template_engine.checkTemplates import *
@@ -245,7 +245,7 @@ def parse(template , question , var, QT):
     return question
 
 
-def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text', 'empty']):
+def create_question(tags, question_count, subtitle_types=['audio', 'video', 'text', 'empty']):
     '''
     Create questions based on given tags and conditions
 
@@ -258,17 +258,13 @@ def create_question(tags, question_count, subtitle_type=['audio', 'video', 'text
     subtitle_type : list
         specify valid subtitle_type s for wanted questions
     '''
-    questions = mongo_to_json(list(mongo.GuessIt.question.find()))
-    chosen_questions = []
 
-    for tag in tags:
-        chosen_questions += [question for question in questions if tag in question['tags'] and question['subtitle_type'] in subtitle_type]
 
-    if not tag or len(tags) == 0:
-        chosen_questions = [question for question in questions]
-
-    random.shuffle(chosen_questions)
-    return chosen_questions[:min(question_count, len(chosen_questions))]
+    templates = functools.reduce(lambda a, b: a + b, map(lambda f: json.load(open(f)), glob.glob(f'{CONFIG.templates_dir}/*.json')))
+    
+    questions = [template_engine(templates[0]) for i in range(question_count)]
+    
+    return questions
 
 
 def get_templates_list(tags=[], numbers=[], sources=[]):
