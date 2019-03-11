@@ -514,9 +514,13 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     except NoTitle as error:
         logging.info(error)
 
+
+
         question['active'] = False
         question['problems'] = problems
         return question
+
+
 
     question['answer_type'] = find_format(question['answer'])
     question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
@@ -544,6 +548,8 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
         elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
     
+
+
     question['problems'] = problems
     return question
 
@@ -560,8 +566,8 @@ if __name__ == '__main__':
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
     # out = [template_engine(qaleb, QT=typ) for typ in types]
-    # out = template_engine(qaleb, QT=types[0])
-    out = create_question('footballTeam', 1)
+    out = template_engine(qaleb, QT=types[0])
+    # out = create_question('footballTeam', 1)
     
     print('\n---\n@output:')
     pprint(out)
