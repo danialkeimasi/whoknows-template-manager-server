@@ -564,6 +564,8 @@ if __name__ == '__main__':
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
     # out = [template_engine(qaleb, QT=typ) for typ in types]
-    out = template_engine(qaleb, QT=types[0])
+    # out = template_engine(qaleb, QT=types[0])
+    out = create_question('footballTeam', 1)
+    
     print('\n---\n@output:')
     pprint(out)
