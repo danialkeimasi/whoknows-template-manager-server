@@ -3,7 +3,7 @@
 		"values"	: {
 						"team" : "db(footballTeam)",
 						"team_same": "db(footballTeam[footballTeam.league == var.team.league])",
-						"leagues": "list(set(list(footballTeam.league))- set([var.team.league]))",
+						"leagues": "list(set(footballTeam.league)- set([var.team.league]))",
 						"CL": "var.leagues",
 						"True_or_False": "rand([True,False])"
 		},
