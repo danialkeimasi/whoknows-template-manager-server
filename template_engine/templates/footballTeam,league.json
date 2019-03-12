@@ -3,7 +3,7 @@
 		"values"	: {
 						"team" : "db(footballTeam)",
 						"team_same": "db(footballTeam[footballTeam.league == var.team.league])",
-						"leagues": "list(set(footballTeam.league)- set([var.team.league]))",
+						"leagues": "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
 						"CL": "var.leagues",
 						"True_or_False": "rand([True,False])"
 		},
@@ -13,7 +13,7 @@
 		"answer_multichoices"	  : ["var.team.league"],
 		"answer_writing"		  : ["var.team.league"],
 		"answer_true_false"       : ["var.True_or_False"],
-		"choices_multichoices"    : ["choose(var.CL, NOC)"],
+		"choices_multichoices"    : ["var.CL.choose(NOC)"],
         "__usage"				  : ["contest"],
 		"__number"				  : 1,
 		"__level"                 : 1
