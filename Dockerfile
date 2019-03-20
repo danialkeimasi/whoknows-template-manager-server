@@ -12,6 +12,6 @@ RUN pip3 install -r requirements.txt
 
 COPY . /usr/src
 
-ENTRYPOINT [ "flask" ]
+ENTRYPOINT [ "python3" ]
 
-CMD [ "run" ]
+CMD [ "app.py" ]
