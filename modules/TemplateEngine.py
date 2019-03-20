@@ -12,13 +12,13 @@ import argparse
 import itertools
 from difflib import SequenceMatcher
 import functools
-from tools import choose, rand, to_list
+from modules.tools import choose, rand, to_list
 
-from checkTemplates import *
-from DataHelper import *
-from exceptions import *
-from checkTags import *
-from config import *
+from modules.checkTemplates import *
+from modules.DataHelper import *
+from modules.exceptions import *
+from modules.checkTags import *
+from modules.config import *
 
 
 
