@@ -14,4 +14,4 @@ COPY . /usr/src
 
 ENTRYPOINT [ "python3" ]
 
-CMD [ "app.py" ]
+CMD [ "flask", "app.py" ]
