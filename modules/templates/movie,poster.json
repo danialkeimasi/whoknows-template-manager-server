@@ -1,0 +1,15 @@
+[
+	{
+		"values"	: {
+						"movie" : "`db(movie)`",
+						"movies" : "`db(movie, NOC)`"
+		},
+		"titles"	: ["Of the following photos, which is related to the film `var.movie.name`"],
+		"answer"	: ["`var.movie.poster`"],
+		"choices"	: ["`var.movies.poster`"],
+		"titles_fa"	: ["از عکس های زیر کدام مربوط به فیلم`tr(var.movie.name)`است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	}
+]

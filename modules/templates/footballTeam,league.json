@@ -1,0 +1,286 @@
+[
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",
+						"team_same": "db(footballTeam[footballTeam.league == var.team.league])",
+						"leagues": "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
+						"CL": "var.leagues",
+						"True_or_False": "rand([True,False])"
+		},
+		"title_true_false"        : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند2" , "3" , "42"], 
+		"title_multichoices"      : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
+		"title_writing"      	  : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
+		"answer_multichoices"	  : ["var.team.league"],
+		"answer_writing"		  : ["var.team.league"],
+		"answer_true_false"       : ["var.True_or_False"],
+		"choices_multichoices"    : ["var.CL.choose(NOC)"],
+        "__usage"				  : ["contest"],
+		"__number"				  : 1,
+		"__level"                 : 1
+	},
+
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",
+						"teams" : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"teams_same" : "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+						"ans_cnt" : "rand(range(1,4))"
+		},
+		"title_selective"         : ["از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟"],
+		"title_multichoices"      : ["کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟"],
+		"answer_multichoices"	  : ["var.team.name"],
+		"answer_selective"		  : ["var.teams_same.choose(NOC).name"],
+		"choices_multichoices"    : ["var.teams.name"],
+		"choices_selective"       : ["var.teams.choose(4-ans_cnt).name"],
+        "__usage"				  : ["contest"],
+		"__number"				  : 2,
+		"__level"                 : 1
+	},
+
+	{
+		"values"	: {
+						"team" 		 : "db(footballTeam)",
+						"teams"		 : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"team1"		 : "var.teams.choose(1).name",
+						"teams_same" : "db(footballTeam[(footballTeam.league == var.team.league)] ,NOC)",
+						"team2"		 : "var.teams_same.choose(1).name",
+						"leagues"	 : "(list(set(list(footballTeam.league))- set[var.team.league,var.team1.league] ))",
+						"another_league": "var.leagues.choose(1)",  				
+						"True_or_False": "rand([True,False])"
+
+		},
+		"title_selective"		: ["تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید"],
+		"title_multichoices"	: ["کدام تیم در لیگ متفاوتی نسبت به سایر گزینه ها فعالیت میکند؟"],
+		"title_true_false"	 	: [" تیم های `var.team.name` و `var.team2.name` در یک لیگ مشترک فعالیت میکنند." , "تیم های `var.team.name` و `var.team1.name' در یک لیگ فعالیت میکنند. " , "تیم های `var.team.name' و `var.team2.name` در لیگ `var.team.league` فعالیت میکنند." , "  تیم های `var.team.name` و `var.team1.name` در لیگ var.another_league` فعالیت میکنند."],
+		"answer_selective"		: ["var.teams.choose(NOC).name"],
+		"answer_true_false" 	: ["var.True_or_False"],
+		"answer_multichoices"	: ["var.team.name"],
+		"choices_selective" 	: ["var.team.name"],
+        "choices_multichoices"	: ["var.teames.choose(NOC).name"],
+        "__usage"				: ["contest"],
+		"__number"				: 3,
+		"__level"   			: 1
+	},
+
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",			
+						"team1" : "db(footballTeam[footballTeam.league != var.team1.league])",
+						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+						"True_or_False": "rand([True,False])"
+					},
+        "title_multichoices"	: ["مربی تیم `var.team.name` کدام است؟" , "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟" , "مربیگری تیم `var.team.name` بر عهده ی کیست؟"],
+		"title_writing"			: ["مربی تیم `var.team.name` کیست؟"],
+		"title_true_false"      : ["مربی تیم `var.name.team` بر عهده ی `var.team.coach` میباشد." , "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد."],
+		"answer_multichoices"	: ["var.team.coach"],
+		"answer_writing"		: ["var.team.coach"],
+		"answer_true_false" 	: ["var.True_or_False"],
+        "choices_multichoices"	: ["var.teams.coach"],
+        "__usage"				: ["contest"],
+		"__number"				: 4,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",	
+						"team1" : "db(footballTeam[footballTeam.league != var.team1.league])",
+						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)"
+					},
+        "title_multichoices"	: ["`var.team.coach` مربی کدام تیم است؟" , "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟"],
+		"title_writing"			: ["`var.team.coach` مربی چه تیمی است؟" , "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"],
+		"answer_multichoices"	: ["var.team.name"],
+		"answer_writing"		: ["var.team.name"],
+		"choices_multichoices"  : ["var.teams.choose(1).name"],
+        "__usage"				: ["contest"],
+		"__number"				: 5,
+		"__level"				: 3
+	},
+
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",			
+						"team1" : "db(footballTeam[footballTeam.league != var.team1.league])",
+						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+						"leagues"	 : "(list(set(list(footballTeam.league))- set[var.team.league , var.team1.league] ))",
+						"True_or_False": "rand([True,False])"
+					},
+        "title_multichoices"	: ["`var.team.coach` در کدام لیگ مربیگری میکند؟"],
+		"title_writing"			: ["`var.team.coach` در چه لیگی مربیگری میکند؟"],
+		"title_true_false"      : ["`var.team.coach` در لیگ `var.team.league` مربیگری میکند." , "`var.team.coach` در لیگ `choose(var.league.name)` مربیگری میکند." , "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند." , "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `choose(var.league.name ,NOC)` مربیگری میکنند."],
+		"answer_multichoices"	: ["var.team.league"],
+		"answer_writing"		: ["var.team.league","var.team.country"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"choices_multichoices"  : ["var.leagues.choose(1).name"],
+		"__usage"				: ["contest"],
+		"__number"				: 6,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"	 		: "db(footballTeam)",			
+						"teams_same" 	: "db(footballTeam[(footballTeam.league == var.team.league) - set[var.team] ] ,NOC)",
+						"teams"			: "db(footballTeam[footballTeam.league != var.team.league] ,NOC)"
+					},
+        "title_multichoices"	: ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"],
+		"title_selective"       : ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"],
+		"answer_multichoices"	: ["var.team.coach"],
+		"answer_selective"		: ["var.teams_same.choose(3).coach"],
+		"choices_multichoices"  : ["var.teams.choose(NOC).coach"],
+		"choices_selective" 	: ["var.teams.choose(1).coach"],
+		"__usage"				: ["contest"],
+		"__number"				: 7,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team" : "db(footballTeam)",			
+						"team1" : "db(footballTeam[footballTeam.league != var.team1.league])",
+						"teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+						"leagues"	 : "(list(set(list(footballTeam.league))- set[var.team.league]))",
+						"True_or_False": "rand([True,False])"
+					},
+        "title_multichoices"	: ["`var.team.coach` در کدام کشور مربیگری میکند؟"],
+		"title_writing"			: ["`var.team.coach` در چه کشوری مربیگری میکند؟"],
+		"title_true_false"      : ["`var.team.coach` در کشور `var.team.country` مربیگری میکند؟." , "`var.team.coach` در کشور `var.team1.country` مربیگری میکند."],
+		"answer_multichoices"	: ["var.team.country"],
+		"answer_writing"		: ["var.team.country"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"choices_multichoices"  : ["var.leagues.choose(NOC).country"],
+		"__usage"				: ["contest"],
+		"__number"				: 8,
+		"__level"				: 2
+	},
+	
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"playerss"	   : "(list(set(list(footballTeam.palayers))- set[var.team.captain]))",
+						"True_or_False": "rand([True,False])"
+					},
+		"title_multichoices"	: ["کاپیتان تیم `var.team.name` کدام بازیکن است؟"],
+		"title_writing"			: ["کاپیتان تیم `var.team.name` چه کسی است؟"],
+		"title_true_false"      : ["کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد." , "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد."],
+		"answer_multichoices"	: ["var.team.captain"],
+		"answer_writing"		: ["var.team.captain"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"choices_multichoices"  : ["var.players.choose(NOC)"],
+		"__usage"				: ["contest"],
+		"__number"				: 9,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.league != var.team1.league])",
+						"teams"        : "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+						"leagues"	   : "(list(set(list(footballTeam.league))- set[var.team.league]))",
+						"True_or_False": "rand([True,False])"
+					},
+        "title_multichoices"	: ["`var.team.name` در کدام کشور فعالیت میکند؟"],
+		"title_writing"			: ["`var.team.name` در چه کشوری فعالیت میکند؟"],
+		"title_true_false"      : ["`var.team.name` در کشور `var.team.country` فعالیت میکند؟." , "`var.team.name` در کشور `var.team1.country` فعالیت میکند."],
+		"title_selective"       : ["کدام تیم ها در کشور `var.team.country` فعالیت میکنند؟"],
+		"answer_multichoices"	: ["var.team.country"],
+		"answer_writing"		: ["var.team.country"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"answer_selective"      : ["var.teams.choose(3).name"],
+		"choices_multichoices"  : ["var.leagues.choose(NOC).country"],
+		"choices_selective"     : ["var.team1.country"],
+		"__usage"				: ["contest"],
+		"__number"				: 10,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"stadiums"	   : "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))",
+						"True_or_False": "rand([True,False])"
+					},
+        "title_multichoices"	: ["ورزشگاه خانگی تیم `var.team.name` کدام است؟ "],
+		"title_writing"			: ["نام ورزشگاه خانگی `var.team.name` چیست؟"],
+		"title_true_false"      : ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد." , "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."],
+		"answer_multichoices"	: ["var.team.stadium"],
+		"answer_writing"		: ["var.team.stadium"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"choices_multichoices"  : ["var.stadiums.choose(NOC)"],
+		"__usage"				: ["contest"],
+		"__number"				: 11,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"teams"        : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"stadiums"	   : "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))"
+					},
+        "title_multichoices"	: ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"],
+		"title_writing"			: ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"],
+		"answer_multichoices"	: ["var.team.country"],
+		"answer_writing"		: ["var.team.country"],
+		"choices_multichoices"  : ["var.teams.choose(NOC).name"],
+		"__usage"				: ["contest"],
+		"__number"				: 12,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"teams"        : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"stadiums"	   : "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))"
+					},
+        "title_multichoices"	: ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"],
+		"title_writing"			: ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"],
+		"answer_multichoices"	: ["var.team.country"],
+		"answer_writing"		: ["var.team.country"],
+		"choices_multichoices"  : ["var.teams.choose(NOC).name"],
+		"__usage"				: ["contest"],
+		"__number"				: 13,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"team1"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"teams"        : "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+						"stadiums"	   : "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))"
+					},
+        "title_multichoices"	: ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"],
+		"title_writing"			: ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"],
+		"answer_multichoices"	: ["var.team.country"],
+		"answer_writing"		: ["var.team.country"],
+		"choices_multichoices"  : ["var.teams.choose(NOC).name"],
+		"__usage"				: ["contest"],
+		"__number"				: 13,
+		"__level"				: 2
+	},
+
+	{
+		"values"	: {
+						"team"         : "db(footballTeam)",			
+						"teams"        : "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+						"players"	   : "(list(set(list(footballTeam.palayers))- set[var.team.captain]))",
+						"True_or_False": "rand([True,False])"
+					},
+		"title_multichoices"	: ["کاپیتان تیم `var.team.captain` کدام بازیکن است؟"],
+		"title_writing"			: ["کاپیتان تیم `var.team.captain` چه کسی است؟"],
+		"answer_multichoices"	: ["var.team.name"],
+		"answer_writing"		: ["var.team.name"],
+		"answer_true_false"     : ["var.True_or_False"],
+		"choices_multichoices"  : ["var.players.choose(NOC)"],
+		"__usage"				: ["contest"],
+		"__number"				: 14,
+		"__level"				: 2
+	}
+]

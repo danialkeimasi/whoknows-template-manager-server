@@ -1,0 +1,44 @@
+[
+	{
+		"values"	: {
+						"NOA" : "`rand(1, NOS)`",
+						"actor" : "`db(actor[[isinstance(x, list) and len(x) > 3 for x in actor.movies]])`",
+						"movies" : "`db(movie, NOS - var.NOA)`"
+		},
+		"titles"	: ["How many of the following videos `var.actor.name` played?"],
+		"subtitle"	: ["`choose(var.actor.movies, var.NOA) + to_list(choose(var.movies.name, NOS - var.NOA))`"],
+		"answer"	: ["`var.NOA`"],
+		"choices"	: ["`rand(0, NOS, NOC, var.NOA)`"],
+		"titles_fa"	: ["`tr(var.actor.name)` در چه تعداد از فیلم های زیر بازی کرده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 1
+	},
+	{
+		"values"  : {
+						"actor" : "`db(actor[actor.height > 1])`",
+						"actors" : "`db(actor[actor.height < var.actor.height - 0.1], NOC)`",
+						"HT" :  "`var.actor.height - 0.05`"
+		},
+		"titles"	: ["The height of the cast below is greater than `f'{var.HT:.2}'`"],
+		"answer"	: ["`var.actor.name`"],
+		"choices"	: ["`var.actors.name`"],
+		"titles_fa"	: ["کدام یک از بازیگران زیر قد بالای `f'{var.HT:.2}'` دارند"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 2
+	},
+	{
+		"values"	: {
+						"actor" : "`db(actor[(actor.dead == False)])`",
+						"actors" : "`db(actor[actor.dead == True], NOC)`"
+		},
+		"titles"	: ["which one of the following factors is alive"],
+		"answer"	: ["`var.actor.name`"],
+		"choices"	: ["`var.actors.name`"],
+		"titles_fa"	: ["کدام یک از بازیگران زیر زنده است"],
+		"usage"		: ["contest"],
+		"type"		: "multi_choice",
+		"number"	: 3
+	}
+]
