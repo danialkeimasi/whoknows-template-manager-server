@@ -4,7 +4,7 @@ import re
 import json
 import multiprocessing as mp
 import os
-import request
+
 from pprint import pprint
 import copy
 import glob
