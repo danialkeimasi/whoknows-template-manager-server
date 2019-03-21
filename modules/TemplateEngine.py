@@ -277,9 +277,6 @@ def score_compare(answer, question, QT):
     accept_rate = 70 if QT == 'writing' else 100
     ans = question['answer']
 
-    if QT == 'true_false':
-        ans = question['answer']
-
     sim = similar(answer, ans)*100
     print(f'similarity= {sim}, accept_rate = {accept_rate}')
     
