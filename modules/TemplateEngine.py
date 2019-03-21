@@ -405,21 +405,32 @@ def arg_parse():
     '''
     command line interface
     '''
+
     parser = argparse.ArgumentParser(description='Process some integers.')
 
-    parser.add_argument('--test', '--test_templates', nargs='*', type=int, dest='test',
-                        default=False, help='test the templates and make questions')
+    parser.add_argument('-t', '--test', '--test_templates', 
+                        dest='test', default=False,
+                        type=int, nargs='*',
+                        help='test the templates and make questions')
 
-    parser.add_argument('--checkup', dest='checkup', default=False, action='store_true',
+    parser.add_argument('-ch', '--checkup', 
+                        dest='checkup', default=False,
+                        action='store_true',
                         help='checkup every necessary part of project to work fine')
 
-    parser.add_argument('--debug', dest='debug', default=False, action='store_true',
+    parser.add_argument('-d', '--debug', 
+                        dest='debug', default=False,
+                        action='store_true',
                         help='specify debug flag in template_engine')
 
-    parser.add_argument('-source', type=str, nargs='+', dest='source', default=False,
+    parser.add_argument('-s', '-source', 
+                        dest='source', default=False,
+                        type=str, nargs='+',
                         help='sources of templates to test')
 
-    parser.add_argument('-count', type=int, default=5, dest='count',
+    parser.add_argument('-co', '-count', 
+                        dest='count', default=5,
+                        type=int,
                         help='number of test for each template')
 
     args = parser.parse_args()
