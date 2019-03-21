@@ -20,6 +20,8 @@ from DataHelper import *
 from exceptions import *
 from checkTags import *
 from config import *
+from argParse import arg_parse
+
 
 
 
@@ -390,7 +392,6 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     return question
 
 
-from argParse import arg_parse
 if __name__ == '__main__':
     arg_parse()
     qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
@@ -402,8 +403,8 @@ if __name__ == '__main__':
 
     types = ['multichoices', 'writing', 'true_false', 'selective']
     
-    # out = [template_engine(qaleb, QT=typ) for typ in types]
-    out = template_engine(qaleb, QT=types[0])
+    out = [template_engine(qaleb, QT=typ) for typ in types]
+    # out = template_engine(qaleb, QT=types[0])
     # out = create_question('footballTeam', 1)
     
     print('\n---\n@output:')
