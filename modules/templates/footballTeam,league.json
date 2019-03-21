@@ -282,7 +282,6 @@
 
 
 
-
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -300,8 +299,6 @@
 	},
 
 
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -319,10 +316,6 @@
 	},
 
 
-
-
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -338,11 +331,6 @@
 		"__number"				: 18,
 		"__level"				: 2
 	},
-
-
-
-
-
 
 	
 	{
@@ -362,9 +350,6 @@
 	},
 
 
-
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -382,10 +367,6 @@
 	},
 
 
-
-
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -401,10 +382,6 @@
 		"__number"				: 21,
 		"__level"				: 2
 	},
-
-
-
-
 
 	
 	{
@@ -424,12 +401,6 @@
 	},
 
 
-
-
-
-
-
-	
 	{
 		"values"	: {
 						"player"         : "db(footballPlayer)",			
@@ -450,9 +421,6 @@
 	},
 
 
-
-
-	
 	{
 		"values"	: {
 						"player"         : "db(footballPlayer)",			
@@ -473,9 +441,6 @@
 	},
 
 
-
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -495,8 +460,6 @@
 	},
 
 
-
-	
 	{
 		"values"	: {
 						"team"         : "db(footballTeam)",			
@@ -514,10 +477,7 @@
 		"__number"				: 26,
 		"__level"				: 2
 	},
-
-
-
-
+	
 	
 	{
 		"values"	: {
