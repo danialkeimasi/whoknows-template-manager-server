@@ -3,13 +3,13 @@
 		"values"	: {
 						"team" : "db(footballTeam)",
 						"team_same": "db(footballTeam[footballTeam.league == var.team.league])",
-						"leagues": "(list(set(list(footballTeam.league))- set[var.team.league]))",
+						"leagues": "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
 						"CL": "var.leagues",
 						"True_or_False": "rand([True,False])"
 		},
-		"title_true_false"        : ["تيم `var.team.name` در ليگ `var.team.league` فعاليت ميکند1" , "تيم `var.team.name` در ليگ `var.CL.choose(1)` فعاليت ميکند2" , "3" , "42"], 
-		"title_multichoices"      : ["تيم `var.team.name` در کدام ليگ فعاليت ميکند" , "تيم `var.team.name` و `var.team_same.name` در کدام ليگ فعاليت ميکنند؟" ],
-		"title_writing"      	  : ["تيم `var.team.name` در کدام ليگ فعاليت ميکند"],
+		"title_true_false"        : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند2"], 
+		"title_multichoices"      : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
+		"title_writing"      	  : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
 		"answer_multichoices"	  : ["var.team.league"],
 		"answer_writing"		  : ["var.team.league"],
 		"answer_true_false"       : ["var.True_or_False"],
