@@ -37,3 +37,4 @@ logger = logging.getLogger('TemplateEngine')
 
 if CONFIG.use_mongo:
     mongo = MongoClient('mongodb://localhost:27017')
+
