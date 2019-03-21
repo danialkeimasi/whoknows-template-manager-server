@@ -178,7 +178,7 @@ def find_tags(template, question={}):
     return founded_tags
     
 
-def parse(template , question , var, QT):
+def parse(template , question , var, QT, NOC):
     problems = []
     for section in ['__usage' , '__number' , '__level']:
         setattr(var, section, template[section])
@@ -515,7 +515,6 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         'SCORE'		   : SCORE
     }
 
-    globals()['NOC'] = NOC
     
     problems += load_used_datasets(template)
     problems += check_template(template, QT) + check_global_constants(question)
@@ -523,7 +522,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     var = DataHelper()
     
     try:
-        question = parse(template , question , var , QT)
+        question = parse(template , question , var , QT, NOC)
     except NoTitle as error:
         logging.info(error)
 
