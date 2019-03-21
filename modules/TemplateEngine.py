@@ -272,18 +272,19 @@ def score_compare(answer, question, QT):
     '''
     Return if answer is correct or not
     '''
-    #answer = question['answer']
-
+    
     accept_rate = 70 if QT == 'writing' else 100
     ans = question['answer']
 
-    sim = similar(answer, ans)*100
+    sim = similar(answer, ans) * 100
+
     print(f'similarity= {sim}, accept_rate = {accept_rate}')
-    
     return similar(answer, ans)*100 >= accept_rate
 
 
 def similar(a,b):
+    if not isinstance(a, str): a = str(a)
+    if not isinstance(b, str): b = str(b)
     return SequenceMatcher(None, a, b).ratio()
 
 
