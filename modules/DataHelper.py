@@ -1,5 +1,5 @@
 import random
-from modules.tools import choose
+from tools import choose
 
 class DataHelper():
 	'''
