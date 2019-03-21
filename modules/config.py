@@ -10,11 +10,11 @@ class CONFIG:
     """
     
     debug = not True
-    project_dir = 'D:/Programming/Python/whoKnows'
-    templates_dir = f'{project_dir}/guessit-question-manager/template_engine/templates'
-    questions_dir = f'{project_dir}/guessit-question-manager/template_engine'
-    result_dir = f'{project_dir}/guessit-question-manager/template_engine/result'
-    dataset_dir = f'{project_dir}/datasets'
+    project_dir = 'D:/Programming/Python/whoKnows/guessit-question-manager'
+    templates_dir = f'{project_dir}/modules/templates'
+    questions_dir = f'{project_dir}/modules'
+    result_dir = f'{project_dir}/template_engine/result'
+    dataset_dir = f'{project_dir}/../datasets'
     language = 'fa'
     use_mongo = False
 
