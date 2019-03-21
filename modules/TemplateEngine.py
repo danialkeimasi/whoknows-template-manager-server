@@ -23,8 +23,6 @@ from config import *
 from argParse import arg_parse
 
 
-
-
 def find_format(data):
     '''
     Finds the format of given data, if it's a link then returns link's format else text
@@ -270,27 +268,27 @@ def create_question(tags, question_count, subtitle_types=['audio', 'video', 'tex
     return questions
 
 
-
-
 def score_compare(answer, question, QT):
     '''
     Return if answer is correct or not
     '''
     #answer = question['answer']
+
     accept_rate = 70 if QT == 'writing' else 100
     ans = question['answer']
-    if question['answer'] and QT == "true_false":
-        ans = "True"
-    elif QT == "true_false":
-        ans = "False"
-    print("similaaaaaaaary= " , similar(answer, ans)*100 , "accept_rate =   " , accept_rate)
-    if (similar(answer, ans)*100 >= accept_rate ):
-        return 1
-    else:
-        return 0
+
+    if QT == 'true_false':
+        ans = question['answer']
+
+    sim = similar(answer, ans)*100
+    print(f'similarity= {sim}, accept_rate = {accept_rate}')
+    
+    return similar(answer, ans)*100 >= accept_rate
+
 
 def similar(a,b):
     return SequenceMatcher(None, a, b).ratio()
+
 
 def load_used_datasets(template):
     list_ = used_datasets(template)
@@ -341,24 +339,18 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         'SCORE'		   : SCORE
     }
 
-    
     problems += load_used_datasets(template)
-    problems += check_template(template, QT) + check_global_constants(question)
-    
+    problems += check_template(template, QT) + check_global_constants(question)    
     var = DataHelper()
     
     try:
         question = parse(template , question , var , QT, NOC)
+    
     except NoTitle as error:
         logging.info(error)
-
-
-
         question['active'] = False
         question['problems'] = problems
         return question
-
-
 
     question['answer_type'] = find_format(question['answer'])
     question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
@@ -386,8 +378,6 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
         elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
     
-
-
     question['problems'] = problems
     return question
 
