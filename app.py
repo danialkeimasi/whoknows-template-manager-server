@@ -3,7 +3,12 @@ import json
 from pprint import pprint
 
 from modules.TemplateEngine import create_question
+from modules.argParse import arg_parse
 # from template_engine.TemplateEngine import TemplateEngine
+
+
+
+
 
 app = Flask(__name__)
 
@@ -98,4 +103,5 @@ def check_answer():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port='3001')
+    if not arg_parse():
+        app.run(debug=True, host='0.0.0.0', port='3001')
