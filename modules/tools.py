@@ -2,8 +2,8 @@ import random
 import glob
 import json
 import re 
-from exceptions import *
-from config import logger
+from modules.exceptions import *
+from modules.config import logger
 
 def rand(needList, count=0, exceptions=[]):
     '''

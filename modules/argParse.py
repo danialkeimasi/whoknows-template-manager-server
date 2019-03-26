@@ -1,7 +1,7 @@
 import json
 import argparse
-from config import logger
-from tools import project_checkup, get_templates_list, test_templates
+from modules.config import logger
+from modules.tools import project_checkup, get_templates_list, test_templates
 
 
 def arg_parse():
