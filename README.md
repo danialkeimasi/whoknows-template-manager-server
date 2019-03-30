@@ -28,7 +28,7 @@ for a big question game.
 ]
 ```
 
-# Cheat sheat
+# Cheat sheet
 you can make question templates with following cheat sheet
 
 ## Load
