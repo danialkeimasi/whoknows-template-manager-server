@@ -6,12 +6,12 @@ for a big question game.
 ```
 [
   {
-  "values"	: {
-    "team"          : "db(footballTeam)",
-    "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
-    "leagues"       : "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
-    "CL"            : "var.leagues",
-    "True_or_False" : "rand([True,False])"
+    "values"	: {
+      "team"          : "db(footballTeam)",
+      "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
+      "leagues"       : "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
+      "CL"            : "var.leagues",
+      "True_or_False" : "rand([True,False])"
     },
 
     "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند2"], 
