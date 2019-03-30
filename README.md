@@ -16,4 +16,4 @@ DataHelper( list( set(loaded2.property) - set(loaded1.propery) ) ) | subtract tw
 ## choosing
 Command | Description
 ------- | -------
-var.loaded_dataset.choose( #number_of_elements ).property | select #number of duc from loaded dataset and get a list of properties
+var.loaded_dataset.choose( number_of_elements ).property | select number of duc from loaded dataset and get a list of properties
