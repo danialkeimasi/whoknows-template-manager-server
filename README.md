@@ -1,6 +1,8 @@
 # Guessit Question Manager
 generates questions by the given data and templates.  
 for a big question game.
+  
+  
 
 # Question template example
 ```
@@ -14,7 +16,7 @@ for a big question game.
       "True_or_False" : "rand( [True,False] )"
     },
 
-    "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند1" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند2"], 
+    "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند"], 
     "title_multichoices"    : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
     "title_writing"         : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
     "answer_multichoices"   : ["var.team.league"],
