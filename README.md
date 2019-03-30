@@ -3,7 +3,7 @@ generates questions by the given data and templates.
 for a big question game.
 
 # Question template example
-`
+```
 [
     {
 		"values"	: {
@@ -25,7 +25,7 @@ for a big question game.
 		"__level"                 : 1
 	},
 ]
-`
+```
 
 # Cheat sheat
 you can make question templates with following cheat sheet
