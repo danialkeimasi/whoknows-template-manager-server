@@ -1,5 +1,5 @@
 # Guessit Question Manager
-generates questions by the given data and templates.
+generates questions by the given data and templates.  
 for a big question game.
 
 # Question template example
