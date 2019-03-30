@@ -1,8 +1,6 @@
 # Guessit Question Manager
 generates questions by the given data and templates.  
 for a big question game.
-  
-  
 
 # Question template example
 ```
@@ -35,6 +33,7 @@ you can make question templates with following cheat sheet
 
 ## Load
 this commands must use in "values" part of templates
+
 Command | Description
 ------- | -------
 db( dataset_name ) | load a dataset by it's name
