@@ -5,7 +5,7 @@ for a big question game.
 # Cheat sheat
 you can make question templates with following cheat sheet
 
-## load
+## Load
 Command | Description
 ------- | -------
 db( dataset_name ) | load a dataset by it's name
@@ -13,7 +13,7 @@ db( loaded_dataset[ condition ] ) | filter a loaded dataset and get subdata from
 rand( dataset , number_of_elements ) | choose randomly from a dataset (or list) of data by numbers that we want
 DataHelper( list( set(loaded2.property) - set(loaded1.propery) ) ) | subtract two dataset: loaded2 data that not have loaded1.property in it
 
-## choosing
+## Choosing
 Command | Description
 ------- | -------
 var.loaded_dataset.choose( number_of_elements ).property | select number of duc from loaded dataset and get a list of properties
