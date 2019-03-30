@@ -24,7 +24,7 @@ for a big question game.
     "__usage"               : ["contest"],
     "__number"              : 1,
     "__level"               : 1
-  },
+  }
 ]
 ```
 
