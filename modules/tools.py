@@ -147,7 +147,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
         logger.info(f"Testing template number : {template['__number']}")
 
         for _ in range(try_count):	
-            question, problems = template_engine(template, debug=debug)
+            question = template_engine(template, debug=debug)
             questions += [question]
             if not problems:
                 logger.info(f'SUCCESSFULL')

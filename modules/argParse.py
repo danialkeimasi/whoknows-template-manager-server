@@ -1,3 +1,4 @@
+import os
 import json
 import argparse
 from modules.config import logger
@@ -17,8 +18,9 @@ def arg_parse():
 
     parser.add_argument(
         '-t', '--test', '--test_templates',
-        dest='test', default=False,
-        type=int, nargs='*',
+        dest='test', default=None,
+        type=str,
+        
         help='test the templates and make questions',
     )
 
@@ -37,23 +39,24 @@ def arg_parse():
     )
 
     parser.add_argument(
-        '-s', '-source',
+        '-s', '--source',
         dest='source', default=False,
         type=str, nargs='+',
         help='sources of templates to test',
     )
 
     parser.add_argument(
-        '-co', '-count',
+        '-co', '--count',
         dest='count', default=5,
         type=int,
         help='number of test for each template',
     )
 
     parser.add_argument(
-        '-te', '-templateEngine',
-        dest='templateEngine', default=False,
-        action='store_true',
+        '-te', '--templateEngine',
+        dest='templateEngine', default=None,
+        type=str,
+        
         help='run the templateEngine function',
     )
 
@@ -64,23 +67,20 @@ def arg_parse():
         logger.critical(json.dumps(project_checkup(), indent=4))
         return True
     
-    if args.test:
-        chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
-        test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
-        logger.critical(json.dumps(test_result, indent=4))
-        return True
-    
-    if args.templateEngine:
-        qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
-
-        print('\n---\n@input_Template:')
-        pprint(qaleb)
-
-        print('\n---\n@funcRun:')
+    if os.path.isfile(args.test):
+        qaleb = [x for x in json.load(open(args.test))if x['__number']==1][0]
 
         types = ['multichoices', 'writing', 'true_false', 'selective']
         
         out = [template_engine(qaleb, QT=typ) for typ in types]
+        
+
+        # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
+        # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
+        # logger.critical(json.dumps(test_result, indent=4))
+        return True
+    
+    if os.path.isfile(args.templateEngine):
         # out = template_engine(qaleb, QT=types[0])
         # out = create_question('footballTeam', 1)
         
