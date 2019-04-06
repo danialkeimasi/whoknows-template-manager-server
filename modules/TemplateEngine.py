@@ -259,13 +259,31 @@ def create_question(tags, question_count, subtitle_types=['audio', 'video', 'tex
         specify valid subtitle_type s for wanted questions
     '''
 
-
     templates = functools.reduce(lambda a, b: a + b, map(lambda f: json.load(open(f)), glob.glob(f'{CONFIG.templates_dir}/*.json')))
     
-    questions = [template_engine(templates[0]) for i in range(question_count)]
-    
-    return questions
+    selected_templates = [templ for templ in templates if any([tag in {'league'} for tag in tags])]
 
+    selected_templates = choose(selected_templates, question_count)
+
+    questions = [template_engine(templ) for templ in selected_templates]
+    
+    return {'kir':20}
+
+
+
+# -----------------------------------
+    qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json'))if x['__number']==1][0]
+
+    print('\n---\n@input_Template:')
+    pprint(qaleb)
+
+    print('\n---\n@funcRun:')
+
+    types = ['multichoices']
+    
+    out = [template_engine(qaleb, QT=typ) for typ in types]
+
+    return out
 
 def score_compare(answer, question, QT):
     '''
