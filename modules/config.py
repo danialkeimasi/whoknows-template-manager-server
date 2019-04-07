@@ -26,7 +26,7 @@ logging.basicConfig(
     format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
     # datefmt='%H:%M:%S',
     datefmt='%H:%M',
-    level=logging.NOTSET,
+    level=logging.CRITICAL,
     handlers=[
         #logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),

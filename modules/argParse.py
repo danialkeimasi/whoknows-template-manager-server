@@ -5,7 +5,7 @@ from modules.config import logger
 from modules.tools import project_checkup, get_templates_list, test_templates
 from modules.TemplateEngine import template_engine
 from modules.config import CONFIG
-
+import logging
 from pprint import pprint
 
 
@@ -60,33 +60,46 @@ def arg_parse():
         help='run the templateEngine function',
     )
 
+    
+    parser.add_argument(
+        '-log', '--logger',
+        dest='logmode', default=False,
+        action='store_true',
+        help='get the log mode',
+    )
+
+    
+
     args = parser.parse_args()
     
+    if args.logmode:
+        logger.level = logging.DEBUG
+        
+
     if args.checkup:
         logger.critical('Checkup results : ')
         logger.critical(json.dumps(project_checkup(), indent=4))
         return True
     
-    if os.path.isfile(args.test):
-        qaleb = [x for x in json.load(open(args.test))if x['__number']==1][0]
+    if args.test and os.path.isfile(args.test):
+        template = json.load(open(args.test))
+        
+        if isinstance(template, list):
+            template = template[0]
 
         types = ['multichoices', 'writing', 'true_false', 'selective']
         
-        out = [template_engine(qaleb, QT=typ) for typ in types]
-        
+        for typ in types:
+            print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-\n')
+            question = template_engine(template, QT=typ)
+            print('\n')
+            pprint(question)
+            print('\n')
+
 
         # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
         # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
         # logger.critical(json.dumps(test_result, indent=4))
         return True
     
-    if os.path.isfile(args.templateEngine):
-        # out = template_engine(qaleb, QT=types[0])
-        # out = create_question('footballTeam', 1)
-        
-        print('\n---\n@output:')
-        pprint(out)
-        return True
-    
-    else:
-        return False
+    return False

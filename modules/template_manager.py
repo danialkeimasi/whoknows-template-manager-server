@@ -37,7 +37,7 @@ def addTemplate(f):
     '''
 
     templates = json.load(open(f'{CONFIG.templates_dir}/template.json'))    
-    last_number = max([template['__number'] for template in templates])
+    last_number = max([template['__number'] for template in templates] + [0])
     
     newTemplate = json.load(open(f))
 
