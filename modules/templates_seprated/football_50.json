@@ -1,0 +1,28 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام تیم در لیگ `var.team.league` گل زده ی بیشتری نسبت به سایر گزینه ها دارد؟"
+    ],
+    "title_true_false": [
+        "تعداد گل های زده ی تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name` بیشتر است.",
+        "تعداد گل های زده ی تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name` بیشتر است."
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 50,
+    "__level": 1
+}

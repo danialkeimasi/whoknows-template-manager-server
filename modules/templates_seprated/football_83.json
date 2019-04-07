@@ -1,0 +1,34 @@
+{
+    "values": {
+        "game": "db(footballGame)",
+        "games": "db(footballGame[footballGame.score1 != var.game.score1], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "در بازی `var.game.name` تیم `var.game.home` چه تعداد گل به ثمر رساند؟"
+    ],
+    "title_writing": [
+        "در بازی `var.game.name` تیم `var.game.home` چه تعداد گل به ثمر رساند؟"
+    ],
+    "title_true_false": [
+        "در بازی `var.game.name` تیم `var.game.home` توانست `var.game.score1` بار دروازه ی حریف را باز کند.",
+        "در بازی `var.game.name` تیم `var.game.home` توانست `var.games.choose(1).score1` بار دروازه ی حریف را باز کند."
+    ],
+    "answer_multichoices": [
+        "var.game.score1"
+    ],
+    "answer_writing": [
+        "var.game.score1"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.games.score1"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 83,
+    "__level": 2
+}

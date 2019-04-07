@@ -1,0 +1,21 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام تیم در لیگ `var.team.league` گل زده ی کمتری نسبت به سایر گزینه ها دارد؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 51,
+    "__level": 1
+}

@@ -1,0 +1,35 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+        "teams_same": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+        "ans_cnt": "rand(range(1,4))"
+    },
+    "title_selective": [
+        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
+        "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
+        "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"
+    ],
+    "title_multichoices": [
+        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `var.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_selective": [
+        "var.teams_same.choose(NOC).name"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "choices_selective": [
+        "var.teams.choose(4-ans_cnt).name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 2,
+    "__level": 1
+}

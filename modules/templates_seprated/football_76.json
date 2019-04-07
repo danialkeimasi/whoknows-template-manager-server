@@ -1,0 +1,21 @@
+{
+    "values": {
+        "game": "db(footballGame)",
+        "games": "db(footballGame[footballGame.ref != var.game.ref], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "`var.game.ref` داوری کدام بازی را برعهده داشته است؟"
+    ],
+    "answer_multichoices": [
+        "var.game.name"
+    ],
+    "choices_multichoices": [
+        "var.games.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 76,
+    "__level": 2
+}

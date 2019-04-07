@@ -1,0 +1,28 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "لباس دوم تیم `var.team.name` کدام است؟ "
+    ],
+    "title_true_false": [
+        "لباس دوم تیم تیم 'var.team.name' 'var.team.awaykit' میباشد.",
+        "لباس دوم تیم تیم 'var.team.name' 'var.teams.choose(1).awaykit' میباشد. "
+    ],
+    "answer_multichoices": [
+        "var.team.awaykit"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teams.choose(NOC).awaykit"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 14,
+    "__level": 2
+}

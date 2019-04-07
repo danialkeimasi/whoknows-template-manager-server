@@ -1,0 +1,34 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.release != var.game.release], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "بند آزادسازی `var.player.name` چقدر است؟"
+    ],
+    "title_writing": [
+        "بند آزادسازی `var.player.name` چقدر است؟"
+    ],
+    "title_true_false": [
+        "بند آزادسازی `var.player.name` برابر `var.player.release` میباشد.",
+        "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.player.release"
+    ],
+    "answer_writing": [
+        "var.player.release"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.players.release"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 85,
+    "__level": 2
+}

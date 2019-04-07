@@ -1,0 +1,26 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.year != var.team.year] ,NOC)"
+    },
+    "title_multichoices": [
+        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+    ],
+    "title_writing": [
+        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_writing": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 63,
+    "__level": 1
+}

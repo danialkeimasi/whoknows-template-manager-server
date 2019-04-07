@@ -1,0 +1,34 @@
+{
+    "values": {
+        "game": "db(footballGame)",
+        "games": "db(footballGame[footballGame.ref != var.game.ref], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "در بازی `var.game.name` داور وسط بازی چه کسی بود؟"
+    ],
+    "title_writing": [
+        "در بازی `var.game.name` داور وسط بازی چه کسی بود؟"
+    ],
+    "title_true_false": [
+        "داوری بازی `var.team.name` بر عهده ی `var.game.ref` بود.",
+        "داوری بازی `var.team.name` بر عهده ی `var.games.choose(1).ref` بود."
+    ],
+    "answer_multichoices": [
+        "var.game.ref"
+    ],
+    "answer_writing": [
+        "var.game.ref"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.games.ref"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 75,
+    "__level": 2
+}

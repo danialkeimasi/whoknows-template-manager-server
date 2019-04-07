@@ -1,0 +1,34 @@
+{
+    "values": {
+        "game": "db(footballGame)",
+        "games": "db(footballGame[footballGame.scores != var.game.scores], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "نتیجه بازی `var.game.name` کدام گزینه است؟"
+    ],
+    "title_writing": [
+        "بازی `var.game.name` با چه نتیجه ای به اتمام رسید؟"
+    ],
+    "title_true_false": [
+        "بازی `var.game.name` با نتیجه ی `var.game.scores` به اتمام رسید.",
+        "بازی `var.game.name` با نتیجه ی `var.games.choose(1).scores` به اتمام رسید."
+    ],
+    "answer_multichoices": [
+        "var.game.stadium"
+    ],
+    "answer_writing": [
+        "var.game.stadium"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.games.stadium"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 79,
+    "__level": 2
+}

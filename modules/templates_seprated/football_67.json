@@ -1,0 +1,21 @@
+{
+    "values": {
+        "stadium": "db(footballStadium)",
+        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"
+    ],
+    "answer_multichoices": [
+        "var.stadium.name"
+    ],
+    "choices_multichoices": [
+        "var.stadiums.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 67,
+    "__level": 2
+}

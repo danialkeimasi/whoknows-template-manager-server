@@ -1,0 +1,35 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "team1": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+        "stadiums": "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "ورزشگاه خانگی تیم `var.team.name` کدام است؟ "
+    ],
+    "title_writing": [
+        "نام ورزشگاه خانگی `var.team.name` چیست؟"
+    ],
+    "title_true_false": [
+        "ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
+        "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.team.stadium"
+    ],
+    "answer_writing": [
+        "var.team.stadium"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.stadiums.choose(NOC)"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 11,
+    "__level": 2
+}

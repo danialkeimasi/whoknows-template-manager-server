@@ -1,0 +1,28 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام تیم رتبه ی بهتری دارد؟"
+    ],
+    "title_true_false": [
+        "تیم `var.team.name` رتبه ی بهتری نسبت به تیم `var.teams.choose(1).name` در لیگ `var.team.league` دارد.",
+        "تیم `var.teams.choose(1).name` رتبه ی بهتری نسبت به تیم `var.team.name` در لیگ `var.team.league` دارد."
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teames.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 46,
+    "__level": 1
+}

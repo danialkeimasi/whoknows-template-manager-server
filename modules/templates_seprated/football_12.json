@@ -1,0 +1,28 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "team1": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+        "stadiums": "(list(set(list(footballTeam.stadium))- set[var.team.stadium]))"
+    },
+    "title_multichoices": [
+        "ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"
+    ],
+    "title_writing": [
+        "ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"
+    ],
+    "answer_multichoices": [
+        "var.team.country"
+    ],
+    "answer_writing": [
+        "var.team.country"
+    ],
+    "choices_multichoices": [
+        "var.teams.choose(NOC).name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 12,
+    "__level": 2
+}

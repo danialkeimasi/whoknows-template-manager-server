@@ -1,0 +1,25 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.team == var.player.team] , NOC)",
+        "True_or_False": "rand([True,False])",
+        "height": "var.player.height"
+    },
+    "title_multichoices": [
+        "کدام گزینه چهره ی `var.player.name` میباشد؟"
+    ],
+    "title_true_false": [
+        "؟؟؟؟"
+    ],
+    "answer_multichoices": [
+        "var.player.pic"
+    ],
+    "choices_multichoices": [
+        "var.players.pic"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 26,
+    "__level": 2
+}

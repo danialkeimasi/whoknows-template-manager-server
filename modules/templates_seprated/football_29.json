@@ -1,0 +1,34 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+        "team1": "var.teams.choose(1).name",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league)] ,NOC)",
+        "team2": "var.teams_same.choose(1).name",
+        "leagues": "(list(set(list(footballTeam.league))- set[var.team.league,var.team1.league] ))",
+        "another_league": "var.leagues.choose(1)"
+    },
+    "title_selective": [
+        "تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید"
+    ],
+    "title_multichoices": [
+        "کدام تیم در لیگ متفاوتی نسبت به سایر گزینه ها فعالیت میکند؟"
+    ],
+    "answer_selective": [
+        "var.teams.choose(NOC).logo"
+    ],
+    "answer_multichoices": [
+        "var.team.logo"
+    ],
+    "choices_selective": [
+        "var.team.logo"
+    ],
+    "choices_multichoices": [
+        "var.teames.choose(NOC).logo"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 29,
+    "__level": 1
+}

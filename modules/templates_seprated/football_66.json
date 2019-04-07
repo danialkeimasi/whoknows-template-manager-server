@@ -1,0 +1,34 @@
+{
+    "values": {
+        "stadium": "db(footballStadium)",
+        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"
+    ],
+    "title_writing": [
+        "ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"
+    ],
+    "title_true_false": [
+        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity?` میباشد.",
+        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.stadium.capacity"
+    ],
+    "answer_writing": [
+        "var.stadium.capacity"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.stadiums.capacity"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 66,
+    "__level": 2
+}

@@ -1,0 +1,30 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) - set[var.team] ] ,NOC)",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)"
+    },
+    "title_multichoices": [
+        "کدام مربی در لیگ `var.team.league` مربیگری میکند؟"
+    ],
+    "title_selective": [
+        "کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"
+    ],
+    "answer_multichoices": [
+        "var.team.coach"
+    ],
+    "answer_selective": [
+        "var.teams_same.choose(3).coach"
+    ],
+    "choices_multichoices": [
+        "var.teams.choose(NOC).coach"
+    ],
+    "choices_selective": [
+        "var.teams.choose(1).coach"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 7,
+    "__level": 2
+}

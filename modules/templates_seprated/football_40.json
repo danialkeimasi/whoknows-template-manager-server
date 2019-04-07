@@ -1,0 +1,34 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"
+    ],
+    "title_writing": [
+        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` چند است؟"
+    ],
+    "title_true_false": [
+        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.win` میباشد.",
+        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).win` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.team.win"
+    ],
+    "answer_writing": [
+        "var.team.win"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teames.win"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 40,
+    "__level": 1
+}

@@ -1,0 +1,20 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)"
+    },
+    "title_multichoices": [
+        "`var.player.name` در چه سالی بدنیا آمده است؟"
+    ],
+    "answer_multichoices": [
+        "var.player.year"
+    ],
+    "choices_multichoices": [
+        "var.players.year"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 65,
+    "__level": 2
+}

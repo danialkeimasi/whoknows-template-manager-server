@@ -1,0 +1,27 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"
+    ],
+    "title_writing": [
+        "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"
+    ],
+    "answer_multichoices": [
+        "var.team.goalzade"
+    ],
+    "answer_writing": [
+        "var.team.goalzade"
+    ],
+    "choices_multichoices": [
+        "var.teames.goalzade"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 35,
+    "__level": 1
+}

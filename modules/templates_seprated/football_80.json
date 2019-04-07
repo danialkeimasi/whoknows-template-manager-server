@@ -1,0 +1,21 @@
+{
+    "values": {
+        "game": "db(footballGame)",
+        "games": "db(footballGame[footballGame.scores != var.game.scores], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام بازی با نتیجه ی `var.game.scores` به اتمام رسید؟"
+    ],
+    "answer_multichoices": [
+        "var.game.name"
+    ],
+    "choices_multichoices": [
+        "var.games.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 80,
+    "__level": 2
+}

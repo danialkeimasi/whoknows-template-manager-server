@@ -1,0 +1,27 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام بازیکن در سال `var.player.year` متولد شده است؟"
+    ],
+    "title_true_false": [
+        "`var.player.name` در سال `var.player.year` متولد شده است."
+    ],
+    "answer_multichoices": [
+        "var.player.name"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.players.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 64,
+    "__level": 2
+}

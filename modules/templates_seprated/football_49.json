@@ -1,0 +1,20 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+    },
+    "title_multichoices": [
+        "کدام تیم در جدول لیگ `var.team.league` امتیاز کمتری دارد؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teames.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 49,
+    "__level": 1
+}

@@ -1,0 +1,34 @@
+{
+    "values": {
+        "stadium": "db(footballStadium)",
+        "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"
+    ],
+    "title_writing": [
+        "ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"
+    ],
+    "title_true_false": [
+        "ورزشگاه `var.stadium.name` در سال `var.stadium.year` تاسیس شده است.",
+        "ورزشگاه `var.stadium.name` در سال `var.stadiums.choose(1).year` تاسیس شده است."
+    ],
+    "answer_multichoices": [
+        "var.stadium.year"
+    ],
+    "answer_writing": [
+        "var.stadium.year"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.stadiums.year"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 68,
+    "__level": 2
+}

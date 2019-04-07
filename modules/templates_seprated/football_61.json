@@ -1,0 +1,20 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+    },
+    "title_multichoices": [
+        "کدام تیم در لیگ `var.team.league` تعداد مساوی کمتری نسبت به سایر گزینه ها دارد؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 61,
+    "__level": 1
+}

@@ -1,0 +1,34 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.year != var.team.year] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام تیم در سال `var.team.year` تاسیس شده است؟"
+    ],
+    "title_writing": [
+        "چه تیمی در سال `var.team.year` تاسیس شده است؟"
+    ],
+    "title_true_false": [
+        "تیم `var.team.name` در سال `var.team.year` تاسیس شده است.",
+        "تیم `var.team.name` در سال `var.teams.choose(1).year` تاسیس شده است."
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_writing": [
+        "var.team.name"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 62,
+    "__level": 1
+}

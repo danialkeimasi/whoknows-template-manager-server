@@ -1,0 +1,20 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+    },
+    "title_multichoices": [
+        "کدام تیم در لیگ `var.team.league` تفاضل گل کمتری نسبت به سایر گزینه ها دارد؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teams.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 55,
+    "__level": 1
+}

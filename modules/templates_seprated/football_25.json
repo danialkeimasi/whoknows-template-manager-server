@@ -1,0 +1,31 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "True_or_False": "rand([True,False])",
+        "height": "var.player.height"
+    },
+    "title_multichoices": [
+        "قد `var.player.name` چند سانتی متر است؟"
+    ],
+    "title_writing": [
+        "قد `var.player.name` چند سانتی متر است؟"
+    ],
+    "title_true_false": [
+        "قد `var.player.name` برابر `var.player.height` است.",
+        "قد `var.player.name` برابر `wrong_guess(var.height , 1)` است."
+    ],
+    "answer_multichoices": [
+        "var.height"
+    ],
+    "answer_writing": [
+        "var.height"
+    ],
+    "choices_multichoices": [
+        "wrong_guess(var.height , NOC)"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 25,
+    "__level": 2
+}

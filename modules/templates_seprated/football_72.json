@@ -1,0 +1,34 @@
+{
+    "values": {
+        "coach": "db(footballCoach)",
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "ملیت `var.coach.name` کدام گزینه است؟"
+    ],
+    "title_writing": [
+        "`var.coach.name` اهل چه کشوری است؟"
+    ],
+    "title_true_false": [
+        "`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
+        "`var.coach.name` اهل کشور `var.coachs.choose` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.coach.nation"
+    ],
+    "answer_writing": [
+        "var.coach.nation"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.coachs.nation"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 72,
+    "__level": 2
+}

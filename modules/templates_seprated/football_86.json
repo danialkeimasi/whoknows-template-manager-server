@@ -1,0 +1,21 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.release != var.game.release], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "بند آزادسازی کدام بازیکن برابر `var.player.release` میباشد؟"
+    ],
+    "answer_multichoices": [
+        "var.player.name"
+    ],
+    "choices_multichoices": [
+        "var.players.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 86,
+    "__level": 2
+}

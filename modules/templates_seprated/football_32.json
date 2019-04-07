@@ -1,0 +1,33 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"
+    ],
+    "title_writing": [
+        "تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"
+    ],
+    "title_true_false": [
+        "تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد."
+    ],
+    "answer_multichoices": [
+        "var.team.point"
+    ],
+    "answer_writing": [
+        "var.team.point"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teames.point"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 32,
+    "__level": 1
+}

@@ -1,0 +1,28 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "لباس سوم تیم `var.team.name` کدام است؟ "
+    ],
+    "title_true_false": [
+        "لباس سوم تیم تیم 'var.team.name' 'var.team.homekit' میباشد.",
+        "لباس سوم تیم تیم 'var.team.name' 'var.teams.choose(1).thirdkit' میباشد. "
+    ],
+    "answer_multichoices": [
+        "var.team.thirdkit"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.teams.choose(NOC).thirdkit"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 15,
+    "__level": 2
+}

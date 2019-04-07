@@ -1,0 +1,26 @@
+{
+    "values": {
+        "team": "db(footballTable)",
+        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+    },
+    "title_multichoices": [
+        "کدام تیم تعداد گلهای خورده اش در لیگ `var.team.league` برابر `var.team.goalzade` میباشد؟"
+    ],
+    "title_writing": [
+        "چه تیمی تعداد گلهای خورده اش در لیگ `var.team.league` برابر `var.team.goalzade` میباشد؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_writing": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teames.name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 37,
+    "__level": 1
+}

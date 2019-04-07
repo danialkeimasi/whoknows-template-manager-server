@@ -1,0 +1,34 @@
+{
+    "values": {
+        "stadium": "db(footballStadium)",
+        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"
+    ],
+    "title_writing": [
+        "ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"
+    ],
+    "title_true_false": [
+        "ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
+        "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."
+    ],
+    "answer_multichoices": [
+        "var.stadium.city"
+    ],
+    "answer_writing": [
+        "var.stadium.city"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.stadiums.city"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 70,
+    "__level": 2
+}

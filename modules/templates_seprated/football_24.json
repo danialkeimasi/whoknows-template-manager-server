@@ -1,0 +1,27 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.team == var.player.team] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟"
+    ],
+    "title_writing": [
+        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟"
+    ],
+    "answer_multichoices": [
+        "var.player.name"
+    ],
+    "answer_writing": [
+        "var.player.name"
+    ],
+    "choices_multichoices": [
+        "var.players.choose(NOC).name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 24,
+    "__level": 2
+}

@@ -1,0 +1,39 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
+        "teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+        "leagues": "(list(set(list(footballTeam.league))- set[var.team.league , var.team1.league] ))",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "`var.team.coach` در کدام لیگ مربیگری میکند؟"
+    ],
+    "title_writing": [
+        "`var.team.coach` در چه لیگی مربیگری میکند؟"
+    ],
+    "title_true_false": [
+        "`var.team.coach` در لیگ `var.team.league` مربیگری میکند.",
+        "`var.team.coach` در لیگ `choose(var.league.name)` مربیگری میکند.",
+        "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند.",
+        "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `choose(var.league.name ,NOC)` مربیگری میکنند."
+    ],
+    "answer_multichoices": [
+        "var.team.league"
+    ],
+    "answer_writing": [
+        "var.team.league",
+        "var.team.country"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.leagues.choose(1).name"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 6,
+    "__level": 2
+}

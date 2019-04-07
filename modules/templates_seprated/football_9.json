@@ -1,0 +1,35 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "team1": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
+        "players": "(list(set(list(footballTeam.palayers))- set[var.team.captain]))",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کاپیتان تیم `var.team.name` کدام بازیکن است؟"
+    ],
+    "title_writing": [
+        "کاپیتان تیم `var.team.name` چه کسی است؟"
+    ],
+    "title_true_false": [
+        "کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
+        "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.team.captain"
+    ],
+    "answer_writing": [
+        "var.team.captain"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "choices_multichoices": [
+        "var.players.choose(NOC)"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 9,
+    "__level": 2
+}

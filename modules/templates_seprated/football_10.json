@@ -1,0 +1,45 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
+        "teams": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+        "leagues": "(list(set(list(footballTeam.league))- set[var.team.league]))",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "`var.team.name` در کدام کشور فعالیت میکند؟"
+    ],
+    "title_writing": [
+        "`var.team.name` در چه کشوری فعالیت میکند؟"
+    ],
+    "title_true_false": [
+        "`var.team.name` در کشور `var.team.country` فعالیت میکند؟.",
+        "`var.team.name` در کشور `var.team1.country` فعالیت میکند."
+    ],
+    "title_selective": [
+        "کدام تیم ها در کشور `var.team.country` فعالیت میکنند؟"
+    ],
+    "answer_multichoices": [
+        "var.team.country"
+    ],
+    "answer_writing": [
+        "var.team.country"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
+    ],
+    "answer_selective": [
+        "var.teams.choose(3).name"
+    ],
+    "choices_multichoices": [
+        "var.leagues.choose(NOC).country"
+    ],
+    "choices_selective": [
+        "var.team1.country"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 10,
+    "__level": 2
+}

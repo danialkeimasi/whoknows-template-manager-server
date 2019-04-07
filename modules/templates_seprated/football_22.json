@@ -1,0 +1,27 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium]و أ[ژ)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "این لوگو 'var.team.logo' متعلق به کدام تیم است؟"
+    ],
+    "title_writing": [
+        "این لوگو 'var.team.logo' متعلق به چه تیمی است؟"
+    ],
+    "answer_multichoices": [
+        "var.team.name"
+    ],
+    "answer_writing": [
+        "var.team.name"
+    ],
+    "choices_multichoices": [
+        "var.teams.logo"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 22,
+    "__level": 2
+}
