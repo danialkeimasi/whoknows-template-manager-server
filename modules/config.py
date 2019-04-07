@@ -23,9 +23,10 @@ datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTea
             'country', 'book', 'name', 'word', 'volleyballTeam']  # should be done automatically by searching db_directory
 
 logging.basicConfig(
-    format='### %(asctime)s - %(levelname)-8s : %(message)s \n',
+    datefmt='%y-%b-%d %H:%M:%S',
+    format='%(levelname)8s:[%(asctime)s][%(filename)20s:%(lineno)4s -%(funcName)20s() ]: %(message)s',
+
     # datefmt='%H:%M:%S',
-    datefmt='%H:%M',
     level=logging.CRITICAL,
     handlers=[
         #logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
