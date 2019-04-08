@@ -44,7 +44,7 @@ class DataHelper():
 		'''
 		choose random from a list of DataManagers by len of "num"
 		'''
-		if isinstance(self.exp, list):
+		if isinstance(self.exp, list) and not isinstance (self.exp[0], dict):
 			return choose(self.exp, num)
 		else:
 			return DataHelper(choose(self.pylist, num))

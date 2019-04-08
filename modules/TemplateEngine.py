@@ -112,6 +112,8 @@ def used_datasets(template):
 
     used_datasets = []
     for val in template['values'].values():
+        val = val.replace(' ', '')
+
         if re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val):
             dbname = re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val).group(1)
             logger.info(f'used_datasets()\t\t-----> {dbname}')
@@ -177,7 +179,8 @@ def find_tags(template, question={}):
     return founded_tags
     
 
-def parse(template , question , var, QT, NOC):
+def parse(template, question , var):
+    NOC, QT = question['NOC'], question['QT']
     problems = []
     for section in ['__usage' , '__number' , '__level']:
         setattr(var, section, template[section])
@@ -305,14 +308,13 @@ def similar(a,b):
     return SequenceMatcher(None, a, b).ratio()
 
 
-def load_used_datasets(template):
+def load_template_datasets(template, problems):
     list_ = used_datasets(template)
-    logger.info(f'load_used_datasets()\t-----> {list_}')
+    logger.info(f'{list_}')
     
     for x in list_:
         globals()[x] = load_data(x)
     
-    return []
 
 def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=False, reload_question=False, data_id=[]):
     '''
@@ -337,14 +339,14 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
     data_id : list
         data id's that should be used for reloading question if reload_question is True
     '''
-    
-    if QT == None:
-        QT= rand(['multichoices', 'writing', 'true_false', 'selective'])
 
-    logger.info(f'template_engine()\t-----> QT: {QT}')
+    logger.info('template engine started ...')
+    logger.info(f'question type: {QT}')
+    
     problems = []
+
     question = {
-        'QuestionType' : QT,
+        'QT'           : QT,
         'NOC'		   : NOC,
         'NOS'		   : NOS,
         'active'	   : True,
@@ -354,45 +356,52 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         'SCORE'		   : SCORE
     }
 
-    problems += load_used_datasets(template)
-    problems += check_template(template, QT) + check_global_constants(question)    
+    load_template_datasets(template, problems)
+    
+    check_template(template, question, problems)
+    check_global_constants(question, problems)
+
     var = DataHelper()
     
     try:
-        question = parse(template , question , var , QT, NOC)
+        question = parse(template , question , var)
     
     except NoTitle as error:
+        # TODO: must add some other things that neccesery to create question
         logging.info(error)
-        question['active'] = False
-        question['problems'] = problems
-        return question
+        problems += [str(error)]
 
-    question['answer_type'] = find_format(question['answer'])
-    question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
-    question['tags']  = find_tags(template, question)
-    problems += check_question(question ,QT)
-    
     if problems:
         question['active'] = False
-        question['problems'] = problems
     else:
         question['active'] = True
 
-    logger.info(f'template_engine()\t-----> problems is {problems}')
+
+        # TODO: make function for this codes
+        question['answer_type'] = find_format(question['answer'])
+        question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
+        question['tags']  = find_tags(template, question)
+        problems += check_question(question ,QT)
     
-    ans = 'maret'
-    question['score'] = score_compare(ans , question , QT) 	
-    
-    question['TIME'] += 4 if len(question['title']) > 100 else \
-    3 if len(question['title']) > 80 else  \
-    2 if len(question['title']) > 60 else  \
-    1 if len(question['title']) > 40 else 0	
-    
-    if question['subtitle']:  
-        if find_format(question['subtitle'])   == 'video': question['TIME'] +=4
-        elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
-        elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
-    
+        # ----START
+        # TODO: must define function for answer handling
+
+        ans = 'maret'
+        question['score'] = score_compare(ans , question , QT) 	
+        
+        question['TIME'] += 4 if len(question['title']) > 100 else \
+                            3 if len(question['title']) > 80  else \
+                            2 if len(question['title']) > 60  else \
+                            1 if len(question['title']) > 40  else 0
+        
+        if question['subtitle']:  
+            if find_format(question['subtitle'])   == 'video': question['TIME'] +=4
+            elif find_format(question['subtitle']) == 'audio': question['TIME'] +=4	
+            elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
+        
+        # -----END
+
+    logger.warning(f'at the end of function, problems is {problems}')
     question['problems'] = problems
     return question
 

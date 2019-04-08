@@ -25,8 +25,8 @@ def rand(needList, count=0, exceptions=[]):
     if len(needList) - len(exceptions) < count:
         raise ValueError(f'rand(): error- you choose {count} from {len(needList) - len(exceptions)}')    
     
-    
-    needList = list(set(needList) - set(exceptions))
+    needList = [i for i in needList if i not in exceptions]
+    # needList = list(set(needList) - set(exceptions))
 
     choicesList = random.sample(range(len(needList)), 1 if count == 0 else count)
 

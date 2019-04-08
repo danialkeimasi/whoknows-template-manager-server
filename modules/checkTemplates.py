@@ -1,9 +1,8 @@
-def check_global_constants(question):
+def check_global_constants(question, problems):
 	"""
 	Checks conditional values of a question to be right
+	TODO: Logger must be added
 	"""
-
-	problems = []
 
 	if not 2 <= question['NOC'] <= 6:
 		problems += ['NOC is wrong!... NOC range is between 2 to 6']
@@ -11,11 +10,8 @@ def check_global_constants(question):
 	if not 2 <= question['NOS'] <= 6:
 		problems += ['NOS is wrong!... NOS range is between 2 to 6']
 
-	print(f'check_global_constants()-----> problems is {problems}')
-	return problems
 
-
-def check_template(template, QT):
+def check_template(template, question, problems):
 	"""
 	Checks if a template has all of necessary parts and returns every problem in template if there is any
 
@@ -24,17 +20,16 @@ def check_template(template, QT):
 	template : dict
 		wanted template to be checked
 	"""
+	
 
-	problems = []
-
-	if QT == 'true_false': 
+	if question['QT'] == 'true_false': 
 		if not 'title_true_false' in template:
 			problems += ['titles (t-f) is empty!']
 
 		if not 'answer_true_false' in template:
 			problems += ['answer (t-f) is empty!']
 
-	elif QT == 'multichoices': 
+	elif question['QT'] == 'multichoices': 
 		if not 'title_multichoices' in template:
 			problems += ['titles (mu) is empty!']
 
@@ -45,7 +40,7 @@ def check_template(template, QT):
 			problems += ['choices(mu) is empty!']
 
 
-	elif QT == 'writing': 
+	elif question['QT'] == 'writing': 
 		if not 'title_writing' in template:
 			problems += ['titles (wr) is empty!']
 
@@ -53,7 +48,7 @@ def check_template(template, QT):
 			problems += ['answer (wr) is empty!']
 
 
-	elif QT == 'selective': 
+	elif question['QT'] == 'selective': 
 		if not 'title_selective' in template:
 			problems += ['titles (sel) is empty!']
 

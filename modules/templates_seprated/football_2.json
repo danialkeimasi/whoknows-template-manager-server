@@ -25,7 +25,7 @@
         "var.teams.name"
     ],
     "choices_selective": [
-        "var.teams.choose(4-ans_cnt).name"
+        "var.teams.choose(4 - var.ans_cnt).name"
     ],
     "__usage": [
         "contest"
