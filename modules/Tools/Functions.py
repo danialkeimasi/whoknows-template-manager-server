@@ -1,5 +1,7 @@
 import random
-
+import json
+import glob
+import re
 from modules.Tools.Exceptions import *
 from modules.Config import logger, CONFIG
 
@@ -131,6 +133,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
     template : dict
         wanted template to be inspected
     '''
+    problems = []
 
     if not templates:
         raise TemplateTestFailed('There is no template to test!')
@@ -160,8 +163,8 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
         if problems:
             logger.info(f'FAILED')
 
-        json.dump(mongo_to_json(questions),
-                  open(f'{CONFIG.result_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
+        # json.dump(mongo_to_json(questions),
+        #           open(f'{CONFIG.result_dir}/questions.json', 'w', encoding='utf-8'), indent=4, ensure_ascii=False)
 
     test_result = {
         'templates_count': len(templates),
@@ -184,9 +187,9 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
         } for template in templates]
     }
 
-    if save_result:
-        json.dump(mongo_to_json(test_result), open(f'{CONFIG.result_dir}/test_result.json', 'w+', encoding='utf-8')
-                  , indent=4)
+    # if save_result:
+    #     json.dump(mongo_to_json(test_result), open(f'{CONFIG.result_dir}/test_result.json', 'w+', encoding='utf-8')
+    #               , indent=4)
 
     logger.info(f'test_templates()\t-----> problems is {problems}')
     return test_result

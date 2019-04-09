@@ -1,14 +1,12 @@
 import pandas as pd
 import re
 import json
-import multiprocessing as mp
 
 from pprint import pprint
 from difflib import SequenceMatcher
 import functools
 
-
-from modules.CheckTools.CheckTags import *
+# from modules.CheckTools.CheckTags import *
 from modules.CheckTools.CheckTemplates import *
 
 from modules.Tools.DataContainer import DataContainer
