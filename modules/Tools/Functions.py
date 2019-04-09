@@ -1,11 +1,7 @@
 import random
-import glob
-import json
-import re
 
 from modules.Tools.Exceptions import *
-from modules.Config import logger
-from modules.Config import CONFIG
+from modules.Config import logger, CONFIG
 
 
 def rand(needList, count=0, exceptions=[]):
