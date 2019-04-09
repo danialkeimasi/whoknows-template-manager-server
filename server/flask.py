@@ -1,7 +1,4 @@
 
-def setApp(_app):
-    app = _app
-
 def getApp():
     return app
 
