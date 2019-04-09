@@ -96,7 +96,7 @@ def load_data(dbname):
     return data
 
 
-def used_datasets(template):
+def find_neccesery_dbs(template):
     '''
     Returns a list of used datasets in the given template
 
@@ -107,16 +107,18 @@ def used_datasets(template):
     '''
 
     if 'values' not in template:
-        logger.info('used_datasets()\t\t-----> no value')
+        logger.info('no value found in template')
         return []
 
     used_datasets = []
+    
+    dbname_regex = r'.*?db\(([a-zA-Z]*).*\).*?'
     for val in template['values'].values():
         val = val.replace(' ', '')
 
-        if re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val):
-            dbname = re.search(r'.*?db\(([a-zA-Z]*).*\).*?', val).group(1)
-            logger.info(f'used_datasets()\t\t-----> {dbname}')
+        if re.search(dbname_regex, val):
+            dbname = re.search(dbname_regex, val).group(1)
+            logger.info(f'we need this dataset: {dbname}')
             used_datasets.append(dbname)
     
     return list(set(used_datasets))
@@ -169,7 +171,7 @@ def find_tags(template, question={}):
     if 'tags' in template:
         founded_tags += template['tags']
 
-    founded_tags += used_datasets(template)
+    founded_tags += find_neccesery_dbs(template)
 
     for tag in tags:
         if f'check_tag_{tag}' in globals() and globals()[f'check_tag_{tag}'](template, question):
@@ -308,12 +310,11 @@ def similar(a,b):
     return SequenceMatcher(None, a, b).ratio()
 
 
-def load_template_datasets(template, problems):
-    list_ = used_datasets(template)
-    logger.info(f'{list_}')
+def load_template_datasets(template, problems, neccesery_dbs):
+    logger.info(f'{neccesery_dbs}')
     
-    for x in list_:
-        globals()[x] = load_data(x)
+    for db in neccesery_dbs:
+        globals()[db] = load_data(db)
     
 
 def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=False, reload_question=False, data_id=[]):
@@ -356,7 +357,8 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         'SCORE'		   : SCORE
     }
 
-    load_template_datasets(template, problems)
+    neccesery_dbs = find_neccesery_dbs(template)
+    load_template_datasets(template, problems, neccesery_dbs)
     
     check_template(template, question, problems)
     check_global_constants(question, problems)
