@@ -405,21 +405,3 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
     logger.warning(f'at the end of function, problems is {problems}')
     question['problems'] = problems
     return question
-
-
-if __name__ == '__main__':
-    qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json '))if x['__numbe r' ]==1][0]
-
-    print('\n---\n@input_Template:')
-    pprint(qaleb)
-
-    print('\n---\n@funcRun:')
-
-    types = ['multichoices', 'writing', 'true_false', 'selective']
-
-    out = [template_engine(qaleb, QT=typ) for typ in types]
-    # out = template_engine(qaleb, QT=types[0])
-    # out = create_question('footballTeam', 1)
-
-    print('\n---\n@output:')
-    pprint(out)
