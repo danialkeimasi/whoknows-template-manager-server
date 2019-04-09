@@ -13,4 +13,3 @@ class WrongTypeForTemplate(Exception):
 
 class NoTitle(Exception):
 	pass
-
