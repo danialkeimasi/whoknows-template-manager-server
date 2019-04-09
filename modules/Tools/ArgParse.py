@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import argparse
 import logging
@@ -74,7 +75,6 @@ def arg_parse():
     if args.checkup:
         logger.critical('Checkup results : ')
         logger.critical(json.dumps(project_checkup(), indent=4))
-        return True
 
     if args.test and os.path.isfile(args.test):
         template = json.load(open(args.test))
@@ -94,6 +94,9 @@ def arg_parse():
         # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
         # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
         # logger.critical(json.dumps(test_result, indent=4))
-        return True
 
-    return False
+    # if there is any arg, return True
+    if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
+        return False
+    else:
+        return True
