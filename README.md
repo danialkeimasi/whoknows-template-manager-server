@@ -9,7 +9,7 @@ for a big question game.
     "values"	: {
       "team"          : "db( footballTeam )",
       "team_same"     : "db( footballTeam[ footballTeam.league == var.team.league ] )",
-      "leagues"       : "DataHelper(list( set(footballTeam.league)- set([var.team.league]) ))",
+      "leagues"       : "DataContainer(list( set(footballTeam.league)- set([var.team.league]) ))",
       "CL"            : "var.leagues",
       "True_or_False" : "rand( [True,False] )"
     },
