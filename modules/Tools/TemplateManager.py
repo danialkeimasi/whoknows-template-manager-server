@@ -1,8 +1,8 @@
 import json
 import glob
-import functools
-from config import CONFIG
 import sys
+import functools
+from modules.Config import CONFIG
 
 
 def separator():
