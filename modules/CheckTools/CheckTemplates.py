@@ -1,3 +1,6 @@
+from modules.Config import logger, CONFIG
+
+
 def check_global_constants(question, problems):
     """
     Checks conditional values of a question to be right
