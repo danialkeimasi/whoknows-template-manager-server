@@ -8,7 +8,7 @@ from difflib import SequenceMatcher
 import functools
 
 # from modules.CheckTools.CheckTags import *
-from modules.CheckTools.CheckTemplates import *
+from modules.CheckTools.CheckTemplates import check_global_constants, check_question, check_template
 
 from modules.Tools.DataContainer import DataContainer
 from modules.Tools.Exceptions import *

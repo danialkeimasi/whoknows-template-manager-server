@@ -26,7 +26,7 @@ def separator():
 def addTemplate(f):
     
     def save_template(template):
-        with open(f'{CONFIG.questions_dir}/templates_seprated/{fileName}_{template["__number"]}.json', 'w+') as f:
+        with open(f'{CONFIG.questions_dir}/templates_seprated/{template["__number"]}.json', 'w+') as f:
             json.dump(template, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 
     '''
