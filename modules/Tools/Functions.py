@@ -56,6 +56,14 @@ def to_list(data):
     return data if isinstance(data, list) else [data]
 
 
+
+
+
+
+
+# TODO: following functions must debuged by mamad
+
+
 def get_templates_list(tags=[], numbers=[], sources=[]):
     '''
     Loads wanted tempaltes from file and return them as a list
@@ -65,6 +73,7 @@ def get_templates_list(tags=[], numbers=[], sources=[]):
     tags : list
         specifies tags of wanted templates
     '''
+
     chosen_templates = []
     for template_file in glob.glob(f'{CONFIG.templates_dir}/*.json'):
         new_templates = json.load(open(template_file, encoding='utf-8'))
@@ -80,6 +89,7 @@ def get_templates_list(tags=[], numbers=[], sources=[]):
 
     if sources:
         chosen_templates = [x for x in chosen_templates if any((x['source'].find(source) != -1) for source in sources)]
+
 
     # for template in templates:
     # 	if any('tags' in keys for keys in template):

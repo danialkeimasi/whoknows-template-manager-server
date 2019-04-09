@@ -1,11 +1,11 @@
-import pandas as pd
-import re
+import functools
 import json
+import glob
+import re
 
-
+import pandas as pd
 from pprint import pprint
 from difflib import SequenceMatcher
-import functools
 
 # from modules.CheckTools.CheckTags import *
 from modules.CheckTools.CheckTemplates import check_global_constants, check_question, check_template
@@ -13,6 +13,7 @@ from modules.CheckTools.CheckTemplates import check_global_constants, check_ques
 from modules.Tools.DataContainer import DataContainer
 from modules.Tools.Exceptions import *
 from modules.Tools.Functions import choose, rand, to_list
+
 from modules.Config import logger, CONFIG
 
 
