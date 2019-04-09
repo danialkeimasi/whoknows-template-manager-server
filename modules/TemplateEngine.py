@@ -372,10 +372,9 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         # TODO: must add some other things that neccesery to create question
         logging.info(error)
         problems += [str(error)]
+    
 
-    if problems:
-        question['active'] = False
-    else:
+    if problems == []:
         question['active'] = True
 
 
@@ -402,6 +401,8 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
             elif find_format(question['subtitle']) == 'image': question['TIME'] +=2	
         
         # -----END
+    else:
+        question['active'] = False
 
     logger.warning(f'at the end of function, problems is {problems}')
     question['problems'] = problems
