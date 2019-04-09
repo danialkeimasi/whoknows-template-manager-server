@@ -13,13 +13,13 @@ import itertools
 from difflib import SequenceMatcher
 import functools
 
-
-from modules.CheckTools.CheckTags import *
 from modules.CheckTools.CheckTemplates import *
+from modules.CheckTools.CheckTags import *
 
+from modules.Tools.Functions import choose, rand, to_list
 from modules.Tools.DataContainer import DataContainer
 from modules.Tools.Exceptions import *
-from modules.Tools.Functions import choose, rand, to_list
+
 from modules.Config import logger, CONFIG
 
 
@@ -383,7 +383,7 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
         # TODO: must define function for answer handling
 
         ans = 'maret'
-        question['score'] = score_compare(ans , question , QT)
+        question['score'] = score_compare(ans , questin , QT)
 
         question['TIME'] += 4 if len(question['title']) > 100 else \
             3 if len(question['title']) > 80  else \
@@ -405,21 +405,3 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
     logger.warning(f'at the end of function, problems is {problems}')
     question['problems'] = problems
     return question
-
-
-if __name__ == '__main__':
-    qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json '))if x['__numbe r' ]==1][0]
-
-    print('\n---\n@input_Template:')
-    pprint(qaleb)
-
-    print('\n---\n@funcRun:')
-
-    types = ['multichoices', 'writing', 'true_false', 'selective']
-
-    out = [template_engine(qaleb, QT=typ) for typ in types]
-    # out = template_engine(qaleb, QT=types[0])
-    # out = create_question('footballTeam', 1)
-
-    print('\n---\n@output:')
-    pprint(out)

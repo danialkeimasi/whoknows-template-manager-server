@@ -1,5 +1,5 @@
 import logging
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
 
 class CONFIG:
@@ -8,7 +8,7 @@ class CONFIG:
 
     TODO : should use a config file to load it
     """
-    
+
     debug = not True
     project_dir = 'D:/Programming/Python/whoKnows/guessit-question-manager'
     templates_dir = f'{project_dir}/modules/templates'
@@ -20,7 +20,8 @@ class CONFIG:
 
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
-            'country', 'book', 'name', 'word', 'volleyballTeam']  # should be done automatically by searching db_directory
+            'country', 'book', 'name', 'word',
+            'volleyballTeam']  # should be done automatically by searching db_directory
 
 logging.basicConfig(
     datefmt='%y-%b-%d %H:%M:%S',
@@ -29,13 +30,12 @@ logging.basicConfig(
     # datefmt='%H:%M:%S',
     level=logging.CRITICAL,
     handlers=[
-        #logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+        # logging.FileHandler(f'{CONFIG.project_dir}/template_engine.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),
     ]
 )
 
 logger = logging.getLogger('TemplateEngine')
 
-if CONFIG.use_mongo:
-    mongo = MongoClient('mongodb://localhost:27017')
-
+# if CONFIG.use_mongo:
+#     mongo = MongoClient('mongodb://localhost:27017')
