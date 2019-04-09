@@ -96,7 +96,7 @@ def load_data(dbname):
     return data
 
 
-def find_neccesery_dbs(template):
+def find_neccesery_Dsets(template):
     '''
     Returns a list of used datasets in the given template
 
@@ -171,7 +171,7 @@ def find_tags(template, question={}):
     if 'tags' in template:
         founded_tags += template['tags']
 
-    founded_tags += find_neccesery_dbs(template)
+    founded_tags += find_neccesery_Dsets(template)
 
     for tag in tags:
         if f'check_tag_{tag}' in globals() and globals()[f'check_tag_{tag}'](template, question):
@@ -310,10 +310,10 @@ def similar(a,b):
     return SequenceMatcher(None, a, b).ratio()
 
 
-def load_template_datasets(template, problems, neccesery_dbs):
-    logger.info(f'{neccesery_dbs}')
+def load_template_datasets(template, problems, neccesery_Dsets):
+    logger.info(f'{neccesery_Dsets}')
     
-    for db in neccesery_dbs:
+    for db in neccesery_Dsets:
         globals()[db] = load_data(db)
     
 
@@ -357,8 +357,8 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         'SCORE'		   : SCORE
     }
 
-    neccesery_dbs = find_neccesery_dbs(template)
-    load_template_datasets(template, problems, neccesery_dbs)
+    neccesery_Dsets = find_neccesery_Dsets(template)
+    load_template_datasets(template, problems, neccesery_Dsets)
     
     check_template(template, question, problems)
     check_global_constants(question, problems)
@@ -372,7 +372,7 @@ def template_engine(template, NOC=3, NOS=4 , TIME=10, SCORE=100, QT=None, debug=
         # TODO: must add some other things that neccesery to create question
         logging.info(error)
         problems += [str(error)]
-    
+
 
     if problems == []:
         question['active'] = True
