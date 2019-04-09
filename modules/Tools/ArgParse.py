@@ -1,12 +1,12 @@
 import os
 import json
 import argparse
-from modules.Config import logger, CONFIG
-from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
-from modules.TemplateEngine import template_engine
 import logging
 from pprint import pprint
 
+from modules.Config import logger, CONFIG
+from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
+from modules.TemplateEngine import template_engine
 
 def arg_parse():
     '''
