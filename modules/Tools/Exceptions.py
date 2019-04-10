@@ -18,3 +18,4 @@ class DataError(Exception):
 	
 
 	'''
+	pass
