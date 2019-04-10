@@ -376,7 +376,6 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
 
     if problems == []:
         question['active'] = True
-
         answerDetection(template, question, QT, problems)
 
     else:
@@ -385,7 +384,6 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
     logger.warning(f'at the end of function, problems is {problems}')
     question['problems'] = problems
     return question
-
 
 
 def answerDetection(template, question, QT, problems):
