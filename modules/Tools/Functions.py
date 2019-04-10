@@ -1,7 +1,8 @@
-import random
+import re
 import json
 import glob
-import re
+import random
+
 from modules.Tools.Exceptions import *
 from modules.Config import logger, CONFIG
 
@@ -57,12 +58,7 @@ def to_list(data):
 
 
 
-
-
-
-
 # TODO: following functions must debuged by mamad
-
 
 def get_templates_list(tags=[], numbers=[], sources=[]):
     '''

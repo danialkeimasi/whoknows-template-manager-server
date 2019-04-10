@@ -5,7 +5,7 @@
         "team1": "var.teams.choose(1)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league)] ,NOC)",
         "team2": "var.teams_same.choose(1)",
-        "leagues": "DataContainer(list(set(list(footballTeam.league))- set( [var.team.league, var.team1.league] )))",
+        "leagues": "listSub(footballTeam.league, [var.team.league, var.team1.league])",
         "another_league": "var.leagues.choose(1)",
         "True_or_False": "rand([True,False])"
     },

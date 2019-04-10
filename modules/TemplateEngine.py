@@ -6,6 +6,8 @@ import re
 import pandas as pd
 from pprint import pprint
 from difflib import SequenceMatcher
+from collections.abc import Iterable
+
 
 # from modules.CheckTools.CheckTags import *
 from modules.CheckTools.CheckTemplates import check_global_constants, check_question, check_template
@@ -15,6 +17,15 @@ from modules.Tools.Exceptions import *
 from modules.Tools.Functions import choose, rand, to_list
 
 from modules.Config import logger, CONFIG
+
+
+def listSub(data1, data2):
+    data1 = list(data1) if isinstance(data1, Iterable) else [data1]
+    data2 = list(data2) if isinstance(data2, Iterable) else [data2]
+    
+    subedList = [item for item in data1 if not item in data2]
+
+    return DataContainer(subedList)
 
 
 def testTemplate_ByCreate_Question(template):
