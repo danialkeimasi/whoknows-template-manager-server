@@ -142,7 +142,7 @@ def db(doc, count=0):
 
     except Exception as error:
         logger.error(f'def db => {error}')
-        return []
+        return DataContainer([])
 
     data = data.to_dict('records')
     logger.info(f'def db => done')
