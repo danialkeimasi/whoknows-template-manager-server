@@ -21,7 +21,7 @@ def testTemplate_ByCreate_Question(template):
     types = ['multichoices', 'writing', 'true_false', 'selective']
 
     for typ in types:
-        print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-\n')
+        print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n')
         question = template_engine(template, QT=typ)
         print('\n')
         pprint(question)
