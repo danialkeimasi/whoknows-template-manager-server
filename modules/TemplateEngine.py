@@ -18,15 +18,21 @@ from modules.Config import logger, CONFIG
 
 
 def testTemplate_ByCreate_Question(template):
+    
     types = ['multichoices', 'writing', 'true_false', 'selective']
 
+    questions = []
     for typ in types:
+
         print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n')
         question = template_engine(template, QT=typ)
         print('\n')
         pprint(question)
         print('\n')
 
+        questions.append(question)
+
+    return questions
 
 def find_format(data):
     '''
