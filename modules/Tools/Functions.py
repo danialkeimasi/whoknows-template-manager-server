@@ -146,7 +146,7 @@ def test_templates(templates, try_count=5, rounds_count=1, save_result=True, deb
     problems = []
 
     if not templates:
-        raise TemplateTestFailed('There is no template to test!')
+        raise TemplateError('template is not given to the function, There is no template to test!')
 
     questions = []
     templates_test = {}

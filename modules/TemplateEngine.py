@@ -147,7 +147,7 @@ def db(doc, count=0):
     try:
         if len(doc.index) < (count if count != 0 else 1):
             logger.info(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
-            raise NotEnoughtData(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
+            raise DataError(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
 
         data = doc.sample(count if count != 0 else 1)
 
@@ -215,7 +215,7 @@ def parse(template, question, var):
                 question[section] = question[section].replace(f'`{exp}`', eval(exp)[0])
         else:
             logger.info(question)
-            raise NoTitle(f'Wrong Type (QT) For Template in parse(), {templateSec} not found in template.')
+            raise TemplateError(f'Wrong Type (QT) For Template in parse(), {templateSec} not found in template.')
 
     for section in ['answer']:
         templateSec = section + '_' + QT
@@ -224,7 +224,7 @@ def parse(template, question, var):
             question[section] = eval(template[templateSec][0])
         else:
             logger.info(question)
-            raise WrongTypeForTemplate(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
+            raise TemplateError(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
     for section in ['choices']:
         templateSec = section + '_' + QT
@@ -234,7 +234,7 @@ def parse(template, question, var):
         else:
             if QT in ['multichoices', 'selective']:
                 logger.info(question)
-                raise WrongTypeForTemplate(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
+                raise TemplateError(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
     for section in ['subtitle']:
         templateSec = section
@@ -368,7 +368,7 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
     try:
         question = parse(template , question , var)
 
-    except NoTitle as error:
+    except TemplateError as error:
         # TODO: must add some other things that neccesery to create question
         logger.info(error)
         problems += [str(error)]
