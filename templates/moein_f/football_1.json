@@ -4,17 +4,16 @@
         "team"          : "db(footballTeam)",
         "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
         "leagues"       : "listSub(footballTeam.league, var.team.league)",
-        "CL"            : "var.leagues",
         "True_or_False" : "rand( [True,False] )"
       },
   
-      "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند"], 
-      "title_multichoices"    : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
-      "title_writing"         : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
+      "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"], 
+      "title_multichoices"    : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
+      "title_writing"         : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"],
       "answer_multichoices"   : ["var.team.league"],
       "answer_writing"        : ["var.team.league"],
       "answer_true_false"     : ["var.True_or_False"],
-      "choices_multichoices"  : ["var.CL.choose(NOC)"],
+      "choices_multichoices"  : ["var.leagues.choose(NOC)"],
       "__usage"               : ["contest"],
       "__number"              : 1,
       "__level"               : 1

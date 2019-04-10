@@ -2,8 +2,8 @@
     "values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-        "teams_same": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
-        "ans_cnt": "rand(range(1,4))"
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
+        "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_selective": [
         "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
@@ -19,13 +19,13 @@
         "var.team.name"
     ],
     "answer_selective": [
-        "var.teams_same.choose(NOC).name"
+        "var.teams_same.choose(var.ans_cnt).name"
     ],
     "choices_multichoices": [
         "var.teams.name"
     ],
     "choices_selective": [
-        "var.teams.choose(4 - var.ans_cnt).name"
+        "var.teams.choose(NOC - var.ans_cnt + 1).name"
     ],
     "__usage": [
         "contest"
