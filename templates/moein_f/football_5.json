@@ -1,8 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
-        "teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)"
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
     },
     "title_multichoices": [
         "`var.team.coach` مربی کدام تیم است؟",
@@ -20,7 +19,7 @@
         "var.team.name"
     ],
     "choices_multichoices": [
-        "var.teams.choose(1).name"
+        "var.teams_same.name"
     ],
     "__usage": [
         "contest"

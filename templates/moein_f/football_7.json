@@ -1,8 +1,9 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) - set[var.team] ] ,NOC)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)"
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach) ] ,NOC)",
+        "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
+        "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
         "کدام مربی در لیگ `var.team.league` مربیگری میکند؟"
@@ -14,13 +15,13 @@
         "var.team.coach"
     ],
     "answer_selective": [
-        "var.teams_same.choose(3).coach"
+        "var.teams_same.choose(var.ans_cnt).coach"
     ],
     "choices_multichoices": [
         "var.teams.choose(NOC).coach"
     ],
     "choices_selective": [
-        "var.teams.choose(1).coach"
+        "var.teams.choose(NOC - var.ans_cnt + 1).coach"
     ],
     "__usage": [
         "contest"

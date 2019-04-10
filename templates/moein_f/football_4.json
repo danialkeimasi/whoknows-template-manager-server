@@ -1,8 +1,8 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
-        "teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
+        "team1": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)])",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -32,7 +32,7 @@
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.coach"
+        "var.teams_same.coach"
     ],
     "__usage": [
         "contest"

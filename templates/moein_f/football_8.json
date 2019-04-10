@@ -1,9 +1,8 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
-        "teams": "db(footballTeam[footballTeam.league == var.team1.league] ,NOC)",
-        "leagues": "(list(set(list(footballTeam.league))- set[var.team.league]))",
+        "team1": "db(footballTeam[footballTeam.league != var.team.league])",
+        "leagues": "DataHelper( list(set(footballTeam.league) - set([var.team.league])) )",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -13,20 +12,20 @@
         "`var.team.coach` در چه کشوری مربیگری میکند؟"
     ],
     "title_true_false": [
-        "`var.team.coach` در کشور `var.team.country` مربیگری میکند؟.",
-        "`var.team.coach` در کشور `var.team1.country` مربیگری میکند."
+        "`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
+        "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."
     ],
     "answer_multichoices": [
-        "var.team.country"
+        "var.team.league"
     ],
     "answer_writing": [
-        "var.team.country"
+        "var.team.league"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.leagues.choose(NOC).country"
+        "var.leagues.choose(NOC)"
     ],
     "__usage": [
         "contest"

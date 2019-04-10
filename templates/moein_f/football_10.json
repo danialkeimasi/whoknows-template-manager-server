@@ -1,10 +1,11 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "team1": "db(footballTeam[footballTeam.league != var.team1.league])",
-        "teams": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
-        "leagues": "(list(set(list(footballTeam.league))- set[var.team.league]))",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] , NOC)",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
+        "leagues"       : "DataHelper( list(set(footballTeam.league) - set([var.team.league]) ))",
+        "True_or_False": "rand([True,False])",
+        "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
         "`var.team.name` در کدام کشور فعالیت میکند؟"
@@ -13,29 +14,29 @@
         "`var.team.name` در چه کشوری فعالیت میکند؟"
     ],
     "title_true_false": [
-        "`var.team.name` در کشور `var.team.country` فعالیت میکند؟.",
-        "`var.team.name` در کشور `var.team1.country` فعالیت میکند."
+        "`var.team.name` در کشور `var.team.league` فعالیت میکند؟.",
+        "`var.team.name` در کشور `var.teams.choose(1).league` فعالیت میکند."
     ],
     "title_selective": [
-        "کدام تیم ها در کشور `var.team.country` فعالیت میکنند؟"
+        "کدام تیم ها در کشور `var.team.league` فعالیت میکنند؟"
     ],
     "answer_multichoices": [
-        "var.team.country"
+        "var.team.league"
     ],
     "answer_writing": [
-        "var.team.country"
+        "var.team.league"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "answer_selective": [
-        "var.teams.choose(3).name"
+        "var.teams_same.choose(var.ans_cnt).name"
     ],
     "choices_multichoices": [
-        "var.leagues.choose(NOC).country"
+        "var.leagues.choose(NOC)"
     ],
     "choices_selective": [
-        "var.team1.country"
+        "var.teams.choose(NOC - var.ans_cnt + 1).league"
     ],
     "__usage": [
         "contest"
