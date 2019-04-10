@@ -17,6 +17,17 @@ from modules.Tools.Functions import choose, rand, to_list
 from modules.Config import logger, CONFIG
 
 
+def testTemplate_ByCreate_Question(template):
+    types = ['multichoices', 'writing', 'true_false', 'selective']
+
+    for typ in types:
+        print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-\n')
+        question = template_engine(template, QT=typ, all=True)
+        print('\n')
+        pprint(question)
+        print('\n')
+
+
 def find_format(data):
     '''
     Finds the format of given data, if it's a link then returns link's format else text

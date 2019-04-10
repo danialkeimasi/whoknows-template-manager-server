@@ -7,7 +7,7 @@ from pprint import pprint
 
 from modules.Config import logger, CONFIG
 from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
-from modules.TemplateEngine import template_engine
+from modules.TemplateEngine import testTemplate_ByCreate_Question
 
 def arg_parse():
     '''
@@ -82,14 +82,8 @@ def arg_parse():
         if isinstance(template, list):
             template = template[0]
 
-        types = ['multichoices', 'writing', 'true_false', 'selective']
-
-        for typ in types:
-            print(f'\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= {typ} =-=-=-=-=-=-=-=-=-=-=-=-=-\n')
-            question = template_engine(template, QT=typ)
-            print('\n')
-            pprint(question)
-            print('\n')
+        testTemplate_ByCreate_Question(template)
+        
 
         # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
         # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
