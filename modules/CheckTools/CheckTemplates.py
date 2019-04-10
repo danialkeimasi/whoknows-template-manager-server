@@ -15,7 +15,7 @@ def check_global_constants(question, problems):
 
 
 def check_template(template, question, problems):
-    """
+    """ 
     Checks if a template has all of necessary parts and returns every problem in template if there is any
 
     Parameters
@@ -64,7 +64,7 @@ def check_template(template, question, problems):
     return problems
 
 
-def check_question(question, QT):
+def check_question(question, QT, problems):
     """
     Checks if a question has all of necessary parts and returns every problem in template if there is any
 
@@ -73,8 +73,6 @@ def check_question(question, QT):
     template : dict
         wanted template to be checked
     """
-
-    problems = []
 
     if 'choices' in question:
         # check if choices are different from another
@@ -106,4 +104,4 @@ def check_question(question, QT):
             problems += [f'{key} in values section is empty']
 
     print(f'check_question()\t-----> problems is {problems}')
-    return problems
+    

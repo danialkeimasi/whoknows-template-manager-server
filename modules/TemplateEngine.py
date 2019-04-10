@@ -390,11 +390,10 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
         logger.info(error)
         problems += [str(error)]
 
+    answerDetection(template, question, QT, problems)
 
     if problems == []:
         question['active'] = True
-        answerDetection(template, question, QT, problems)
-
     else:
         question['active'] = False
 
@@ -409,7 +408,7 @@ def answerDetection(template, question, QT, problems):
     question['answer_type'] = find_format(question['answer'])
     question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
     question['tags']  = find_tags(template, question)
-    problems += check_question(question ,QT)
+    check_question(question ,QT, problems)
 
     # ----START
     # TODO: must define function for answer handling
