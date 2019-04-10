@@ -37,5 +37,12 @@ logging.basicConfig(
 
 logger = logging.getLogger('TemplateEngine')
 
+def loggerHandle(loggerFunction, message, problemsList = None):
+    if problemsList != None:
+        problemsList.append(message)
+    
+    loggerFunction(message)
+
+
 # if CONFIG.use_mongo:
 #     mongo = MongoClient('mongodb://localhost:27017')

@@ -1,4 +1,4 @@
-from modules.Config import logger, CONFIG
+from modules.Config import logger, loggerHandle, CONFIG
 
 
 def check_global_constants(question, problems):
@@ -8,10 +8,10 @@ def check_global_constants(question, problems):
     """
 
     if not 2 <= question['NOC'] <= 6:
-        problems += ['NOC is wrong!... NOC range is between 2 to 6']
-
+        loggerHandle(logger.info, 'NOC is wrong!... NOC range is between 2 to 6', problems)
+        
     if not 2 <= question['NOS'] <= 6:
-        problems += ['NOS is wrong!... NOS range is between 2 to 6']
+        loggerHandle(logger.info, 'NOS is wrong!... NOS range is between 2 to 6', problems)
 
 
 def check_template(template, question, problems):

@@ -1,6 +1,5 @@
 from modules.Tools.Functions import choose
-
-
+from modules.Tools.Exceptions import *
 class DataContainer():
     '''
     Data Manager class for working with datasets and accessing it's data easier
@@ -12,21 +11,25 @@ class DataContainer():
         constract a DataManager
         '''
         self.exp = exp
+        if exp == []:
+            # TODO: some error must added
+            DataError('DataContainer input is is empty list, some error must happend in data queries')
+            pass
+        else:
+            if exp and not (isinstance(exp, list) and isinstance(exp[0], str)):
+                if not isinstance(exp, list):
+                    exp = [exp]
 
-        if exp and not (isinstance(exp, list) and isinstance(exp[0], str)):
-            if not isinstance(exp, list):
-                exp = [exp]
+                # we want to find keys of
+                # inner list by this for
+                for k in exp[0]:
+                    if len(exp) == 1:
+                        setattr(self, k, exp[0][k])
+                    else:
+                        setattr(self, k, [exp[i][k] for i in range(len(exp))])
 
-            # we want to find keys of
-            # inner list by this for
-            for k in exp[0]:
-                if len(exp) == 1:
-                    setattr(self, k, exp[0][k])
-                else:
-                    setattr(self, k, [exp[i][k] for i in range(len(exp))])
-
-        elif isinstance(exp, list) and isinstance(exp[0], str):
-            self.exp = exp
+            elif isinstance(exp, list) and isinstance(exp[0], str):
+                self.exp = exp
 
 
     def one(self):
