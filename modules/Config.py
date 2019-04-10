@@ -10,7 +10,7 @@ class CONFIG:
     """
 
     debug = not True
-    project_dir = 'D:/Programming/Python/whoKnows/guessit-question-manager'
+    project_dir = '.'
     templates_dir = f'{project_dir}/templates/main'
     questions_dir = f'{project_dir}/modules'
     result_dir = f'{project_dir}/template_engine/result'
