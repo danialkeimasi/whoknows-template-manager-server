@@ -2,7 +2,7 @@
     "values": {
         "team": "db(footballTeam)",
         "team1": "db(footballTeam[footballTeam.league != var.team.league])",
-        "leagues": "DataHelper(list(set(list(set(footballTeam.league) - set([var.team.league]))) - set([var.team1.league])))",
+        "leagues": "listSub(footballTeam.league, [var.team.league , var.team1.league])",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
