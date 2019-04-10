@@ -17,7 +17,7 @@
         " تیم های `var.team.name` و `var.teams_same.choose(1).name` در یک لیگ مشترک فعالیت میکنند.",
         "تیم های `var.team.name` و `var.teams.choose(1).name` در یک لیگ فعالیت میکنند. ",
         "تیم های `var.team.name` و `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
-        "  تیم های `var.team.name` و `var.teams.choose(1).name` در لیگ `var.leagues.choose(1)` فعالیت میکنند.",
+        "  تیم های `var.team.name` و `var.teams.choose(1).name` در لیگ `var.league.choose(1)` فعالیت میکنند.",
         "هر دو تیم `var.team.name` و `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
         "هر دو تیم `var.team.name` و `var.teams.choose(1).name` در لیگ `var.team.league` فعالیت میکنند."
     ],
