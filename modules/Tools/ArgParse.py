@@ -5,9 +5,11 @@ import argparse
 import logging
 from pprint import pprint
 
+from modules.Tools.Exceptions import *
 from modules.Config import logger, CONFIG
 from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
 from modules.TemplateEngine import testTemplate_ByCreate_Question
+
 
 def arg_parse():
     '''
@@ -76,18 +78,21 @@ def arg_parse():
         logger.critical('Checkup results : ')
         logger.critical(json.dumps(project_checkup(), indent=4))
 
-    if args.test and os.path.isfile(args.test):
-        template = json.load(open(args.test))
+    if args.test :
+        if os.path.isfile(args.test):
+            template = json.load(open(args.test))
 
-        if isinstance(template, list):
-            template = template[0]
+            if isinstance(template, list):
+                template = template[0]
 
-        testTemplate_ByCreate_Question(template)
-        
+            testTemplate_ByCreate_Question(template)
+            
 
-        # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
-        # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
-        # logger.critical(json.dumps(test_result, indent=4))
+            # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
+            # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
+            # logger.critical(json.dumps(test_result, indent=4))
+        else:
+            raise TemplateError('the given template is not found!')
 
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
