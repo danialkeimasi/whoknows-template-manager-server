@@ -405,28 +405,25 @@ def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=F
 def answerDetection(template, question, QT, problems):
 
     # TODO: make function for this codes
-    question['answer_type'] = find_format(question['answer'])
-    question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
-    question['tags']  = find_tags(template, question)
+    question['answer_type'] = find_format(question['answer']) if 'answer' in question else 'empty'
+    # question['subtitle_type'] = find_format(question['subtitle']) if 'subtitle' in question else 'empty'
+    # question['tags']  = find_tags(template, question)
     check_question(question ,QT, problems)
 
     # ----START
     # TODO: must define function for answer handling
     
-    ans = 'maret'
-    question['score'] = score_compare(ans , question , QT)
+    # question['TIME'] += 4 if len(question['title']) > 100 else \
+    #     3 if len(question['title']) > 80  else \
+    #         2 if len(question['title']) > 60  else \
+    #             1 if len(question['title']) > 40  else 0
 
-    question['TIME'] += 4 if len(question['title']) > 100 else \
-        3 if len(question['title']) > 80  else \
-            2 if len(question['title']) > 60  else \
-                1 if len(question['title']) > 40  else 0
-
-    if question['subtitle']:
-        if find_format(question['subtitle'])   == 'video' \
-            : question['TIME'] +=4
-        elif find_format(question['subtitle']) == 'audi \
-            ': question['TIME'] +=4
-        elif find_format(question['subtitle']) == 'imag \
-            ': question['TIME'] +=2
+    # if question['subtitle']:
+    #     if find_format(question['subtitle'])   == 'video' \
+    #         : question['TIME'] +=4
+    #     elif find_format(question['subtitle']) == 'audi \
+    #         ': question['TIME'] +=4
+    #     elif find_format(question['subtitle']) == 'imag \
+    #         ': question['TIME'] +=2
 
     # -----END
