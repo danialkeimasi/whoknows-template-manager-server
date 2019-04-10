@@ -17,7 +17,7 @@
         "مربی کنونی تیم `var.team.name` چه کسی است؟"
     ],
     "title_true_false": [
-        "مربی تیم `var.name.team` بر عهده ی `var.team.coach` میباشد.",
+        "مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
         "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
         "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
         "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."
