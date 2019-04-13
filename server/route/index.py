@@ -16,7 +16,7 @@ def add():
             'ok': 1,
             'message': 'question server is on',
             'urls': [ 'get_question',
-                            'check_answer',
+                            'check_answer',]
         }
 
         return json.dumps(Response)
