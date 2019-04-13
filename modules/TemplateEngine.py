@@ -24,7 +24,7 @@ def listSub(data1, data2):
     data2 = list(data2) if isinstance(data2, Iterable) else [data2]
     
     subedList = [item for item in data1 if not item in data2]
-
+    
     return DataContainer(subedList)
 
 
