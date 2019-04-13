@@ -8,8 +8,8 @@
         "لباس اول تیم `var.team.name` کدام است؟ "
     ],
     "title_true_false": [
-        "لباس اول تیم تیم 'var.team.name' 'var.team.homekit' میباشد.",
-        "لباس اول تیم تیم 'var.team.name' 'var.teams.choose(1).homekit' میباشد. "
+        "عکس زیر ، پیراهن اول تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن اول تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
         "var.team.homekit"
