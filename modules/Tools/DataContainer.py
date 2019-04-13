@@ -22,6 +22,7 @@ class DataContainer():
 
                 # we want to find keys of
                 # inner list by this for
+                print(len(exp))
                 for k in exp[0]:
                     if len(exp) == 1:
                         setattr(self, k, exp[0][k])
