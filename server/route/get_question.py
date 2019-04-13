@@ -1,7 +1,8 @@
 from server.flask import getApp
 from flask import json, request
+from modules.Config import CONFIG
 
-from modules.TemplateEngine import create_question
+from modules.TemplateEngine import testTemplate_ByCreate_Question
 
 def add():
     app = getApp()
@@ -26,8 +27,11 @@ def add():
         page context:
             get the question py post request
         '''
+        # question = create_question(Request['tags'], Request['count'])
+        
         Request = request.json
-        question = create_question(Request['tags'], Request['count'])
+        rand = Request['rand']
 
-        return json.dumps(question)
+        questions = testTemplate_ByCreate_Question(open(f'{CONFIG.templates_dir}/../moein_f/football_{rand}.json'))
 
+        return json.dumps(questions)
