@@ -3,8 +3,8 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.league != var.team.league] , NOC)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
-        "leagues"       : "DataHelper( list(set(footballTeam.league) - set([var.team.league]) ))",
-        "True_or_False": "rand([True,False])",
+        "leagues"       : "listSub(footballTeam.league , var.team.league)",
+        "True_or_False" : "rand([True,False])",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
@@ -33,7 +33,7 @@
         "var.teams_same.choose(var.ans_cnt).name"
     ],
     "choices_multichoices": [
-        "var.leagues.choose(NOC)"
+        "var.leagues.choose(10)"
     ],
     "choices_selective": [
         "var.teams.choose(NOC - var.ans_cnt + 1).league"
