@@ -14,7 +14,7 @@ class DataContainer():
         if exp == []:
             # TODO: some error must added
             DataError('DataContainer input is is empty list, some error must happend in data queries')
-            
+
         else:
             if exp and not (isinstance(exp, list) and isinstance(exp[0], str)):
                 if not isinstance(exp, list):
@@ -26,7 +26,10 @@ class DataContainer():
                     if len(exp) == 1:
                         setattr(self, k, exp[0][k])
                     else:
-                        setattr(self, k, [exp[i][k] for i in range(len(exp))])
+                        Li = []
+                        for i in range(len(exp)):
+                            Li.append(exp[i][k])
+                        setattr(self, k, Li)
 
             elif isinstance(exp, list) and isinstance(exp[0], str):
                 self.exp = exp
