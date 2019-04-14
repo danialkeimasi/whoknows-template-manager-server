@@ -8,8 +8,14 @@
         "لباس دوم تیم `var.team.name` کدام است؟ "
     ],
     "title_true_false": [
-        "لباس دوم تیم تیم 'var.team.name' 'var.team.awaykit' میباشد.",
-        "لباس دوم تیم تیم 'var.team.name' 'var.teams.choose(1).awaykit' میباشد. "
+        "عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن دوم تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، لباس دوم تیم `var.team.name` میباشد.",
+        "عکس زیر ، لباس دوم تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، لباس تیم `var.team.name` میباشد.",
+        "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
         "var.team.awaykit"
@@ -19,6 +25,9 @@
     ],
     "choices_multichoices": [
         "var.teams.choose(NOC).awaykit"
+    ],
+    "subtitle": [
+        "var.team.awaykit"
     ],
     "__usage": [
         "contest"

@@ -8,8 +8,14 @@
         "لباس سوم تیم `var.team.name` کدام است؟ "
     ],
     "title_true_false": [
-        "لباس سوم تیم تیم 'var.team.name' 'var.team.homekit' میباشد.",
-        "لباس سوم تیم تیم 'var.team.name' 'var.teams.choose(1).thirdkit' میباشد. "
+        "عکس زیر ، پیراهن سوم تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن سوم تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، لباس سوم تیم `var.team.name` میباشد.",
+        "عکس زیر ، لباس سوم تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، لباس تیم `var.team.name` میباشد.",
+        "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
         "var.team.thirdkit"

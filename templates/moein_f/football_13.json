@@ -11,7 +11,11 @@
         "عکس زیر ، پیراهن اول تیم `var.team.name` میباشد.",
         "عکس زیر ، پیراهن اول تیم `var.teams.choose(1).name` میباشد.",
         "عکس زیر ، پیراهن خانگی تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن خانگی تیم `var.teams.choose(1).name` میباشد."
+        "عکس زیر ، پیراهن خانگی تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، لباس تیم `var.team.name` میباشد.",
+        "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
         "var.team.homekit"
