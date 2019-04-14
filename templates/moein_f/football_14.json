@@ -5,7 +5,7 @@
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "لباس دوم تیم `var.team.name` کدام است؟ "
+        "لباس دوم تیم `var.team.name` کدام است؟ " 
     ],
     "title_true_false": [
         "عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",

@@ -26,6 +26,9 @@
     "choices_multichoices": [
         "var.teams.choose(NOC).thirdkit"
     ],
+    "subtitle": [
+        "var.team.thirdkit"
+    ],
     "__usage": [
         "contest"
     ],

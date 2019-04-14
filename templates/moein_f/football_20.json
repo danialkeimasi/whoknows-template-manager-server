@@ -5,16 +5,16 @@
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "این لباس 'var.team.gkkit' لباس دروازه بان کدام تیم است؟"
+        "پیراهن دروازه بانی زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن دروازه بان کدام تیم است؟"
     ],
     "title_writing": [
-        "این لباس 'var.team.gkkit' لباس دروازه بان چه تیمی است؟"
+        "پیراهن دروازه بانی زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن دروازه بان چه تیمی است؟"
     ],
     "answer_multichoices": [
         "var.team.name"
     ],
     "answer_writing": [
-        "var.teams.name"
+        "var.team.name"
     ],
     "choices_multichoices": [
         "var.teams.name"
