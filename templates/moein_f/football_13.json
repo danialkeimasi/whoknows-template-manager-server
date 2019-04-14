@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -14,17 +14,15 @@
         "عکس زیر ، پیراهن خانگی تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
-        "var.team.homekit"
+        "var.team.firstkit"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.choose(NOC).homekit"
+        "var.teams.choose(NOC).firstkit"
     ],
-    "subtitle":[
-        "var.team.homekit"
-    ], 
+   
     "__usage": [
         "contest"
     ],
