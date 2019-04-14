@@ -9,7 +9,9 @@
     ],
     "title_true_false": [
         "عکس زیر ، پیراهن اول تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن اول تیم `var.teams.choose(1).name` میباشد."
+        "عکس زیر ، پیراهن اول تیم `var.teams.choose(1).name` میباشد.",
+        "عکس زیر ، پیراهن خانگی تیم `var.team.name` میباشد.",
+        "عکس زیر ، پیراهن خانگی تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
         "var.team.homekit"
@@ -20,6 +22,9 @@
     "choices_multichoices": [
         "var.teams.choose(NOC).homekit"
     ],
+    "subtitle":[
+        "var.team.homekit"
+    ], 
     "__usage": [
         "contest"
     ],
