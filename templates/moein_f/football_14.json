@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
