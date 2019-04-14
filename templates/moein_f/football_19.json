@@ -19,6 +19,9 @@
     "choices_multichoices": [
         "var.teams.name"
     ],
+    "subtitle": [
+        "var.team.thirdkit"
+    ],
     "__usage": [
         "contest"
     ],

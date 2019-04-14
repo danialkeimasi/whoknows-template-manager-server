@@ -19,6 +19,9 @@
     "choices_multichoices": [
         "var.teams.name"
     ],
+    "subtitle": [
+        "var.team.awaykit"
+    ],
     "__usage": [
         "contest"
     ],
