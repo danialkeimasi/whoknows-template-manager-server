@@ -14,7 +14,7 @@ class CONFIG:
     templates_dir = f'{project_dir}/templates/main'
     questions_dir = f'{project_dir}/modules'
     result_dir = f'{project_dir}/template_engine/result'
-    dataset_dir = f'{project_dir}/../datasets'
+    dataset_dir = f'{project_dir}/_datasets'
     language = 'fa'
     use_mongo = False
 

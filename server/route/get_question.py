@@ -1,6 +1,8 @@
 from server.flask import getApp
 from flask import json, request
 from modules.Config import CONFIG
+import random
+import functools
 
 from modules.TemplateEngine import testTemplate_ByCreate_Question
 
@@ -30,8 +32,22 @@ def add():
         # question = create_question(Request['tags'], Request['count'])
         
         Request = request.json
-        rand = Request['rand']
+        count = Request['count']
+        # tags  = Request['tags']
 
-        questions = testTemplate_ByCreate_Question(open(f'{CONFIG.templates_dir}/../moein_f/football_{rand}.json'))
+        questions = []
+        for i in range(1, 9):
+            try:
+                questions += [ testTemplate_ByCreate_Question(json.load(open(f'./templates/moein_f/football_{i}.json'))) ]
+            except:
+                pass
 
-        return json.dumps(questions)
+        questions =  functools.reduce(lambda a, b: a + b, questions)
+
+        
+        for i, item in enumerate(questions):
+            if not item['active']:
+                questions.pop(i)
+        
+
+        return json.dumps(questions[:count])
