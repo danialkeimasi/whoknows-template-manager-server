@@ -1,14 +1,14 @@
 {
     "values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.team == var.player.team]  NOC)",
+        "players": "db(footballPlayer[footballPlayer.team == var.player.team], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "شماره ی پیراهن 'var.player.name` در تیم `var.player.team` چند است؟"
+        "شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"
     ],
     "title_writing": [
-        "شماره ی پیراهن 'var.player.name` در تیم `var.player.team` چند است؟"
+        "شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"
     ],
     "title_true_false": [
         "`var.player.name` در تیم `var.player.team` با شماره ی `var.player.club_number` بازی میکند.",
