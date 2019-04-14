@@ -85,7 +85,7 @@ def check_question(question, QT, problems):
             choice = str(choice)
             if any([choice.find(item) != -1 for item in ['None', 'NaN', 'null']]) or all(
                     choice.find(item) != -1 for item in question['answer']):
-                print(f"*****{choice.find(question['answer'])}")
+                
                 problems += ['section "choices" has wrong values']
         if (QT != "writing" or QT != "true_false") and choices == []:
             problems += ['section "choices" has shit']

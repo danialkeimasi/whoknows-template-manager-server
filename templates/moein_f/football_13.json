@@ -14,15 +14,17 @@
         "عکس زیر ، پیراهن خانگی تیم `var.teams.choose(1).name` میباشد."
     ],
     "answer_multichoices": [
-        "var.team.firstkit"
+        "var.team.homekit"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.choose(NOC).firstkit"
+        "var.teams.choose(NOC).homekit"
     ],
-   
+    "subtitle": [
+        "var.team.homekit"
+    ],
     "__usage": [
         "contest"
     ],
