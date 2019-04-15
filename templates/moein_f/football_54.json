@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd < var.team.gd)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [

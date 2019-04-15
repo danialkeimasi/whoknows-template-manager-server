@@ -16,7 +16,7 @@
         "var.team.name"
     ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

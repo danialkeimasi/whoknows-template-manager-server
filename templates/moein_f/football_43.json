@@ -1,22 +1,16 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.lost) & (footballTable.ga != var.team.lost)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"
     ],
-    "title_writing": [
-        "چه تیمی تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"
-    ],
     "answer_multichoices": [
         "var.team.name"
     ],
-    "answer_writing": [
-        "var.team.name"
-    ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

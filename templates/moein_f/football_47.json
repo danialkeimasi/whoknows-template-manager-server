@@ -1,16 +1,16 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.pos < var.team.pos)] ,NOC)"
     },
     "title_multichoices": [
-        "کدام تیم در جدول لیگ `var.team.league` رتبه ی پایین تری دارد؟"
+        "کدام تیم در جدول لیگ `var.team.league` نسبت به سایر گزینه ها رتبه ی پایین تری دارد؟"
     ],
     "answer_multichoices": [
         "var.team.name"
     ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

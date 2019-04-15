@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draw != var.team.draw)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -11,20 +11,20 @@
         "تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` چند است؟"
     ],
     "title_true_false": [
-        "تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.tie` میباشد.",
-        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).tie` میباشد."
+        "تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.draw` میباشد.",
+        "تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).draw` میباشد."
     ],
     "answer_multichoices": [
-        "var.team.tie"
+        "var.team.draw"
     ],
     "answer_writing": [
-        "var.team.tie"
+        "var.team.draw"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teames.tie"
+        "var.teams.draw"
     ],
     "__usage": [
         "contest"

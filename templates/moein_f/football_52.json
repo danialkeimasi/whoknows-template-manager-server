@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga < var.team.ga)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -9,7 +9,9 @@
     ],
     "title_true_false": [
         "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
-        "تعداد گل خورده تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است."
+        "تعداد گل خورده تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است.",
+        "تعداد گل خورده تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name کمتر است.",
+        "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name کمتر است."
     ],
     "answer_multichoices": [
         "var.team.name"

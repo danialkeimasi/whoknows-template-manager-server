@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga > var.team.ga)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم در لیگ `var.team.league` تفاضل گل کمتری نسبت به سایر گزینه ها دارد؟"

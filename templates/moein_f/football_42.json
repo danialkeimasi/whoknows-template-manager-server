@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.lost != var.team.lost)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -12,7 +12,7 @@
     ],
     "title_true_false": [
         "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
-        "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."
+        "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."
     ],
     "answer_multichoices": [
         "var.team.lost"
@@ -24,7 +24,7 @@
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teames.lost"
+        "var.teams.lost"
     ],
     "__usage": [
         "contest"

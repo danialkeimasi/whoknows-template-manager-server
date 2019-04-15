@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point > var.team.point)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم در جدول لیگ `var.team.league` امتیاز کمتری دارد؟"
@@ -10,7 +10,7 @@
         "var.team.name"
     ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga != var.team.ga)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -11,20 +11,20 @@
         "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل خورده است؟"
     ],
     "title_true_false": [
-        "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.goalzade` میباشد.",
-        "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).goalzade` میباشد."
+        "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.ga` میباشد.",
+        "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).ga` میباشد."
     ],
     "answer_multichoices": [
-        "var.team.goalkhorde"
+        "var.team.ga"
     ],
     "answer_writing": [
-        "var.team.goalkhorde"
+        "var.team.ga"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teames.goalkhorde"
+        "var.teams.ga"
     ],
     "__usage": [
         "contest"

@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.win > var.team.win)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم در لیگ `var.team.league` تعداد برد کمتری نسبت به سایر گزینه ها دارد؟"
