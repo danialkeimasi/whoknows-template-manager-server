@@ -26,7 +26,7 @@
     "choices_multichoices": [
         "var.teams.choose(NOC).awaykit"
     ],
-    "subtitle": [
+    "subtitle_true_false": [
         "var.team.awaykit"
     ],
     "__usage": [

@@ -25,7 +25,7 @@
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "wrong_guess(var.team.year, NOC)"
+        "wrong_guess(var.team.year, 17 , NOC)"
     ],
     "__usage": [
         "contest"

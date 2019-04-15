@@ -26,7 +26,7 @@
     "choices_multichoices": [
         "var.teams.choose(NOC).homekit"
     ],
-    "subtitle": [
+    "subtitle_true_false": [
         "var.team.homekit"
     ],
     "__usage": [

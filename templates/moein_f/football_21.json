@@ -22,7 +22,7 @@
     "choices_multichoices": [
         "var.teams.logo"
     ],
-    "subtitle": [
+    "subtitle_true_false": [
         "var.team.logo"
     ],
     "__usage": [

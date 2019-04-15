@@ -22,7 +22,7 @@
     "choices_multichoices": [
         "var.teams.choose(NOC).gkkit"
     ],
-    "subtitle": [
+    "subtitle_true_false": [
         "var.team.gkkit"
     ],
     "__usage": [

@@ -1,8 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
     },
     "title_multichoices": [
         "پیراهن زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن کدام تیم است؟"
@@ -19,8 +18,11 @@
     "choices_multichoices": [
         "var.teams.name"
     ],
-    "subtitle": [
+    "subtitle_multichoices": [
         "var.team.homekit"
+    ],
+    "subtitle_writing": [
+        "var.team.homedkit"
     ],
     "__usage": [
         "contest"
