@@ -1,8 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
-        "players": "(list(set(list(footballTeam.palayers))- set[var.team.captain]))",
+        "teams": "db(footballTeam[footballTeam.year != var.team.year])",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [

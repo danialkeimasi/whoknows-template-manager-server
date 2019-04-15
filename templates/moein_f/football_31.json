@@ -1,8 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد؟"
@@ -17,7 +16,7 @@
         "var.team.name"
     ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf == var.team.gf] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -11,13 +11,13 @@
         "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"
     ],
     "answer_multichoices": [
-        "var.team.goalzade"
+        "var.team.gf"
     ],
     "answer_writing": [
-        "var.team.goalzade"
+        "var.team.gf"
     ],
     "choices_multichoices": [
-        "var.teames.goalzade"
+        "var.teams.gf"
     ],
     "__usage": [
         "contest"

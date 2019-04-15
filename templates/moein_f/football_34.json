@@ -1,14 +1,11 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "کدام تیم تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.goalzade` میباشد؟"
-    ],
-    "title_writing": [
-        "چه تیمی تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.goalzade` میباشد؟"
+        "کدام تیم تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.gf` میباشد؟"
     ],
     "title_true_false": [
         "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.goalzade` میباشد.",
@@ -17,14 +14,11 @@
     "answer_multichoices": [
         "var.team.name"
     ],
-    "answer_writing": [
-        "var.team.name"
-    ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teames.name"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

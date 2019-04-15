@@ -1,11 +1,11 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)",
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟"
+        "رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"
     ],
     "title_writing": [
         "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"
@@ -24,7 +24,7 @@
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teames.pos"
+        "var.teams.pos"
     ],
     "__usage": [
         "contest"
