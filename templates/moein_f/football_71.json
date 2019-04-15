@@ -1,8 +1,7 @@
 {
     "values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)"
     },
     "title_multichoices": [
         "کدام ورزشگاه در شهر `var.stadium.city` قرار دارد؟"

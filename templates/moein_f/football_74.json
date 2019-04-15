@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.rival != var.team.rival], NOC)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
@@ -24,7 +24,7 @@
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.rival"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"

@@ -1,17 +1,16 @@
 {
     "values": {
-        "game": "db(footballGame)",
-        "games": "db(footballGame[footballGame.scores != var.game.scores], NOC)",
-        "True_or_False": "rand([True,False])"
+        "match": "db(footballMatch)",
+        "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
     },
     "title_multichoices": [
-        "کدام بازی با نتیجه ی `var.game.scores` به اتمام رسید؟"
+        "کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"
     ],
     "answer_multichoices": [
-        "var.game.name"
+        "var.match.name"
     ],
     "choices_multichoices": [
-        "var.games.name"
+        "var.matches.name"
     ],
     "__usage": [
         "contest"

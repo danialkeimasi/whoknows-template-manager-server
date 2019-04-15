@@ -1,8 +1,7 @@
 {
     "values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
     },
     "title_multichoices": [
         "کدام یک از ورزشگاه های زیر در سال `var.stadium.year` تاسیس شده اند؟"

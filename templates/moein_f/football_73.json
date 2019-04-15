@@ -1,8 +1,7 @@
 {
     "values": {
         "coach": "db(footballCoach)",
-        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
     "title_multichoices": [
         "کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"

@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[footballTable.league == var.team.league] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draw > var.team.draw)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم در لیگ `var.team.league` تعداد مساوی کمتری نسبت به سایر گزینه ها دارد؟"

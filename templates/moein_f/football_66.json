@@ -11,7 +11,7 @@
         "ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"
     ],
     "title_true_false": [
-        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity?` میباشد.",
+        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
         "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."
     ],
     "answer_multichoices": [

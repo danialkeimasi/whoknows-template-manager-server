@@ -1,30 +1,30 @@
 {
     "values": {
-        "game": "db(footballGame)",
-        "games": "db(footballGame[footballGame.pos1 != var.game.pos1], NOC)",
+        "match": "db(footballMatch)",
+        "matches": "db(footballMatch[footballMatch.pos1 != var.match.pos1], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "در بازی `var.game.name` مالکیت تیم `var.game.home` چقدر بود؟"
+        "در بازی `var.match.name` مالکیت تیم `var.match.home` چقدر بود؟"
     ],
     "title_writing": [
-        "در بازی `var.game.name` مالکیت تیم `var.game.home` چقدر بود؟"
+        "در بازی `var.match.name` مالکیت تیم `var.match.home` چقدر بود؟"
     ],
     "title_true_false": [
-        "میزان مالکیت توپ تیم `var.game.home` در باز ی`var.game.name` برابر `var.game.pos1` بود.",
-        "میزان مالکیت توپ تیم `var.game.home` در باز ی`var.game.name` برابر `var.games.choose(1).pos1` بود. "
+        "میزان مالکیت توپ تیم `var.match.home` در باز ی`var.match.name` برابر `var.match.pos1` بود.",
+        "میزان مالکیت توپ تیم `var.match.home` در باز ی`var.match.name` برابر `var.matches.choose(1).pos1` بود. "
     ],
     "answer_multichoices": [
-        "var.game.pos1"
+        "var.match.pos1"
     ],
     "answer_writing": [
-        "var.game.pos1"
+        "var.match.pos1"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.games.pos1"
+        "var.matches.pos1"
     ],
     "__usage": [
         "contest"

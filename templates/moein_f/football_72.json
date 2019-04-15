@@ -12,7 +12,7 @@
     ],
     "title_true_false": [
         "`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
-        "`var.coach.name` اهل کشور `var.coachs.choose` میباشد."
+        "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."
     ],
     "answer_multichoices": [
         "var.coach.nation"

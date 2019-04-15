@@ -8,7 +8,7 @@
         "کدام بازیکن در سال `var.player.year` متولد شده است؟"
     ],
     "title_true_false": [
-        "`var.player.name` در سال `var.player.year` متولد شده است."
+        "`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است." 
     ],
     "answer_multichoices": [
         "var.player.name"

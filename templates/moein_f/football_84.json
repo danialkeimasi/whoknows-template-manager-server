@@ -1,30 +1,30 @@
 {
     "values": {
-        "game": "db(footballGame)",
-        "games": "db(footballGame[footballGame.score2 != var.game.score2], NOC)",
+        "match": "db(footballMatch)",
+        "matches": "db(footballMatch[footballMatch.away_scores != var.match.away_score], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "در بازی `var.game.name` تیم `var.game.guest` چه تعداد گل به ثمر رساند؟"
+        "در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"
     ],
     "title_writing": [
-        "در بازی `var.game.name` تیم `var.game.guest` چه تعداد گل به ثمر رساند؟"
+        "در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"
     ],
     "title_true_false": [
-        "در بازی `var.game.name` تیم `var.game.guest` توانست `var.game.score2` بار دروازه ی حریف را باز کند.",
-        "در بازی `var.game.name` تیم `var.game.home` توانست `var.games.choose(1).score2` بار دروازه ی حریف را باز کند."
+        "در بازی `var.match.name` تیم `var.match.guest` توانست `var.match.away_scores` بار دروازه ی حریف را باز کند.",
+        "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."
     ],
     "answer_multichoices": [
-        "var.game.score2"
+        "var.match.away_score"
     ],
     "answer_writing": [
-        "var.game.score2"
+        "var.match.away_score"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.games.score2"
+        "var.matches.away_score"
     ],
     "__usage": [
         "contest"

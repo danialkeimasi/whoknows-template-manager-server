@@ -7,17 +7,11 @@
     "title_multichoices": [
         "کدام تیم در سال `var.team.year` تاسیس شده است؟"
     ],
-    "title_writing": [
-        "چه تیمی در سال `var.team.year` تاسیس شده است؟"
-    ],
     "title_true_false": [
         "تیم `var.team.name` در سال `var.team.year` تاسیس شده است.",
         "تیم `var.team.name` در سال `var.teams.choose(1).year` تاسیس شده است."
     ],
     "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
         "var.team.name"
     ],
     "answer_true_false": [

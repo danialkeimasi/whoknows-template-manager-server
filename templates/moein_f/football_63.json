@@ -10,13 +10,13 @@
         "تیم `var.team.name` در چه سالی تاسیس شده است؟"
     ],
     "answer_multichoices": [
-        "var.team.name"
+        "var.team.year"
     ],
     "answer_writing": [
-        "var.team.name"
+        "var.team.year"
     ],
     "choices_multichoices": [
-        "var.teams.name"
+        "var.teams.year"
     ],
     "__usage": [
         "contest"

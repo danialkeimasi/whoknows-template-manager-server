@@ -1,17 +1,16 @@
 {
     "values": {
-        "game": "db(footballGame)",
-        "games": "db(footballGame[footballGame.stadium != var.game.stadium], NOC)",
-        "True_or_False": "rand([True,False])"
+        "match": "db(footballMatch)",
+        "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
     "title_multichoices": [
         "کدام یک از بازی های زیر در استادیوم `var.game.stadium` برگزار شده است؟"
     ],
     "answer_multichoices": [
-        "var.game.name"
+        "var.match.name"
     ],
     "choices_multichoices": [
-        "var.games.name"
+        "var.matches.name"
     ],
     "__usage": [
         "contest"

@@ -1,17 +1,16 @@
 {
     "values": {
-        "game": "db(footballGame)",
-        "games": "db(footballGame[footballGame.ref != var.game.ref], NOC)",
-        "True_or_False": "rand([True,False])"
+        "match": "db(footballMatch)",
+        "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
     "title_multichoices": [
-        "`var.game.ref` داوری کدام بازی را برعهده داشته است؟"
+        "`var.match.ref` داوری کدام بازی را برعهده داشته است؟"
     ],
     "answer_multichoices": [
-        "var.game.name"
+        "var.match.name"
     ],
     "choices_multichoices": [
-        "var.games.name"
+        "var.matches.name"
     ],
     "__usage": [
         "contest"
