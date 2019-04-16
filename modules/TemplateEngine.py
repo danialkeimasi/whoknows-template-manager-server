@@ -216,7 +216,7 @@ def parse(template, question, var):
             setattr(var, key, eval(value))
 
     for section in ['title']:
-        templateSec = section + '_' + QT
+        templateSec = f'{section}_{QT}'
 
         if templateSec in template:
             question[section] = choose(template[templateSec])
@@ -235,7 +235,7 @@ def parse(template, question, var):
             raise TemplateError(f'Wrong Type (QT) For Template in parse(), {templateSec} not found in template.')
 
     for section in ['answer']:
-        templateSec = section + '_' + QT
+        templateSec = f'{section}_{QT}'
 
         if templateSec in template:
             question[section] = eval(template[templateSec][0])
@@ -244,7 +244,7 @@ def parse(template, question, var):
             raise TemplateError(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
     for section in ['choices']:
-        templateSec = section + '_' + QT
+        templateSec = f'{section}_{QT}'
 
         if templateSec in template:
             question[section] = eval(template[templateSec][0])
@@ -254,7 +254,7 @@ def parse(template, question, var):
                 raise TemplateError(f'Wrong Type For Template in parse(), {templateSec} not found in template.')
 
     for section in ['subtitle']:
-        templateSec = section
+        templateSec = f'{section}_{QT}'
 
         if templateSec in template:
             question[section] = eval(template[templateSec][0])
