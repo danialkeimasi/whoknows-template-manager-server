@@ -1,11 +1,11 @@
-import server.flask
 from flask import Flask
 
-import server.routeHandle as routeHandler
+import server.flask
+import server.routeHandle
 from modules.Tools.ArgParse import arg_parse
 
 server.flask.app = Flask(__name__)
-routeHandler.addRoutes()
+server.routeHandle.addRoutes()
 
 if __name__ == '__main__':
     isThereArg = arg_parse()
