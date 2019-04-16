@@ -69,5 +69,12 @@ def addTemplate_toMongo(template):
     - do some improvement to template file and add the template to the database
 
     '''
-    
+    print('\n\n\n==> before function:')
+    pprint(template)
+
+
+
+
+
+    print('\n\n\n==> after function:')
     pprint(template)

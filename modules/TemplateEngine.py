@@ -333,7 +333,7 @@ def load_template_datasets(template, problems, neccesery_Dsets):
         globals()[db] = load_data(db)
 
 
-def template_engine(template, NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=False, reload_question=False,
+def template_engine(template, tags=[], NOC=3, NOS=4, TIME=10, SCORE=100, QT=None, debug=False, reload_question=False,
                     data_id=[]):
     '''
     Generate a question with the given template and conditions
