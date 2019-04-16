@@ -2,6 +2,7 @@ import json
 import glob
 import sys
 import functools
+from pprint import pprint
 from modules.Config import CONFIG
 
 
@@ -53,12 +54,12 @@ def addTemplate_toMainJson(f):
     save_template(templates + [newTemplate])
 
 
-def addTemplate_toMongo(file_address_template):
+def addTemplate_toMongo(template):
     '''
     add the given template address to the templates in mongo
     HOW TO RUN:
         this function run's by this command:
-            python app.py -addTemplate <template_address>
+            python app.py --addTemplate <template_address>
 
 
 
@@ -69,15 +70,4 @@ def addTemplate_toMongo(file_address_template):
 
     '''
     
-    template = json.load(open(file_address_template))
-
-    print(template)
-
-    
-
-    
-if __name__ == "__main__":
-    # separator()
-
-    f = sys.argv[1]
-    addTemplate_toMainJson(f)
+    pprint(template)

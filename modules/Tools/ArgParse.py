@@ -9,6 +9,7 @@ from modules.Tools.Exceptions import *
 from modules.Config import logger, CONFIG
 from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
 from modules.TemplateEngine import testTemplate_ByCreate_Question
+from modules.Tools.TemplateManager import addTemplate_toMongo
 
 
 def arg_parse():
@@ -24,6 +25,14 @@ def arg_parse():
         type=str,
 
         help='test the templates and make questions',
+    )
+
+    parser.add_argument(
+        '-at', '---addTemplate',
+        dest='addTemplate', default=None,
+        type=str,
+
+        help='add the template to the templates database',
     )
 
     parser.add_argument(
@@ -78,15 +87,12 @@ def arg_parse():
         logger.critical('Checkup results : ')
         logger.critical(json.dumps(project_checkup(), indent=4))
 
-    if args.test :
+    if args.test:
         if os.path.isfile(args.test):
             template = json.load(open(args.test))
-
-            if isinstance(template, list):
-                template = template[0]
+            template = template[0] if isinstance(template, list) else template
 
             testTemplate_ByCreate_Question(template)
-            
 
             # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
             # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
@@ -94,6 +100,16 @@ def arg_parse():
         else:
             raise TemplateError('the given template is not found!')
 
+    if args.addTemplate:
+        if os.path.isfile(args.addTemplate):
+            template = json.load(open(args.addTemplate))
+            template = template[0] if isinstance(template, list) else template
+
+            addTemplate_toMongo(template)
+
+        else:
+            raise TemplateError('the given template is not found!')
+            
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
         return False
