@@ -23,7 +23,7 @@ def separator():
             json.dump(template, f, indent=4, separators=(',', ': '), ensure_ascii=False)
             
 
-def addTemplate(f):
+def addTemplate_toMainJson(f):
     
     def save_template(template):
         with open(f'{CONFIG.questions_dir}/templates_seprated/{template["__number"]}.json', 'w+') as f:
@@ -36,7 +36,7 @@ def addTemplate(f):
     add the given template to the templates
     '''
 
-    templates = json.load(open(f'{CONFIG.templates_dir}/template.json'))    
+    templates = json.load(open(f'{CONFIG.templates_dir}/template.json'))
     last_number = max([template['__number'] for template in templates] + [0])
     
     newTemplate = json.load(open(f))
@@ -52,9 +52,32 @@ def addTemplate(f):
     newTemplate['__number'] = last_number + 1
     save_template(templates + [newTemplate])
 
+
+def addTemplate_toMongo(file_address_template):
+    '''
+    add the given template address to the templates in mongo
+    HOW TO RUN:
+        this function run's by this command:
+            python app.py -addTemplate <template_address>
+
+
+
+
+    - first load the template file
+    - test all tags by templateEngine function and save the tags that can make question with them
+    - do some improvement to template file and add the template to the database
+
+    '''
+    
+    template = json.load(open(file_address_template))
+
+    print(template)
+
+    
+
     
 if __name__ == "__main__":
     # separator()
 
     f = sys.argv[1]
-    addTemplate(f)
+    addTemplate_toMainJson(f)
