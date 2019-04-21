@@ -1,31 +1,19 @@
-pu
+
 [
     {
-        "name": "lionel messi",
-        "club_number": "10",
-        "height":"169",
-        "age": 31,
-        "birth_date": "Jun 24, 1987",
-        "birth_year": "1987",
-        "birthday": "Jun 24",
-        "club_join_date": "Jul 1, 2004",
-        "club": "FC Barcelona",
-        "foot": "Left",
-        "national_team": "Argentina",
-        "nationality": "Argentina",
-        "photo": "photo.jpg",
-        "positions": [
-            "CF",
-            "RW",
-            "ST"
-        ],
-        "release_clause": "\u20ac226.5M",
-        "value": "\u20ac110.5M",
-        "wage": "\u20ac565K",
-        "club_number": "10",
-        "national_number": "10",
-        "club_join_date": "Jul 1, 2004",
-        "contract_valid_until": "2021"
-        
+        "name": "manchester city vs tottenham hotspur - premier league 2018/19 : week 35",
+        "home": "manchester city",
+        "away": "tottenham hotspur",
+        "stadium": "Etihad Stadium",
+        "ref": "Michael Oliver",
+        "scores": "1 - 0",
+        "home_score": "1",
+        "away_score": "0",
+        "home_pos": "61",
+        "away_pos": "39",
+        "home_offside": "2",
+        "away_offside": "2",
+        "home_corner": "4",
+        "away_corner": "4",
     }
 ]
