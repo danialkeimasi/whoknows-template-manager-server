@@ -15,5 +15,139 @@
         "away_offside": "2",
         "home_corner": "4",
         "away_corner": "4",
+        "home_shots_on_target": "4",
+        "away_shots_on_target": "4",
+        "half_time_scores": "1 - 0",
+        "home_half_time_score": "1",
+        "away_half_time_score": "0",
+        "scorers":[
+            "Phil Foden"
+        ],
+        "home_scorers": [
+            "Phil Foden"
+        ],
+        "away_scorers": [],
+        "lineups":[
+            "E. Morares",
+            "K. WAlker",
+            "J. Stones",
+            "A. Laporte",
+            "O. Zinchenko",
+            "K. De Bruyne",
+            "İ. Gündoğan",
+            "P. Foden",
+            "B. Silva",
+            "S. Agüero",
+            "R. Sterling",
+            "Lucas",
+            "H. Son",
+            "D. Ali",
+            "E. Dier",
+            "C. Eriksen",
+            "V. Davies",
+            "J. Vertonghen",
+            "T. Alderweireld",
+            "D. Sánchez",
+            "J. Foyth",
+            "P. Gazzaniga"
+        ],
+        "home_lineups": [
+            "E. Morares",
+            "K. WAlker",
+            "J. Stones",
+            "A. Laporte",
+            "O. Zinchenko",
+            "K. De Bruyne",
+            "İ. Gündoğan",
+            "P. Foden",
+            "B. Silva",
+            "S. Agüero",
+            "R. Sterling"
+        ],
+        "away_lineups": [
+            "Lucas",
+            "H. Son",
+            "D. Ali",
+            "E. Dier",
+            "C. Eriksen",
+            "V. Davies",
+            "J. Vertonghen",
+            "T. Alderweireld",
+            "D. Sánchez",
+            "J. Foyth",
+            "P. Gazzaniga"
+        ],
+        "substitutes":[
+            "L. Sané",
+            "D. Silva",
+            "Fernandinho",
+            "R. Mahrez",
+            "N. Otamendi",
+            "G. Jesus",
+            "A. Muric",
+            "D. Rose",
+            "V. Janssen",
+            "V. Wanyama",
+            "M. Vorm",
+            "K. Walker-Peters",
+            "F. Llorente",
+            "O. Skipp"
+        ],
+        "home_substitutes":[
+            "L. Sané",
+            "D. Silva",
+            "Fernandinho",
+            "R. Mahrez",
+            "N. Otamendi",
+            "G. Jesus",
+            "A. Muric"
+        ],
+        "away_substitutes":[
+            "D. Rose",
+            "V. Janssen",
+            "V. Wanyama",
+            "M. Vorm",
+            "K. Walker-Peters",
+            "F. Llorente",
+            "O. Skipp"
+        ],
+        "home_manager": "Pep Guardiola",
+        "away_manager":"Mauricio Pochettino",
+        "sub_out": [
+            "K. De Bruyne",
+            "S. Agüero",
+            "P. Foden",
+            "D. Ali",
+            "E. Dier",
+            "T. Alderweireld"
+        ],
+        "home_sub_out":[
+            "K. De Bruyne",
+            "S. Agüero",
+            "P. Foden"
+        ],
+        "away_sub_out":[
+            "D. Ali",
+            "E. Dier",
+            "T. Alderweireld"
+        ],
+        "sub_in": [
+            "L. Sané",
+            "D. Silva",
+            "Fernandinho",
+            "D. Rose",
+            "V. Wanyama",
+            "F. Llorente"
+        ],
+        "home_sub_in": [
+            "L. Sané",
+            "D. Silva",
+            "Fernandinho"
+        ],
+        "away_sub_in": [
+            "D. Rose",
+            "V. Wanyama",
+            "F. Llorente"
+        ]
     }
 ]
