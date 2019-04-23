@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.lost) & (footballTable.ga != var.team.lost)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.lost != var.team.lost)] ,NOC)"
     },
     "title_multichoices": [
         "کدام تیم تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"

@@ -3,22 +3,22 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.league != var.team.league] , NOC)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
-        "countries"       : "listSub(footballTeam.country , var.team.country)",
+        "countries" : "listSub(footballTeam.country , var.team.country)",
         "True_or_False" : "rand([True,False])",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
-        "`var.team.name` در کدام کشور فعالیت میکند؟"
+        "`var.team.name` متعلق به کدام کشور است؟"
     ],
     "title_writing": [
-        "`var.team.name` در چه کشوری فعالیت میکند؟"
+        "`var.team.name` متعلق به چه کشوری است؟"
     ],
     "title_true_false": [
-        "`var.team.name` در کشور `var.team.country` فعالیت میکند؟.",
-        "`var.team.name` در کشور `var.teams.choose(1).country` فعالیت میکند."
+        "`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
+        "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."
     ],
     "title_selective": [
-        "کدام تیم ها در کشور `var.team.country` فعالیت میکنند؟"
+        "کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"
     ],
     "answer_multichoices": [
         "var.team.country"
