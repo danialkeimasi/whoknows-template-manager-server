@@ -1,6 +1,6 @@
 {
     "values": {
-        "match": "db(footballGame)",
+        "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)",
         "True_or_False": "rand([True,False])"
     },
