@@ -39,7 +39,8 @@ def add():
         for i in range(1, 9):
             try:
                 questions += [ testTemplate_ByCreate_Question(json.load(open(f'./templates/moein_f/football_{i}.json'))) ]
-            except:
+            
+            except Exception as error:
                 pass
 
         questions =  functools.reduce(lambda a, b: a + b, questions)
@@ -50,4 +51,14 @@ def add():
                 questions.pop(i)
         
 
-        return json.dumps(questions[:count])
+        if len(questions) < count:
+            return json.dumps({ 
+                    'ok': False, 
+                    'problem': 'not enought questions !'
+                })
+        
+        else:
+            return json.dumps({
+                'ok': True,
+                'questions': questions[:count]
+            })
