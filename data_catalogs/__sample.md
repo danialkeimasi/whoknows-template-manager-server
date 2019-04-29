@@ -1,3 +1,3 @@
-Field | Regex | Descereption
------ |-------|--------------
-<name_of_field>  | <regex_pattern> | ممد هستم، از وقتی که  با گردنم آشنا شدم، دیگه زندگیم مثل سابق نبود، هیچوقت نتونستم گردنم رو زمین بزارم.
+Field |  type   | Regex | Descereption
+----- |---------|-------|--------------
+<name_of_field> |  <type_of_field>  | <regex_pattern> | توضیحات در رابطه با فیلد
