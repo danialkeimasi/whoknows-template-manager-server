@@ -4,7 +4,7 @@
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
     "title_multichoices": [
-        "بند آزادسازی کدام بازیکن برابر `var.player.release` میباشد؟"
+        "بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"
     ],
     "answer_multichoices": [
         "var.player.name"

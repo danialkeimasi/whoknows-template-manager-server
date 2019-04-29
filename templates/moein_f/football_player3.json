@@ -5,14 +5,14 @@
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "بند آزادسازی `var.player.name` چقدر است؟"
+        "بند آزادسازی `var.player.name` چقدر است؟ (یورو)"
     ],
     "title_writing": [
-        "بند آزادسازی `var.player.name` چقدر است؟"
+        "بند آزادسازی `var.player.name` چقدر است؟ (یورو)"
     ],
     "title_true_false": [
-        "بند آزادسازی `var.player.name` برابر `var.player.release` میباشد.",
-        "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release` میباشد."
+        "بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
+        "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."
     ],
     "answer_multichoices": [
         "var.player.release"
