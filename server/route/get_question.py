@@ -37,7 +37,7 @@ def add():
         # tags  = Request['tags']
 
         questions = []
-        for template_file in glob.glob(f'./templates/moein_f/*.json'):
+        for template_file in glob.glob(f'./templates/moein_f/*.json')[:10]:
             try:
                 questions += [ testTemplate_ByCreate_Question(json.load(open(template_file))) ]
             
