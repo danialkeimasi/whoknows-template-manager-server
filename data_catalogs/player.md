@@ -1,8 +1,8 @@
 Field |  type   | Regex | Descereption
 ----- |---------|-------|--------------
-<name> |  <string>  | <[ََ\D]{3,20}> | نام بازیکن ، که او را با آن نام میشناسند. مانند Lionel Messi , Hulk
-<club> |  <string>  | <.{2,20}> | نام کامل تیم مانند FC Barcelona
-<club_number> |  <string>  | <[1-9][0-9]> | شماره ی پیراهن بازیکن در تیم باشگاهی اش
+name |  string  | [ََ\D]{3,20} | نام بازیکن ، که او را با آن نام میشناسند. مانند Lionel Messi , Hulk
+club |  string  | .{2,20}> | نام کامل تیم مانند FC Barcelona
+club_number |  string>  | <[1-9][0-9]> | شماره ی پیراهن بازیکن در تیم باشگاهی اش
 <nation> |  <string>  | <ََ[A-Z][A-Z a-z\(\)]{3,40}> | ملیت بازیکن
 <national_team> |  <string>  | <ََ[\D]{4,35}> | ملیت بازیکن
 <height_cm> |  <int>  | <ََ[1,2]\d\d> | قد بازیکن به سانتی متر
