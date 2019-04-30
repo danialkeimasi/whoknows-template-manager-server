@@ -1,11 +1,12 @@
 {
-    "values": {
+    "__values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)"
     },
 
     "__usage": ["contest"],
     "__level": 2,
+    "__score_function": "default",
 
     "choose": {
       "title": [
