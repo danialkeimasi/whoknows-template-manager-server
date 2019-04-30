@@ -9,7 +9,7 @@ from modules.Tools.Exceptions import *
 from modules.Config import logger, CONFIG
 from modules.Tools.Functions import project_checkup, get_templates_list, test_templates
 from modules.TemplateEngine import testTemplate_ByCreate_Question
-from modules.Tools.TemplateManager import addTemplate_toMongo
+from modules.Tools.TemplateManager import add_template_to_server
 
 
 def arg_parse():
@@ -105,7 +105,7 @@ def arg_parse():
             template = json.load(open(args.addTemplate))
             template = template[0] if isinstance(template, list) else template
 
-            addTemplate_toMongo(template)
+            add_template_to_server(template)
 
         else:
             raise TemplateError('the given template is not found!')
