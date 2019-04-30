@@ -12,7 +12,7 @@ def rand(needList, count=0, exceptions=[]):
 	Return a list of random numbers in range of [start , ... , end], Returns only one number(not list) of count is not given
 	Parameters
 	----------
-	needList   : list
+	needList   : list, range
         a list of items that we want to choose from
 	count      : int
 		number of random numbers that is needed

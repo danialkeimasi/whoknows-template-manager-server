@@ -289,8 +289,6 @@ def create_question(tags, question_count, subtitle_types=['audio', 'video', 'tex
 
     questions = [template_engine(templ) for templ in selected_templates]
 
-    return {'kir': 20}
-
     # -----------------------------------
     qaleb = [x for x in json.load(open(f'{CONFIG.templates_dir}/footballTeam,league.json')) if x['__number'] == 1][0]
 

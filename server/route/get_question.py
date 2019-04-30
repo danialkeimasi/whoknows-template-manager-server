@@ -3,6 +3,7 @@ from flask import json, request
 from modules.Config import CONFIG
 import random
 import functools
+import glob
 
 from modules.TemplateEngine import testTemplate_ByCreate_Question
 
@@ -36,10 +37,11 @@ def add():
         # tags  = Request['tags']
 
         questions = []
-        for i in range(1, 9):
+        for template_file in glob.glob(f'./templates/moein_f/*.json')[:10]:
             try:
-                questions += [ testTemplate_ByCreate_Question(json.load(open(f'./templates/moein_f/football_{i}.json'))) ]
-            except:
+                questions += [ testTemplate_ByCreate_Question(json.load(open(template_file))) ]
+            
+            except Exception as error:
                 pass
 
         questions =  functools.reduce(lambda a, b: a + b, questions)
@@ -50,4 +52,14 @@ def add():
                 questions.pop(i)
         
 
-        return json.dumps(questions[:count])
+        if len(questions) < count:
+            return json.dumps({ 
+                    'ok': False, 
+                    'problem': 'not enought questions !'
+                })
+        
+        else:
+            return json.dumps({
+                'ok': True,
+                'questions': questions[:count]
+            })
