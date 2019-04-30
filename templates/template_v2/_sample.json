@@ -1,0 +1,59 @@
+{
+    "values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)"
+    },
+
+    "__usage": ["contest"],
+    "__level": 2,
+
+    "choose": {
+      "title": [
+
+      ],
+      "subtitle": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+      "choice": {
+        "format": "text",
+        "content": [
+
+        ],
+        "answer": ""
+      }
+
+    },
+    "select": {
+      "title": [
+
+      ],
+      "choice": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+
+
+      "subtitle": {
+        "format": "photo",
+        "content": [
+
+        ]
+      }
+
+    },
+    "write": {
+      "title": [
+
+      ]
+    },
+    "bool": {
+      "title": [
+
+      ]
+    }
+}
