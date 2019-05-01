@@ -7,6 +7,8 @@
     "__usage": ["contest"],
     "__level": 2,
     "__score_function": "default",
+    "__time":"250",
+    "__score": 50,
 
     "choose": {
       "title": {
