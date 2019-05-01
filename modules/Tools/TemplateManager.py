@@ -54,8 +54,10 @@ def addTemplate_toMainJson(f):
     newTemplate['__number'] = last_number + 1
     save_template(templates + [newTemplate])
 
-def template_syntax_checker(template):
-    problems = []
+def template_syntax_checker(template, problems = None):
+
+    problems = [] if problems is None else problems
+
     if not ('__level' in template and 1 <= template['__level'] <= 10):
         problems.append(f"template must have a '__level' part in by this range: [1, 10]")
 
@@ -66,24 +68,34 @@ def template_syntax_checker(template):
         problems.append(f"template must have a '__values' part in it")
 
     question_types = [key for key in template.keys() if not key.startswith('__')]
+
     logger.critical(f'found this question types: {question_types}')
 
-    questions = json.load(open('templates\\template_v2\\questions.json'))
+    template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
+
     for qtype in question_types:
-        if not(qtype in questions):
+        if not(qtype in template_formatter):
             problems.append(f'there is an undefined question type in template: {qtype}')
 
-        for inside in template[qtype].keys():
-            if not(inside in questions[qtype]):
-                problems.append(f'there is an undefined part in "{qtype}" in template: {inside}')
+        for question_property_name in template[qtype].keys():
+            if not(question_property_name in template_formatter[qtype]):
+                problems.append(f'there is an undefined part in "{qtype}" in template: {question_property_name}')
+
+            question_property = template[qtype][question_property_name]
+            if not(
+                'format' in question_property and
+                'content' in question_property and
+                isinstance(question_property['format'], str) and
+                isinstance(question_property['content'], list)
+                ):
+                problems.append(f"wrong syntax for {question_property_name} part in {qtype} question type")
 
         requirements = [item for item in
-                        set(questions[qtype].keys()) - set(template[qtype].keys()) if questions[qtype][item]]
+                        set(template_formatter[qtype].keys()) - set(template[qtype].keys()) if template_formatter[qtype][item]]
         if requirements:
             problems.append(f"there is no {requirements} in {qtype} type question")
 
-    pprint(problems)
-
+    return problems
 
 def add_template_to_server(template):
     '''
