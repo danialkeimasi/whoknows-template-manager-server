@@ -54,7 +54,7 @@ def addTemplate_toMainJson(f):
     newTemplate['__number'] = last_number + 1
     save_template(templates + [newTemplate])
 
-def template_checker(template):
+def template_syntax_checker(template):
     problems = []
     if not ('__level' in template and 1 <= template['__level'] <= 10):
         problems.append(f"there is problem with '__level'")
@@ -86,7 +86,7 @@ def add_template_to_server(template):
     '''
     logger.critical('adding template to the server ...')
 
-    template_checker(template)
+    template_syntax_checker(template)
 
 
     # response = requests.post(CONFIG.template_new, json=template)
