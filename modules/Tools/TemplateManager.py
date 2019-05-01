@@ -57,19 +57,32 @@ def addTemplate_toMainJson(f):
 def template_syntax_checker(template):
     problems = []
     if not ('__level' in template and 1 <= template['__level'] <= 10):
-        problems.append(f"there is problem with '__level'")
+        problems.append(f"template must have a '__level' part in by this range: [1, 10]")
 
     if not('__usage' in template):
         problems.append(f"template must have a '__usage' part in it")
 
-    if not('values' in template):
-        problems.append(f"template must have a 'values' part in it")
+    if not('__values' in template):
+        problems.append(f"template must have a '__values' part in it")
 
-    for item in ['writing', 'true_false', 'multichoices', 'selective']:
-        if f"title_{item}" in template and not(f"answer"):
-            pass
+    question_types = [key for key in template.keys() if not key.startswith('__')]
+    logger.critical(f'found this question types: {question_types}')
 
-    pprint(template)
+    questions = json.load(open('templates\\template_v2\\questions.json'))
+    for qtype in question_types:
+        if not(qtype in questions):
+            problems.append(f'there is an undefined question type in template: {qtype}')
+
+        for inside in template[qtype].keys():
+            if not(inside in questions[qtype]):
+                problems.append(f'there is an undefined part in "{qtype}" in template: {inside}')
+
+        requirements = [item for item in
+                        set(questions[qtype].keys()) - set(template[qtype].keys()) if questions[qtype][item]]
+        if requirements:
+            problems.append(f"there is no {requirements} in {qtype} type question")
+
+    pprint(problems)
 
 
 def add_template_to_server(template):

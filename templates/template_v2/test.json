@@ -1,0 +1,85 @@
+{
+    "__values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)"
+    },
+
+    "__usage": ["contest"],
+    "__level": 2,
+    "__score_function": "default",
+
+    "choose": {
+      "title": {
+        "format": "string",
+        "content": [
+
+        ]
+      },
+      "subtitle": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+      "choice": {
+        "format": "text",
+        "content": [
+
+        ]
+      },
+      "answer": {
+        "format": "text",
+        "content": [
+
+        ]
+      }
+    },
+    "select": {
+      "title": {
+        "format": "string",
+        "content": [
+
+        ]
+      },
+      "subtitle": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+      "choice": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+
+      "answer": {
+        "format": "text",
+        "content": [
+
+        ]
+      }
+    },
+    "write": {
+      "title": {
+        "format": "string",
+        "content": [
+
+        ]
+      },
+      "subtitle": {
+        "format": "photo",
+        "content": [
+
+        ]
+      },
+      "answer": {
+        "format": "text",
+        "content": [
+
+        ]
+      }
+
+    }
+}
