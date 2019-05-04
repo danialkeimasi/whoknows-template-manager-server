@@ -5,9 +5,14 @@ from pprint import pprint
 
 class Template:
 
+
+    template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
+
+
     def __init__(self, template_dict):
         self.template = template_dict
         pass
+
 
     def check_format(self, problems = None):
         problems = [] if problems is None else problems
@@ -16,20 +21,18 @@ class Template:
                            '__score']
         for item in template_consts:
             if not (item in self.template):
-                problems.append(f"template must have a '{item}' part in it")
+                problems.append(f'template must have a "{item}" part in it')
 
         question_types = [key for key in self.template.keys() if not key.startswith('__')]
-        logger.critical(f'found this question types: {question_types}')
-
-        template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
+        logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
-            if not (q_type in template_formatter):
-                problems.append(f'there is an undefined question type in template: {q_type}')
+            if not (q_type in self.template_formatter):
+                problems.append(f"there is an undefined question type in template: {q_type}")
 
             for q_property_name in self.template[q_type].keys():
-                if not (q_property_name in template_formatter[q_type]):
-                    problems.append(f'there is an undefined part in "{q_type}" in template: {q_property_name}')
+                if not (q_property_name in self.template_formatter[q_type]):
+                    problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
 
                 q_property = self.template[q_type][q_property_name]
                 if not (
@@ -41,8 +44,8 @@ class Template:
                     problems.append(f"wrong syntax for {q_property_name} part in {q_type} question type")
 
             q_requirements = [item for item in
-                              set(template_formatter[q_type].keys()) - set(self.template[q_type].keys()) if
-                              template_formatter[q_type][item]]
+                              set(self.template_formatter[q_type].keys()) - set(self.template[q_type].keys())
+                              if self.template_formatter[q_type][item]]
             if q_requirements:
                 problems.append(f"there is no {q_requirements} in {q_type} type question")
 
@@ -50,10 +53,15 @@ class Template:
         return problems
 
 
+
     def find_tags(self, problems = None):
         problems = [] if problems is None else problems
 
 
-    def
+        return problems
+
+
+
+    
 
 
