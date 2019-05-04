@@ -1,20 +1,29 @@
-from config.config import logger
+from config.config import logger, CONFIG
 import json
 from pprint import pprint
+import re
+import pandas as pd
+import os
+
 
 
 class Template:
 
-
     template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
-
 
     def __init__(self, template_dict):
         self.template = template_dict
         pass
 
 
-    def check_format(self, problems = None):
+    def check_json_format(self, problems = None):
+        """
+        check's the format of template json and
+        if there is any problem
+        returns it as a list
+        :param problems:
+        :return problems_list:
+        """
         problems = [] if problems is None else problems
 
         template_consts = ['__level', '__usage', '__values', '__time',
@@ -49,19 +58,52 @@ class Template:
             if q_requirements:
                 problems.append(f"there is no {q_requirements} in {q_type} type question")
 
-        pprint(problems)
+        logger.critical(problems)
         return problems
 
 
+    def get_required_data_names(self):
+        """
+        get's a list of databases names that required for template
+        :return database name:
+        """
+        data_list = []
+        data_regex = r'.*?db\(([a-zA-Z]*).*\).*?'
+
+        for val in self.template['__values'].values():
+            val = val.replace(' ', '')
+
+            if re.search(data_regex, val):
+                data_list.append(re.search(data_regex, val).group(1))
+
+        return list(set(data_list))
+
+
+    def check_data(self, problems = None):
+        """
+        check if necessary databases for this template is exist
+        returns a list of problems
+        if its empty we are fine
+        :param problems:
+        :return problems list:
+        """
+        problems = [] if problems is None else problems
+        datasets = self.get_required_data_names()
+
+        for ds_name in datasets:
+            if not os.path.isfile(f'{CONFIG.dataset_dir}/{ds_name}db.json'):
+                problems.append(f'dataset named "{ds_name}" not found in {CONFIG.dataset_dir}/ dir.')
+
+        logger.critical(problems)
+        return problems
 
     def find_tags(self, problems = None):
         problems = [] if problems is None else problems
 
-
         return problems
 
 
+    def
 
-    
 
 
