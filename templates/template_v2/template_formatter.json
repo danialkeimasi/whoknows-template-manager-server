@@ -18,8 +18,6 @@
     },
     "bool": {
       "title": true,
-      "subtitle": false,
-      "choice": true,
-      "answer": true
+      "subtitle": false
     }
 }
