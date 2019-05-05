@@ -104,5 +104,7 @@ class Template:
 
 
 
+    def generate_question(self, tags=[], format={}, level=None, test_template=False):
+        pass
 
 
