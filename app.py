@@ -1,15 +1,32 @@
-from flask import Flask
+# from flask import Flask
+#
+# import server.flask
+# import server.routeHandle
+# from modules.Tools.ArgParse import arg_parse
+#
+# server.flask.app = Flask(__name__)
+# server.routeHandle.addRoutes()
+#
+# if __name__ == '__main__':
+#     isThereArg = arg_parse()
+#
+#     if not isThereArg:
+#         server.flask.getApp().run(debug=True, host='0.0.0.0', port='3001')
+#         # server.flask.getApp().run(debug=True)
 
-import server.flask
-import server.routeHandle
-from modules.Tools.ArgParse import arg_parse
 
-server.flask.app = Flask(__name__)
-server.routeHandle.addRoutes()
+from pprint import pprint
+import json
+from modules.template import Template
+
 
 if __name__ == '__main__':
-    isThereArg = arg_parse()
+    template = Template(json.load(open('templates/template_v2_moein/football_team1.json')))
 
-    if not isThereArg:
-        server.flask.getApp().run(debug=True, host='0.0.0.0', port='3001')
-        # server.flask.getApp().run(debug=True)
+    problems = template.check_json_format()
+    print(problems)
+    if problems:
+        print('errors', problems)
+    else:
+        parsed = template.generate_question()
+        pprint(parsed)
