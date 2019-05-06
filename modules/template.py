@@ -4,18 +4,33 @@ from pprint import pprint
 import re
 import pandas as pd
 import os
-from modules.tools.data_container import DataContainer
+from modules.tools.data_container import DataContainer, db, listSub
 import copy
+from modules.tools.functions import choose, rand, to_list
+from modules.question import Question
+
+
+import random
 
 
 class Template:
 
     template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
 
+    default_requirements = {
+        'NOC': 3,
+        'NOS': 4,
+        'NOA': 2,
+        'level': 1,
+    }
+
+
     def __init__(self, template_dict):
         self.template = template_dict
         pass
 
+    def dict(self):
+        return self.template
     
     def get_question_types(self):
         return [key for key in self.template.keys() if key.startswith('__')]
@@ -32,7 +47,7 @@ class Template:
 
         template_consts = ['level', 'usage', 'values', 'time_function',
                            'score_function', 'tags', 'state', 'state_info',
-                           'idea']
+                           'idea', 'datasets']
 
         for item in template_consts:
             if not (item in self.template):
@@ -61,7 +76,7 @@ class Template:
         return problems
 
 
-    def get_required_data_names(self):
+    def get_required_data_names_from_values(self):
         """
         get's a list of databases names that required for template
         :return database name:
@@ -87,7 +102,7 @@ class Template:
         :return problems list:
         """
 
-        datasets = self.get_required_data_names()
+        datasets = self.template['datasets']
 
         for ds_name in datasets:
             if not os.path.isfile(f'{CONFIG.dataset_dir}/{ds_name}db.json'):
@@ -96,38 +111,111 @@ class Template:
         logger.critical(problems)
         return problems
 
-    def parse(self, problems=[]):
+    def parse(self, metadata, problems=[]):
         var = DataContainer()
-        age = 15
+
+        for key, value in metadata.items():
+            setattr(var, key, value)
+
         # get the values to the "var"
+        values_dict = {}
         for key, value in self.template['values'].items():
             logger.info(f'{key} is going to eval')
-            setattr(var, key, eval(value))
+            eval_result = eval(value)
+
+            values_dict.update({key: eval_result})
+            setattr(var, key, eval_result)
 
         template = copy.deepcopy(self.template)
+        template.update({'values': values_dict})
+
         q_type_names = Template(template).get_question_types()
+        reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
 
         for q_type_name in q_type_names:
             for q_property_name in template[q_type_name].keys():
                 for q_property_format_name in template[q_type_name][q_property_name].keys():
-                    raw_str = template[q_type_name][q_property_name][q_property_format_name]
-                    reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
-                    while re.search(reg_str, raw_str):
-                        exp = re.search(reg_str, raw_str).group(1)
-                        eval_result = eval(exp)
-                        raw_str = raw_str.replace(f'`{exp}`',
-                                                  str(eval_result[0] if isinstance(eval_result, list) else eval_result))
+                    for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
 
-                    template[q_type_name][q_property_name][q_property_format_name] = raw_str
+                        while re.search(reg_str, raw_str):
+                            exp = re.search(reg_str, raw_str).group(1)
+                            eval_result = eval(exp)
+                            raw_str = raw_str.replace(f'`{exp}`',
+                                                str(eval_result[0] if isinstance(eval_result, list) else eval_result))
 
-        return template
-        # for q_type in self.template[q_types].keys():
-        #     for q_property in self.template[q_type]:
-        #         for q_property_format in q_property:
-        #             print(q_property_format)
+                        template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
+
+        return Template(template)
 
 
-    def generate_question(self, NOC , question_type=None, problems=[], format={},
-                          level=None, test_template=False):
-        pass
+    def get_question(self, question_type, format, problems = []):
+        template = self.template
+        question = template[question_type]
 
+        question.update({
+            'question_type': question_type,
+            'tags': template['tags'],
+            'usage': template['usage'],
+            'values': template['values'],
+            'datasets': template['datasets'],
+            'problems': problems,
+        })
+
+
+        return Question(question)
+
+
+    def generate_question(self, metadata={},
+                          question_type=None, problems=[], format={},
+                          test_template=False):
+
+        self.default_requirements['NOA'] = random.randint(0, 4)
+        self.default_requirements['level'] = random.randint(1, 11)
+
+        for not_found_metadata_name in set(self.default_requirements.keys()) - set(metadata.keys()):
+            metadata[not_found_metadata_name] = self.default_requirements[not_found_metadata_name]
+
+        question_type = choose(Template(self.template_formatter).get_question_types()) \
+            if question_type is None else f'__{question_type}'
+
+
+        load_template_datasets(self.template['datasets'])
+
+        parsed_template = self.parse(metadata, problems)
+        question_object = parsed_template.get_question(question_type, format, problems)
+
+        return question_object.dict()
+
+
+
+
+def load_data(dbname):
+    '''
+    Loads the given dataset and returns it
+
+    Parameters
+    ----------
+    dbname : str
+        name of dataset
+    '''
+    logger.info(f'dbname={dbname}')
+    problems = []
+    data = pd.DataFrame()
+
+    for i in range(5):
+        try:
+            logger.info(f'trying to load {dbname} dataset from hard disk...')
+            data = pd.DataFrame(json.load(open(f'{CONFIG.dataset_dir}/{dbname}db.json', encoding='utf-8')))
+            logger.info(f'loading {dbname} dataset is done.')
+            break
+        except Exception as error:
+            problems += [f'could not open dataset {dbname} from {CONFIG.dataset_dir} directory because {error}']
+
+    logger.info(f'problems is {problems}')
+    return data
+
+def load_template_datasets(necesery_Dsets):
+    logger.info(f'{necesery_Dsets}')
+
+    for db in necesery_Dsets:
+        globals()[db] = load_data(db)

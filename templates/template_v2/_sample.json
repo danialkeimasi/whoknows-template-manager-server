@@ -1,62 +1,63 @@
 {
     "values": {
-
+      "age": "choose(range(100), 1)"
     },
 
+    "datasets": [],
     "usage": ["contest"],
     "level": 2,
     "score_function": "default",
     "time_function": "",
     "tags": [],
     "state": "",
-    "state_info": "",
-    "idea": "",
+    "state_info": {},
+    "idea": [""],
 
     "__choose": {
       "title": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age` a `var.NOC`"]
       },
       "subtitle": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "choice": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "answer": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       }
     },
     "__select": {
       "title": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "choice": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "answer": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       }
     },
     "__write": {
       "title": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "answer": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       }
     },
     "__bool": {
       "title": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "text":"hi im big as `age`"
+        "text":["hi im big as `var.age`"]
       }
     }
 }

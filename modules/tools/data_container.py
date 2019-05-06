@@ -1,4 +1,8 @@
 from modules.tools.functions import choose
+from config.config import logger
+from collections.abc import Iterable
+
+
 
 class DataContainer():
     '''
@@ -68,3 +72,44 @@ class DataContainer():
         converts the DataManager object to a dataManager List
         '''
         return [DataContainer([item]) for item in self.exp]
+
+
+
+def db(doc, count=0):
+    '''
+    Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
+
+    Parmeters
+    ----------
+    doc : dataframe
+        dataframe that we want to choose from
+    count : int
+        number of items which is needed (default is 1)
+    '''
+
+    logger.info(f'db(): count={count}')
+
+    try:
+        if len(doc.index) < (count if count != 0 else 1):
+            logger.info(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
+            raise ValueError(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
+
+        data = doc.sample(count if count != 0 else 1)
+
+    except Exception as error:
+        logger.error(f'def db => {error}')
+        return DataContainer([])
+
+    data = data.to_dict('records')
+    logger.info(f'def db => done')
+
+    return DataContainer(data[0] if count == 0 else data)
+
+
+def listSub(data1, data2):
+    data1 = list(data1) if isinstance(data1, Iterable) else [data1]
+    data2 = list(data2) if isinstance(data2, Iterable) else [data2]
+
+    subedList = [item for item in data1 if not item in data2]
+
+    return DataContainer(subedList)

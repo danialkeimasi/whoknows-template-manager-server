@@ -10,7 +10,7 @@ class Question:
         self.question = question_dict
 
 
-    def get_dict(self):
+    def dict(self):
         return self.question
 
 
