@@ -21,7 +21,7 @@ def rand(needList, count=0, exceptions=[]):
             raise ValueError(f'wrong type for {item} - you use {type(locals()[item])}')
 
     if len(needList) - len(exceptions) < count:
-        raise ValueError(f'error- you choose {count} from {len(needList) - len(exceptions)}')
+        raise ValueError(f'you choose {count} from {len(needList) - len(exceptions)}')
 
     needList = [i for i in needList if i not in exceptions]
     # needList = list(set(needList) - set(exceptions))

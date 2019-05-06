@@ -103,7 +103,7 @@ class Template:
     def generate_question(self, tags=[], format={}, level=None, test_template=False):
         
         def parse(template, problems=[]):
-            var =             
+            var = Data
             # get the values to the "var"
             
 
