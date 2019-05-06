@@ -1,112 +1,62 @@
 {
-    "__values": {
-        "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)"
+    "values": {
+
     },
 
-    "__usage": ["contest"],
-    "__level": 2,
-    "__score_function": "default",
+    "usage": ["contest"],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "",
+    "tags": [],
+    "state": "",
+    "state_info": "",
+    "idea": "",
 
-    "choose": {
+    "__choose": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "choice": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       }
     },
-    "select": {
+    "__select": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
-
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       }
     },
-    "write": {
+    "__write": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       }
-
     },
-    "bool": {
+    "__bool": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-
-      "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":"hi im big as `age`"
       }
     }
 }

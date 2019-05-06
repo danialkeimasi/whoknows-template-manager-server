@@ -4,7 +4,8 @@ from pprint import pprint
 import re
 import pandas as pd
 import os
-
+from modules.tools.data_container import DataContainer
+import copy
 
 
 class Template:
@@ -14,6 +15,10 @@ class Template:
     def __init__(self, template_dict):
         self.template = template_dict
         pass
+
+    
+    def get_question_types(self):
+        return [key for key in self.template.keys() if key.startswith('__')]
 
 
     def check_json_format(self, problems=[]):
@@ -25,16 +30,15 @@ class Template:
         :return problems_list:
         """
 
-        template_consts = ['__level', '__usage', '__values', '__time_function',
-                           '__score_function', '__tags', '__state', '__state_info',
-                           '__idea',
-                           ]
+        template_consts = ['level', 'usage', 'values', 'time_function',
+                           'score_function', 'tags', 'state', 'state_info',
+                           'idea']
 
         for item in template_consts:
             if not (item in self.template):
                 problems.append(f'template must have a "{item}" part in it')
 
-        question_types = [key for key in self.template.keys() if not key.startswith('__')]
+        question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
@@ -46,13 +50,6 @@ class Template:
                     problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
 
                 q_property = self.template[q_type][q_property_name]
-                if not (
-                        'format' in q_property and
-                        'content' in q_property and
-                        isinstance(q_property['format'], str) and
-                        isinstance(q_property['content'], list)
-                ):
-                    problems.append(f"wrong syntax for {q_property_name} part in {q_type} question type")
 
             q_requirements = [item for item in
                               set(self.template_formatter[q_type].keys()) - set(self.template[q_type].keys())
@@ -72,7 +69,7 @@ class Template:
         data_list = []
         data_regex = r'.*?db\(([a-zA-Z]*).*\).*?'
 
-        for val in self.template['__values'].values():
+        for val in self.template['values'].values():
             val = val.replace(' ', '')
 
             if re.search(data_regex, val):
@@ -99,11 +96,38 @@ class Template:
         logger.critical(problems)
         return problems
 
+    def parse(self, problems=[]):
+        var = DataContainer()
+        age = 15
+        # get the values to the "var"
+        for key, value in self.template['values'].items():
+            logger.info(f'{key} is going to eval')
+            setattr(var, key, eval(value))
 
-    def generate_question(self, tags=[], format={}, level=None, test_template=False):
-        
-        def parse(template, problems=[]):
-            var = Data
-            # get the values to the "var"
-            
+        template = copy.deepcopy(self.template)
+        q_type_names = Template(template).get_question_types()
+
+        for q_type_name in q_type_names:
+            for q_property_name in template[q_type_name].keys():
+                for q_property_format_name in template[q_type_name][q_property_name].keys():
+                    raw_str = template[q_type_name][q_property_name][q_property_format_name]
+                    reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
+                    while re.search(reg_str, raw_str):
+                        exp = re.search(reg_str, raw_str).group(1)
+                        eval_result = eval(exp)
+                        raw_str = raw_str.replace(f'`{exp}`',
+                                                  str(eval_result[0] if isinstance(eval_result, list) else eval_result))
+
+                    template[q_type_name][q_property_name][q_property_format_name] = raw_str
+
+        return template
+        # for q_type in self.template[q_types].keys():
+        #     for q_property in self.template[q_type]:
+        #         for q_property_format in q_property:
+        #             print(q_property_format)
+
+
+    def generate_question(self, NOC , question_type=None, problems=[], format={},
+                          level=None, test_template=False):
+        pass
 
