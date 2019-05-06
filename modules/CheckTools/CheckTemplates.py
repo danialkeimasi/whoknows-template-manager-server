@@ -60,7 +60,7 @@ def check_template(template, question, problems):
         if not 'choices_selective' in template:
             problems += ['choices(sel) is empty!']
 
-    print(f'check_template()\t-----> problems is {problems}')
+    print(f'problems is {problems}')
     return problems
 
 

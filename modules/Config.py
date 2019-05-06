@@ -18,6 +18,9 @@ class CONFIG:
     language = 'fa'
     use_mongo = False
 
+    main_server_ip = 'https://31.184.132.183:30000'
+    template_new = f'{main_server_ip}/template/new'
+
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
             'country', 'book', 'name', 'word',

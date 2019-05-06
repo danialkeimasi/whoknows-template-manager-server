@@ -115,7 +115,7 @@ def load_data(dbname):
         except Exception as error:
             problems += [f'could not open dataset {dbname} from {CONFIG.dataset_dir} directory because {error}']
 
-    logger.info(f'load_data()\t\t-----> problems is {problems}')
+    logger.info(f'problems is {problems}')
     return data
 
 
