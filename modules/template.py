@@ -16,7 +16,7 @@ class Template:
         pass
 
 
-    def check_json_format(self, problems = None):
+    def check_json_format(self, problems=[]):
         """
         check's the format of template json and
         if there is any problem
@@ -24,7 +24,6 @@ class Template:
         :param problems:
         :return problems_list:
         """
-        problems = [] if problems is None else problems
 
         template_consts = ['__level', '__usage', '__values', '__time_function',
                            '__score_function', '__tags', '__state', '__state_info',
@@ -82,7 +81,7 @@ class Template:
         return list(set(data_list))
 
 
-    def check_data(self, problems = None):
+    def check_data(self, problems=[]):
         """
         check if necessary databases for this template is exist
         returns a list of problems
@@ -90,7 +89,7 @@ class Template:
         :param problems:
         :return problems list:
         """
-        problems = [] if problems is None else problems
+
         datasets = self.get_required_data_names()
 
         for ds_name in datasets:
@@ -100,14 +99,11 @@ class Template:
         logger.critical(problems)
         return problems
 
-    def find_tags(self, problems = None):
-        problems = [] if problems is None else problems
-
-        return problems
-
-
 
     def generate_question(self, tags=[], format={}, level=None, test_template=False):
-        pass
-
+        
+        def parse(template, problems=[]):
+            var =             
+            # get the values to the "var"
+            
 
