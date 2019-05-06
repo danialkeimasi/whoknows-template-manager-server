@@ -362,8 +362,8 @@ def template_engine(template, tags=[], NOC=3, NOS=4, TIME=10, SCORE=100, QT=None
     problems = []
 
     question = {
-        'QT': QT,
-        'NOC'		: NOC,
+        'QT'           : QT,
+        'NOC'		   : NOC,
         'NOS'		   : NOS,
         'active'	   : True,
         '__number'	   : template['__number'] if '__number' in template else - 1,

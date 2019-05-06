@@ -2,12 +2,12 @@
 [
     {
         "name": "lionel messi",
+        "club": "FC Barcelona",
         "club_number": "10",
         "national_number": "10",
         "height_cm": 169,
         "age": 31,
         "birth_date": "24/6/1987",
-        "club": "FC Barcelona",
         "foot": "Left",
         "national_team": "Argentina",
         "nationality": "Argentina",
@@ -24,3 +24,4 @@
         "contract_valid_until": 2021
     }
 ]
+
