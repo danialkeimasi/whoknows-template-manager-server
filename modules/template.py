@@ -26,8 +26,11 @@ class Template:
         """
         problems = [] if problems is None else problems
 
-        template_consts = ['__level', '__usage', '__values', '__time',
-                           '__score']
+        template_consts = ['__level', '__usage', '__values', '__time_function',
+                           '__score_function', '__tags', '__state', '__state_info',
+                           '__idea',
+                           ]
+
         for item in template_consts:
             if not (item in self.template):
                 problems.append(f'template must have a "{item}" part in it')
