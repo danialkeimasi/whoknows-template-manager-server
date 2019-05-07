@@ -1,116 +1,136 @@
 {
-    "__values": {
-        "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.year != var.player.year) & (footballPlayer.value > (50000000 - (level*4000000))) & (footballPlayer.value < (125000000 - (level*(12000000))) ] , NOC)",
-        "True_or_False": "rand([True,False])"
-    },
+	"values"        : {
+		"player": "db(footballPlayer)",
+		"players": "db(footballPlayer[(footballPlayer.year != var.player.year) & (footballPlayer.value > (50000000 - (level*4000000))) & (footballPlayer.value < (125000000 - (level*(12000000))) ] , NOC)",
+		"True_or_False": "rand([True,False])"
+},
+	"choose"          : {
+		"title"        : {
+			"text"       : ["کدام بازیکن در سال `var.player.year` متولد شده است؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.players.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.player.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.True_or_False"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	usage          : [{
+	type        : String
+	}],
+	score_function      : {
+	type        : String,
+	},
+	time_function      : {
+	type        : String,
+	},
+	state          : {
+	type        : String
+	},
+	state_info        : {
+	type        : String
+	},
+	datasets        : [String]
 
-    "__usage": ["contest"],
-    
-    "__score_function": "default",
-    "__level": 2,
-    "__time": "",
-    "__score": 0,
 
-    "choose": {
-      "title": {
-        "format": "string",
-        "content": [
-            "کدام بازیکن در سال `var.player.year` متولد شده است؟"
-        ]
-      },
-      "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "choice": {
-        "format": "text",
-        "content": [
-            "var.players.name"
-        ]
-      },
-      "answer": {
-        "format": "text",
-        "content": [
-            "var.player.name"
-        ]
-      }
-    },
-    "select": {
-      "title": {
-        "format": "string",
-        "content": [
-
-        ]
-      },
-      "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-
-      "answer": {
-        "format": "text",
-        "content": [
-
-        ]
-      }
-    },
-    "write": {
-      "title": {
-        "format": "string",
-        "content": [
-
-        ]
-      },
-      "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "answer": {
-        "format": "text",
-        "content": [
-
-        ]
-      }
-
-    },
-    "bool": {
-      "title": {
-        "format": "string",
-        "content": [
-            "`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."
-        ]
-      },
-      "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-
-      "answer": {
-        "format": "text",
-        "content": [
-            "var.True_or_False"
-        ]
-      }
-    }
-}
+} 
