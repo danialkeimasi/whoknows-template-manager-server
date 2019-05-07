@@ -30,8 +30,11 @@ def add():
         page context:
             get the question py post request
         '''
-
-
+        user_req = request.json
+        tags     = user_req['tags']     if 'tags' in user_req else None
+        metadata = user_req['metadata'] if 'metadata' in user_req else {}
+        count    = user_req['count']    if 'count' in user_req else 1
+        
 
 
 
