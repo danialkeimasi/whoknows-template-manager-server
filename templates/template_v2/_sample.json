@@ -1,115 +1,63 @@
 {
-    "__values": {
-        "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)"
+    "values": {
+      "age": "choose(range(100), 1)"
     },
 
-    "__usage": ["contest"],
-    
-    "__score_function": "default",
-    "__level": 2,
-    "__time": "",
-    "__score": 0,
+    "datasets": [],
+    "usage": ["contest"],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "",
+    "tags": [],
+    "state": "",
+    "state_info": {},
+    "idea": [""],
 
-    "choose": {
+    "__choose": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age` a `var.NOC`"]
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "choice": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       }
     },
-    "select": {
+    "__select": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
-
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       }
     },
-    "write": {
+    "__write": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       }
-
     },
-    "bool": {
+    "__bool": {
       "title": {
-        "format": "string",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       },
       "subtitle": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-      "choice": {
-        "format": "photo",
-        "content": [
-
-        ]
-      },
-
-      "answer": {
-        "format": "text",
-        "content": [
-
-        ]
+        "text":["hi im big as `var.age`"]
       }
     }
 }
