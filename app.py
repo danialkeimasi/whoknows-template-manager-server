@@ -23,10 +23,7 @@ from modules.template import Template
 if __name__ == '__main__':
     template = Template(json.load(open('templates/template_v2_moein/football_team1.json')))
 
-    problems = template.check_json_format()
-    print(problems)
-    if problems:
-        print('errors', problems)
+    if template.problems():
+        print('errors', template.problems())
     else:
-        parsed = template.generate_question()
-        pprint(parsed)
+        pprint(template.generate_question().dict())

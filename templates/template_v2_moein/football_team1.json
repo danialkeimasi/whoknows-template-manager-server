@@ -5,7 +5,7 @@
         "leagues"       : "listSub(footballTeam.league, var.team.league)",
         "True_or_False" : "rand( [True,False] )"
       },
-
+  "_id": 1,
   "datasets": ["footballTeam"],
   "usage": ["contest"],
   "level": 2,
