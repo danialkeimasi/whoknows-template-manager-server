@@ -1,34 +1,137 @@
 {
-    "values": {
+	"values": {
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "بند آزادسازی `var.player.name` چقدر است؟ (یورو)"
-    ],
-    "title_writing": [
-        "بند آزادسازی `var.player.name` چقدر است؟ (یورو)"
-    ],
-    "title_true_false": [
-        "بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
-        "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."
-    ],
-    "answer_multichoices": [
-        "var.player.release"
-    ],
-    "answer_writing": [
-        "var.player.release"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.players.release"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 85,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.players.release"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.player.release"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.player.release"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
+                            "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.True_or_False"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 

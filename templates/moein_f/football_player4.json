@@ -1,20 +1,135 @@
 {
-    "values": {
+	"values": {
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-    "title_multichoices": [
-        "بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"
-    ],
-    "answer_multichoices": [
-        "var.player.name"
-    ],
-    "choices_multichoices": [
-        "var.players.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 86,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.players.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.player.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 

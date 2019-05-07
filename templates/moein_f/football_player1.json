@@ -115,22 +115,22 @@
 	"type"    : "String",
 	"ref"      : "'tag'"
 	}],
-	usage          : [{
-	type        : String
+	"usage"          : [{
+	"type"        : "String"
 	}],
-	score_function      : {
-	type        : String,
+	"score_function"      : {
+	"type"        : "String"
 	},
-	time_function      : {
-	type        : String,
+	"time_function"      : {
+	"type"        : "String"
 	},
-	state          : {
-	type        : String
+	"state"          : {
+	"type"        : "String"
 	},
-	state_info        : {
-	type        : String
+	"state_info"        : {
+	"type"        : "String"
 	},
-	datasets        : [String]
+	"datasets"        : ["String"]
 
 
 } 
