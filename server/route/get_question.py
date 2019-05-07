@@ -30,6 +30,24 @@ def add():
         page context:
             get the question py post request
         '''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         # question = create_question(Request['tags'], Request['count'])
         
         Request = request.json
