@@ -36,51 +36,19 @@ def add():
         count    = user_req['count']    if 'count' in user_req else 1
         
 
+        # 1 find the templates that $match with tags that we want and use $sample
+        #   for select number of templates randomly
 
+        # 2 generate a list of questiostions by len of "count"
 
-
-
-
-
-
-
-
-
-
-
-
-
+        # 3 prepare response dictionary and return it with json.dump
         
-        # question = create_question(Request['tags'], Request['count'])
-        
-        Request = request.json
-        count = Request['count']
-        # tags  = Request['tags']
+        templates = 'mongo query'
+        questions = 'list of generated questions with templates'
 
-        questions = []
-        for template_file in glob.glob(f'./templates/moein_f/*.json')[:10]:
-            try:
-                questions += [ testTemplate_ByCreate_Question(json.load(open(template_file))) ]
-            
-            except Exception as error:
-                pass
+        response = {
+            'ok': True,
+            'questions': questions,
+        }
 
-        questions =  functools.reduce(lambda a, b: a + b, questions)
-
-        
-        for i, item in enumerate(questions):
-            if not item['active']:
-                questions.pop(i)
-        
-
-        if len(questions) < count:
-            return json.dumps({ 
-                    'ok': False, 
-                    'problem': 'not enought questions !'
-                })
-        
-        else:
-            return json.dumps({
-                'ok': True,
-                'questions': questions[:count]
-            })
+        return json.dumps(response)
