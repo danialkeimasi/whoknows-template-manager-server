@@ -15,9 +15,9 @@ import random
 
 class Template:
 
-    template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
+    __template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
 
-    default_requirements = {
+    __default_metadata = {
         'NOC': 3,
         'NOS': 4,
         'NOA': 2,
@@ -26,14 +26,14 @@ class Template:
 
 
     def __init__(self, template_dict):
-        self.template = template_dict
+        self.__template = template_dict
         pass
 
     def dict(self):
-        return self.template
+        return self.__template
     
     def get_question_types(self):
-        return [key for key in self.template.keys() if key.startswith('__')]
+        return [key for key in self.__template.keys() if key.startswith('__')]
 
 
     def check_json_format(self, problems=[]):
@@ -50,25 +50,25 @@ class Template:
                            'idea', 'datasets']
 
         for item in template_consts:
-            if not (item in self.template):
+            if not (item in self.__template):
                 problems.append(f'template must have a "{item}" part in it')
 
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
-            if not (q_type in self.template_formatter):
+            if not (q_type in self.__template_formatter):
                 problems.append(f"there is an undefined question type in template: {q_type}")
 
-            for q_property_name in self.template[q_type].keys():
-                if not (q_property_name in self.template_formatter[q_type]):
+            for q_property_name in self.__template[q_type].keys():
+                if not (q_property_name in self.__template_formatter[q_type]):
                     problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
 
-                q_property = self.template[q_type][q_property_name]
+                q_property = self.__template[q_type][q_property_name]
 
             q_requirements = [item for item in
-                              set(self.template_formatter[q_type].keys()) - set(self.template[q_type].keys())
-                              if self.template_formatter[q_type][item]]
+                              set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
+                              if self.__template_formatter[q_type][item]]
             if q_requirements:
                 problems.append(f"there is no {q_requirements} in {q_type} type question")
 
@@ -84,7 +84,7 @@ class Template:
         data_list = []
         data_regex = r'.*?db\(([a-zA-Z]*).*\).*?'
 
-        for val in self.template['values'].values():
+        for val in self.__template['values'].values():
             val = val.replace(' ', '')
 
             if re.search(data_regex, val):
@@ -102,7 +102,7 @@ class Template:
         :return problems list:
         """
 
-        datasets = self.template['datasets']
+        datasets = self.__template['datasets']
 
         for ds_name in datasets:
             if not os.path.isfile(f'{CONFIG.dataset_dir}/{ds_name}db.json'):
@@ -119,14 +119,14 @@ class Template:
 
         # get the values to the "var"
         values_dict = {}
-        for key, value in self.template['values'].items():
+        for key, value in self.__template['values'].items():
             logger.info(f'{key} is going to eval')
             eval_result = eval(value)
 
             values_dict.update({key: eval_result})
             setattr(var, key, eval_result)
 
-        template = copy.deepcopy(self.template)
+        template = copy.deepcopy(self.__template)
         template.update({'values': values_dict})
 
         q_type_names = Template(template).get_question_types()
@@ -149,11 +149,12 @@ class Template:
 
 
     def get_question(self, question_type, format, problems = []):
-        template = self.template
+        template = self.__template
+        pprint(template[question_type])
         question = template[question_type]
 
         question.update({
-            'question_type': question_type,
+            'question_type': question_type[2:],
             'tags': template['tags'],
             'usage': template['usage'],
             'values': template['values'],
@@ -169,23 +170,20 @@ class Template:
                           question_type=None, problems=[], format={},
                           test_template=False):
 
-        self.default_requirements['NOA'] = random.randint(0, 4)
-        self.default_requirements['level'] = random.randint(1, 11)
+        self.__default_metadata['NOA'] = random.randint(0, 4)
+        self.__default_metadata['level'] = random.randint(1, 11)
 
-        for not_found_metadata_name in set(self.default_requirements.keys()) - set(metadata.keys()):
-            metadata[not_found_metadata_name] = self.default_requirements[not_found_metadata_name]
+        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
+            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
 
-        question_type = choose(Template(self.template_formatter).get_question_types()) \
-            if question_type is None else f'__{question_type}'
+        question_type = choose(self.get_question_types()) if question_type is None else f'__{question_type}'
 
-
-        load_template_datasets(self.template['datasets'])
+        load_template_datasets(self.__template['datasets'])
 
         parsed_template = self.parse(metadata, problems)
         question_object = parsed_template.get_question(question_type, format, problems)
 
         return question_object.dict()
-
 
 
 
