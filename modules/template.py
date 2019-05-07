@@ -177,7 +177,7 @@ class Template:
         return Template(template)
 
 
-    def get_question(self, question_type, format, problems = []):
+    def get_question(self, question_type, format, ):
         """
         change a template structure to the question structure
         we do it after parsing a template
@@ -197,7 +197,6 @@ class Template:
             'usage': template['usage'],
             'values': template['values'],
             'datasets': template['datasets'],
-            'problems': problems,
         })
 
         return Question(question)

@@ -1,6 +1,8 @@
 import logging
-# from pymongo import MongoClient
-
+from pymongo import MongoClient
+mongo = MongoClient('31.184.132.183')
+db = mongo.GuessIt
+db_templates = db.templates
 
 class CONFIG:
     """
@@ -49,3 +51,4 @@ def loggerHandle(loggerFunction, message, problemsList = None):
 
 # if CONFIG.use_mongo:
 #     mongo = MongoClient('mongodb://localhost:27017')
+

@@ -1,11 +1,11 @@
 from server.flask import getApp
 from flask import json, request
-from modules.Config import CONFIG
+from config.config import CONFIG, db_templates
 import random
 import functools
 import glob
+from modules.template import Template
 
-from modules.TemplateEngine import testTemplate_ByCreate_Question
 
 def add():
     app = getApp()
@@ -27,28 +27,34 @@ def add():
         '''
         get question part of server
 
-        page context:
+        api context:
             get the question py post request
         '''
         user_req = request.json
         tags     = user_req['tags']     if 'tags' in user_req else None
-        metadata = user_req['metadata'] if 'metadata' in user_req else {}
-        count    = user_req['count']    if 'count' in user_req else 1
-        
+        count    = user_req['count']    if 'count' in user_req else None
 
-        # 1 find the templates that $match with tags that we want and use $sample
-        #   for select number of templates randomly
+        if tags is None or count is None:
+            response = {
+                "ok": False
+            }
+        else:
+            # 1 find the templates that $match with tags that we want and use $sample
+            #   for select number of templates randomly
 
-        # 2 generate a list of questiostions by len of "count"
+            # 2 generate a list of questiostions by len of "count"
 
-        # 3 prepare response dictionary and return it with json.dump
-        
-        templates = 'mongo query'
-        questions = 'list of generated questions with templates'
+            # 3 prepare response dictionary and return it with json.dump
 
-        response = {
-            'ok': True,
-            'questions': questions,
-        }
+            templates = list(db_templates.aggregate([
+                            {'$match':  {'$match': {'tags':tags} }},
+                            {'$sample': {'size': count}},
+                            ]))
+
+            questions = [Template(template).generate_question().dict() for template in templates]
+            response = {
+                'ok': True,
+                'questions': questions,
+            }
 
         return json.dumps(response)
