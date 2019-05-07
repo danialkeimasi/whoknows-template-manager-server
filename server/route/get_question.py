@@ -12,7 +12,7 @@ def add():
     @app.route('/get_question', methods=['GET'])
     def get_question_get():
 
-        Response = {
+        response = {
             'ok': False,
             'error': 'please use post request for get question',
             'request': {
@@ -20,7 +20,7 @@ def add():
             }
         }
 
-        return json.dumps(Response)
+        return json.dumps(response)
 
     @app.route('/get_question', methods=['POST'])
     def get_question_post():
