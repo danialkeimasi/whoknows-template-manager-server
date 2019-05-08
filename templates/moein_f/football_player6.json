@@ -1,26 +1,135 @@
 {
-    "values": {
+	"values": {
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
     },
-    "title_multichoices": [
-        "در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟" 
-    ],
-    "title_writing": [
-        "در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"
-    ],
-    "answer_multichoices": [
-        "var.player.name"
-    ],
-    "answer_writing": [
-        "var.player.name"
-    ],
-    "choices_multichoices": [
-        "var.players.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 91,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.players.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.player.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.player.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 
