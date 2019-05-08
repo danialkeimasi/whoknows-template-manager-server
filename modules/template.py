@@ -133,13 +133,23 @@ class Template:
         self.__update_problems(problems)
 
 
-    def parse(self, metadata):
+    def parse(self, metadata={}):
         """
         eval the variables in the template with data that we have in datasets
         and return a new template object that has no variable in sentences
         :param metadata:
         :return Template:
         """
+
+        load_template_datasets(self.__template['datasets'])
+
+        self.__default_metadata['NOA'] = random.randint(0, 4)
+        self.__default_metadata['level'] = random.randint(1, 11)
+
+        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
+            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
+
+
         problems = []
         var = DataContainer()
 
@@ -207,15 +217,8 @@ class Template:
         if self.__problems:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
-        self.__default_metadata['NOA'] = random.randint(0, 4)
-        self.__default_metadata['level'] = random.randint(1, 11)
-
-        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
-            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
-
         question_type = choose(self.get_question_types()) if question_type is None else f'__{question_type}'
 
-        load_template_datasets(self.__template['datasets'])
 
         parsed_template = self.parse(metadata)
         question_object = parsed_template.get_question(question_type, format)

@@ -1,5 +1,9 @@
 import logging
+
+
 from pymongo import MongoClient
+from pprint import pprint
+
 mongo = MongoClient('31.184.132.183')
 db = mongo.GuessIt
 db_templates = db.templates
@@ -26,7 +30,7 @@ class CONFIG:
 
 datasets = ['movie', 'director', 'song', 'actor', 'footballPlayer', 'footballTeam', 'quote',
             'country', 'book', 'name', 'word',
-            'volleyballTeam']  # should be done automatically by searching db_directory
+            'volleyballTeam']  # should bea done automatically by searching db_directory
 
 logging.basicConfig(
     datefmt='%y-%b-%d %H:%M:%S',
@@ -51,4 +55,5 @@ def loggerHandle(loggerFunction, message, problemsList = None):
 
 # if CONFIG.use_mongo:
 #     mongo = MongoClient('mongodb://localhost:27017')
+
 
