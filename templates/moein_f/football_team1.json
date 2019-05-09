@@ -1,20 +1,137 @@
-
-    {
-      "values"	: {
-        "team"          : "db(footballTeam)",
-        "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
-        "leagues"       : "listSub(footballTeam.league, var.team.league)",
-        "True_or_False" : "rand( [True,False] )"
-      },
+{
+  "values"	: {
+    "team"          : "db(footballTeam)",
+    "team_same"     : "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)])",
+    "leagues"       : "listSub(footballTeam.league, var.team.league)",
+    "True_or_False" : "rand( [True,False] )"
+    },
+  "choose"          : {
+    "title"        : {
+      "text"       : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  },
+    "subtitle"      : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  },
+    "choice"        : {
+      "text"       : ["var.leagues.choose(NOC)"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  },
+    "answer"        : {
+      "text"       : ["var.team.league"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  }
+  },
+  "select"          : {
+    "title"        : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  },
+    "subtitle"      : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []
+  },
+    "choice"        : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
   
-      "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"], 
-      "title_multichoices"    : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
-      "title_writing"         : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"],
-      "answer_multichoices"   : ["var.team.league"],
-      "answer_writing"        : ["var.team.league"],
-      "answer_true_false"     : ["var.True_or_False"],
-      "choices_multichoices"  : ["var.leagues.choose(NOC)"],
-      "__usage"               : ["contest"],
-      "__number"              : 1,
-      "__level"               : 1
-    }
+    "answer"        : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  }
+  },
+  "write"          : {
+    "title"        : {
+      "text"       : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+    "subtitle"      : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+    "choice"        : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+  
+    "answer"        : {
+      "text"       : ["var.team.league"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  }
+  },
+  "bool"          : {
+    "title"        : {
+      "text"       : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+    "subtitle"      : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+    "choice"        : {
+      "text"       : [],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  },
+  
+    "answer"        : {
+      "text"       : ["var.True_or_False"],
+      "audio"      : [],
+      "video"      : [],
+      "image"      : []      
+  }
+  },
+  "tags"          : [{
+  "type"    : "String",
+  "ref"      : "'tag'"
+  }],
+  "usage"          : [{
+  "type"        : "String"
+  }],
+  "score_function"      : {
+  "type"        : "String"
+  },
+  "time_function"      : {
+  "type"        : "String"
+  },
+  "state"          : {
+  "type"        : "String"
+  },
+  "state_info"        : {
+  "type"        : "String"
+  },
+  "datasets"        : ["String"]
+
+
+} 
