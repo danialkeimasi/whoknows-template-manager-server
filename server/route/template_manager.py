@@ -9,4 +9,4 @@ def add():
     @app.route('/template_manager', methods=['GET'])
     def template_manager():
 
-        return render_template('_pages/template_manager/index.html')
+        return render_template('_pages/template_manager.html')

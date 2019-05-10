@@ -1,0 +1,134 @@
+<!doctype html>
+
+<head>
+    <title>Template Manager</title>
+    <meta charset="utf-8" />
+
+    <link rel='stylesheet' href={{ url_for('static', filename='lib/codemirror.css') }}>
+    <link rel='stylesheet' href={{ url_for('static', filename='doc/docs.css') }}>
+    <script src={{ url_for('static', filename="lib/codemirror.js") }}></script>
+    <script src={{ url_for('static', filename="mode/xml/xml.js") }}></script>
+    <script src={{ url_for('static', filename="mode/javascript/javascript.js") }}></script>
+    <script src={{ url_for('static', filename="mode/css/css.js") }}></script>
+    <script src={{ url_for('static', filename="mode/htmlmixed/htmlmixed.js") }}></script>
+    <script src={{ url_for('static', filename="addon/edit/matchbrackets.js") }}></script>
+
+    <script src={{ url_for('static', filename="doc/activebookmark.js") }}></script>
+
+    <style>
+        .CodeMirror {
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        .CodeMirror-scroll {
+            max-height: 200px;
+        }
+
+        .CodeMirror pre {
+            padding-left: 7px;
+            line-height: 1.25;
+        }
+
+        .banner {
+            background: #ffc;
+            padding: 6px;
+            border-bottom: 2px solid silver;
+        }
+
+        .banner div {
+            margin: 0 auto;
+            max-width: 700px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <article>
+        <section id=demo>
+            <h2>Template Editor</h2>
+            <form style="position: relative; margin-top: .5em;">
+<textarea id=input_text>
+{
+    "values": {
+      "age": "choose(range(100), 1)"
+    },
+
+    "datasets": [],
+    "usage": ["contest"],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "",
+    "tags": [],
+    "state": "",
+    "state_info": {},
+    "idea": [""],
+
+    "__choose": {
+      "title": {
+        "text":["hi im big as `var.age` a `var.NOC`"]
+      },
+      "subtitle": {
+        "text":["hi im big as `var.age`"]
+      },
+      "choice": {
+        "text":["hi im big as `var.age`"]
+      },
+      "answer": {
+        "text":["hi im big as `var.age`"]
+      }
+    },
+    "__select": {
+      "title": {
+        "text":["hi im big as `var.age`"]
+      },
+      "subtitle": {
+        "text":["hi im big as `var.age`"]
+      },
+      "choice": {
+        "text":["hi im big as `var.age`"]
+      },
+      "answer": {
+        "text":["hi im big as `var.age`"]
+      }
+    },
+    "__write": {
+      "title": {
+        "text":["hi im big as `var.age`"]
+      },
+      "subtitle": {
+        "text":["hi im big as `var.age`"]
+      },
+      "answer": {
+        "text":["hi im big as `var.age`"]
+      }
+    },
+    "__bool": {
+      "title": {
+        "text":["hi im big as `var.age`"]
+      },
+      "subtitle": {
+        "text":["hi im big as `var.age`"]
+      }
+    }
+}
+</textarea>
+                <script>
+                    var editor = CodeMirror.fromTextArea(document.getElementById("input_text"), {
+                        lineNumbers: true,
+                        mode: {name: "javascript", json: true},
+                        matchBrackets: true,
+                        indentUnit: 4,
+                        showCursorWhenSelecting: true,
+                        dragDrop: true,
+                        allowDropFileTypes: ['json'],
+                        spellcheck: true,
+                        styleActiveLine: true,
+                    });
+                </script>
+        </section>
+
+    </article>
+</body>
