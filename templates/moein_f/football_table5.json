@@ -8,8 +8,8 @@
         "کدام تیم تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.gf` میباشد؟"
     ],
     "title_true_false": [
-        "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.goalzade` میباشد.",
-        "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).goalzade` میباشد."
+        "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gf` میباشد.",
+        "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gf` میباشد."
     ],
     "answer_multichoices": [
         "var.team.name"
