@@ -6,109 +6,52 @@
     },
 	"choose"          : {
 		"title"        : {
-			"text"       : ["کدام بازیکن پیراهن شماره ی `var.player.club_number` را بر تن میکند؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["کدام بازیکن پیراهن شماره ی `var.player.club_number` را بر تن میکند؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.players.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.players.name"]
 	},
 		"answer"        : {
-			"text"       : ["var.player.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.player.name"]
 	}
 	},
 	"select"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"write"          : {
 		"title"        : {
-			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.player.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.player.name"]
 	}
 	},
 	"bool"          : {
 		"title"        : {
-			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.True_or_False"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.True_or_False"]
 	}
 	},
 	"tags"          : [{
