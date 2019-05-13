@@ -133,7 +133,7 @@ class Template:
         self.__update_problems(problems)
 
 
-    def parse(self, metadata={}):
+    def parse(self, bool_answer=True , metadata={}):
         """
         eval the variables in the template with data that we have in datasets
         and return a new template object that has no variable in sentences
@@ -152,6 +152,7 @@ class Template:
 
         problems = []
         var = DataContainer()
+        setattr(var, 'bool_answer', bool_answer)
 
         for key, value in metadata.items():
             setattr(var, key, value)
@@ -187,7 +188,7 @@ class Template:
         return Template(template)
 
 
-    def get_question(self, question_type, format, ):
+    def get_question(self, bool_answer, question_type, format):
         """
         change a template structure to the question structure
         we do it after parsing a template
@@ -209,6 +210,9 @@ class Template:
             'datasets': template['datasets'],
         })
 
+        for type in question['title']:
+            question['title'][type] = choose([t for i,t in enumerate(question['title'][type]) if i % 2 == int(bool_answer)])
+
         return Question(question)
 
 
@@ -218,10 +222,10 @@ class Template:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
         question_type = choose(self.get_question_types()) if question_type is None else f'__{question_type}'
+        bool_answer = rand([True, False])
 
-
-        parsed_template = self.parse(metadata)
-        question_object = parsed_template.get_question(question_type, format)
+        parsed_template = self.parse(bool_answer, metadata)
+        question_object = parsed_template.get_question(bool_answer, question_type, format)
 
         return question_object
 
