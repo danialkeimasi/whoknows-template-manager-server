@@ -6,110 +6,53 @@
     },
 	"choose"          : {
 		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.players.release"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.players.release"]
 	},
 		"answer"        : {
-			"text"       : ["var.player.release"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.player.release"]
 	}
 	},
 	"select"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"write"          : {
 		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.player.release"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.player.release"]
 	}
 	},
 	"bool"          : {
 		"title"        : {
 			"text"       : ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
-                            "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+                            "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.True_or_False"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.True_or_False"]
 	}
 	},
 	"tags"          : [{

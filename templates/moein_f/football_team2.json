@@ -9,111 +9,55 @@
 		"title"        : {
 			"text"       : ["کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
                             "کدام تیم در لیگ `var.team.league` حضور دارد؟",
-                            "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+                            "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.teams.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.teams.name"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.team.name"]
 	}
 	},
 	"select"          : {
 		"title"        : {
 			"text"       : ["از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
                             "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
-                            "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+                            "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.teams.choose(NOC - var.ans_cnt + 1).name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.teams.choose(NOC - var.ans_cnt + 1).name"]
 	},
 	
 		"answer"        : {
-			"text"       : ["var.teams_same.choose(var.ans_cnt).name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.teams_same.choose(var.ans_cnt).name"]
 	}
 	},
 	"write"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"bool"          : {
 		"title"        : {
-			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.True_or_False"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.True_or_False"]
 	}
 	},
 	"tags"          : [{

@@ -7,109 +7,52 @@
     },
   "choose"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
+      "text"       : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟"]
   },
     "subtitle"      : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
   },
     "choice"        : {
-      "text"       : ["var.leagues.choose(NOC)"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
+      "text"       : ["var.leagues.choose(NOC)"]
   },
     "answer"        : {
-      "text"       : ["var.team.league"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
+      "text"       : ["var.team.league"]
   }
   },
   "select"          : {
     "title"        : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
   },
     "subtitle"      : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []
   },
     "choice"        : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   },
   
     "answer"        : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   }
   },
   "write"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
+      "text"       : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"]
   },
     "subtitle"      : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   },
     "choice"        : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   },
   
     "answer"        : {
-      "text"       : ["var.team.league"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
+      "text"       : ["var.team.league"]
   }
   },
   "bool"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
+      "text"       : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
   },
     "subtitle"      : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   },
     "choice"        : {
-      "text"       : [],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
   },
   
     "answer"        : {
-      "text"       : ["var.True_or_False"],
-      "audio"      : [],
-      "video"      : [],
-      "image"      : []      
+      "text"       : ["var.True_or_False"]
   }
   },
   "tags"          : [{

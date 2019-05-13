@@ -6,109 +6,51 @@
     },
 	"choose"          : {
 		"title"        : {
-			"text"       : ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.coachs.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.coachs.name"]
 	},
 		"answer"        : {
-			"text"       : ["var.coach.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.coach.name"]
 	}
 	},
 	"select"          : {
 		"title"        : {
-			"text"       : ["ملیت کدام مربیان `var.coach.nation` میباشد؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["ملیت کدام مربیان `var.coach.nation` میباشد؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.coachs.choose(1).name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.coachs.choose(1).name"]
 	},
 	
 		"answer"        : {
-			"text"       : ["var.coachs_same.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.coachs_same.name"]
 	}
 	},
 	"write"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"bool"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"tags"          : [{

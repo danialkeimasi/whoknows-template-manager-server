@@ -8,83 +8,41 @@
 	"choose"          : {
 		"title"        : {
 			"text"       : ["کدام تیم در لیگ متفاوتی نسبت به سایر گزینه ها فعالیت میکند؟",
-                            "تیمی که نسبت به سایر تیمها در لیگ متفاوتی فعالیت میکند را انتخاب کنید."],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+                            "تیمی که نسبت به سایر تیمها در لیگ متفاوتی فعالیت میکند را انتخاب کنید."]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.teams.choose(NOC).name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.teams.choose(NOC).name"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+			"text"       : ["var.team.name"]
 	}
 	},
 	"select"          : {
 		"title"        : {
 			"text"       : ["تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید.",
-                            "کدام تیم ها در یک لیگ مشترک حضور دارند؟"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
+                            "کدام تیم ها در یک لیگ مشترک حضور دارند؟"]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []
 	},
 		"choice"        : {
-			"text"       : ["var.team.name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.team.name"]
 	},
 	
 		"answer"        : {
-			"text"       : ["var.teams_same.choose(NOC).name"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.teams_same.choose(NOC).name"]
 	}
 	},
 	"write"          : {
 		"title"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	}
 	},
 	"bool"          : {
@@ -94,29 +52,15 @@
                             "تیم های `var.team.name` و `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
                             "  تیم های `var.team.name` و `var.teams.choose(1).name` در لیگ `var.league.choose(1)` فعالیت میکنند.",
                             "هر دو تیم `var.team.name` و `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
-                            "هر دو تیم `var.team.name` و `var.teams.choose(1).name` در لیگ `var.team.league` فعالیت میکنند."],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+                            "هر دو تیم `var.team.name` و `var.teams.choose(1).name` در لیگ `var.team.league` فعالیت میکنند."]
 	},
 		"subtitle"      : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 		"choice"        : {
-			"text"       : [],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
 	},
 	
 		"answer"        : {
-			"text"       : ["var.True_or_False"],
-			"audio"      : [],
-			"video"      : [],
-			"image"      : []      
+			"text"       : ["var.True_or_False"]
 	}
 	},
 	"tags"          : [{
