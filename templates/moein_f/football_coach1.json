@@ -1,34 +1,137 @@
 {
-    "values": {
+	"values": {
         "coach": "db(footballCoach)",
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "ملیت `var.coach.name` کدام گزینه است؟"
-    ],
-    "title_writing": [
-        "`var.coach.name` اهل چه کشوری است؟"
-    ],
-    "title_true_false": [
-        "`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
-        "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.coach.nation"
-    ],
-    "answer_writing": [
-        "var.coach.nation"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.coachs.nation"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 72,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.coachs.nation"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.coach.nation"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["`var.coach.name` اهل چه کشوری است؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.coach.nation"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
+                            "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.True_or_False"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 

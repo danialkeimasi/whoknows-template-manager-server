@@ -1,20 +1,136 @@
 {
-    "values": {
+	"values": {
         "coach": "db(footballCoach)",
-        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
+        "coachs_same": "db(footballCoach[footballCoach.nation == var.coach.nation] , NOC)"
     },
-    "title_multichoices": [
-        "کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"
-    ],
-    "answer_multichoices": [
-        "var.coach.nation"
-    ],
-    "choices_multichoices": [
-        "var.coachs.nation"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 73,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.coachs.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"answer"        : {
+			"text"       : ["var.coach.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : ["ملیت کدام مربیان `var.coach.nation` میباشد؟"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []
+	},
+		"choice"        : {
+			"text"       : ["var.coachs.choose(1).name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : ["var.coachs_same.name"],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"subtitle"      : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+		"choice"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	},
+	
+		"answer"        : {
+			"text"       : [],
+			"audio"      : [],
+			"video"      : [],
+			"image"      : []      
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 
