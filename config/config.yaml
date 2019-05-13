@@ -1,6 +1,33 @@
+debug: True
+language: fa
+main_server_ip: https://31.184.132.183:30000
+template_new_server: https://31.184.132.183:30000/template/new
+
 dir:
-  project_dir: .
-  templates_dir: ./templates/main
-  questions_dir: ./modules
-  result_dir: ./template_engine/result
+  project: .
+  templates: ./templates/main
+  questions: ./modules
+  result: ./template_engine/result
   dataset_dir: ./_datasets
+
+datasets:
+  - movie
+  - director
+  - song
+  - actor
+  - footballPlayer
+  - footballTeam
+  - quote
+  - country
+  - book
+  - name
+  - word
+  - volleyballTeam
+
+mongo:
+  ip: 198.143.179.211
+  port: 27017
+  username: admin
+  password: parishadbg18
+  authentication_db: admin
+
