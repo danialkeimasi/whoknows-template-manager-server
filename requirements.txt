@@ -4,3 +4,5 @@ pprint
 pymongo
 requests
 bs4
+pyyaml
+attrdict

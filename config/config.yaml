@@ -1,0 +1,6 @@
+dir:
+  project_dir: .
+  templates_dir: ./templates/main
+  questions_dir: ./modules
+  result_dir: ./template_engine/result
+  dataset_dir: ./_datasets

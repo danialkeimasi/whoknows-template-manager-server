@@ -1,12 +1,12 @@
 import logging
-
-
+import pyyaml
+import attrdict
 from pymongo import MongoClient
 from pprint import pprint
 
-mongo = MongoClient('31.184.132.183')
-db = mongo.GuessIt
-db_templates = db.templates
+with open("./config/config.yml" , 'r') as yamlfileobj:
+    config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
+
 
 class CONFIG:
     """
