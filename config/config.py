@@ -37,9 +37,3 @@ def loggerHandle(loggerFunction, message, problemsList = None):
         problemsList.append(message)
     
     loggerFunction(message)
-
-
-# if CONFIG.use_mongo:
-#     mongo = MongoClient('mongodb://localhost:27017')
-
-
