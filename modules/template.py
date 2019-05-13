@@ -1,4 +1,4 @@
-from config.config import logger, CONFIG
+from config.config import logger, config
 import json
 from pprint import pprint
 import re
@@ -126,8 +126,8 @@ class Template:
         datasets = self.__template['datasets']
 
         for ds_name in datasets:
-            if not os.path.isfile(f'{CONFIG.dataset_dir}/{ds_name}db.json'):
-                problems.append(f'dataset named "{ds_name}" not found in {CONFIG.dataset_dir}/ dir.')
+            if not os.path.isfile(f'{config.dir.dataset}/{ds_name}db.json'):
+                problems.append(f'dataset named "{ds_name}" not found in {config.dir.dataset}/ dir.')
 
         logger.critical(problems)
         self.__update_problems(problems)
@@ -244,11 +244,11 @@ def load_data(dataset_name):
     for i in range(5):
         try:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
-            data = pd.DataFrame(json.load(open(f'{CONFIG.dataset_dir}/{dataset_name}db.json', encoding='utf-8')))
+            data = pd.DataFrame(json.load(open(f'{config.dir.dataset}/{dataset_name}db.json', encoding='utf-8')))
             logger.info(f'loading {dataset_name} dataset is done.')
             break
         except Exception as error:
-            logger.error(f'could not open dataset {dataset_name} from {CONFIG.dataset_dir} directory because {error}')
+            logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error}')
 
     return data
 

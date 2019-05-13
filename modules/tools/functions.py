@@ -1,7 +1,7 @@
 import re
 import json
 import random
-from config.config import logger, CONFIG
+from config.config import logger, config
 import pandas as pd
 
 

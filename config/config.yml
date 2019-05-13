@@ -8,7 +8,7 @@ dir:
   templates: ./templates/main
   questions: ./modules
   result: ./template_engine/result
-  dataset_dir: ./_datasets
+  dataset: ./_datasets
 
 datasets:
   - movie

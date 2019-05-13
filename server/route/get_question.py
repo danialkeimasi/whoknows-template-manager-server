@@ -1,6 +1,6 @@
 from server.flask import getApp
 from flask import json, request
-from config.config import CONFIG, db_templates
+from config.config import config
 import random
 import functools
 import glob
@@ -46,7 +46,7 @@ def add():
 
             # 3 prepare response dictionary and return it with json.dump
 
-            templates = list(db_templates.aggregate([
+            templates = list(db.cooll.aggregate([
                             {'$match':  {'$match': {'tags':tags} }},
                             {'$sample': {'size': count}},
                             ]))

@@ -1,5 +1,5 @@
 import logging
-import pyyaml
+import yaml
 import attrdict
 from pymongo import MongoClient
 from log4mongo.handlers import MongoHandler
