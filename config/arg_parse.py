@@ -108,8 +108,8 @@ def arg_parse():
             template = json.load(open(args.addTemplate))
             template = template[0] if isinstance(template, list) else template
             
-            mongo_client.TemplateManager.templates.insert_one(template)
-
+            res = mongo_client.TemplateManager.templates.insert_one(template)
+            print(res)
         else:
             raise TemplateError('the given template is not found!')
             
