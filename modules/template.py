@@ -12,7 +12,7 @@ import random
 
 class Template:
 
-    __template_formatter = json.load(open('templates\\template_v2\\template_formatter.json'))
+    __template_formatter = json.load(open('./templates/template_v2/template_formatter.json'))
     __default_metadata = {
         'NOC': 3,
         'NOS': 4,

@@ -11,6 +11,6 @@ if __name__ == '__main__':
     isThereArg = arg_parse()
 
     if not isThereArg:
-        server.flask.getApp().run(debug=True, port='3001')
+        server.flask.getApp().run(debug=True, host='0.0.0.0', port='3001')
         # server.flask.getApp().run(debug=True)
 
