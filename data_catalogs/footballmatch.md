@@ -1,29 +1,4 @@
-Field |  type   | Regex | Descereption
------ |---------|-------|--------------
-home |  string  | .{2,30} | نام کامل تیم میزبان مانند FC Barcelona
-away |  string  | .{2,30} | نام کامل تیم میهمان مانند FC Barcelona
-home_logo |  string  | .{4,1000} | لینک عکس لوگو تیم
-away_logo |  string  | .{4,1000} | لینک عکس لوگو تیم
-competion |  string  | .{4,30} | نام لیگ و یا تورنمنت مثل Premier League یا UEFA Champions League
-game_week
-
-
-
-date |  string  | \d{1,2} | رتبه تیم در جدول
-point |  unsignint  | \d{1,3} | امتیاز تیم در جدول
-gf |  unsignint  | [\d]{1,2,3} | تعداد گل زده تیم
-ga |  unsignint  | [\d]{1,2} | تعداد گل خورده تیم
-gd |  int  | [\d]{1,2,3} | تفاضل گل تیم
-wins |  unsignint  | [\d]{1,2} | تعداد برد تیم
-losts |  unsignint  | [\d]{1,2} | تعداد باخت تیم
-draws |  unsignint  | [\d]{1,2} | تعداد مساوی تیم
-player |  string  | [\D]{3,20} | نام بازیکن در جدول گلزنان
-player_goal_rank |  unsignint  | [\d]{1,2} | رتبه در جدول گلزنان لیگ
-player_club |  string  | .{2,30} | نام تیم بازیکن در جدول گلزنان
-player_goals |  unsignint  | [\d]{1,2} | تعداد گلهای بازیکن در این فصل در لیگ
-player_penalty_goals |  unsignint  | [\d]{1,2} | تعداد گلهای بازیکن از روی نقطه پنالتی در این فصل لیگ
-
- <table>
+<table>
   <tr>
     <th>Field</th>
     <th>Type</th>
@@ -90,93 +65,41 @@ player_penalty_goals |  unsignint  | [\d]{1,2} | تعداد گلهای بازی�
   </tr>
 
   <tr>
-    <td>height_in_cm</td>
-    <td>unsignint</td>
-    <td>[1,2]\d\d</td>
+    <td>half_time_scores</td>
+    <td>string</td>
+    <td>\d{1,2}\-\d{1,2}</td>
     <td>
-    قد بازیکن به سانتی متر
+    نتیجه مسابقه در نیمه اول بصورت 2-1 
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>scores</td>
+    <td>string</td>
+    <td>\d{1,2}\-\d{1,2}</td>
+    <td>
+    نتیجه مسابقه بصورت 2-1 
     </td>
   </tr>
 
   <tr>
-    <td>age</td>
-    <td>unsignint</td>
-    <td>[1,2,3,4,5][0-9]</td>
+    <td>stadium</td>
+    <td>string</td>
+    <td>.{30}</td>
     <td>
-    سن بازیکن
+    استادیومی که مسابقه در آن برگزار شده است
     </td>
   </tr>
  
   <tr>
-    <td>foot</td>
-    <td>string</td>
-    <td>Left|Right</td>
+    <td>attendance</td>
+    <td>unsignint</td>
+    <td>\d{1,6}</td>
     <td>
-    پای تخصصی بازیکن (چپ یا راست)
+    تعداد تماشاگران حاضر در استادیوم
     </td>
   </tr>
   
-  <tr>
-    <td>birth_date</td>
-    <td>string</td>
-    <td>[1,2][0,9]\d\d/\d{1,2}/\d{1,2}</td>
-    <td>
-    تاریخ تولد بازیکن
-    </td>
-  </tr>
-
-  <tr>
-    <td>photo_link</td>
-    <td>string</td>
-    <td>.{4,100}</td>
-    <td>
-    لینک عکس بازیکن
-    </td>
-  </tr>
   
-  <tr>
-    <td>release_clause_euro</td>
-    <td>unsignint</td>
-    <td>[\d]{3,10}</td>
-    <td>
-    مبلغ فسخ قرارداد بازیکن به یورو
-    </td>
-  </tr>
-
-  <tr>
-    <td>value_in_euro</td>
-    <td>unsignint</td>
-    <td>[\d]{4,10}</td>
-    <td>
-    ارزش بازیکن در سایت ترانسفرمارکت به یورو
-    </td>
-  </tr>
-
-  <tr>
-    <td>wage_euro</td>
-    <td>unsignint</td>
-    <td>[\d]{4,9}</td>
-    <td>
-    حقوق هفتگی بازیکن به یورو
-    </td>
-  </tr>
-
-  <tr>
-    <td>club_join_date</td>
-    <td>string</td>
-    <td>[1,2][0,9]\d\d/\d{1,2}/\d{1,2}</td>
-    <td>
-    تاریخ پیوستن بازیکن به تیم باشگاهی اش
-    </td>
-  </tr>
-
-  <tr>
-    <td>contract_valid_until</td>
-    <td>string</td>
-    <td>[1,2][0,9]\d\d</td>
-    <td>
-    سال اتمام قرارداد بازیکن با تیم
-    </td>
-  </tr>
-
 </table> 
