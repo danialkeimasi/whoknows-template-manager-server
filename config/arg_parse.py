@@ -5,7 +5,7 @@ import json
 
 from pprint import pprint
 from modules.template import Template
-
+from config.config import mongo_client
 
 
 def arg_parse():
@@ -24,7 +24,7 @@ def arg_parse():
     )
 
     parser.add_argument(
-        '-at', '---addTemplate',
+        '-a', '---addTemplate',
         dest='addTemplate', default=None,
         type=str,
 
@@ -107,8 +107,8 @@ def arg_parse():
         if os.path.isfile(args.addTemplate):
             template = json.load(open(args.addTemplate))
             template = template[0] if isinstance(template, list) else template
-
-            add_template_to_server(template)
+            
+            mongo_client.TemplateManager.templates.insert_one(template)
 
         else:
             raise TemplateError('the given template is not found!')

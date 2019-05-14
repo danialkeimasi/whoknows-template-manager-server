@@ -1,6 +1,6 @@
 from server.flask import getApp
 from flask import json, request
-from config.config import config
+from config.config import config, mongo_client
 import random
 import functools
 import glob
@@ -46,15 +46,14 @@ def add():
 
             # 3 prepare response dictionary and return it with json.dump
 
-            templates = list(db.cooll.aggregate([
+            templates = list(mongo_client.TemplateManager.templates.aggregate([
                             {'$match':  {'$match': {'tags':tags} }},
                             {'$sample': {'size': count}},
                             ]))
 
-            questions = [Template(template).generate_question().dict() for template in templates]
             response = {
                 'ok': True,
-                'questions': questions,
+                'questions': [Template(template).generate_question().dict() for template in templates],
             }
 
         return json.dumps(response)
