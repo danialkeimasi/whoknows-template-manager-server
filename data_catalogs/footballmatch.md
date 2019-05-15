@@ -101,5 +101,124 @@
     </td>
   </tr>
   
+  <tr>
+    <td>ref</td>
+    <td>string</td>
+    <td>[A-Z .a-z]{1,25}</td>
+    <td>
+    نام داور وسط بازی
+    </td>
+  </tr>
+  
+  <tr>
+    <td>assistants</td>
+    <td>list</td>
+    <td>[A-Z .a-z]{1,25}</td>
+    <td>
+    نام کمک داوران اول و دوم
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>fourth_ref</td>
+    <td>list</td>
+    <td>[A-Z .a-z]{1,25}</td>
+    <td>
+    نام داور چهارم بازی
+    </td>
+  </tr>
+  
+  <tr>
+    <td>home_corners</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد کرنر تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_corners</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد کرنر تیم میهمان
+    </td>
+  </tr>
+  
+   <tr>
+    <td>home_shots</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد شوت تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_shots</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد شوت تیم میهمان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>home_shots_on_target</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد شوت در چارچوب تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_shots_on_target</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد شوت در چارچوب تیم میهمان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>home_fouls</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد خطای تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_fouls</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد خطای تیم میهمان
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>home_offside</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد آفساید تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_offside</td>
+    <td>unsignint</td>
+    <td>\d{1,2}</td>
+    <td>
+    تعداد آفساید تیم میهمان
+    </td>
+  </tr>
+  
   
 </table> 
