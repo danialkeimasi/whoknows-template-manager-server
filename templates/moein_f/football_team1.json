@@ -1,21 +1,21 @@
 {
   "values"	: {
     "team"          : "db(footballTeam)",
-    "team_same"     : "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)])",
-    "leagues"       : "listSub(footballTeam.league, var.team.league)",
+    "team_same"     : "db(footballTeam[(footballTeam.league_name == var.team.league_name) & (footballTeam.team_name != var.team.team_name)])",
+    "leagues"       : "listSub(footballTeam.league_name, var.team.league_name)",
     "True_or_False" : "rand( [True,False] )"
     },
   "choose"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟"]
+      "text"       : ["تیم `var.team.team_name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.team_name` و `var.team_same.team_name` در کدام لیگ فعالیت میکنند؟"]
   },
     "subtitle"      : {
   },
     "choice"        : {
-      "text"       : ["var.leagues.choose(NOC)"]
+      "text"       : ["`var.leagues.choose(NOC)`"]
   },
     "answer"        : {
-      "text"       : ["var.team.league"]
+      "text"       : ["`var.team.league_name`"]
   }
   },
   "select"          : {
@@ -31,7 +31,7 @@
   },
   "write"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"]
+      "text"       : ["تیم `var.team.team_name` در چه لیگی فعالیت میکند؟"]
   },
     "subtitle"      : {
   },
@@ -39,12 +39,12 @@
   },
   
     "answer"        : {
-      "text"       : ["var.team.league"]
+      "text"       : ["`var.team.league_name`"]
   }
   },
   "bool"          : {
     "title"        : {
-      "text"       : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
+      "text"       : ["تیم `var.team.team_name` در لیگ `var.team.league_name` فعالیت میکند؟" , "تیم `var.team.team_name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
   },
     "subtitle"      : {
   },
@@ -52,13 +52,12 @@
   },
   
     "answer"        : {
-      "text"       : ["var.True_or_False"]
+      "text"       : ["`var.True_or_False`"]
   }
   },
-  "tags"          : [{
-  "type"    : "String",
-  "ref"      : "'tag'"
-  }],
+  "tags"          : [
+    "football", "footballTeam"
+  ],
   "usage"          : [{
   "type"        : "String"
   }],
@@ -74,7 +73,7 @@
   "state_info"        : {
   "type"        : "String"
   },
-  "datasets"        : ["String"]
+  "datasets"        : ["footballTeam"]
 
 
 } 

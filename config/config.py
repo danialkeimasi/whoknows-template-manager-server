@@ -17,11 +17,11 @@ logging.basicConfig(
     # datefmt='%H:%M:%S',
     level=logging.DEBUG,
     handlers=[
-        # logging.FileHandler(f'{config.dir.project}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{config.dir.project}/template_engine.log', mode='w+', encoding='utf8', delay=0),
         logging.StreamHandler(),
-        MongoHandler(host=config.mongo.ip, port=config.mongo.port,
-                     username=config.mongo.username, password=config.mongo.password,
-                     authentication_db=config.mongo.authentication_db, database_name='TemplateManager', collection='log'),
+        # MongoHandler(host=config.mongo.ip, port=config.mongo.port,
+        #              username=config.mongo.username, password=config.mongo.password,
+        #              authentication_db=config.mongo.authentication_db, database_name='TemplateManager', collection='log'),
 
     ]
 )

@@ -206,7 +206,7 @@ class Template:
             'question_type': question_type[2:],
             'tags': template['tags'],
             'usage': template['usage'],
-            'values': template['values'],
+            # 'values': template['values'],
             'datasets': template['datasets'],
         })
 
