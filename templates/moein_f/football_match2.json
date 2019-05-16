@@ -1,20 +1,79 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
-    "title_multichoices": [
-        "`var.match.ref` داوری کدام بازی را برعهده داشته است؟"
-    ],
-    "answer_multichoices": [
-        "var.match.name"
-    ],
-    "choices_multichoices": [
-        "var.matches.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 76,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
+	},
+		"subtitle"      : {
+
+	},
+		"choice"        : {
+			"text"       : ["var.matches.ref"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.name"]
+	}
+	},
+	"select"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"write"          : {
+		"title"        : {
+			
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 

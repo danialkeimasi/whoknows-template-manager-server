@@ -1,34 +1,81 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
-    ],
-    "title_writing": [
-        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
-    ],
-    "title_true_false": [
-        "بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
-        "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."
-    ],
-    "answer_multichoices": [
-        "var.match.stadium"
-    ],
-    "answer_writing": [
-        "var.match.stadium"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.matches.stadium"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 77,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
+	},
+		"subtitle"      : {
+
+	},
+		"choice"        : {
+			"text"       : ["var.matches.stadium"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.stadium"]
+	}
+	},
+	"select"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			"text"       : ["var.match.stadium"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
+                            "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 

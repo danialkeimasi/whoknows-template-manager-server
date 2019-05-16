@@ -1,34 +1,81 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "در بازی `var.match.name` داور وسط بازی چه کسی بود؟"
-    ],
-    "title_writing": [
-        "در بازی `var.match.name` داور وسط بازی چه کسی بود؟"
-    ],
-    "title_true_false": [
-        "داوری بازی `var.team.name` بر عهده ی `var.match.ref` بود.",
-        "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."
-    ],
-    "answer_multichoices": [
-        "var.match.ref"
-    ],
-    "answer_writing": [
-        "var.match.ref"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.matches.ref"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 75,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` داور وسط بازی چه کسی بود؟"]
+	},
+		"subtitle"      : {
+
+	},
+		"choice"        : {
+			"text"       : ["var.matches.ref"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.ref"]
+	}
+	},
+	"select"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` داور وسط بازی چه کسی بود؟"]
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			"text"       : ["var.match.ref"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["داوری بازی `var.team.name` بر عهده ی `var.match.ref` بود.",
+                            "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."]
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 
