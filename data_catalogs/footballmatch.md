@@ -101,6 +101,25 @@
     </td>
   </tr>
   
+  
+  <tr>
+    <td>home_coach</td>
+    <td>string</td>
+    <td>\D{3,20}</td>
+    <td>
+    نام مربی تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_coach</td>
+    <td>string</td>
+    <td>\D{3,20}</td>
+    <td>
+    نام مربی تیم میهمان
+    </td>
+  </tr>
+  
   <tr>
     <td>ref</td>
     <td>string</td>
@@ -219,6 +238,46 @@
     تعداد آفساید تیم میهمان
     </td>
   </tr>
+  
+  
+  <tr>
+    <td>home_lineups</td>
+    <td>list</td>
+    <td>\D{3,20}</td>
+    <td>
+    11 نغر اولیه تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_lineups</td>
+    <td>list</td>
+    <td>\D{3,20}</td>
+    <td>
+    11 نفر اولیه تیم میهمان
+    </td>
+  </tr>
+  
+  
+  <tr>
+    <td>home_subs</td>
+    <td>list</td>
+    <td>\D{3,20}</td>
+    <td>
+    لیست بازیکنان ذخیره تیم میزبان
+    </td>
+  </tr>
+  
+  <tr>
+    <td>away_subs</td>
+    <td>list</td>
+    <td>\D{3,20}</td>
+    <td>
+    لیست بازیکنان ذخیره تیم میهمان
+    </td>
+  </tr>
+  
+  
   
   
 </table> 
