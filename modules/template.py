@@ -30,7 +30,7 @@ class Template:
         """
         if os.path.isfile(template_file_address):
             
-            self.__template = json.load(open(template_dict_address, encoding='utf8').read())
+            self.__template = json.load(open(template_file_address, encoding='utf8'))
             self.__problems = []
                 
             if debug:
