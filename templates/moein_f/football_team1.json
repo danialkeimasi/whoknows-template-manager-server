@@ -9,8 +9,6 @@
     "title"        : {
       "text"       : ["تیم `var.team.team_name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.team_name` و `var.team_same.team_name` در کدام لیگ فعالیت میکنند؟"]
   },
-    "subtitle"      : {
-  },
     "choice"        : {
       "text"       : ["`var.leagues.choose(NOC)`"]
   },
@@ -18,24 +16,10 @@
       "text"       : ["`var.team.league_name`"]
   }
   },
-  "select"          : {
-    "title"        : {
-  },
-    "subtitle"      : {
-  },
-    "choice"        : {
-  },
-  
-    "answer"        : {
-  }
-  },
+
   "write"          : {
     "title"        : {
       "text"       : ["تیم `var.team.team_name` در چه لیگی فعالیت میکند؟"]
-  },
-    "subtitle"      : {
-  },
-    "choice"        : {
   },
   
     "answer"        : {
@@ -46,11 +30,6 @@
     "title"        : {
       "text"       : ["تیم `var.team.team_name` در لیگ `var.team.league_name` فعالیت میکند؟" , "تیم `var.team.team_name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
   },
-    "subtitle"      : {
-  },
-    "choice"        : {
-  },
-  
     "answer"        : {
       "text"       : ["`var.True_or_False`"]
   }
@@ -58,9 +37,7 @@
   "tags"          : [
     "football", "footballTeam"
   ],
-  "usage"          : [{
-  "type"        : "String"
-  }],
+  "usage"          : ['context'],
   "score_function"      : {
   "type"        : "String"
   },

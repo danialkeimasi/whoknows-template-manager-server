@@ -2,21 +2,8 @@
    "values": {
         "team"          : "db(footballTeam)",
         "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
-        "leagues"       : "listSub(footballTeam.league, var.team.league)",
-        "True_or_False" : "rand( [True,False] )"
-      },
-  "_id": 1,
-  "datasets": ["footballTeam"],
-  "usage": ["contest"],
-  "level": 2,
-  "score_function": "default",
-  "time_function": "",
-  "tags": ["football"],
-  "state": "",
-  "state_info": {},
-  "idea": [""],
-
-
+        "leagues"       : "listSub(footballTeam.league, var.team.league)"      
+  },
 
   "__bool": {
     "title": {
@@ -41,5 +28,16 @@
     "answer": {
       "text": ["`var.team.league`"]
     }
-  }
+  },
+
+  "_id": 1,
+  "datasets": ["footballTeam"],
+  "usage": ["contest"],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "",
+  "tags": ["football", "footballTeam"],
+  "state": "",
+  "state_info": {},
+  "idea": [""]
 }
