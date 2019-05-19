@@ -245,7 +245,7 @@ class Template:
 
         template['problems'] = self.problems()
 
-        result = list(mongo_client.TemaplateManager.templates.insert_one(template))
+        result = list(mongo_client.TemplateManager.templates.insert_one(template))
 
         logger.info(result)
         
