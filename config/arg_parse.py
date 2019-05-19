@@ -66,7 +66,7 @@ def arg_parse():
 
     if args.template:
 
-        template = Template(args.template, debug=True)
+        template = Template(args.template, debug=True, mode='file')
 
     if args.function:
         

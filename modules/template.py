@@ -28,17 +28,13 @@ class Template:
         :param inp: template
         :param debug:
         """
-        if os.path.isfile(inp):
-            
-            self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else inp if mode == 'dict' else inp
-            self.__problems = []
-            
-            if debug:
-                self.__check_json_format()
-                self.__check_data()
 
-        else:
-            raise FileNotFoundError('inp not found')
+        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else inp if mode == 'dict' else None
+        self.__problems = []
+        
+        if debug:
+            self.__check_json_format()
+            self.__check_data()
 
 
     def dict(self):
