@@ -22,23 +22,23 @@ class Template:
         'level': 1,
     }
 
-    def __init__(self, template_file_address, debug=False):
+    def __init__(self, inp, debug=False, mode='dict'):
         """
         check template structure if debug is true
-        :param template_file_address: template file address
+        :param inp: template
         :param debug:
         """
-        if os.path.isfile(template_file_address):
+        if os.path.isfile(inp):
             
-            self.__template = json.load(open(template_file_address, encoding='utf8'))
+            self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else inp if mode == 'dict' else inp
             self.__problems = []
-                
+            
             if debug:
                 self.__check_json_format()
                 self.__check_data()
 
         else:
-            raise FileNotFoundError('template_file_address not found')
+            raise FileNotFoundError('inp not found')
 
 
     def dict(self):
