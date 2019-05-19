@@ -161,6 +161,7 @@ class Template:
         var = DataContainer()
         setattr(var, 'bool_answer', bool_answer)
 
+
         for key, value in metadata.items():
             setattr(var, key, value)
 
@@ -210,7 +211,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'question_type': question_type[2:],
+            'type': question_type[2:],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
