@@ -39,13 +39,6 @@ def arg_parse():
     )
 
     parser.add_argument(
-        '-d', '--debug',
-        dest='debug', default=False,
-        action='store_true',
-        help='enable debug mode',
-    )
-
-    parser.add_argument(
         '-log', '--log_level',
         dest='log_level', default=None,
         type=str,
@@ -103,6 +96,8 @@ def arg_parse():
         elif args.function in ['add']:
 
             template.add()
+
+
         
 
 

@@ -244,8 +244,12 @@ class Template:
         template = self.dict()
 
         template['problems'] = self.problems()
+
+        result = mongo_client.TemaplateManager.templates.insert_one(template)
+
+        logger.info(result)
         
-        return mongo_client.TemaplateManager.templates.insert_one(template)
+        return result
 
 
 
