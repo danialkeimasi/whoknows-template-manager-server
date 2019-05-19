@@ -9,6 +9,8 @@ import copy
 from modules.tools.functions import choose, rand, to_list
 from modules.question import Question
 import random
+from config.config import mongo_client
+
 
 class Template:
 
@@ -40,7 +42,7 @@ class Template:
         """
         return self.__template
 
-
+    
     def problems(self):
         """
         :return problems of a template as dict:
@@ -228,6 +230,19 @@ class Template:
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
         return question_object
+
+
+    def add(self):
+
+        logger.info('trying to add tempalte to mongo ...')
+
+        template = self.dict()
+
+        template['problems'] = self.problems
+        
+        return mongo_client.TemaplateManager.templates.insert_one(template)
+
+
 
 
 def load_data(dataset_name):
