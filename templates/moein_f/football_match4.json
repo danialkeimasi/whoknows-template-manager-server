@@ -1,20 +1,75 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
-    "title_multichoices": [
-        "کدام یک از بازی های زیر در استادیوم `var.game.stadium` برگزار شده است؟"
-    ],
-    "answer_multichoices": [
-        "var.match.name"
-    ],
-    "choices_multichoices": [
-        "var.matches.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 78,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["کدام یک از بازی های زیر در استادیوم `var.match.stadium` برگزار شده است؟"]
+	},
+		"subtitle"      : {
+
+	},
+		"choice"        : {
+			"text"       : ["var.matches.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.name"]
+	}
+	},
+	"select"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"write"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"bool"          : {
+		"title"        : {
+	},
+		"subtitle"      : {
+	},
+		"choice"        : {
+	},
+	
+		"answer"        : {
+	}
+	},
+	"tags"          : [{
+	"type"    : "String",
+	"ref"      : "'tag'"
+	}],
+	"usage"          : [{
+	"type"        : "String"
+	}],
+	"score_function"      : {
+	"type"        : "String"
+	},
+	"time_function"      : {
+	"type"        : "String"
+	},
+	"state"          : {
+	"type"        : "String"
+	},
+	"state_info"        : {
+	"type"        : "String"
+	},
+	"datasets"        : ["String"]
+
+
+} 
