@@ -8,6 +8,7 @@ from modules.template import Template
 from config.config import mongo_client, logger
 
 
+
 def arg_parse():
     '''
     command line interface
