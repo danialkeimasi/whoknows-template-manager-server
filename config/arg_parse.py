@@ -72,7 +72,8 @@ def arg_parse():
         '''
 
     if args.template:
-        template = Template(json.load(open(args.template)))
+
+        template = Template(args.template)
 
     if args.function:
         
@@ -93,12 +94,14 @@ def arg_parse():
                 logger.info('> parsed template :')
 
                 logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False).encode('utf8')
+
                 logger.info('> question :')
 
                 logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False).encode('utf8'))
 
 
         elif args.function in ['add']:
+
             template.add()
         
 
