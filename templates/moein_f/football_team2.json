@@ -1,17 +1,15 @@
 {
 	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
-        "ans_cnt": "rand(range(1,NOC+1))"
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
+        "ans_cnt": "rand(range(1,var.NOC+1))"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
                             "کدام تیم در لیگ `var.team.league` حضور دارد؟",
                             "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"]
-	},
-		"subtitle"      : {
 	},
 		"choice"        : {
 			"text"       : ["var.teams.name"]
@@ -20,66 +18,36 @@
 			"text"       : ["var.team.name"]
 	}
 	},
-	"select"          : {
+	"__select"          : {
 		"title"        : {
 			"text"       : ["از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
                             "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
                             "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
-			"text"       : ["var.teams.choose(NOC - var.ans_cnt + 1).name"]
+			"text"       : ["var.teams.choose(var.NOC - var.ans_cnt + 1).name"]
 	},
 	
 		"answer"        : {
 			"text"       : ["var.teams_same.choose(var.ans_cnt).name"]
 	}
 	},
-	"write"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
 	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
 		"answer"        : {
 			"text"       : ["var.True_or_False"]
 	}
 	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
-
-
+	"_id": 2,
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 } 
