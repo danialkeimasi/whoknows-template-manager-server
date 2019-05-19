@@ -243,7 +243,7 @@ class Template:
 
         template = self.dict()
 
-        template['problems'] = self.problems
+        template['problems'] = self.problems()
         
         return mongo_client.TemaplateManager.templates.insert_one(template)
 
