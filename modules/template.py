@@ -77,7 +77,7 @@ class Template:
         :param problems:
         """
         problems = []
-        template_consts = ['usage', 'values', 'time_function',
+        template_consts = ['level', 'usage', 'values', 'time_function',
                            'score_function', 'tags', 'state', 'state_info',
                            'idea', 'datasets']
         
@@ -161,7 +161,6 @@ class Template:
         var = DataContainer()
         setattr(var, 'bool_answer', bool_answer)
 
-
         for key, value in metadata.items():
             setattr(var, key, value)
 
@@ -211,7 +210,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'type': question_type[2:],
+            'question_type': question_type[2:],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
