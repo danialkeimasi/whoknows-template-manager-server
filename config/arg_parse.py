@@ -92,17 +92,12 @@ def arg_parse():
 
                 logger.info('> parsed template :')
 
-                logger.critical(json.dumps(template.parse().dict(), indent=4))
-
+                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False).encode('utf8')
                 logger.info('> question :')
 
-                logger.critical(json.dumps(template.generate_question().dict(), indent=4))
+                logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False).encode('utf8'))
 
 
-            # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
-            # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
-            # logger.critical(json.dumps(test_result, indent=4))
-        
         elif args.function in ['add']:
             template.add()
         
