@@ -73,7 +73,7 @@ class Template:
         :param problems:
         """
         problems = []
-        template_consts = ['level', 'usage', 'values', 'time_function',
+        template_consts = ['usage', 'values', 'time_function',
                            'score_function', 'tags', 'state', 'state_info',
                            'idea', 'datasets']
         
