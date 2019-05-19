@@ -86,11 +86,11 @@ def arg_parse():
 
                 logger.info('> parsed template :')
 
-                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False).encode('utf8'))
+                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False))
 
                 logger.info('> question :')
 
-                logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False).encode('utf8'))
+                logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False))
 
 
         elif args.function in ['add']:
