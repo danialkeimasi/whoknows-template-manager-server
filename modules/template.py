@@ -247,7 +247,7 @@ class Template:
 
         result = mongo_client.TemaplateManager.templates.insert_one(template)
 
-        logger.info(result)
+        logger.info(list(result))
         
         return result
 
