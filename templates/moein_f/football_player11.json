@@ -1,0 +1,30 @@
+{
+    "values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.team != var.player.team ] , NOC)",
+        "True_or_False": "rand([True,False])"
+    },
+    "title_multichoices": [
+        "کدام گزینه چهره ی `var.player.name` میباشد؟"
+    ],
+    "title_true_false": [
+        "عکس زیر چهره ی `var.player.name` میباشد." ,
+         "عکس زیر چهره ی `var.player.name` میباشد." ,
+          "عکس زیر چهره ی بازیکن تیم `var.player.team` میباشد." ,
+           "عکس زیر چهره ی بازیکن تیم `var.players.choose(1).team` میباشد."
+    ],
+    "answer_multichoices": [
+        "var.player.pic"
+    ],
+    "choices_multichoices": [
+        "var.players.pic"
+    ],
+    "subtitle_true_false": [
+        "var.player.pic"
+    ],
+    "__usage": [
+        "contest"
+    ],
+    "__number": 26,
+    "__level": 2
+}

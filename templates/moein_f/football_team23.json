@@ -1,34 +1,31 @@
 {
     "values": {
-        "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.club_number != var.player.club_number], NOC)",
-        "True_or_False": "rand([True,False])"
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+        "teams_same": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+        "ans_cnt": "rand(range(1,NOC+1))"
     },
+    "title_selective": [
+        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟"
+    ],
     "title_multichoices": [
-        "شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"
-    ],
-    "title_writing": [
-        "شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"
-    ],
-    "title_true_false": [
-        "`var.player.name` در تیم `var.player.team` با شماره ی `var.player.club_number` بازی میکند.",
-        "`var.player.name` در تیم `var.player.team` با شماره ی `var.players.choose(1).club_number` بازی میکند."
+        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟"
     ],
     "answer_multichoices": [
-        "var.player.club_number"
+        "var.team.logo"
     ],
-    "answer_writing": [
-        "var.player.club_number"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
+    "answer_selective": [
+        "var.teams_same.choose(ans_cnt).logo"
     ],
     "choices_multichoices": [
-        "var.players.choose(NOC).club_number"
+        "var.teams.logo"
+    ],
+    "choices_selective": [
+        "var.teams.choose(NOC - ans_cnt +1).logo"
     ],
     "__usage": [
         "contest"
     ],
-    "__number": 23,
-    "__level": 2
+    "__number": 28,
+    "__level": 1
 }

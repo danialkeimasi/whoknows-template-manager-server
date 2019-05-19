@@ -1,26 +1,31 @@
 {
     "values": {
-        "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.club_number != var.player.club_number] , NOC)"
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
+        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league)] ,NOC)",
+        "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
-        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"
+        "کدام تیم در لیگ متفاوتی نسبت به سایر گزینه ها فعالیت میکند؟"
     ],
-    "title_writing": [
-        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"
+    "title_selective": [
+        "تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید."
     ],
     "answer_multichoices": [
-        "var.player.name"
+        "var.team.logo"
     ],
-    "answer_writing": [
-        "var.player.name"
+    "answer_selective": [
+        "var.teams_same.choose(ans_cnt).logo"
     ],
     "choices_multichoices": [
-        "var.players.choose(NOC).name"
+        "var.teams.choose(NOC).logo"
+    ],
+    "choices_selective": [
+        "var.teams.choose(NOC - ans_cnt + 1).logo"
     ],
     "__usage": [
         "contest"
     ],
-    "__number": 24,
-    "__level": 2
+    "__number": 29,
+    "__level": 1
 }

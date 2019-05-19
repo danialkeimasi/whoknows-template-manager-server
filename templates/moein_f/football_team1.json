@@ -37,7 +37,7 @@
   "tags"          : [
     "football", "footballTeam"
   ],
-  "usage"          : ['context'],
+  "usage"          : ["context"],
   "score_function"      : {
   "type"        : "String"
   },

@@ -1,34 +1,34 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.year != var.team.year])",
+        "teams": "db(footballTeam[footballTeam.name != var.team.rival], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+        "رقیب سنتی تیم `var.team.name` کدام تیم است؟"
     ],
     "title_writing": [
-        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+        "رقیب سنتی تیم `var.team.name` کدام تیم است؟"
     ],
     "title_true_false": [
-        "تیم `var.team.name` در سال `var.team.year` تاسیس شده است.",
-        "تیم `var.team.name` در سال `wrong_guess(var.team.year, 1)` تاسیس شده است."
+        "رقیب سنتی تیم `var.team.name` تیم `var.team.rival` میباشد.",
+        "رقیب سنتی تیم `var.team.name` تیم `var.teams.choose(1).rival` میباشد."
     ],
     "answer_multichoices": [
-        "var.team.year"
+        "var.team.rival"
     ],
     "answer_writing": [
-        "var.team.year"
+        "var.team.rival"
     ],
     "answer_true_false": [
         "var.True_or_False"
     ],
     "choices_multichoices": [
-        "wrong_guess(var.team.year, 17 , NOC)"
+        "var.teams.name"
     ],
     "__usage": [
         "contest"
     ],
-    "__number": 27,
+    "__number": 74,
     "__level": 2
 }

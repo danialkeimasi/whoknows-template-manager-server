@@ -1,31 +1,34 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-        "teams_same": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
-        "ans_cnt": "rand(range(1,NOC+1))"
+        "teams": "db(footballTeam[footballTeam.year != var.team.year])",
+        "True_or_False": "rand([True,False])"
     },
-    "title_selective": [
-        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟"
-    ],
     "title_multichoices": [
-        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟"
+        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+    ],
+    "title_writing": [
+        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+    ],
+    "title_true_false": [
+        "تیم `var.team.name` در سال `var.team.year` تاسیس شده است.",
+        "تیم `var.team.name` در سال `wrong_guess(var.team.year, 1)` تاسیس شده است."
     ],
     "answer_multichoices": [
-        "var.team.logo"
+        "var.team.year"
     ],
-    "answer_selective": [
-        "var.teams_same.choose(ans_cnt).logo"
+    "answer_writing": [
+        "var.team.year"
+    ],
+    "answer_true_false": [
+        "var.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.logo"
-    ],
-    "choices_selective": [
-        "var.teams.choose(NOC - ans_cnt +1).logo"
+        "wrong_guess(var.team.year, 17 , NOC)"
     ],
     "__usage": [
         "contest"
     ],
-    "__number": 28,
-    "__level": 1
+    "__number": 27,
+    "__level": 2
 }
