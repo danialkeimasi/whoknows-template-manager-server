@@ -47,8 +47,8 @@ def add():
             # 3 prepare response dictionary and return it with json.dump
 
             templates = list(mongo_client.TemplateManager.templates.aggregate([
-                            {'$match' : {'tags':tags[0]}},
-                            {'$sample': {'size': count}},
+                            {'$match' : {'tags': { '$in' : tags } } },
+                            {'$sample': {'size': count} },
                             ]))
 
             response = {

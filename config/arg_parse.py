@@ -14,12 +14,96 @@ def arg_parse():
     '''
 
     parser = argparse.ArgumentParser(description='Process some integers.')
+    
+    """
+    parser.add_argument(
+        '-r', '--run',
+        dest='function', default=None,
+        type=str,
+        help='name of function to run',
+    )
 
+    parser.add_argument(
+        '-t', '--template',
+        dest='template', default=None,
+        type=str,
+        help='address of template you wanna work on',
+    )
+    
+    parser.add_argument(
+        '-c', '--count',
+        dest='count', default=None,
+        type=str,
+        help='number of iteration',
+    )
+
+    parser.add_argument(
+        '-d', '--debug',
+        dest='debug', default=False,
+        action='store_true',
+        help='enable debug mode',
+    )
+
+    parser.add_argument(
+        '-log', '--log_level',
+        dest='log_level', default=None,
+        type=str,
+        help='level of log',
+    )
+
+    args = parser.parse_args()
+
+    if args.function:
+
+        dataset = dbManager.dataset(args.db)
+
+        logger.debug( f'runing arg with args.function = {args.function}')
+
+        if args.log_level:
+
+            log_level = args.log_level
+
+            if log_level == 'debug':
+                logger.setLevel(logging.DEBUG)
+
+            elif log_level == 'info':
+                logger.setLevel(logging.INFO)
+
+            elif log_level == 'error':
+                logger.setLevel(logging.ERROR)
+            
+            elif log_level == 'critical':
+                logger.setLevel(logging.CRITICAL)
+            
+            else:
+                logger.setLevel(logging.WARNING)
+
+
+        if args.function in ['test']:
+            dataset.start()
+        
+        elif args.function in ['add']:
+            dataset.start()
+        
+        elif args.function in ['test']:
+            dataset.start()
+        
+        elif args.function in ['checkup']:
+            dataset.start()
+        
+
+    # if there is any arg, return True
+    if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] == '-log'):
+        return False
+    else:
+        return True
+
+
+    """
     parser.add_argument(
         '-t', '--test', '--test_templates',
         dest='test', default=None,
         type=str,
-
         help='test the templates and make questions',
     )
 
@@ -27,7 +111,6 @@ def arg_parse():
         '-a', '---addTemplate',
         dest='addTemplate', default=None,
         type=str,
-
         help='add the template to the templates database',
     )
 
@@ -63,7 +146,6 @@ def arg_parse():
         '-te', '--templateEngine',
         dest='templateEngine', default=None,
         type=str,
-
         help='run the templateEngine function',
     )
 
