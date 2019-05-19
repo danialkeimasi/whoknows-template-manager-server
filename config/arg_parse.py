@@ -71,26 +71,31 @@ def arg_parse():
             NOTSET 	    0
         '''
 
-    if args.function:
+    if args.template:
+        template = Template(json.load(open(args.template)))
 
+    if args.function:
+        
         logger.debug( f'runing arg with args.function = {args.function}')
         
         if args.function in ['test']:
-
-            template = Template(json.load(open(args.template)))
 
             if template.problems():
 
                 logger.info('> There are some error :')
                 
                 for problem in template.problems():
+
                     logger.error(problem)
 
             else:
+
                 logger.info('> parsed template :')
+
                 logger.critical(json.dumps(template.parse().dict(), indent=4))
 
                 logger.info('> question :')
+
                 logger.critical(json.dumps(template.generate_question().dict(), indent=4))
 
 
@@ -99,7 +104,7 @@ def arg_parse():
             # logger.critical(json.dumps(test_result, indent=4))
         
         elif args.function in ['add']:
-            dataset.start()
+            template.add()
         
         elif args.function in ['test']:
             dataset.start()
