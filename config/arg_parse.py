@@ -15,7 +15,7 @@ def arg_parse():
 
     parser = argparse.ArgumentParser(description='Process some integers.')
     
-    """
+    
     parser.add_argument(
         '-r', '--run',
         dest='function', default=None,
@@ -53,34 +53,49 @@ def arg_parse():
 
     args = parser.parse_args()
 
+
+    if args.log_level:
+        
+        log_levels = ['notset', 'debug', 'info', 'warning', 'error', 'critical']
+
+        logger.setLevel(log_levels.index(args.log_level) * 10 if args.log_level in log_levels else 0)
+
+        '''
+            Level 	    Numeric value
+            CRITICAL 	50
+            ERROR 	    40
+            WARNING 	30
+            INFO 	    20
+            DEBUG 	    10
+            NOTSET 	    0
+        '''
+
     if args.function:
 
-        dataset = dbManager.dataset(args.db)
-
         logger.debug( f'runing arg with args.function = {args.function}')
-
-        if args.log_level:
-
-            log_level = args.log_level
-
-            if log_level == 'debug':
-                logger.setLevel(logging.DEBUG)
-
-            elif log_level == 'info':
-                logger.setLevel(logging.INFO)
-
-            elif log_level == 'error':
-                logger.setLevel(logging.ERROR)
-            
-            elif log_level == 'critical':
-                logger.setLevel(logging.CRITICAL)
-            
-            else:
-                logger.setLevel(logging.WARNING)
-
-
+        
         if args.function in ['test']:
-            dataset.start()
+
+            template = Template(json.load(open(args.template)))
+
+            if template.problems():
+
+                logger.info('> There are some error :')
+                
+                for problem in template.problems():
+                    logger.error(problem)
+
+            else:
+                logger.info('> parsed template :')
+                logger.critical(json.dumps(template.parse().dict(), indent=4))
+
+                logger.info('> question :')
+                logger.critical(json.dumps(template.generate_question().dict(), indent=4))
+
+
+            # chosen_templates = get_templates_list(numbers=args.test, sources=args.source)
+            # test_result = test_templates(chosen_templates, try_count=args.count, debug=args.debug)
+            # logger.critical(json.dumps(test_result, indent=4))
         
         elif args.function in ['add']:
             dataset.start()
@@ -97,6 +112,7 @@ def arg_parse():
         return False
     else:
         return True
+
 
 
     """
@@ -190,13 +206,27 @@ def arg_parse():
             template = json.load(open(args.addTemplate))
             template = template[0] if isinstance(template, list) else template
             
-            res = mongo_client.TemplateManager.templates.insert_one(template)
+            res = mongo_cli
+    if args.logmode:
+        logger.level = logging.DEBUG
+ent.TemplateManager.templates.insert_one(template)
             print(res)
+    if args.logmode:
+        logger.level = logging.DEBUG
+
         else:
-            raise TemplateError('the given template is not found!')
+    if args.logmode:
+        logger.level = logging.DEBUG
+
+            raise TemplateE
+    if args.logmode:
+        logger.level = logging.DEBUG
+rror('the given template is not found!')
             
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] =='-log'):
         return False
     else:
         return True
+
+    """
