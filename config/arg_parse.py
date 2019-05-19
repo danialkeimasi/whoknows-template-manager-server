@@ -5,7 +5,7 @@ import json
 
 from pprint import pprint
 from modules.template import Template
-from config.config import mongo_client
+from config.config import mongo_client, logger
 
 
 def arg_parse():
