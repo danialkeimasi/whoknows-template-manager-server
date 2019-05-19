@@ -93,7 +93,7 @@ def arg_parse():
 
                 logger.info('> parsed template :')
 
-                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False).encode('utf8')
+                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False).encode('utf8'))
 
                 logger.info('> question :')
 
