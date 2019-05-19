@@ -24,8 +24,6 @@
     </td>
   </tr>
 
-league |  string  | .{4,30} | نام لیگ
-
   <tr>
     <td>league</td>
     <td>string</td>
@@ -34,7 +32,6 @@ league |  string  | .{4,30} | نام لیگ
     نام لیگ
     </td>
   </tr>
-
 
   <tr>
     <td>rank</td>
@@ -108,7 +105,6 @@ league |  string  | .{4,30} | نام لیگ
     </td>
   </tr>
 
-
   <tr>
     <td>player</td>
     <td>string</td>
@@ -145,7 +141,6 @@ league |  string  | .{4,30} | نام لیگ
     </td>
   </tr>
 
-
   <tr>
     <td>player_penalty_goals</td>
     <td>unsignint</td>
@@ -154,6 +149,5 @@ league |  string  | .{4,30} | نام لیگ
     تعداد گل های بازیکن از روی نقطه پنالتی در لیگ
     </td>
   </tr>
-
 
 </table> 
