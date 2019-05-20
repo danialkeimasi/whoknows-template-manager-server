@@ -43,14 +43,7 @@
 			]
 		}
 	},
-	"__bool": {
-		"title": {
-			"text": [
-				"`var.player.name` در سال `var.player.year` متولد شده است.",
-				"`var.player.name` در سال `var.players.choose(1).year` متولد شده است."
-			]
-		}
-	},
+
 	"_id": "football_team2",
 	"datasets": [
 		"footballTeam"
