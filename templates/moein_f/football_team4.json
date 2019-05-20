@@ -1,42 +1,55 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "team1": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)])",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "مربی تیم `var.team.name` کدام است؟",
-        "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
-        "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
-        "مربی کنونی تیم `var.team.name` در کدام گزینه آمده است؟"
-    ],
-    "title_writing": [
-        "مربی تیم `var.team.name` کیست؟",
-        "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
-        "مربی کنونی تیم `var.team.name` چه کسی است؟"
-    ],
-    "title_true_false": [
-        "مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
-        "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
-        "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
-        "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."
-    ],
-    "answer_multichoices": [
-        "var.team.coach"
-    ],
-    "answer_writing": [
-        "var.team.coach"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams_same.coach"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 4,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["مربی تیم `var.team.name` کدام است؟",
+                            "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
+                            "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
+                            "مربی کنونی تیم `var.team.name` در کدام گزینه آمده است؟"]
+	},
+		"choice"        : {
+			"text"       : ["`var.teams_same.coach`"]
+	},
+		"answer"        : {
+			"text"       : ["`var.team.coach`"]
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["مربی تیم `var.team.name` کیست؟",
+                            "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
+                            "مربی کنونی تیم `var.team.name` چه کسی است؟"]
+	},
+		"answer"        : {
+			"text"       : ["`var.team.coach`"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
+                            "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
+                            "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
+                            "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."]
+	},
+		"answer"        : {
+			"text"       : ["`var.True_or_False`"]
+	}
+	},
+	"_id" : "football_team4",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 
