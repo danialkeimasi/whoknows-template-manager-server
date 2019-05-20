@@ -1,53 +1,73 @@
 {
 	"values": {
-        "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
-        "ans_cnt": "rand(range(1,var.NOC+1))"
-    },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
-                            "کدام تیم در لیگ `var.team.league` حضور دارد؟",
-                            "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"]
+		"team": "db(footballTeam)",
+		"teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
+		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
+		"ans_cnt": "rand(range(1,var.NOC+1))"
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+	"__choose": {
+		"title": {
+			"text": [
+				"کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
+				"کدام تیم در لیگ `var.team.league` حضور دارد؟",
+				"کدام تیم در لیگ `var.team.league` فعالیت میکند؟"
+			]
+		},
+		"choice": {
+			"text": [
+				"var.teams.name"
+			]
+		},
+		"answer": {
+			"text": [
+				"var.team.name"
+			]
+		}
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
-	}
+	"__select": {
+		"title": {
+			"text": [
+				"از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
+				"تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
+				"کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"
+			]
+		},
+		"choice": {
+			"text": [
+				"var.teams.choose(var.NOC - var.ans_cnt + 1).name"
+			]
+		},
+		"answer": {
+			"text": [
+				"var.teams_same.choose(var.ans_cnt).name"
+			]
+		}
 	},
-	"__select"          : {
-		"title"        : {
-			"text"       : ["از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
-                            "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
-                            "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"]
+	"__bool": {
+		"title": {
+			"text": [
+				"`var.player.name` در سال `var.player.year` متولد شده است.",
+				"`var.player.name` در سال `var.players.choose(1).year` متولد شده است."
+			]
+		}
 	},
-		"choice"        : {
-			"text"       : ["var.teams.choose(var.NOC - var.ans_cnt + 1).name"]
-	},
-	
-		"answer"        : {
-			"text"       : ["var.teams_same.choose(var.ans_cnt).name"]
-	}
-	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
-	},
-		"answer"        : {
-			"text"       : ["var.True_or_False"]
-	}
-	},
-	"_id": 2,
-	"datasets": ["footballTeam"],
-	"usage": ["contest"],
+	"_id": "football_team2",
+	"datasets": [
+		"footballTeam"
+	],
+	"usage": [
+		"contest"
+	],
 	"level": 2,
 	"score_function": "default",
 	"time_function": "",
-	"tags": ["football", "footballTeam"],
+	"tags": [
+		"football",
+		"footballTeam"
+	],
 	"state": "",
 	"state_info": {},
-	"idea": [""]
-} 
+	"idea": [
+		""
+	]
+}

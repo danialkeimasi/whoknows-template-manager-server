@@ -33,7 +33,6 @@
  "_id": "football_team1",
  "datasets": ["footballTeam"],
  "usage": ["contest"],
- "level": 2,
  "score_function": "default",
  "time_function": "",
  "tags": ["football", "footballTeam"],
