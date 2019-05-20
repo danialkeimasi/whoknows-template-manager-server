@@ -1,31 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach) ] ,NOC)",
         "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-    "title_multichoices": [
-        "کدام مربی در لیگ `var.team.league` مربیگری میکند؟"
-    ],
-    "title_selective": [
-        "کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"
-    ],
-    "answer_multichoices": [
-        "var.team.coach"
-    ],
-    "answer_selective": [
-        "var.teams_same.choose(var.ans_cnt).coach"
-    ],
-    "choices_multichoices": [
-        "var.teams.choose(NOC).coach"
-    ],
-    "choices_selective": [
-        "var.teams.choose(NOC - var.ans_cnt + 1).coach"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 7,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.choose(NOC).coach"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.coach"]
+	}
+	},
+	"select"          : {
+		"title"        : {
+			"text"       : ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
+    },
+        "choice"        :  {
+            "text"       :["var.teams.choose(NOC - var.ans_cnt + 1).coach"]
+    },        
+		"answer"        : {
+			"text"       : ["var.teams_same.choose(var.ans_cnt).coach"]
+	}
+	},
+	"_id" : "football_team7",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "club", "team"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

@@ -1,29 +1,40 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
     },
-    "title_multichoices": [
-        "`var.team.coach` مربی کدام تیم است؟",
-        "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
-        "`var.team.coach` مربی کنونی کدام تیم است؟"
-    ],
-    "title_writing": [
-        "`var.team.coach` مربی چه تیمی است؟",
-        "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
-        "var.team.name"
-    ],
-    "choices_multichoices": [
-        "var.teams_same.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 5,
-    "__level": 3
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["`var.team.coach` مربی کدام تیم است؟",
+                            "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
+                            "`var.team.coach` مربی کنونی کدام تیم است؟"]
+	},
+		"choice"        : {
+			"text"       : ["`var.teams_same.name`"]
+	},
+		"answer"        : {
+			"text"       : ["`var.team.name`"]
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["`var.team.coach` مربی چه تیمی است؟",
+                            "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"]
+	},
+		"answer"        : {
+			"text"       : ["`var.team.name`"]
+	}
+	},
+	"_id" : "football_team5",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 
