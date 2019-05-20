@@ -2,7 +2,8 @@
 	"values": {
 		"team": "db(footballTeam)",
 		"teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
-		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)"
+		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
+		"league": "listSub(footballTeam.league, var.team.league)"
 	},
 	"__choose": {
 		"title": {
