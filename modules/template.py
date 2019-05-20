@@ -22,13 +22,14 @@ class Template:
         'level': 1,
     }
 
-    def __init__(self, template_dict, debug=False):
+    def __init__(self, inp, debug=False, mode='dict'):
         """
         check template structure if debug is true
-        :param template_dict: template dict
+        :param inp: template
         :param debug:
         """
-        self.__template = template_dict
+
+        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else inp if mode == 'dict' else None
         self.__problems = []
         
         if debug:
@@ -72,7 +73,7 @@ class Template:
         :param problems:
         """
         problems = []
-        template_consts = ['level', 'usage', 'values', 'time_function',
+        template_consts = ['usage', 'values', 'time_function',
                            'score_function', 'tags', 'state', 'state_info',
                            'idea', 'datasets']
         
@@ -238,9 +239,13 @@ class Template:
 
         template = self.dict()
 
-        template['problems'] = self.problems
+        template['problems'] = self.problems()
+
+        result = mongo_client.TemplateManager.templates.insert_one(template)
+
+        logger.info(result)
         
-        return mongo_client.TemaplateManager.templates.insert_one(template)
+        return result
 
 
 
