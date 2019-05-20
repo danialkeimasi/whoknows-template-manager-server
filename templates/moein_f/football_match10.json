@@ -1,34 +1,47 @@
 {
-    "values": {
-        "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.away_scores != var.match.away_score], NOC)",
+	"values": {
+        "coach": "db(footballCoach)",
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"
-    ],
-    "title_writing": [
-        "در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"
-    ],
-    "title_true_false": [
-        "در بازی `var.match.name` تیم `var.match.guest` توانست `var.match.away_scores` بار دروازه ی حریف را باز کند.",
-        "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."
-    ],
-    "answer_multichoices": [
-        "var.match.away_score"
-    ],
-    "answer_writing": [
-        "var.match.away_score"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.matches.away_score"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 84,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.matches.away_score"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.away_score"]
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.away_score"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` توانست `var.match.away_scores` بار دروازه ی حریف را باز کند.",
+                "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_match10",
+	"datasets": ["footballMatch"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballMatch", "match"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

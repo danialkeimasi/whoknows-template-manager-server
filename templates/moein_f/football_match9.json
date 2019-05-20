@@ -1,34 +1,47 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"
-    ],
-    "title_writing": [
-        "در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"
-    ],
-    "title_true_false": [
-        "در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
-        "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."
-    ],
-    "answer_multichoices": [
-        "var.match.home_score"
-    ],
-    "answer_writing": [
-        "var.match.home_score"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.matches.home_score"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 83,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.matches.home_score"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.home_score"]
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.home_score"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
+                "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_match9",
+	"datasets": ["footballCoach"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballMatch", "match"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

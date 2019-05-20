@@ -1,34 +1,45 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.pos1 != var.match.pos1], NOC)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"
-    ],
-    "title_writing": [
-        "در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"
-    ],
-    "title_true_false": [
-        "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.match.pos2` بود.",
-        "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "
-    ],
-    "answer_multichoices": [
-        "var.match.pos2"
-    ],
-    "answer_writing": [
-        "var.match.pos2"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.matches.pos2"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 82,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.matches.pos2"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.pos2"]
+	}
+	},
+	"write"          : {
+		"title"        : {
+			"text"       : ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.pos2"]
+	}
+	},
+	"bool"          : {
+		"title"        : {
+			"text"       : ["میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.match.pos2` بود.",
+                "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_match8",
+	"datasets": ["footballCoach"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballMatch", "match"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+} 

@@ -8,8 +8,6 @@
 		"title"        : {
 			"text"       : ["کدام بازیکن در سال `var.player.year` متولد شده است؟"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
 			"text"       : ["var.players.name"]
 	},
@@ -17,61 +15,23 @@
 			"text"       : ["var.player.name"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"write"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
 	"bool"          : {
 		"title"        : {
 			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
 	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
 		"answer"        : {
 			"text"       : ["var.True_or_False"]
 	}
 	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
-
+	"_id" : "football_player1",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 } 

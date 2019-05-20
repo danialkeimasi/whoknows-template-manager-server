@@ -38,7 +38,7 @@
 	"level": 2,
 	"score_function": "default",
 	"time_function": "",
-	"tags": ["football", "footballCoach", "coach"],
+	"tags": ["football", "footballMatch", "match"],
 	"state": "",
 	"state_info": {},
 	"idea": [""]
