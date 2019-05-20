@@ -8,8 +8,6 @@
 		"title"        : {
 			"text"       : ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
 			"text"       : ["var.coachs.name"]
 	},
@@ -21,58 +19,23 @@
 		"title"        : {
 			"text"       : ["ملیت کدام مربیان `var.coach.nation` میباشد؟"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
 			"text"       : ["var.coachs.choose(1).name"]
 	},
-	
 		"answer"        : {
 			"text"       : ["var.coachs_same.name"]
 	}
 	},
-	"write"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"bool"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
+	"_id" : "football_coach2",
+	"datasets": ["footballCoach"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballCoach", "coach"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 
 } 

@@ -7,9 +7,6 @@
 		"title"        : {
 			"text"       : ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
 	},
-		"subtitle"      : {
-
-	},
 		"choice"        : {
 			"text"       : ["var.matches.ref"]
 	},
@@ -17,63 +14,16 @@
 			"text"       : ["var.match.name"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"write"          : {
-		"title"        : {
-			
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-			
-	}
-	},
-	"bool"          : {
-		"title"        : {
-			
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-			
-	}
-	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
+	"_id" : "football_match2",
+	"datasets": ["footballMatch"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballMatch", "match"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 
 } 

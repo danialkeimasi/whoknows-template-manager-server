@@ -8,9 +8,6 @@
 		"title"        : {
 			"text"       : ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"]
 	},
-		"subtitle"      : {
-
-	},
 		"choice"        : {
 			"text"       : ["var.coachs.nation"]
 	},
@@ -18,26 +15,10 @@
 			"text"       : ["var.coach.nation"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
 	"write"          : {
 		"title"        : {
 			"text"       : ["`var.coach.name` اهل چه کشوری است؟"]
 	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
 		"answer"        : {
 			"text"       : ["var.coach.nation"]
 	}
@@ -47,35 +28,20 @@
 			"text"       : ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]
 	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
 		"answer"        : {
 			"text"       : ["var.True_or_False"]
 	}
 	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
+	"_id" : "football_coach1",
+	"datasets": ["footballCoach"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballCoach", "coach"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 
 } 
