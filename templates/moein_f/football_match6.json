@@ -1,20 +1,29 @@
 {
-    "values": {
+	"values": {
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
     },
-    "title_multichoices": [
-        "کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"
-    ],
-    "answer_multichoices": [
-        "var.match.name"
-    ],
-    "choices_multichoices": [
-        "var.matches.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 80,
-    "__level": 2
-}
+	"choose"          : {
+		"title"        : {
+			"text"       : ["کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.matches.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.match.name"]
+	}
+	},
+	"_id" : "football_match6",
+	"datasets": ["footballMatch"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballMatch", "match"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 
