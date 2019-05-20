@@ -34,23 +34,15 @@
       "text"       : ["`var.True_or_False`"]
   }
   },
-  "tags"          : [
-    "football", "footballTeam"
-  ],
-  "usage"          : ["context"],
-  "score_function"      : {
-  "type"        : "String"
-  },
-  "time_function"      : {
-  "type"        : "String"
-  },
-  "state"          : {
-  "type"        : "String"
-  },
-  "state_info"        : {
-  "type"        : "String"
-  },
-  "datasets"        : ["footballTeam"]
-
+  "_id" : "football_team1",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team" , "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 } 
