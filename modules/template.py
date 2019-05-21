@@ -206,7 +206,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'question_type': question_type[2:],
+            'type': question_type[2:],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
@@ -215,6 +215,9 @@ class Template:
 
         for type in question['title']:
             question['title'][type] = choose([t for i,t in enumerate(question['title'][type]) if i % 2 == int(bool_answer)])
+
+        if question['type'] == 'bool':
+            question['answer'] = str(bool_answer).lower()
 
         return Question(question)
 
