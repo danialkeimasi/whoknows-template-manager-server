@@ -73,28 +73,21 @@ def arg_parse():
         logger.debug( f'Running function {args.function}')
         
         if args.function in ['test']:
-
             if template.problems():
-
                 logger.info('> There are some error :')
-                
                 for problem in template.problems():
-
                     logger.error(problem)
 
             else:
 
                 logger.info('> parsed template :')
-
                 logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False))
 
                 logger.info('> question :')
-
                 logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False))
 
 
         elif args.function in ['add']:
-
             template.add()
 
 

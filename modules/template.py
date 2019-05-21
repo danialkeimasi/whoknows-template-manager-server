@@ -236,11 +236,9 @@ class Template:
     def add(self):
 
         logger.info('trying to add tempalte to mongo ...')
-
         template = self.dict()
-
         template['problems'] = self.problems()
-
+        template['ok'] = True if self.problems() == [] else False
         result = mongo_client.TemplateManager.templates.insert_one(template)
 
         logger.info(result)

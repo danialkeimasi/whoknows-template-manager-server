@@ -47,13 +47,14 @@ def add():
             # 3 prepare response dictionary and return it with json.dump
 
             templates = list(mongo_client.TemplateManager.templates.aggregate([
+                            {'$match' : {'ok': True} },
                             {'$match' : {'tags': { '$in' : tags } } },
                             {'$sample': {'size': count} },
                             ]))
 
             response = {
                 'ok': True,
-                'questions': (questions * 100)[:count]#[Template(template).generate_question().dict() for template in templates],
+                'questions': [Template(template).generate_question().dict() for template in templates],
             }
 
         return json.dumps(response)
