@@ -9,7 +9,7 @@ import copy
 from modules.tools.functions import choose, rand, to_list
 from modules.question import Question
 import random
-from config.config import mongo_client
+from config.config import mongo_client, ListHandler
 
 
 class Template:
@@ -249,6 +249,10 @@ class Template:
         return result
 
     def test_function(self):
+        log_list = []
+        log_list_handler = ListHandler(log_list)
+        logger.addHandler(log_list_handler)
+
         if self.problems():
             logger.info('> There are some error :')
             for problem in template.problems():
@@ -261,6 +265,9 @@ class Template:
             logger.info('> question :')
             logger.critical(json.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
 
+        logger.removeHandler(log_list_handler)
+        print('log_list', log_list)
+        return {'runing_log': log_list, 'template_problems': self.problems}
 
 
 def load_data(dataset_name):

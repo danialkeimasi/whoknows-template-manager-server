@@ -32,8 +32,12 @@ mongo_client = MongoClient(
     f'/?authSource={config.mongo.authentication_db}')
 
 
-def loggerHandle(loggerFunction, message, problemsList = None):
-    if problemsList is not None:
-        problemsList.append(message)
+class ListHandler(logging.Handler):
     
-    loggerFunction(message)
+        def __init__(self, log_list):
+                logging.Handler.__init__(self)
+                self.log_list = log_list
+
+        def emit(self, record):
+                self.log_list.append(record.msg) 
+
