@@ -51,18 +51,18 @@ def add():
                             {'$match' : {'tags': { '$in' : tags } } },
                             {'$sample': {'size': count} },
                             ]))
-            
+
             questions = []
             
             for i in range(count):
                 for try_count in range(5):
                     try:
-                        questions += Template(templates[i % len(templates)]).generate_question().dict()
+                        questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                         break
                     except Exception as e:
                         pass
                 else:
-                    questions += questions[i % len(questions)]
+                    questions.append(questions[i % len(questions)])
                 
 
             response = {
