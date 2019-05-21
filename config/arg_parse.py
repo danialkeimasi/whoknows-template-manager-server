@@ -49,11 +49,10 @@ def arg_parse():
 
 
     if args.log_level:
-        
+
         log_levels = ['notset', 'debug', 'info', 'warning', 'error', 'critical']
-
         logger.setLevel(log_levels.index(args.log_level) * 10 if args.log_level in log_levels else 0)
-
+        
         '''
             Level 	    Numeric value
             CRITICAL 	50
@@ -65,34 +64,16 @@ def arg_parse():
         '''
 
     if args.template:
-
         template = Template(args.template, debug=True, mode='file')
 
     if args.function:
-        
         logger.debug( f'Running function {args.function}')
         
         if args.function in ['test']:
-            if template.problems():
-                logger.info('> There are some error :')
-                for problem in template.problems():
-                    logger.error(problem)
-
-            else:
-
-                logger.info('> parsed template :')
-                logger.critical(json.dumps(template.parse().dict(), indent=4, ensure_ascii=False))
-
-                logger.info('> question :')
-                logger.critical(json.dumps(template.generate_question().dict(), indent=4, ensure_ascii=False))
-
+            template.test_function()
 
         elif args.function in ['add']:
-            template.add()
-
-
-        
-
+            template.add_function()
 
     # if there is any arg, return True
     if (len(sys.argv) == 1) or (len(sys.argv) == 2 and sys.argv[1] == '-log'):

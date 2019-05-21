@@ -236,7 +236,7 @@ class Template:
         return question_object
 
 
-    def add(self):
+    def add_function(self):
 
         logger.info('trying to add tempalte to mongo ...')
         template = self.dict()
@@ -248,6 +248,18 @@ class Template:
         
         return result
 
+    def test_function(self):
+        if self.problems():
+            logger.info('> There are some error :')
+            for problem in template.problems():
+                logger.error(problem)
+
+        else:
+            logger.info('> parsed template :')
+            logger.critical(json.dumps(self.parse().dict(), indent=4, ensure_ascii=False))
+
+            logger.info('> question :')
+            logger.critical(json.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
 
 
 
