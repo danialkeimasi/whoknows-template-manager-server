@@ -4,32 +4,32 @@
         "matches": "db(footballMatch[footballMatch.pos1 != var.match.pos1], NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.matches.pos2"]
+			"text"       : ["`var.matches.pos2`"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.pos2"]
+			"text"       : ["`var.match.pos2`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.pos2"]
+			"text"       : ["`var.match.pos2`"]
 	}
 	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.match.pos2` بود.",
                 "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "]
 	},
 		"answer"        : {
-			"text"       : ["var.True_or_False"]
+			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match8",

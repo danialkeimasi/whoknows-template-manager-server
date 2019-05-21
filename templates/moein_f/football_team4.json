@@ -5,7 +5,7 @@
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["مربی تیم `var.team.name` کدام است؟",
                             "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
@@ -19,7 +19,7 @@
 			"text"       : ["`var.team.coach`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["مربی تیم `var.team.name` کیست؟",
                             "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
@@ -29,7 +29,7 @@
 			"text"       : ["`var.team.coach`"]
 	}
 	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
                             "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",

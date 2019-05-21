@@ -1,37 +1,58 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "team1": "db(footballTeam[(footballTeam.name != var.team.name) & (footballTeam.league == var.team.league)])",
         "players": "listSub(footballTeam.players, var.team.captain)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "کاپیتان تیم `var.team.name` کدام بازیکن است؟"
-    ],
-    "title_writing": [
-        "کاپیتان تیم `var.team.name` چه کسی است؟"
-    ],
-    "title_true_false": [
-        "کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
-        "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",
-        "`var.team.captain` کاپیتان تیم `var.team.name` میباشد.",
-        "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.captain"
-    ],
-    "answer_writing": [
-        "var.team.captain"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.players.choose(NOC)"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 9,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["کاپیتان تیم `var.team.name` کدام بازیکن است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.players.choose(NOC)"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.captain"]
+	}
+	},
+	"__select"          : {
+		"title"        : {
+	},
+		"choice"        : {
+	},
+		"answer"        : {
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["کاپیتان تیم `var.team.name` چه کسی است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.captain"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
+                            "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",
+                            "`var.team.captain` کاپیتان تیم `var.team.name` میباشد.",
+                            "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_team9",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

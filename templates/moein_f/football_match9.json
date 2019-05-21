@@ -4,32 +4,32 @@
         "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.matches.home_score"]
+			"text"       : ["`var.matches.home_score`"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.home_score"]
+			"text"       : ["`var.match.home_score`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.home_score"]
+			"text"       : ["`var.match.home_score`"]
 	}
 	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."]
 	},
 		"answer"        : {
-			"text"       : ["var.True_or_False"]
+			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match9",

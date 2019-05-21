@@ -4,32 +4,32 @@
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.coachs.nation"]
+			"text"       : ["`var.coachs.nation`"]
 	},
 		"answer"        : {
-			"text"       : ["var.coach.nation"]
+			"text"       : ["`var.coach.nation`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["`var.coach.name` اهل چه کشوری است؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.coach.nation"]
+			"text"       : ["`var.coach.nation`"]
 	}
 	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]
 	},
 		"answer"        : {
-			"text"       : ["var.True_or_False"]
+			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_coach1",

@@ -3,72 +3,26 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
-			"text"       : ["var.players.name"]
+			"text"       : ["`var.players.name`"]
 	},
 		"answer"        : {
-			"text"       : ["var.player.name"]
+			"text"       : ["`var.player.name`"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"write"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"bool"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
-
+	"_id" : "football_player4",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 } 

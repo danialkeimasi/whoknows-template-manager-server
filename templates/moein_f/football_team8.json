@@ -1,35 +1,48 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "team1": "db(footballTeam[footballTeam.league != var.team.league])",
         "countries": "listSub(footballTeam.country, var.team.country)",
         "True_or_False": "rand([True,False])"
     },
-    "title_multichoices": [
-        "`var.team.coach` در کدام کشور مربیگری میکند؟"
-    ],
-    "title_writing": [
-        "`var.team.coach` در چه کشوری مربیگری میکند؟"
-    ],
-    "title_true_false": [
-        "`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
-        "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."
-    ],
-    "answer_multichoices": [
-        "var.team.country"
-    ],
-    "answer_writing": [
-        "var.team.country"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.countries.choose(NOC)"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 8,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["`var.team.coach` در کدام کشور مربیگری میکند؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.countries.choose(NOC)"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.country"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["`var.team.coach` در چه کشوری مربیگری میکند؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.country"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
+                            "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_team8",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

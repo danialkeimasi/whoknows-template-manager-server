@@ -3,72 +3,27 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["`var.player.name` در چه سالی بدنیا آمده است؟"]
 	},
-		"subtitle"      : {
-	},
 		"choice"        : {
-			"text"       : ["var.players.year"]
+			"text"       : ["`var.players.year`"]
 	},
 		"answer"        : {
-			"text"       : ["var.player.year"]
+			"text"       : ["`var.player.year`"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"write"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"bool"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
+	"_id" : "football_player2",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 
 } 

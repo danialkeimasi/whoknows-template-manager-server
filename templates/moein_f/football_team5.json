@@ -3,7 +3,7 @@
         "team": "db(footballTeam)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["`var.team.coach` مربی کدام تیم است؟",
                             "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
@@ -16,7 +16,7 @@
 			"text"       : ["`var.team.name`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["`var.team.coach` مربی چه تیمی است؟",
                             "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"]

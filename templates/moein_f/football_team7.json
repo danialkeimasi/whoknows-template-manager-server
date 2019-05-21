@@ -5,26 +5,26 @@
         "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.teams.choose(NOC).coach"]
+			"text"       : ["`var.teams.choose(NOC).coach`"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.coach"]
+			"text"       : ["`var.team.coach`"]
 	}
 	},
-	"select"          : {
+	"__select"          : {
 		"title"        : {
 			"text"       : ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
     },
         "choice"        :  {
-            "text"       :["var.teams.choose(NOC - var.ans_cnt + 1).coach"]
+            "text"       :["`var.teams.choose(NOC - var.ans_cnt + 1).coach`"]
     },        
 		"answer"        : {
-			"text"       : ["var.teams_same.choose(var.ans_cnt).coach"]
+			"text"       : ["`var.teams_same.choose(var.ans_cnt).coach`"]
 	}
 	},
 	"_id" : "football_team7",

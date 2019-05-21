@@ -1,5 +1,5 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.league != var.team.league] , NOC)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
@@ -7,40 +7,55 @@
         "True_or_False" : "rand([True,False])",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-    "title_multichoices": [
-        "`var.team.name` متعلق به کدام کشور است؟"
-    ],
-    "title_writing": [
-        "`var.team.name` متعلق به چه کشوری است؟"
-    ],
-    "title_true_false": [
-        "`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
-        "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."
-    ],
-    "title_selective": [
-        "کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"
-    ],
-    "answer_multichoices": [
-        "var.team.country"
-    ],
-    "answer_writing": [
-        "var.team.country"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "answer_selective": [
-        "var.teams_same.choose(var.ans_cnt).name"
-    ],
-    "choices_multichoices": [
-        "var.countries.choose(10)"
-    ],
-    "choices_selective": [
-        "var.teams.choose(NOC - var.ans_cnt + 1).name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 10,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.countries.choose(NOC)"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.country"]
+	}
+	},
+	"__select"          : {
+		"title"        : {
+            "text"       : ["کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"]
+	},
+		"choice"        : {
+            "choice"     : ["var.teams.choose(NOC - var.ans_cnt + 1).name"]
+	},
+		"answer"        : {
+            "text"       : ["var.teams_same.choose(var.ans_cnt).name"]  
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.country"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
+                            "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."]
+	},
+		"answer"        : {
+			"text"       : ["var.True_or_False"]
+	}
+	},
+	"_id" : "football_team10",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

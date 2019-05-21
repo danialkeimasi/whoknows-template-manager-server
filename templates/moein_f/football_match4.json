@@ -3,15 +3,15 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["کدام یک از بازی های زیر در استادیوم `var.match.stadium` برگزار شده است؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.matches.name"]
+			"text"       : ["`var.matches.name`"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.name"]
+			"text"       : ["`var.match.name`"]
 	}
 	},
 	"_id" : "football_match4",

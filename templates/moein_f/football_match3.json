@@ -4,23 +4,23 @@
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.matches.stadium"]
+			"text"       : ["`var.matches.stadium`"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.stadium"]
+			"text"       : ["`var.match.stadium`"]
 	}
 	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.match.stadium"]
+			"text"       : ["`var.match.stadium`"]
 	}
 	},
 	"bool"          : {
@@ -29,7 +29,7 @@
                             "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]
 	},
 		"answer"        : {
-			"text"       : ["var.True_or_False"]
+			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match3",
