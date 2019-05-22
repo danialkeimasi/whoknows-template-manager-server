@@ -1,30 +1,41 @@
 {
-    "values": {
-        "player": "db(footballPlayer)",
-        "True_or_False": "rand([True,False])"
+	"values": {
+        "player": "db(footballPlayer)"
     },
-    "title_multichoices": [
-        "قد `var.player.name` چند سانتی متر است؟"
-    ],
-    "title_writing": [
-        "قد `var.player.name` چند سانتی متر است؟"
-    ],
-    "title_true_false": [
-        "قد `var.player.name` برابر `var.player.height` است.",
-        "قد `var.player.name` برابر `wrong_guess(var.player.height, 5 , 1)` است."
-    ],
-    "answer_multichoices": [
-        "var.player.height"
-    ],
-    "answer_writing": [
-        "var.player.height"
-    ],
-    "choices_multichoices": [
-        "wrong_guess(var.player.height , NOC)"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 25,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["قد `var.player.name` چند سانتی متر است؟"]
+	},
+		"choice"        : {
+			"text"       : ["wrong_guess(var.player.height, NOC)"]
+	},
+		"answer"        : {
+			"text"       : ["var.player.height"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["قد `var.player.name` چند سانتی متر است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.player.height"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["قد `var.player.name` برابر `var.player.height` است.",
+                            "قد `var.player.name` برابر `wrong_guess(var.player.height, 5 , 1)` است."]
+	}
+	},
+	"_id" : "football_player10",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

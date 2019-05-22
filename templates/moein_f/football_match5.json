@@ -1,8 +1,7 @@
 {
 	"values": {
         "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.scores != var.match.scores], NOC)",
-        "True_or_False": "rand([True,False])"
+        "matches": "db(footballMatch[footballMatch.scores != var.match.scores], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["بازی `var.match.name` با نتیجه ی `var.match.scores` به اتمام رسید.",
             "بازی `var.match.name` با نتیجه ی `var.match.choose(1).scores` به اتمام رسید."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match5",

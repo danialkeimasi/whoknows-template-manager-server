@@ -1,8 +1,7 @@
 {
 	"values": {
         "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)",
-        "True_or_False": "rand([True,False])"
+        "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["داوری بازی `var.team.name` بر عهده ی `var.match.ref` بود.",
                             "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match1",

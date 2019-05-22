@@ -1,14 +1,11 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)",
-        "True_or_False": "rand([True,False])"
+        "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
     },
-	"choose"          : {
+	"__choose"          : {
 		"title"        : {
 			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
-	},
-		"subtitle"      : {
 	},
 		"choice"        : {
 			"text"       : ["var.players.club_number"]
@@ -17,63 +14,29 @@
 			"text"       : ["var.player.club_number"]
 	}
 	},
-	"select"          : {
-		"title"        : {
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-	}
-	},
-	"write"          : {
+	"__write"          : {
 		"title"        : {
 			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
 	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
 		"answer"        : {
 			"text"       : ["var.player.club_number"]
 	}
 	},
-	"bool"          : {
+	"__bool"          : {
 		"title"        : {
 			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
-	},
-		"subtitle"      : {
-	},
-		"choice"        : {
-	},
-	
-		"answer"        : {
-			"text"       : ["var.True_or_False"]
 	}
 	},
-	"tags"          : [{
-	"type"    : "String",
-	"ref"      : "'tag'"
-	}],
-	"usage"          : [{
-	"type"        : "String"
-	}],
-	"score_function"      : {
-	"type"        : "String"
-	},
-	"time_function"      : {
-	"type"        : "String"
-	},
-	"state"          : {
-	"type"        : "String"
-	},
-	"state_info"        : {
-	"type"        : "String"
-	},
-	"datasets"        : ["String"]
+	"_id" : "football_player5",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
 
 
 } 

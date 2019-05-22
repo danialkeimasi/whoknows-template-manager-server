@@ -1,26 +1,36 @@
 {
-    "values": {
+	"values": {
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.club_number != var.player.club_number] , NOC)"
     },
-    "title_multichoices": [
-        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"
-    ],
-    "title_writing": [
-        "شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"
-    ],
-    "answer_multichoices": [
-        "var.player.name"
-    ],
-    "answer_writing": [
-        "var.player.name"
-    ],
-    "choices_multichoices": [
-        "var.players.choose(NOC).name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 24,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.players.choose(NOC).name"]
+	},
+		"answer"        : {
+			"text"       : ["var.player.name"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.player.name"]
+	}
+	},
+	"_id" : "football_player9",
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballPlayer", "player"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

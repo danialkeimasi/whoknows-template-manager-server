@@ -1,8 +1,7 @@
 {
 	"values": {
         "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)",
-        "True_or_False": "rand([True,False])"
+        "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match9",

@@ -1,8 +1,7 @@
 {
 	"values": {
         "coach": "db(footballCoach)",
-        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_coach1",

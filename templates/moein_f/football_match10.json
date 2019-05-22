@@ -1,8 +1,7 @@
 {
 	"values": {
         "coach": "db(footballCoach)",
-        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` توانست `var.match.away_scores` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_match10",

@@ -1,8 +1,7 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)",
-        "True_or_False": "rand([True,False])"
+        "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
@@ -27,9 +26,6 @@
 		"title"        : {
 			"text"       : ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
                             "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_player3",
