@@ -25,7 +25,7 @@
             "text"       : ["var.player.pic"]
             }
 	},
-	"_id" : "football_player10",
+	"_id" : "football_player11",
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,

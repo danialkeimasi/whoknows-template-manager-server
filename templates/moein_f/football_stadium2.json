@@ -1,21 +1,28 @@
 {
-    "values": {
+	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity], NOC)"
     },
-    "title_multichoices": [
-        "گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"
-    ],
-    "answer_multichoices": [
-        "var.stadium.name"
-    ],
-    "choices_multichoices": [
-        "var.stadiums.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 67,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.stadiums.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.stadium.name"]
+	}
+	},
+	"_id" : "football_stadium2",
+	"datasets": ["footballStadium"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballStadium", "stadium"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

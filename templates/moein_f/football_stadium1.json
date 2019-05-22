@@ -1,34 +1,42 @@
 {
-    "values": {
+	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)"
     },
-    "title_multichoices": [
-        "ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"
-    ],
-    "title_writing": [
-        "ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"
-    ],
-    "title_true_false": [
-        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
-        "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.stadium.capacity"
-    ],
-    "answer_writing": [
-        "var.stadium.capacity"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.stadiums.capacity"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 66,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.stadiums.capacity"]
+	},
+		"answer"        : {
+			"text"       : ["var.stadium.capacity"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.stadium.capacity"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
+                            "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."]
+	}
+	},
+	"_id" : "football_stadium1",
+	"datasets": ["footballStadium"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballStadium", "stadium"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 
