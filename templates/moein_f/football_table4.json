@@ -1,26 +1,28 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
     },
-    "title_multichoices": [
-        "کدام تیم در لیگ `var.team.league` امتیازش برابر `var.team.point` میباشد؟"
-    ],
-    "title_writing": [
-        "کدام تیم در لیگ `var.team.league` امتیازش برابر `var.team.point` میباشد؟"
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
-        "var.team.name"
-    ],
-    "choices_multichoices": [
-        "var.teams.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 33,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["کدام تیم در لیگ `var.team.league` امتیازش برابر `var.team.point` میباشد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+	}
+	},
+	"_id" : "football_table4",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

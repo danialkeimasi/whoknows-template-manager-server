@@ -1,33 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
     },
-    "title_multichoices": [
-        "تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"
-    ],
-    "title_writing": [
-        "تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"
-    ],
-    "title_true_false": [
-        "تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد."
-    ],
-    "answer_multichoices": [
-        "var.team.point"
-    ],
-    "answer_writing": [
-        "var.team.point"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.point"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 32,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.point"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.point"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.point"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
+                            "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
+	}
+	},
+	"_id" : "football_table3",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

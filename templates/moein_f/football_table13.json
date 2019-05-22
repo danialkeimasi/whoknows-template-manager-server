@@ -1,34 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.lost != var.team.lost)] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.losts != var.team.losts)] ,NOC)"
     },
-    "title_multichoices": [
-        "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"
-    ],
-    "title_writing": [
-        "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"
-    ],
-    "title_true_false": [
-        "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
-        "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.lost"
-    ],
-    "answer_writing": [
-        "var.team.lost"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.lost"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 42,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.losts"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.losts"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.losts"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
+                            "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."]
+	}
+	},
+	"_id" : "football_table13",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

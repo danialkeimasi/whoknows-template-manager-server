@@ -1,27 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf == var.team.gf] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf] ,NOC)"
     },
-    "title_multichoices": [
-        "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"
-    ],
-    "title_writing": [
-        "تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"
-    ],
-    "answer_multichoices": [
-        "var.team.gf"
-    ],
-    "answer_writing": [
-        "var.team.gf"
-    ],
-    "choices_multichoices": [
-        "var.teams.gf"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 35,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.gf"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.gf"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.gf"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
+                            "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
+	}
+	},
+	"_id" : "football_table6",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

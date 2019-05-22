@@ -1,34 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
     },
-    "title_multichoices": [
-        "رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"
-    ],
-    "title_writing": [
-        "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"
-    ],
-    "title_true_false": [
-        "تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
-        "تیم  `var.team.name` در لیگ `var.team.league` در رتبه ی `var.teams.choose(1).pos` قرار دارد."
-    ],
-    "answer_multichoices": [
-        "var.team.pos"
-    ],
-    "answer_writing": [
-        "var.team.pos"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.pos"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 30,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.pos"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.pos"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.pos"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
+                            "تیم  `var.team.name` در لیگ `var.team.league` در رتبه ی `var.teams.choose(1).pos` قرار دارد."]
+	}
+	},
+	"_id" : "football_table1",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 

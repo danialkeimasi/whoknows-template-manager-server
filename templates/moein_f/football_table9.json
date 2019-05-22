@@ -1,34 +1,42 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd != var.team.gd)] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd != var.team.gd)] ,NOC)"
     },
-    "title_multichoices": [
-        "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"
-    ],
-    "title_writing": [
-        "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` چند است؟"
-    ],
-    "title_true_false": [
-        "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gd` میباشد.",
-        "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gd` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.gd"
-    ],
-    "answer_writing": [
-        "var.team.gd"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.gd"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 38,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.gd"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.gd"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.gd"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gd` میباشد.",
+                            "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gd` میباشد."]
+	}
+	},
+	"_id" : "football_table9",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 
