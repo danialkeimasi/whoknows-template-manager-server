@@ -1,34 +1,42 @@
 {
-    "values": {
+	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city], NOC)"
     },
-    "title_multichoices": [
-        "ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"
-    ],
-    "title_writing": [
-        "ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"
-    ],
-    "title_true_false": [
-        "ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
-        "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."
-    ],
-    "answer_multichoices": [
-        "var.stadium.city"
-    ],
-    "answer_writing": [
-        "var.stadium.city"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.stadiums.city"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 70,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.stadiums.city"]
+	},
+		"answer"        : {
+			"text"       : ["var.stadium.city"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.stadium.city"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
+                            "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."]
+	}
+	},
+	"_id" : "football_stadium5",
+	"datasets": ["footballStadium"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballStadium", "stadium"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 
