@@ -1,28 +1,34 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draw < var.team.draw)] ,NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draws < var.team.draws)] ,NOC)"
     },
-    "title_multichoices": [
-        "کدام تیم در لیگ `var.team.league` تعداد مساوی بیشتری نسبت به سایر گزینه ها دارد؟"
-    ],
-    "title_true_false": [
-        "تعداد تساوی تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
-        "تعداد تساوی تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است."
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 60,
-    "__level": 1
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["کدام تیم در لیگ `var.team.league` تعداد مساوی بیشتری نسبت به سایر گزینه ها دارد؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["تعداد تساوی تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
+                            "تعداد تساوی تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است."]
+	}
+	},
+	"_id" : "football_table31",
+	"datasets": ["footballTable"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTable", "league" ,"table"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+} 
