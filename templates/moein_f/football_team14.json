@@ -35,3 +35,62 @@
     "__number": 14,
     "__level": 2
 }
+
+
+
+
+{
+	"values": {
+        "team": "db(footballTeam)",
+        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
+    },
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["لباس دوم تیم `var.team.name` کدام است؟ "]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.awaykit"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.awaykit"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["عکس زیر ، پیراهن دوم کدام تیم است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+    },
+        "subtitle"      : {
+            "text"       : ["var.team.awaykit"]  
+        }
+    },
+    "__bool"          : {
+		"title"        : {
+			"text"       : ["عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",
+                            "عکس زیر ، پیراهن دوم تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس دوم تیم `var.team.name` میباشد.",
+                            "عکس زیر ، لباس دوم تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس تیم `var.team.name` میباشد.",
+                            "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
+            ],
+        "subtitle"   : {
+            "text"   : ["var.team.awaykit"]
+    }
+	},
+	},
+
+	"_id" : "football_team14",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+} 

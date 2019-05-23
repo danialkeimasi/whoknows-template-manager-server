@@ -32,9 +32,6 @@
                             "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team1.league` و `var.leagues.choose(1)` مربیگری میکنند.",
                             "`var.team.coach` و `var.team1.coach` در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند.",
                             "`var.team.coach` و `var.team1.coach` در لیگ های `var.leagues.choose(1)` و `var.team.league` مربیگری میکنند."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_team6",

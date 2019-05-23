@@ -35,9 +35,6 @@
                             "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."]
-	},
-		"answer"        : {
-			"text"       : ["`var.True_or_False`"]
 	}
 	},
 	"_id" : "football_team4",

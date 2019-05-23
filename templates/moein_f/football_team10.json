@@ -41,9 +41,6 @@
 		"title"        : {
 			"text"       : ["`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
                             "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."]
-	},
-		"answer"        : {
-			"text"       : ["var.True_or_False"]
 	}
 	},
 	"_id" : "football_team10",

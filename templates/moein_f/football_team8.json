@@ -28,9 +28,6 @@
 		"title"        : {
 			"text"       : ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
                             "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]
-	},
-		"answer"        : {
-			"text"       : ["var.True_or_False"]
 	}
 	},
 	"_id" : "football_team8",

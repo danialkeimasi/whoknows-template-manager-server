@@ -1,26 +1,35 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.country == var.team.country] ,NOC)"
     },
-    "title_multichoices": [
-        "ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"
-    ],
-    "title_writing": [
-        "ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
-        "var.team.name"
-    ],
-    "choices_multichoices": [
-        "var.teams.choose(NOC).name"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 12,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+	}
+	},
+	"__write"          : {
+		"title"        : {
+			"text"       : ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+	}
+	},
+	"_id" : "football_team12",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+} 

@@ -38,9 +38,6 @@
                             "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",
                             "`var.team.captain` کاپیتان تیم `var.team.name` میباشد.",
                             "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."]
-	},
-		"answer"        : {
-			"text"       : ["var.True_or_False"]
 	}
 	},
 	"_id" : "football_team9",
