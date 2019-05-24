@@ -2,7 +2,8 @@ from flask import Flask
 
 import server.flask
 import server.routeHandle
-from config.arg_parse import arg_parse
+from config.arg_parse
+import arg_parse
 
 server.flask.app = Flask(__name__)
 server.routeHandle.addRoutes()
