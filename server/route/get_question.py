@@ -1,6 +1,6 @@
 from server.flask import getApp
 from flask import json, request
-from config.config import config, mongo_client
+from config.config import config, mongo_client, logger
 import random
 import functools
 import glob
@@ -60,7 +60,7 @@ def add():
                         questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                         break
                     except Exception as e:
-                        pass
+                        logger.critical(f'faild in generate question :{e}')
                 else:
                     questions.append(questions_sample[i % len(questions_sample)])
                 
