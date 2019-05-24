@@ -38,7 +38,7 @@ def add():
         pipeline = \
                    [{'$match' : {'ok': ok} }]                  if ok is not None else [] + \
                    [{'$match' : {'tags': { '$in' : tags } } }] if tags is not None else [] + \
-                   [{'$limit': {'size': count}}]               if count is not None else []
+                   [{'$limit': count}]               if count is not None else []
         
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
 
