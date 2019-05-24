@@ -23,7 +23,7 @@ def add():
         return json.dumps(response)
 
     @app.route('/get_question', methods=['POST'])
-    def find_template_get():
+    def find_template_post():
         '''
         find template by query from mongo
 
