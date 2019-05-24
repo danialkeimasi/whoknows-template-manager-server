@@ -181,7 +181,7 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
                         # if raw_str.startswith('$'):
-                        if raw_str[0] == '`' and raw_str[-1] == '`':
+                        if raw_str[0] == '`' and raw_str[-1] == '`' and len(re.search(reg_str, raw_str).group(1))+2 == len(raw_str):
                             template[q_type_name][q_property_name][q_property_format_name][i] = eval(raw_str[1:-1])
                         
                         else:
