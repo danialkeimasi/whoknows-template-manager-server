@@ -188,8 +188,8 @@ class Template:
                             while re.search(reg_str, raw_str):
                                 exp = re.search(reg_str, raw_str).group(1)
                                 eval_result = eval(exp)
-                                if not isinstance(eval_result, str) or not (isinstance(eval_result, list) and len(eval_result) == 1):
-                                    raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
+                                # if not isinstance(eval_result, str) or not (isinstance(eval_result, list) and len(eval_result) == 1):
+                                #     raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
 
                                 raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result, list) else eval_result)
 
