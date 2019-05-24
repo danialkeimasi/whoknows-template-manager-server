@@ -62,7 +62,7 @@ def add():
                     except Exception as e:
                         pass
                 else:
-                    questions.append(questions[i % len(questions)])
+                    questions.append(questions_sample[i % len(questions_sample)])
                 
 
             response = {
@@ -74,7 +74,7 @@ def add():
 
 
 
-questions = [
+questions_sample = [
     {
         'type'          : 'bool',
         'title'         : {
