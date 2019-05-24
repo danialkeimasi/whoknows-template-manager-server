@@ -22,7 +22,7 @@ def add():
 
         return json.dumps(response)
 
-    @app.route('/get_question', methods=['POST'])
+    @app.route('/find_template', methods=['POST'])
     def find_template_post():
         '''
         find template by query from mongo
@@ -30,20 +30,21 @@ def add():
         api context:
             find template py post request
         '''
-        user_req = request.json
+        user_req = request.json if request.json is not None else {}
         tags     = user_req['tags']     if 'tags'  in user_req else None
-        count    = user_req['count']    if 'count' in user_req else 10
-        ok       = user_req['ok']       if 'ok'    in user_req else True
+        ok       = user_req['ok']       if 'ok'    in user_req else None
+        count    = user_req['count']    if 'count' in user_req else None
     
-        templates = list(mongo_client.TemplateManager.templates.aggregate([
-                        {'$match' : {'ok': ok} },
-                        {'$match' : {'tags': { '$in' : tags } } },
-                        {'$sample': {'size': count} },
-                        ]))
+        pipeline = \
+                   [{'$match' : {'ok': ok} }]                  if ok is not None else [] + \
+                   [{'$match' : {'tags': { '$in' : tags } } }] if tags is not None else [] + \
+                   [{'$limit': {'size': count}}]               if count is not None else []
+        
+        templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
 
         response = {
             'ok': True,
-            'questions': templates,
+            'templates': templates,
         }
 
         return json.dumps(response)
