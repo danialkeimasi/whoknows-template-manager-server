@@ -179,14 +179,20 @@ class Template:
             for q_property_name in template[q_type_name].keys():
                 for q_property_format_name in template[q_type_name][q_property_name].keys():
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
+                        
+                        if raw_str.startswith('$'):
+                            template[q_type_name][q_property_name][q_property_format_name][i] = eval(raw_str[1:])
+                        
+                        else:
+                            while re.search(reg_str, raw_str):
+                                exp = re.search(reg_str, raw_str).group(1)
+                                eval_result = eval(exp)
+                                if not isinstance(eval_result, str):
+                                    raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}')
+                                    
+                                raw_str = raw_str.replace(f'`{exp}`', eval_result)
 
-                        while re.search(reg_str, raw_str):
-                            exp = re.search(reg_str, raw_str).group(1)
-                            eval_result = eval(exp)
-                            raw_str = raw_str.replace(f'`{exp}`',
-                                                str(eval_result[0] if isinstance(eval_result, list) else eval_result))
-
-                        template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
+                            template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
         return Template(template)
 
