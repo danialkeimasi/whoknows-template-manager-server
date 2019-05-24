@@ -181,7 +181,7 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
                         # if raw_str.startswith('$'):
-                        if raw_str[0] == '`' and raw_str[-1] == '`' and len(re.search(reg_str, raw_str).group(1))+2 == len(raw_str):
+                        if raw_str[0] == '`' and raw_str[-1] == '`':
                             template[q_type_name][q_property_name][q_property_format_name][i] = eval(raw_str[1:-1])
                         
                         else:
@@ -189,7 +189,7 @@ class Template:
                                 exp = re.search(reg_str, raw_str).group(1)
                                 eval_result = eval(exp)
                                 if not isinstance(eval_result, str):
-                                    raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}')
+                                    raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
 
                                 raw_str = raw_str.replace(f'`{exp}`', eval_result)
 
