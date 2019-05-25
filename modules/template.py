@@ -35,8 +35,8 @@ class Template:
         self.__problems = []
         
         if debug:
-            self.__check_json_format()
-            self.__check_data()
+            self.__test_structure()
+            self.__test_data()
 
 
     def dict(self):
@@ -67,75 +67,6 @@ class Template:
         :return list of question types:
         """
         return [key for key in self.__template.keys() if key.startswith('&')]
-
-
-    def __check_json_format(self):
-        """
-        check's the format of template json and save problems in __problems
-        :param problems:
-        """
-        problems = []
-        template_consts = ['usage', 'values', 'time_function',
-                           'score_function', 'tags', '__state', '__test_info',
-                           '__idea', 'datasets']
-        
-        for item in template_consts:
-            if not (item in self.__template):
-                problems.append(f'template must have a "{item}" part in it')
-
-        question_types = self.get_question_types()
-        logger.critical(f"found this question types: {question_types}")
-
-        for q_type in question_types:
-            if not (q_type in self.__template_formatter):
-                problems.append(f"there is an undefined question type in template: {q_type}")
-
-            for q_property_name in self.__template[q_type].keys():
-                if not (q_property_name in self.__template_formatter[q_type]):
-                    problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
-
-            q_requirements = [item for item in
-                              set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
-                              if self.__template_formatter[q_type][item]]
-            if q_requirements:
-                problems.append(f"there is no {q_requirements} in {q_type} type question")
-
-        logger.critical(problems)
-        self.__update_problems(problems)
-
-
-    def __get_required_data_names_from_values(self):
-        """
-        get's a list of databases names that required for template
-        from values part of template
-        :return database name:
-        """
-        data_list = []
-        data_regex = r'.*?db\(([a-zA-Z]*).*\).*?'
-
-        for val in self.__template['values'].values():
-            val = val.replace(' ', '')
-
-            if re.search(data_regex, val):
-                data_list.append(re.search(data_regex, val).group(1))
-
-        return list(set(data_list))
-
-
-    def __check_data(self):
-        """
-        check if necessary databases for this template is exist and save problems in __problems
-        :param problems:
-        """
-        problems = []
-        datasets = self.__template['datasets']
-
-        for ds_name in datasets:
-            if not os.path.isfile(f'{config.dir.dataset}/{ds_name}db.json'):
-                problems.append(f'dataset named "{ds_name}" not found in {config.dir.dataset}/ dir.')
-
-        logger.critical(problems)
-        self.__update_problems(problems)
 
 
     def parse(self, bool_answer=True , metadata={}):
@@ -206,7 +137,6 @@ class Template:
 
         :param question_type:
         :param format:
-        :param problems:
         :return:
         """
 
@@ -276,6 +206,79 @@ class Template:
         logger.removeHandler(log_list_handler)
         print('log_list', log_list)
         return {'runing_log': log_list, 'template_problems': self.problems}
+
+
+    def __test_duplication(self):
+        
+        logger.critical(problems)
+        self.__update_problems(problems)
+
+    
+    def __test_acceptance(self):
+
+        logger.critical(problems)
+        self.__update_problems(problems)
+
+    
+    def __test_data(self):
+        """
+        check if necessary databases for this template is exist and save problems in __problems
+        """
+        problems = []
+        datasets = self.__template['datasets']
+
+        for ds_name in datasets:
+            if not os.path.isfile(f'{config.dir.dataset}/{ds_name}db.json'):
+                problems.append(f'dataset named "{ds_name}" not found in {config.dir.dataset}/ dir.')
+
+        logger.critical(problems)
+        self.__update_problems(problems)
+
+
+    def __test_structure(self):
+        """
+        check's the format of template json and save problems in __problems
+        """
+        problems = []
+        template_consts = ['usage', 'values', 'time_function',
+                           'score_function', 'tags', '__state', '__test_info',
+                           '__idea', 'datasets']
+        
+        for item in template_consts:
+            if not (item in self.__template):
+                problems.append(f'template must have a "{item}" part in it')
+
+        question_types = self.get_question_types()
+        logger.critical(f"found this question types: {question_types}")
+
+        for q_type in question_types:
+            if not (q_type in self.__template_formatter):
+                problems.append(f"there is an undefined question type in template: {q_type}")
+
+            for q_property_name in self.__template[q_type].keys():
+                if not (q_property_name in self.__template_formatter[q_type]):
+                    problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
+
+            q_requirements = [item for item in
+                              set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
+                              if self.__template_formatter[q_type][item]]
+            if q_requirements:
+                problems.append(f"there is no {q_requirements} in {q_type} type question")
+
+        logger.critical(problems)
+        self.__update_problems(problems)
+
+
+    def __test_generation(self):
+
+        logger.critical(problems)
+        self.__update_problems(problems)
+
+    
+    def __test_manual(self):
+
+        logger.critical(problems)
+        self.__update_problems(problems)
 
 
 def load_data(dataset_name):
