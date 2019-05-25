@@ -53,4 +53,4 @@ def add():
             'templates': templates,
         }
 
-        return json.dumps(JSONEncoder().encode(templates))
+        return JSONEncoder().encode(templates)
