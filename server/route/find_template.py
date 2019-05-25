@@ -39,6 +39,7 @@ def add():
                    [{'$match' : {'tags': { '$in' : tags } } }] if tags  is not None else [] + \
                    [{'$limit': count}]                         if count is not None else []
         
+        print(pipeline)
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
         
         response = {
