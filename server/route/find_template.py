@@ -28,7 +28,7 @@ def add():
         api context:
             find template py post request
         '''
-        user_req = request.json if request.json is not None else {}
+        user_req = json_util.loads(request.data) if request.json is not None else {}
         query    = user_req['query']    if 'query' in user_req else None
         tags     = user_req['tags']     if 'tags'  in user_req else None
         ok       = user_req['ok']       if 'ok'    in user_req else None
