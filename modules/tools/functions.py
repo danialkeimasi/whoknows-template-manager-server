@@ -54,5 +54,3 @@ def to_list(data):
     if data is not a list, return it as a list
     '''
     return data if isinstance(data, list) else [data]
-
-
