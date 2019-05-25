@@ -5,36 +5,36 @@
         "players": "listSub(footballTeam.players, var.team.captain)",
         "True_or_False": "rand([True,False])"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کاپیتان تیم `var.team.name` کدام بازیکن است؟"]
+	"$choose": {
+		"title": {
+			"text": ["کاپیتان تیم `var.team.name` کدام بازیکن است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.players.choose(NOC)"]
+		"choice": {
+			"text": ["var.players.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.captain"]
+		"answer": {
+			"text": ["var.team.captain"]
 	}
 	},
-	"$select"          : {
-		"title"        : {
+	"$select": {
+		"title": {
 	},
-		"choice"        : {
+		"choice": {
 	},
-		"answer"        : {
+		"answer": {
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["کاپیتان تیم `var.team.name` چه کسی است؟"]
+	"$write": {
+		"title": {
+			"text": ["کاپیتان تیم `var.team.name` چه کسی است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.captain"]
+		"answer": {
+			"text": ["var.team.captain"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
+	"$bool": {
+		"title": {
+			"text": ["کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
                             "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",
                             "`var.team.captain` کاپیتان تیم `var.team.name` میباشد.",
                             "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."]

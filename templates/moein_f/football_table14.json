@@ -3,15 +3,15 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.lost != var.team.lost)] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام تیم تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.team.name"]
+		"choice": {
+			"text": ["var.team.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
 	

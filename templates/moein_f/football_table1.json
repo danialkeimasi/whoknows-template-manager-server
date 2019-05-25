@@ -3,28 +3,28 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	"$choose": {
+		"title": {
+			"text": ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.pos"]
+		"choice": {
+			"text": ["var.teams.pos"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.pos"]
+		"answer": {
+			"text": ["var.team.pos"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	"$write": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.pos"]
+		"answer": {
+			"text": ["var.team.pos"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
+	"$bool": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
                             "تیم  `var.team.name` در لیگ `var.team.league` در رتبه ی `var.teams.choose(1).pos` قرار دارد."]
 	}
 	},

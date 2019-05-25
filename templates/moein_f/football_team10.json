@@ -3,43 +3,43 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.league != var.team.league] , NOC)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,NOC)",
-        "countries" : "listSub(footballTeam.country , var.team.country)",
-        "True_or_False" : "rand([True,False])",
+        "countries": "listSub(footballTeam.country , var.team.country)",
+        "True_or_False": "rand([True,False])",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
+	"$choose": {
+		"title": {
+			"text": ["`var.team.name` متعلق به کدام کشور است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.countries.choose(NOC)"]
+		"choice": {
+			"text": ["var.countries.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.country"]
+		"answer": {
+			"text": ["var.team.country"]
 	}
 	},
-	"$select"          : {
-		"title"        : {
-            "text"       : ["کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"]
+	"$select": {
+		"title": {
+            "text": ["کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"]
 	},
-		"choice"        : {
-            "choice"     : ["var.teams.choose(NOC - var.ans_cnt + 1).name"]
+		"choice": {
+            "choice": ["var.teams.choose(NOC - var.ans_cnt + 1).name"]
 	},
-		"answer"        : {
-            "text"       : ["var.teams_same.choose(var.ans_cnt).name"]  
+		"answer": {
+            "text": ["var.teams_same.choose(var.ans_cnt).name"]  
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
+	"$write": {
+		"title": {
+			"text": ["`var.team.name` متعلق به کدام کشور است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.country"]
+		"answer": {
+			"text": ["var.team.country"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
+	"$bool": {
+		"title": {
+			"text": ["`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
                             "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."]
 	}
 	},

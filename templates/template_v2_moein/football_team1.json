@@ -1,8 +1,8 @@
 {
   "values": {
-       "team"          : "db(footballTeam)",
-       "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
-       "leagues"       : "listSub(footballTeam.league, var.team.league)"      
+       "team": "db(footballTeam)",
+       "team_same": "db(footballTeam[footballTeam.league == var.team.league])",
+       "leagues": "listSub(footballTeam.league, var.team.league)"      
  },
 
  "$bool": {

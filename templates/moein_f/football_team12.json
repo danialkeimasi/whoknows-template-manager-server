@@ -3,23 +3,23 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.country == var.team.country] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"]
+	"$choose": {
+		"title": {
+			"text": ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"]
+	"$write": {
+		"title": {
+			"text": ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
 	

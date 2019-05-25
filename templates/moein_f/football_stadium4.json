@@ -3,15 +3,15 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام یک از ورزشگاه های زیر در سال `var.stadium.year` تاسیس شده اند؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام یک از ورزشگاه های زیر در سال `var.stadium.year` تاسیس شده اند؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.name"]
+		"choice": {
+			"text": ["var.stadiums.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.name"]
+		"answer": {
+			"text": ["var.stadium.name"]
 	}
 	},
     

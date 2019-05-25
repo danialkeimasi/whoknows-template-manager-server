@@ -3,28 +3,28 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
+	"$choose": {
+		"title": {
+			"text": ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
-		"choice"        : {
-			"text"       : ["$var.matches.home_score"]
+		"choice": {
+			"text": ["$var.matches.home_score"]
 	},
-		"answer"        : {
-			"text"       : ["$var.match.home_score"]
+		"answer": {
+			"text": ["$var.match.home_score"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
+	"$write": {
+		"title": {
+			"text": ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
-		"answer"        : {
-			"text"       : ["$var.match.home_score"]
+		"answer": {
+			"text": ["$var.match.home_score"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
+	"$bool": {
+		"title": {
+			"text": ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."]
 	}
 	},

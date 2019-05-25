@@ -5,28 +5,28 @@
         "stadiums": "listSub(footballTeam.stadium , var.team.stadium)",
         "True_or_False": "rand([True,False])"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه خانگی تیم `var.team.name` کدام است؟"]
+	"$choose": {
+		"title": {
+			"text": ["ورزشگاه خانگی تیم `var.team.name` کدام است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.choose(NOC)"]
+		"choice": {
+			"text": ["var.stadiums.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.stadium"]
+		"answer": {
+			"text": ["var.team.stadium"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["نام ورزشگاه خانگی `var.team.name` چیست؟"]
+	"$write": {
+		"title": {
+			"text": ["نام ورزشگاه خانگی `var.team.name` چیست؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.stadium"]
+		"answer": {
+			"text": ["var.team.stadium"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
+	"$bool": {
+		"title": {
+			"text": ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
                             "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."]
 	}
 	},

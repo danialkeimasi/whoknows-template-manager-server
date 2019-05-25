@@ -3,28 +3,28 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[ footballPlayer.club_number != var.player.club_number ], NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام بازیکن پیراهن شماره ی `var.player.club_number` را بر تن میکند؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام بازیکن پیراهن شماره ی `var.player.club_number` را بر تن میکند؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.players.name"]
+		"choice": {
+			"text": ["var.players.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.name"]
+		"answer": {
+			"text": ["var.player.name"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
+	"$write": {
+		"title": {
+			"text": ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.name"]
+		"answer": {
+			"text": ["var.player.name"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
+	"$bool": {
+		"title": {
+			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
 	}
 	},
 	

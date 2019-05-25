@@ -3,20 +3,20 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga < var.team.ga)] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم در لیگ `var.team.league` گل خورده ی بیشتری نسبت به سایر گزینه ها دارد؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام تیم در لیگ `var.team.league` گل خورده ی بیشتری نسبت به سایر گزینه ها دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
+	"$bool": {
+		"title": {
+			"text": ["تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
                             "تعداد گل خورده تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است.",
                             "تعداد گل خورده تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name کمتر است.",
                             "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name کمتر است."]

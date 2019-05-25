@@ -3,28 +3,28 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
+	"$choose": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
-		"choice"        : {
-			"text"       : ["$var.players.release"]
+		"choice": {
+			"text": ["$var.players.release"]
 	},
-		"answer"        : {
-			"text"       : ["$var.player.release"]
+		"answer": {
+			"text": ["$var.player.release"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
+	"$write": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
-		"answer"        : {
-			"text"       : ["$var.player.release"]
+		"answer": {
+			"text": ["$var.player.release"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
+	"$bool": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
                             "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]
 	}
 	},

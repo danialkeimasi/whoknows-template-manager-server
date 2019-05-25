@@ -3,15 +3,15 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draws > var.team.draws)] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم در لیگ `var.team.league` تعداد مساوی کمتری نسبت به سایر گزینه ها دارد؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام تیم در لیگ `var.team.league` تعداد مساوی کمتری نسبت به سایر گزینه ها دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
 	

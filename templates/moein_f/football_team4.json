@@ -5,33 +5,33 @@
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` کدام است؟",
+	"$choose": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` کدام است؟",
                             "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
                             "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
                             "مربی کنونی تیم `var.team.name` در کدام گزینه آمده است؟"]
 	},
-		"choice"        : {
-			"text"       : ["$var.teams_same.coach"]
+		"choice": {
+			"text": ["$var.teams_same.coach"]
 	},
-		"answer"        : {
-			"text"       : ["$var.team.coach"]
+		"answer": {
+			"text": ["$var.team.coach"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` کیست؟",
+	"$write": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` کیست؟",
                             "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
                             "مربی کنونی تیم `var.team.name` چه کسی است؟"]
 	},
-		"answer"        : {
-			"text"       : ["$var.team.coach"]
+		"answer": {
+			"text": ["$var.team.coach"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
+	"$bool": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
                             "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."]

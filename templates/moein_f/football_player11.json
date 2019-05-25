@@ -3,26 +3,26 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.team != var.player.team ] , NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["کدام گزینه چهره ی `var.player.name` میباشد؟"]
+	"$choose": {
+		"title": {
+			"text": ["کدام گزینه چهره ی `var.player.name` میباشد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.players.pic"]
+		"choice": {
+			"text": ["var.players.pic"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.pic"]
+		"answer": {
+			"text": ["var.player.pic"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["عکس زیر چهره ی `var.player.name` میباشد." ,
+	"$bool": {
+		"title": {
+			"text": ["عکس زیر چهره ی `var.player.name` میباشد." ,
                             "عکس زیر چهره ی `var.player.name` میباشد." ,
                             "عکس زیر چهره ی بازیکن تیم `var.player.team` میباشد." ,
                             "عکس زیر چهره ی بازیکن تیم `var.players.choose(1).team` میباشد."]
     },
-        "subtitle"     : {
-            "text"       : ["var.player.pic"]
+        "subtitle": {
+            "text": ["var.player.pic"]
             }
 	},
 	

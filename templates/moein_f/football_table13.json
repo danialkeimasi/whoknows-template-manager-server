@@ -3,28 +3,28 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.losts != var.team.losts)] ,NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+	"$choose": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.losts"]
+		"choice": {
+			"text": ["var.teams.losts"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.losts"]
+		"answer": {
+			"text": ["var.team.losts"]
 	}
 	},
-	"$write"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+	"$write": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.losts"]
+		"answer": {
+			"text": ["var.team.losts"]
 	}
 	},
-	"$bool"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
+	"$bool": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
                             "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."]
 	}
 	},

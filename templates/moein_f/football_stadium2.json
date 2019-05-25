@@ -3,15 +3,15 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity], NOC)"
     },
-	"$choose"          : {
-		"title"        : {
-			"text"       : ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
+	"$choose": {
+		"title": {
+			"text": ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.name"]
+		"choice": {
+			"text": ["var.stadiums.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.name"]
+		"answer": {
+			"text": ["var.stadium.name"]
 	}
 	},
 	
