@@ -3,7 +3,7 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.country == var.team.country] ,NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["ورزشگاه `var.team.stadium` متعلق به کدام تیم است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text"       : ["var.team.name"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["ورزشگاه `var.team.stadium` متعلق به چه تیمی است؟"]
 	},

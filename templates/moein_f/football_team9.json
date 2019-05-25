@@ -5,7 +5,7 @@
         "players": "listSub(footballTeam.players, var.team.captain)",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["کاپیتان تیم `var.team.name` کدام بازیکن است؟"]
 	},
@@ -16,7 +16,7 @@
 			"text"       : ["var.team.captain"]
 	}
 	},
-	"__select"          : {
+	"$select"          : {
 		"title"        : {
 	},
 		"choice"        : {
@@ -24,7 +24,7 @@
 		"answer"        : {
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["کاپیتان تیم `var.team.name` چه کسی است؟"]
 	},
@@ -32,7 +32,7 @@
 			"text"       : ["var.team.captain"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
                             "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",

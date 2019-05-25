@@ -7,7 +7,7 @@
         "True_or_False" : "rand([True,False])",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
 	},
@@ -18,7 +18,7 @@
 			"text"       : ["var.team.country"]
 	}
 	},
-	"__select"          : {
+	"$select"          : {
 		"title"        : {
             "text"       : ["کدام تیم ها متعلق به کشور `var.team.country` میباشند؟"]
 	},
@@ -29,7 +29,7 @@
             "text"       : ["var.teams_same.choose(var.ans_cnt).name"]  
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["`var.team.name` متعلق به کدام کشور است؟"]
 	},
@@ -37,7 +37,7 @@
 			"text"       : ["var.team.country"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["`var.team.name` متعلق به کشور `var.team.country` میباشد؟.",
                             "`var.team.name` متعلق به کشور `var.teams.choose(1).country` میباشد."]

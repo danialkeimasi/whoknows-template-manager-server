@@ -3,7 +3,7 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["کدام یک از ورزشگاه های زیر در سال `var.stadium.year` تاسیس شده اند؟"]
 	},

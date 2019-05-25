@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd != var.team.gd)] ,NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text"       : ["var.team.gd"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
@@ -22,7 +22,7 @@
 			"text"       : ["var.team.gd"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gd` میباشد.",
                             "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gd` میباشد."]

@@ -3,26 +3,26 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.scores != var.match.scores], NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["نتیجه بازی `var.match.name` کدام گزینه است؟"]
 	},
 		"choice"        : {
-			"text"       : ["`var.matches.stadium`"]
+			"text"       : ["$var.matches.stadium"]
 	},
 		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+			"text"       : ["$var.match.stadium"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["بازی `var.match.name` با چه نتیجه ای به اتمام رسید؟"]
 	},
 		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+			"text"       : ["$var.match.stadium"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["بازی `var.match.name` با نتیجه ی `var.match.scores` به اتمام رسید.",
             "بازی `var.match.name` با نتیجه ی `var.match.choose(1).scores` به اتمام رسید."]

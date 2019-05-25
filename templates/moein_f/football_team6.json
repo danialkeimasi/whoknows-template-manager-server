@@ -5,26 +5,26 @@
         "leagues": "listSub(footballTeam.league, [var.team.league , var.team1.league])",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["`var.team.coach` در کدام لیگ مربیگری میکند؟"]
 	},
 		"choice"        : {
-			"text"       : ["`var.leagues.choose(NOC)`"]
+			"text"       : ["$var.leagues.choose(NOC)"]
 	},
 		"answer"        : {
-			"text"       : ["`var.team.league`"]
+			"text"       : ["$var.team.league"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["`var.team.coach` در چه لیگی مربیگری میکند؟"]
 	},
 		"answer"        : {
-			"text"       : ["`var.team.league + var.team.name`"]
+			"text"       : ["$var.team.league + var.team.name"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["`var.team.coach` در لیگ `var.team.league` مربیگری میکند.",
                             "`var.team.coach` در لیگ `var.team1.league` مربیگری میکند.",

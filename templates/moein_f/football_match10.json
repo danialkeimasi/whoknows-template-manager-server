@@ -3,26 +3,26 @@
         "coach": "db(footballCoach)",
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"]
 	},
 		"choice"        : {
-			"text"       : ["`var.matches.away_score`"]
+			"text"       : ["$var.matches.away_score"]
 	},
 		"answer"        : {
-			"text"       : ["`var.match.away_score`"]
+			"text"       : ["$var.match.away_score"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` چه تعداد گل به ثمر رساند؟"]
 	},
 		"answer"        : {
-			"text"       : ["`var.match.away_score`"]
+			"text"       : ["$var.match.away_score"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["در بازی `var.match.name` تیم `var.match.guest` توانست `var.match.away_scores` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."]

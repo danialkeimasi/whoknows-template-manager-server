@@ -13,7 +13,7 @@
     "state_info": {},
     "idea": [""],
 
-    "__choose": {
+    "$choose": {
       "title": {
         "text":["hi im big as `var.age` a `var.NOC`"]
       },
@@ -27,7 +27,7 @@
         "text":["hi im big as `var.age`"]
       }
     },
-    "__select": {
+    "$select": {
       "title": {
         "text":["hi im big as `var.age`"]
       },
@@ -41,7 +41,7 @@
         "text":["hi im big as `var.age`"]
       }
     },
-    "__write": {
+    "$write": {
       "title": {
         "text":["hi im big as `var.age`"]
       },
@@ -52,7 +52,7 @@
         "text":["hi im big as `var.age`"]
       }
     },
-    "__bool": {
+    "$bool": {
       "title": {
         "text":["hi im big as `var.age`"]
       },

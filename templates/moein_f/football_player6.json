@@ -3,7 +3,7 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},
@@ -14,7 +14,7 @@
 			"text"       : ["var.player.name"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},

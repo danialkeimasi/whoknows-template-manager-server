@@ -3,7 +3,7 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["کدام ورزشگاه در شهر `var.stadium.city` قرار دارد؟"]
 	},

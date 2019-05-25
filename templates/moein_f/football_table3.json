@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text"       : ["var.team.point"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
 	},
@@ -22,7 +22,7 @@
 			"text"       : ["var.team.point"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
                             "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]

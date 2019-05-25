@@ -5,7 +5,7 @@
         "stadiums": "listSub(footballTeam.stadium , var.team.stadium)",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["ورزشگاه خانگی تیم `var.team.name` کدام است؟"]
 	},
@@ -16,7 +16,7 @@
 			"text"       : ["var.team.stadium"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["نام ورزشگاه خانگی `var.team.name` چیست؟"]
 	},
@@ -24,7 +24,7 @@
 			"text"       : ["var.team.stadium"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
                             "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."]

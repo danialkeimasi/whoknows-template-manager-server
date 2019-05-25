@@ -3,7 +3,7 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity], NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
 	},

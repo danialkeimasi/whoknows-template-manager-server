@@ -1,22 +1,22 @@
 {
-    "__choose": {
+    "$choose": {
       "title": true,
       "subtitle": false,
       "choice": true,
       "answer": true
     },
-    "__select": {
+    "$select": {
       "title": true,
       "subtitle": false,
       "choice": true,
       "answer": true
     },
-    "__write": {
+    "$write": {
       "title": true,
       "subtitle": false,
       "answer": true
     },
-    "__bool": {
+    "$bool": {
       "title": true,
       "subtitle": false
     }

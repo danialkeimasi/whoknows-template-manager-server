@@ -3,15 +3,15 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"]
 	},
 		"choice"        : {
-			"text"       : ["`var.players.name`"]
+			"text"       : ["$var.players.name"]
 	},
 		"answer"        : {
-			"text"       : ["`var.player.name`"]
+			"text"       : ["$var.player.name"]
 	}
 	},
 	"_id" : "football_player4",

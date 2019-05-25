@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draws != var.team.draws)] ,NOC)"
     },
-	"__choose"          : {
+	"$choose"          : {
 		"title"        : {
 			"text"       : ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text"       : ["var.team.draws"]
 	}
 	},
-	"__write"          : {
+	"$write"          : {
 		"title"        : {
 			"text"       : ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
@@ -22,7 +22,7 @@
 			"text"       : ["var.team.draw"]
 	}
 	},
-	"__bool"          : {
+	"$bool"          : {
 		"title"        : {
 			"text"       : ["تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.draw` میباشد.",
                             "تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).draw` میباشد."]
