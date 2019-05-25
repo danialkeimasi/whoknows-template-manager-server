@@ -36,7 +36,7 @@ python3 app.py
 
 1. Clone the repository:
 ```sh
-git clone ...
+git clone https://github.com/danialkeimasi/whoknows-template-manager
 ```
 
 2. Go to repository folder:
