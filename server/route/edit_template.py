@@ -7,6 +7,7 @@ from server.flask import getApp
 
 def add():
     app = getApp()
+
     @app.route('/template/edit', methods=['GET'])
     def edit_template_get():
 
@@ -30,13 +31,13 @@ def add():
         template = json_util.loads(request.data) if request.json is not None else {}
 
         problems = []
-        problems += ['you must send the template as a json post']                    if template is {} else []
+        problems += ['you must send the template as a json post'] if template is {} else []
         problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in template else []
 
         if problems == []:
             replace_res = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, template)
             response = {
-                'ok' : replace_res.acknowledged,
+                'ok': replace_res.acknowledged,
                 '_id': replace_res.upserted_id,
             }
         else:

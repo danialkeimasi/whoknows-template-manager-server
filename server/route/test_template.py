@@ -19,10 +19,8 @@ def add():
 
         return json.dumps(response)
 
-
     @app.route('/test_template', methods=['POST'])
     def test_template_post():
-
         template = request.json
         run_response = Template(template).test_function()
 

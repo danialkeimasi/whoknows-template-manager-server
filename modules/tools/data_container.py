@@ -39,7 +39,6 @@ class DataContainer():
             elif isinstance(exp, list) and isinstance(exp[0], str):
                 self.exp = exp
 
-
     def one(self):
         '''
         choose random from a list of DataManagers by len of 1
@@ -72,7 +71,6 @@ class DataContainer():
         converts the DataManager object to a dataManager List
         '''
         return [DataContainer([item]) for item in self.exp]
-
 
 
 def db(doc, count=0):

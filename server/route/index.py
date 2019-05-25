@@ -5,9 +5,9 @@ from server.flask import getApp
 
 def add():
     app = getApp()
+
     @app.route('/', methods=['GET'])
     def index():
-
         '''
         index of server
 
@@ -17,8 +17,8 @@ def add():
         Response = {
             'ok': 1,
             'message': 'question server is on',
-            'urls': [ 'get_question',
-                            'check_answer',]
+            'urls': ['get_question',
+                     'check_answer', ]
         }
 
         return json.dumps(Response)

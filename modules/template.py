@@ -14,7 +14,6 @@ from modules.tools.functions import choose, rand
 
 
 class Template:
-
     __template_formatter = json.load(open(config.dir.template_formatter))
     __default_metadata = {
         'NOC': 3,
@@ -31,14 +30,13 @@ class Template:
         """
 
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
-                          inp if mode == 'dict' else \
-                          None
+            inp if mode == 'dict' else \
+                None
         self.__problems = []
-        
+
         if debug:
             self.__test_structure()
             self.__test_data()
-
 
     def dict(self):
         """
@@ -46,13 +44,11 @@ class Template:
         """
         return self.__template
 
-    
     def problems(self):
         """
         :return problems of a template as dict:
         """
         return self.__problems
-
 
     def __update_problems(self, problems):
         """
@@ -60,7 +56,6 @@ class Template:
         :param new problems:
         """
         self.__problems += [problem for problem in problems if problem not in self.__problems]
-    
 
     def get_question_types(self):
         """
@@ -69,8 +64,7 @@ class Template:
         """
         return [key for key in self.__template.keys() if key.startswith('&')]
 
-
-    def parse(self, bool_answer=True , metadata={}):
+    def parse(self, bool_answer=True, metadata={}):
         """
         eval the variables in the template with data that we have in datasets
         and return a new template object that has no variable in sentences
@@ -85,7 +79,6 @@ class Template:
 
         for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
             metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
-
 
         problems = []
         var = DataContainer()
@@ -113,10 +106,10 @@ class Template:
             for q_property_name in template[q_type_name].keys():
                 for q_property_format_name in template[q_type_name][q_property_name].keys():
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
-                        
+
                         if raw_str.startswith('$'):
                             template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:])
-                        
+
                         else:
                             while re.search(reg_str, raw_str):
                                 exp = re.search(reg_str, raw_str).group(1)
@@ -124,12 +117,12 @@ class Template:
                                 # if not isinstance(eval_result, str) or not (isinstance(eval_result, list) and len(eval_result) == 1):
                                 #     raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
 
-                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result, list) else eval_result)
+                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result,
+                                                                                                   list) else eval_result)
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
         return Template(template)
-
 
     def get_question(self, bool_answer, question_type, format):
         """
@@ -143,7 +136,7 @@ class Template:
 
         template = self.__template
         question = template[question_type]
-        
+
         question.update({
             'type': question_type[1:],
             'tags': template['tags'],
@@ -153,13 +146,13 @@ class Template:
         })
 
         for type in question['title']:
-            question['title'][type] = choose([t for i,t in enumerate(question['title'][type]) if i % 2 == int(bool_answer)])
+            question['title'][type] = choose(
+                [t for i, t in enumerate(question['title'][type]) if i % 2 == int(bool_answer)])
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
 
         return Question(question)
-
 
     def generate_question(self, metadata={}, question_type=None, format={}):
 
@@ -174,7 +167,6 @@ class Template:
 
         return question_object
 
-
     def add_function(self):
 
         logger.info('trying to add tempalte to mongo ...')
@@ -184,7 +176,7 @@ class Template:
         result = mongo_client.TemplateManager.templates.insert_one(template)
 
         logger.info(result)
-        
+
         return result
 
     def test_function(self):
@@ -208,19 +200,16 @@ class Template:
         print('log_list', log_list)
         return {'runing_log': log_list, 'template_problems': self.problems}
 
-
     def __test_duplication(self):
-        
+
         logger.critical(problems)
         self.__update_problems(problems)
 
-    
     def __test_acceptance(self):
 
         logger.critical(problems)
         self.__update_problems(problems)
 
-    
     def __test_data(self):
         """
         check if necessary databases for this template is exist and save problems in __problems
@@ -235,7 +224,6 @@ class Template:
         logger.critical(problems)
         self.__update_problems(problems)
 
-
     def __test_structure(self):
         """
         check's the format of template json and save problems in __problems
@@ -244,7 +232,7 @@ class Template:
         template_consts = ['usage', 'values', 'time_function',
                            'score_function', 'tags', '__state', '__test_info',
                            '__idea', 'datasets']
-        
+
         for item in template_consts:
             if not (item in self.__template):
                 problems.append(f'template must have a "{item}" part in it')
@@ -269,13 +257,11 @@ class Template:
         logger.critical(problems)
         self.__update_problems(problems)
 
-
     def __test_generation(self):
 
         logger.critical(problems)
         self.__update_problems(problems)
 
-    
     def __test_manual(self):
 
         logger.critical(problems)
@@ -292,7 +278,7 @@ def load_data(dataset_name):
         name of dataset
     '''
     data = pd.DataFrame()
-    
+
     for i in range(5):
         try:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
@@ -304,8 +290,8 @@ def load_data(dataset_name):
 
     return data
 
+
 def load_template_datasets(necesery_datasets):
-    
     logger.debug(f'{necesery_datasets}')
 
     for db in necesery_datasets:

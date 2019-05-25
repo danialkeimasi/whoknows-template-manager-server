@@ -1,6 +1,6 @@
 class Question:
 
-    def __init__(self, question_dict = None):
+    def __init__(self, question_dict=None):
         self.__question = question_dict
 
     def update_by_dict(self, question_dict):
@@ -12,6 +12,5 @@ class Question:
     def check_question(self):
         problems = []
         question = self.__question
-        
-        
+
         return problems
