@@ -27,8 +27,7 @@ def add():
         update the template in the database
         
         '''
-        print(dir(request))
-        template = json_util.loads(request.text) if request.json is not None else {}
+        template = json_util.loads(request.data) if request.json is not None else {}
 
         problems = []
         problems += ['you must send the template as a json post']                    if template is {} else []
