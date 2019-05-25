@@ -1,9 +1,8 @@
 from server.flask import getApp
-from flask import request
+from flask import json, request
 from config.config import config, mongo_client, logger
 from modules.template import Template
 
-import json
 from bson import ObjectId
 
 class JSONEncoder(json.JSONEncoder):
@@ -48,11 +47,10 @@ def add():
                    [{'$limit': count}]                         if count is not None else []
         
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
-
+        
         response = {
             'ok': True,
             'templates': templates,
         }
 
-        return json.dumps(json.encode(templates, cls=JSONEncoder)
-)
+        return json.dumps(JSONEncoder().encode(templates))
