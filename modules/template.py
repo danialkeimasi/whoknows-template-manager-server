@@ -76,8 +76,8 @@ class Template:
         """
         problems = []
         template_consts = ['usage', 'values', 'time_function',
-                           'score_function', 'tags', 'state', 'state_info',
-                           'idea', 'datasets']
+                           'score_function', 'tags', '__state', '__test_info',
+                           '__idea', 'datasets']
         
         for item in template_consts:
             if not (item in self.__template):
