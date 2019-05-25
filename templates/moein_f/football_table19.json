@@ -3,32 +3,32 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point < var.team.point)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم در جدول لیگ `var.team.league` امتیاز بیشتری دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام تیم در جدول لیگ `var.team.league` امتیاز بیشتری دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` امتیاز بیشتری نسبت به تیم `var.teams.choose(1).name دارد.",
+	"&bool": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` امتیاز بیشتری نسبت به تیم `var.teams.choose(1).name دارد.",
                             "تیم `var.teams.choose(1).name` در لیگ `var.team.league` امتیاز بیشتری نسبت به تیم `var.team.name دارد."]
 	}
 	},
-	"_id" : "football_table19",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

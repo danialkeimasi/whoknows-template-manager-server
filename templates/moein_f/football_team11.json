@@ -4,41 +4,41 @@
         "team1": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
         "stadiums": "listSub(footballTeam.stadium , var.team.stadium)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه خانگی تیم `var.team.name` کدام است؟"]
+	"&choose": {
+		"title": {
+			"text": ["ورزشگاه خانگی تیم `var.team.name` کدام است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.choose(NOC)"]
+		"choice": {
+			"text": ["var.stadiums.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.stadium"]
+		"answer": {
+			"text": ["var.team.stadium"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["نام ورزشگاه خانگی `var.team.name` چیست؟"]
+	"&write": {
+		"title": {
+			"text": ["نام ورزشگاه خانگی `var.team.name` چیست؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.stadium"]
+		"answer": {
+			"text": ["var.team.stadium"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["ورزشگاه خانگی تیم `var.team.name` ، `var.team.stadium` میباشد.",
                             "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."]
 	}
 	},
-	"_id" : "football_team11",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "team", "club"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

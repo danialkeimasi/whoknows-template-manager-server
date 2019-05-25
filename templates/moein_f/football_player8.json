@@ -3,40 +3,40 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.club_number != var.player.club_number], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
+	"&choose": {
+		"title": {
+			"text": ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.players.choose(NOC).club_number"]
+		"choice": {
+			"text": ["var.players.choose(NOC).club_number"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.club_number"]
+		"answer": {
+			"text": ["var.player.club_number"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
+	"&write": {
+		"title": {
+			"text": ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.club_number"]
+		"answer": {
+			"text": ["var.player.club_number"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["`var.player.name` در تیم `var.player.team` با شماره ی `var.player.club_number` بازی میکند.",
+	"&bool": {
+		"title": {
+			"text": ["`var.player.name` در تیم `var.player.team` با شماره ی `var.player.club_number` بازی میکند.",
                             "`var.player.name` در تیم `var.player.team` با شماره ی `var.players.choose(1).club_number` بازی میکند."]
 	}
 	},
-	"_id" : "football_player8",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

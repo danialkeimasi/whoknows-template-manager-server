@@ -3,41 +3,41 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.scores != var.match.scores], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["نتیجه بازی `var.match.name` کدام گزینه است؟"]
+	"&choose": {
+		"title": {
+			"text": ["نتیجه بازی `var.match.name` کدام گزینه است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.matches.stadium`"]
+		"choice": {
+			"text": ["$var.matches.stadium"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+		"answer": {
+			"text": ["$var.match.stadium"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["بازی `var.match.name` با چه نتیجه ای به اتمام رسید؟"]
+	"&write": {
+		"title": {
+			"text": ["بازی `var.match.name` با چه نتیجه ای به اتمام رسید؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+		"answer": {
+			"text": ["$var.match.stadium"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["بازی `var.match.name` با نتیجه ی `var.match.scores` به اتمام رسید.",
+	"&bool": {
+		"title": {
+			"text": ["بازی `var.match.name` با نتیجه ی `var.match.scores` به اتمام رسید.",
             "بازی `var.match.name` با نتیجه ی `var.match.choose(1).scores` به اتمام رسید."]
 	}
 	},
-	"_id" : "football_match5",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

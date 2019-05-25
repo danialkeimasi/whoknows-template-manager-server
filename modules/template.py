@@ -9,12 +9,12 @@ import copy
 from modules.tools.functions import choose, rand, to_list
 from modules.question import Question
 import random
-from config.config import mongo_client, ListHandler
+from config.config import mongo_client, ListHandler, config
 
 
 class Template:
 
-    __template_formatter = json.load(open('./templates/template_v2/template_formatter.json'))
+    __template_formatter = json.load(open(config.dir.template_formatter))
     __default_metadata = {
         'NOC': 3,
         'NOS': 4,
@@ -29,7 +29,9 @@ class Template:
         :param debug:
         """
 
-        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else inp if mode == 'dict' else None
+        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
+                          inp if mode == 'dict' else \
+                          None
         self.__problems = []
         
         if debug:
@@ -64,7 +66,7 @@ class Template:
         get all the question types that can make with the template
         :return list of question types:
         """
-        return [key for key in self.__template.keys() if key.startswith('__')]
+        return [key for key in self.__template.keys() if key.startswith('$')]
 
 
     def __check_json_format(self):
@@ -74,8 +76,8 @@ class Template:
         """
         problems = []
         template_consts = ['usage', 'values', 'time_function',
-                           'score_function', 'tags', 'state', 'state_info',
-                           'idea', 'datasets']
+                           'score_function', 'tags', '__state', '__test_info',
+                           '__idea', 'datasets']
         
         for item in template_consts:
             if not (item in self.__template):
@@ -213,7 +215,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'type': question_type[2:],
+            'type': question_type[1:],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
@@ -234,7 +236,7 @@ class Template:
         if self.__problems:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
-        question_type = choose(self.get_question_types()) if question_type is None else f'__{question_type}'
+        question_type = choose(self.get_question_types()) if question_type is None else f'${question_type}'
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)

@@ -3,41 +3,41 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
+	"&choose": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
-		"choice"        : {
-			"text"       : ["`var.players.release`"]
+		"choice": {
+			"text": ["$var.players.release"]
 	},
-		"answer"        : {
-			"text"       : ["`var.player.release`"]
+		"answer": {
+			"text": ["$var.player.release"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
+	"&write": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
-		"answer"        : {
-			"text"       : ["`var.player.release`"]
+		"answer": {
+			"text": ["$var.player.release"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
                             "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]
 	}
 	},
-	"_id" : "football_player3",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

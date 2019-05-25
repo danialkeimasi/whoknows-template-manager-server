@@ -5,7 +5,7 @@
 		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
 		"ans_cnt": "rand(range(1,var.NOC+1))"
 	},
-	"__choose": {
+	"&choose": {
 		"title": {
 			"text": [
 				"کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
@@ -15,16 +15,16 @@
 		},
 		"choice": {
 			"text": [
-				"`var.teams.name`"
+				"$var.teams.name"
 			]
 		},
 		"answer": {
 			"text": [
-				"`var.team.name`"
+				"$var.team.name"
 			]
 		}
 	},
-	"__select": {
+	"&select": {
 		"title": {
 			"text": [
 				"از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
@@ -34,17 +34,17 @@
 		},
 		"choice": {
 			"text": [
-				"`var.teams.choose(var.NOC - var.ans_cnt + 1).name`"
+				"$var.teams.choose(var.NOC - var.ans_cnt + 1).name"
 			]
 		},
 		"answer": {
 			"text": [
-				"`var.teams_same.choose(var.ans_cnt).name`"
+				"$var.teams_same.choose(var.ans_cnt).name"
 			]
 		}
 	},
 
-	"_id": "football_team2",
+	
 	"datasets": [
 		"footballTeam"
 	],
@@ -53,14 +53,14 @@
 	],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": [
 		"football",
 		"footballTeam"
 	],
-	"state": "",
-	"state_info": {},
-	"idea": [
+	"__state": "",
+	"__test_info": {},
+	"__idea": [
 		""
 	]
 }

@@ -3,40 +3,40 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.pos"]
+		"choice": {
+			"text": ["var.teams.pos"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.pos"]
+		"answer": {
+			"text": ["var.team.pos"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+	"&write": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.pos"]
+		"answer": {
+			"text": ["var.team.pos"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
+	"&bool": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
                             "تیم  `var.team.name` در لیگ `var.team.league` در رتبه ی `var.teams.choose(1).pos` قرار دارد."]
 	}
 	},
-	"_id" : "football_table1",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

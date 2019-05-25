@@ -3,40 +3,40 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
+	"&choose": {
+		"title": {
+			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.matches.stadium`"]
+		"choice": {
+			"text": ["$var.matches.stadium"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+		"answer": {
+			"text": ["$var.match.stadium"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
+	"&write": {
+		"title": {
+			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.stadium`"]
+		"answer": {
+			"text": ["$var.match.stadium"]
 	}
 	},
-	"bool"          : {
-		"title"        : {
-			"text"       : ["بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
+	"&bool": {
+		"title": {
+			"text": ["بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
                             "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]
 	}
 	},
-	"_id" : "football_match3",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

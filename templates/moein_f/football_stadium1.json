@@ -3,40 +3,40 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.capacity"]
+		"choice": {
+			"text": ["var.stadiums.capacity"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.capacity"]
+		"answer": {
+			"text": ["var.stadium.capacity"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+	"&write": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.capacity"]
+		"answer": {
+			"text": ["var.stadium.capacity"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
                             "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."]
 	}
 	},
-	"_id" : "football_stadium1",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

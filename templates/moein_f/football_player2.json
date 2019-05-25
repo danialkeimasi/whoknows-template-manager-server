@@ -3,27 +3,27 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["`var.player.name` در چه سالی بدنیا آمده است؟"]
+	"&choose": {
+		"title": {
+			"text": ["`var.player.name` در چه سالی بدنیا آمده است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.players.year`"]
+		"choice": {
+			"text": ["$var.players.year"]
 	},
-		"answer"        : {
-			"text"       : ["`var.player.year`"]
+		"answer": {
+			"text": ["$var.player.year"]
 	}
 	},
-	"_id" : "football_player2",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

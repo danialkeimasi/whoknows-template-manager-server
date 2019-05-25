@@ -3,32 +3,32 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf < var.team.gf)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم در لیگ `var.team.league` گل زده ی بیشتری نسبت به سایر گزینه ها دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام تیم در لیگ `var.team.league` گل زده ی بیشتری نسبت به سایر گزینه ها دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تعداد گل های زده ی تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name` بیشتر است.",
+	"&bool": {
+		"title": {
+			"text": ["تعداد گل های زده ی تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name` بیشتر است.",
                             "تعداد گل های زده ی تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name` بیشتر است."]
 	}
 	},
-	"_id" : "football_table21",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

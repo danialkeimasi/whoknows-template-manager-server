@@ -3,40 +3,40 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
+	"&choose": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.year"]
+		"choice": {
+			"text": ["var.stadiums.year"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.year"]
+		"answer": {
+			"text": ["var.stadium.year"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
+	"&write": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.year"]
+		"answer": {
+			"text": ["var.stadium.year"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در سال `var.stadium.year` تاسیس شده است.",
+	"&bool": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در سال `var.stadium.year` تاسیس شده است.",
                             "ورزشگاه `var.stadium.name` در سال `var.stadiums.choose(1).year` تاسیس شده است."]
 	}
 	},
-	"_id" : "football_stadium7",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

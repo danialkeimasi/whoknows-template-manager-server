@@ -3,40 +3,40 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+	"&choose": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.gf"]
+		"choice": {
+			"text": ["var.teams.gf"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.gf"]
+		"answer": {
+			"text": ["var.team.gf"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+	"&write": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.gf"]
+		"answer": {
+			"text": ["var.team.gf"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
+	"&bool": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
                             "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
 	}
 	},
-	"_id" : "football_table6",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

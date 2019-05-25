@@ -3,26 +3,26 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
+	"&choose": {
+		"title": {
+			"text": ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.name"]
+		"choice": {
+			"text": ["var.stadiums.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.name"]
+		"answer": {
+			"text": ["var.stadium.name"]
 	}
 	},
-	"_id" : "football_stadium2",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

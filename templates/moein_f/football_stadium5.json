@@ -3,40 +3,40 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.city"]
+		"choice": {
+			"text": ["var.stadiums.city"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.city"]
+		"answer": {
+			"text": ["var.stadium.city"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+	"&write": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.city"]
+		"answer": {
+			"text": ["var.stadium.city"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
+	"&bool": {
+		"title": {
+			"text": ["ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
                             "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."]
 	}
 	},
-	"_id" : "football_stadium5",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

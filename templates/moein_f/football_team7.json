@@ -5,38 +5,38 @@
         "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.teams.choose(NOC).coach`"]
+		"choice": {
+			"text": ["$var.teams.choose(NOC).coach"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.coach`"]
+		"answer": {
+			"text": ["$var.team.coach"]
 	}
 	},
-	"__select"          : {
-		"title"        : {
-			"text"       : ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
+	"&select": {
+		"title": {
+			"text": ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
     },
-        "choice"        :  {
-            "text"       :["`var.teams.choose(NOC - var.ans_cnt + 1).coach`"]
+        "choice":  {
+            "text":["$var.teams.choose(NOC - var.ans_cnt + 1).coach"]
     },        
-		"answer"        : {
-			"text"       : ["`var.teams_same.choose(var.ans_cnt).coach`"]
+		"answer": {
+			"text": ["$var.teams_same.choose(var.ans_cnt).coach"]
 	}
 	},
-	"_id" : "football_team7",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "club", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

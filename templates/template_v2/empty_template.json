@@ -1,0 +1,48 @@
+{
+    "values": {
+        "value": "db(dataset_name[query])"
+    },
+    "&bool": {
+        "title": {}
+    },
+    "&choose": {
+        "title": {},
+        "answer": {},
+        "choice": {}
+    },
+    "&write": {
+        "title": {},
+        "answer": {}
+    },
+    "&select": {
+        "title": {},
+        "choice": {},
+        "answer": {}
+    },
+    "datasets": [],
+    "tags": [],
+    "usage": [
+        "contest"
+    ],
+    "__state": "idea",
+    "__test_info": {
+        "duplication": {
+            "similars": []
+        },
+        "acceptance": {
+            "votes": []
+        },
+        "data": {
+            "datasets": []
+        },
+        "structure": {
+            "sections": []
+        },
+        "generation": {
+            "result": []
+        }
+    },
+    "__idea": [
+        ""
+    ]
+}

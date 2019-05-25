@@ -3,27 +3,27 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.matches.name`"]
+		"choice": {
+			"text": ["$var.matches.name"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.name`"]
+		"answer": {
+			"text": ["$var.match.name"]
 	}
 	},
-	"_id" : "football_match6",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

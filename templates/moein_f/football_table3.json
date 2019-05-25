@@ -3,40 +3,40 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.point"]
+		"choice": {
+			"text": ["var.teams.point"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.point"]
+		"answer": {
+			"text": ["var.team.point"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+	"&write": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.point"]
+		"answer": {
+			"text": ["var.team.point"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
+	"&bool": {
+		"title": {
+			"text": ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
                             "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
 	}
 	},
-	"_id" : "football_table3",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

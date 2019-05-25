@@ -3,40 +3,40 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
+	"&choose": {
+		"title": {
+			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.players.club_number"]
+		"choice": {
+			"text": ["var.players.club_number"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.club_number"]
+		"answer": {
+			"text": ["var.player.club_number"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
+	"&write": {
+		"title": {
+			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.player.club_number"]
+		"answer": {
+			"text": ["var.player.club_number"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
+	"&bool": {
+		"title": {
+			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
 	}
 	},
-	"_id" : "football_player5",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

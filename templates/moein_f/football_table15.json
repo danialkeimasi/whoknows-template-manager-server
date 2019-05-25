@@ -3,40 +3,40 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draws != var.team.draws)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+	"&choose": {
+		"title": {
+			"text": ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.draws"]
+		"choice": {
+			"text": ["var.teams.draws"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.draws"]
+		"answer": {
+			"text": ["var.team.draws"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+	"&write": {
+		"title": {
+			"text": ["تعداد مساوی تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.draw"]
+		"answer": {
+			"text": ["var.team.draw"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.draw` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.draw` میباشد.",
                             "تعداد تساوی های تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).draw` میباشد."]
 	}
 	},
-	"_id" : "football_table15",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

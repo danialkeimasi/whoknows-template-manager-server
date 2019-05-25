@@ -1,15 +1,12 @@
 from server.flask import getApp
 from flask import json, request
 from config.config import config, mongo_client, logger
-import random
-import functools
-import glob
 from modules.template import Template
 
 
 def add():
     app = getApp()
-    @app.route('/find_template', methods=['GET'])
+    @app.route('/template/find', methods=['GET'])
     def find_template_get():
 
         response = {
@@ -22,7 +19,7 @@ def add():
 
         return json.dumps(response)
 
-    @app.route('/find_template', methods=['POST'])
+    @app.route('/template/find', methods=['POST'])
     def find_template_post():
         '''
         find template by query from mongo
@@ -36,9 +33,9 @@ def add():
         count    = user_req['count']    if 'count' in user_req else None
     
         pipeline = \
-                   [{'$match' : {'ok': ok} }]                  if ok is not None else [] + \
-                   [{'$match' : {'tags': { '$in' : tags } } }] if tags is not None else [] + \
-                   [{'$limit': count}]               if count is not None else []
+                   [{'$match' : {'ok': ok} }]                  if ok    is not None else [] + \
+                   [{'$match' : {'tags': { '$in' : tags } } }] if tags  is not None else [] + \
+                   [{'$limit': count}]                         if count is not None else []
         
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
 

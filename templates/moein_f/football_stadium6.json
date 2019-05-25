@@ -3,25 +3,25 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام ورزشگاه در شهر `var.stadium.city` قرار دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام ورزشگاه در شهر `var.stadium.city` قرار دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.stadiums.name"]
+		"choice": {
+			"text": ["var.stadiums.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.stadium.name"]
+		"answer": {
+			"text": ["var.stadium.name"]
 	}
 	},
-    "_id" : "football_stadium6",
+    
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 } 

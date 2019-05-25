@@ -5,48 +5,48 @@
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` کدام است؟",
+	"&choose": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` کدام است؟",
                             "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
                             "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
                             "مربی کنونی تیم `var.team.name` در کدام گزینه آمده است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.teams_same.coach`"]
+		"choice": {
+			"text": ["$var.teams_same.coach"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.coach`"]
+		"answer": {
+			"text": ["$var.team.coach"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` کیست؟",
+	"&write": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` کیست؟",
                             "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
                             "مربی کنونی تیم `var.team.name` چه کسی است؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.coach`"]
+		"answer": {
+			"text": ["$var.team.coach"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
                             "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."]
 	}
 	},
-	"_id" : "football_team4",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

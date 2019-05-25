@@ -3,41 +3,41 @@
         "coach": "db(footballCoach)",
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"]
+	"&choose": {
+		"title": {
+			"text": ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.coachs.nation`"]
+		"choice": {
+			"text": ["$var.coachs.nation"]
 	},
-		"answer"        : {
-			"text"       : ["`var.coach.nation`"]
+		"answer": {
+			"text": ["$var.coach.nation"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["`var.coach.name` اهل چه کشوری است؟"]
+	"&write": {
+		"title": {
+			"text": ["`var.coach.name` اهل چه کشوری است؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.coach.nation`"]
+		"answer": {
+			"text": ["$var.coach.nation"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]
 	}
 	},
-	"_id" : "football_coach1",
+	
 	"datasets": ["footballCoach"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballCoach", "coach"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

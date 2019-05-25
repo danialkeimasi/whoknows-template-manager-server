@@ -3,27 +3,27 @@
         "match": "db(footballMatch)",
         "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
+	"&choose": {
+		"title": {
+			"text": ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.matches.ref`"]
+		"choice": {
+			"text": ["$var.matches.ref"]
 	},
-		"answer"        : {
-			"text"       : ["`var.match.name`"]
+		"answer": {
+			"text": ["$var.match.name"]
 	}
 	},
-	"_id" : "football_match2",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

@@ -10,7 +10,7 @@
     "__time":"250",
     "__score": 50,
 
-    "choose": {
+    "&choose": {
       "title": {
         "format": "string",
         "content": [
@@ -36,7 +36,7 @@
         ]
       }
     },
-    "select": {
+    "&select": {
       "title": {
         "format": "string",
         "content": [
@@ -63,7 +63,7 @@
         ]
       }
     },
-    "write": {
+    "&write": {
       "title": {
         "format": "string",
         "content": [

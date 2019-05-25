@@ -5,41 +5,41 @@
         "countries": "listSub(footballTeam.country, var.team.country)",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در کدام کشور مربیگری میکند؟"]
+	"&choose": {
+		"title": {
+			"text": ["`var.team.coach` در کدام کشور مربیگری میکند؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.countries.choose(NOC)"]
+		"choice": {
+			"text": ["var.countries.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.country"]
+		"answer": {
+			"text": ["var.team.country"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در چه کشوری مربیگری میکند؟"]
+	"&write": {
+		"title": {
+			"text": ["`var.team.coach` در چه کشوری مربیگری میکند؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.country"]
+		"answer": {
+			"text": ["var.team.country"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
+	"&bool": {
+		"title": {
+			"text": ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
                             "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]
 	}
 	},
-	"_id" : "football_team8",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "team", "club"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

@@ -4,38 +4,38 @@
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
         "coachs_same": "db(footballCoach[footballCoach.nation == var.coach.nation] , NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.coachs.name`"]
+		"choice": {
+			"text": ["$var.coachs.name"]
 	},
-		"answer"        : {
-			"text"       : ["`var.coach.name`"]
+		"answer": {
+			"text": ["$var.coach.name"]
 	}
 	},
-	"__select"          : {
-		"title"        : {
-			"text"       : ["ملیت کدام مربیان `var.coach.nation` میباشد؟"]
+	"&select": {
+		"title": {
+			"text": ["ملیت کدام مربیان `var.coach.nation` میباشد؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.coachs.choose(1).name`"]
+		"choice": {
+			"text": ["$var.coachs.choose(1).name"]
 	},
-		"answer"        : {
-			"text"       : ["`var.coachs_same.name`"]
+		"answer": {
+			"text": ["$var.coachs_same.name"]
 	}
 	},
-	"_id" : "football_coach2",
+	
 	"datasets": ["footballCoach"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballCoach", "coach"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

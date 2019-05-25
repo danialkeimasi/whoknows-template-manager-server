@@ -3,38 +3,38 @@
         "team": "db(footballTeam)",
         "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` مربی کدام تیم است؟",
+	"&choose": {
+		"title": {
+			"text": ["`var.team.coach` مربی کدام تیم است؟",
                             "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
                             "`var.team.coach` مربی کنونی کدام تیم است؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.teams_same.name`"]
+		"choice": {
+			"text": ["$var.teams_same.name"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.name`"]
+		"answer": {
+			"text": ["$var.team.name"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` مربی چه تیمی است؟",
+	"&write": {
+		"title": {
+			"text": ["`var.team.coach` مربی چه تیمی است؟",
                             "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.name`"]
+		"answer": {
+			"text": ["$var.team.name"]
 	}
 	},
-	"_id" : "football_team5",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

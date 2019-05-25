@@ -3,26 +3,26 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.losts > var.team.losts)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["کدام تیم در لیگ `var.team.league` تعداد باخت کمتری نسبت به سایر گزینه ها دارد؟"]
+	"&choose": {
+		"title": {
+			"text": ["کدام تیم در لیگ `var.team.league` تعداد باخت کمتری نسبت به سایر گزینه ها دارد؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.name"]
+		"choice": {
+			"text": ["var.teams.name"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
+		"answer": {
+			"text": ["var.team.name"]
 	}
 	},
-	"_id" : "football_table30",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

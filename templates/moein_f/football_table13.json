@@ -3,40 +3,40 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.losts != var.team.losts)] ,NOC)"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+	"&choose": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
-		"choice"        : {
-			"text"       : ["var.teams.losts"]
+		"choice": {
+			"text": ["var.teams.losts"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.losts"]
+		"answer": {
+			"text": ["var.team.losts"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+	"&write": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
-		"answer"        : {
-			"text"       : ["var.team.losts"]
+		"answer": {
+			"text": ["var.team.losts"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
+	"&bool": {
+		"title": {
+			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
                             "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."]
 	}
 	},
-	"_id" : "football_table13",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

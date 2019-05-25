@@ -1,42 +1,42 @@
 {
   "values": {
-       "team"          : "db(footballTeam)",
-       "team_same"     : "db(footballTeam[footballTeam.league == var.team.league])",
-       "leagues"       : "listSub(footballTeam.league, var.team.league)"      
+       "team": "db(footballTeam)",
+       "team_same": "db(footballTeam[footballTeam.league == var.team.league])",
+       "leagues": "listSub(footballTeam.league, var.team.league)"      
  },
 
- "__bool": {
+ "&bool": {
    "title": {
      "text": ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
    }
  },
- "__choose": {
+ "&choose": {
    "title": {
      "text": ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ]
    },
    "answer": {
-     "text": ["`var.team.league`"]
+     "text": ["$var.team.league"]
    },
    "choice": {
-     "text": ["`var.leagues.choose(var.NOC)`"]
+     "text": ["$var.leagues.choose(var.NOC)"]
    }
  },
- "__write": {
+ "&write": {
    "title": {
      "text": ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"]
    },
    "answer": {
-     "text": ["`var.team.league`"]
+     "text": ["$var.team.league"]
    }
  },
 
- "_id": "football_team1",
+ 
  "datasets": ["footballTeam"],
  "usage": ["contest"],
  "score_function": "default",
- "time_function": "",
+ "time_function": "default",
  "tags": ["football", "footballTeam"],
- "state": "",
- "state_info": {},
- "idea": [""]
+ "__state": "",
+ "__test_info": {},
+ "__idea": [""]
 }

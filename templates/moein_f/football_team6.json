@@ -5,28 +5,28 @@
         "leagues": "listSub(footballTeam.league, [var.team.league , var.team1.league])",
         "True_or_False": "rand([True,False])"
     },
-	"__choose"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در کدام لیگ مربیگری میکند؟"]
+	"&choose": {
+		"title": {
+			"text": ["`var.team.coach` در کدام لیگ مربیگری میکند؟"]
 	},
-		"choice"        : {
-			"text"       : ["`var.leagues.choose(NOC)`"]
+		"choice": {
+			"text": ["$var.leagues.choose(NOC)"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.league`"]
+		"answer": {
+			"text": ["$var.team.league"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در چه لیگی مربیگری میکند؟"]
+	"&write": {
+		"title": {
+			"text": ["`var.team.coach` در چه لیگی مربیگری میکند؟"]
 	},
-		"answer"        : {
-			"text"       : ["`var.team.league + var.team.name`"]
+		"answer": {
+			"text": ["$var.team.league + var.team.name"]
 	}
 	},
-	"__bool"          : {
-		"title"        : {
-			"text"       : ["`var.team.coach` در لیگ `var.team.league` مربیگری میکند.",
+	"&bool": {
+		"title": {
+			"text": ["`var.team.coach` در لیگ `var.team.league` مربیگری میکند.",
                             "`var.team.coach` در لیگ `var.team1.league` مربیگری میکند.",
                             "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند.",
                             "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team1.league` و `var.leagues.choose(1)` مربیگری میکنند.",
@@ -34,16 +34,16 @@
                             "`var.team.coach` و `var.team1.coach` در لیگ های `var.leagues.choose(1)` و `var.team.league` مربیگری میکنند."]
 	}
 	},
-	"_id" : "football_team6",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "club", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 
