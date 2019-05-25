@@ -1,11 +1,11 @@
 ## Template Manager
-a flask server that implements API and functionality for writing and testing templates and generating question from them, that used in a question game named whoknows
+this repository contains a flask server that implements API and functionality for writing and testing templates and generating question from them, that used in a question game named whoknows
 
 
 ## How to install?
 Setting up is simple, just follow these steps.
 
-#### Python :
+### Python :
 
 1. Install python and pip and git:
 ```sh
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-####  Docker :
+### Docker :
 
 1. Clone the repository:
 ```sh
