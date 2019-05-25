@@ -3,7 +3,7 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.stadium.city"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["var.stadium.city"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
                             "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."]

@@ -4,7 +4,7 @@
     "team_same": "db(footballTeam[footballTeam.league == var.team.league])",
     "leagues": "listSub(footballTeam.league, var.team.league)"
   },
-  "$bool": {
+  "&bool": {
     "title": {
       "text": [
         "تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟",
@@ -12,7 +12,7 @@
       ]
     }
   },
-  "$choose": {
+  "&choose": {
     "title": {
       "text": [
         "تیم `var.team.name` در کدام لیگ فعالیت میکند؟",
@@ -30,7 +30,7 @@
       ]
     }
   },
-  "$write": {
+  "&write": {
     "title": {
       "text": [
         "تیم `var.team.name` در چه لیگی فعالیت میکند؟"

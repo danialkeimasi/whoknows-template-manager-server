@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd != var.team.gd)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم تفاضل گلش در لیگ `var.team.league` برابر `var.team.gd` میباشد؟"]
 	},

@@ -5,12 +5,12 @@
        "leagues": "listSub(footballTeam.league, var.team.league)"      
  },
 
- "$bool": {
+ "&bool": {
    "title": {
      "text": ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟" , "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"]
    }
  },
- "$choose": {
+ "&choose": {
    "title": {
      "text": ["تیم `var.team.name` در کدام لیگ فعالیت میکند؟" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ]
    },
@@ -21,7 +21,7 @@
      "text": ["$var.leagues.choose(var.NOC)"]
    }
  },
- "$write": {
+ "&write": {
    "title": {
      "text": ["تیم `var.team.name` در چه لیگی فعالیت میکند؟"]
    },

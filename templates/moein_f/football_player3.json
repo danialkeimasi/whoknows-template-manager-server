@@ -3,7 +3,7 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["$var.player.release"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["$var.player.release"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
                             "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]

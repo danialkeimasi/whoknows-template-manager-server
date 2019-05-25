@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga != var.team.ga)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل خورده است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.team.ga"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل خورده است؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["var.team.ga"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.ga` میباشد.",
                             "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).ga` میباشد."]

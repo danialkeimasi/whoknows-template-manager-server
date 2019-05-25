@@ -3,7 +3,7 @@
         "coach": "db(footballCoach)",
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["ملیت `var.coach.name` را انتخاب کنید؟" , "`var.coach.name` اهل چه کشوری است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["$var.coach.nation"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["`var.coach.name` اهل چه کشوری است؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["$var.coach.nation"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["`var.coach.name` اهل کشور `var.coach.nation` میباشد.",
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]

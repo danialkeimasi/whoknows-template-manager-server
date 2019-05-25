@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
 	},

@@ -5,7 +5,7 @@
 		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
 		"league": "listSub(footballTeam.league, var.team.league)"
 	},
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": [
 				"کدام تیم در لیگ متفاوتی نسبت به سایر گزینه ها فعالیت میکند؟",
@@ -23,7 +23,7 @@
 			]
 		}
 	},
-	"$select": {
+	"&select": {
 		"title": {
 			"text": [
 				"تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید.",
@@ -41,7 +41,7 @@
 			]
 		}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": [
 				" تیم های `var.team.name`,  `var.teams_same.choose(1).name` در یک لیگ مشترک فعالیت میکنند.",

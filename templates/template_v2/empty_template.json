@@ -2,19 +2,19 @@
     "values": {
         "value": "db(dataset_name[query])"
     },
-    "$bool": {
+    "&bool": {
         "title": {}
     },
-    "$choose": {
+    "&choose": {
         "title": {},
         "answer": {},
         "choice": {}
     },
-    "$write": {
+    "&write": {
         "title": {},
         "answer": {}
     },
-    "$select": {
+    "&select": {
         "title": {},
         "choice": {},
         "answer": {}

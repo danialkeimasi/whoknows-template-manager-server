@@ -3,7 +3,7 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["لباس اول تیم `var.team.name` کدام است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.team.homekit"]
 	}
 	},
-		"$bool": {
+		"&bool": {
 		"title": {
 			"text": ["عکس زیر ، پیراهن اول تیم `var.team.name` میباشد.",
                             "عکس زیر ، پیراهن اول تیم `var.teams.choose(1).name` میباشد.",

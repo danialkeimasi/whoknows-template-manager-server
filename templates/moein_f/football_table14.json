@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.lost != var.team.lost)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم تعداد باخت هایش در لیگ `var.team.league` برابر `var.team.lost` میباشد؟"]
 	},

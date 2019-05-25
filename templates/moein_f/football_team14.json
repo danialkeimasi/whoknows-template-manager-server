@@ -44,7 +44,7 @@
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["لباس دوم تیم `var.team.name` کدام است؟ "]
 	},
@@ -55,7 +55,7 @@
 			"text": ["var.team.awaykit"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["عکس زیر ، پیراهن دوم کدام تیم است؟"]
 	},
@@ -66,7 +66,7 @@
             "text": ["var.team.awaykit"]  
         }
     },
-    "$bool": {
+    "&bool": {
 		"title": {
 			"text": ["عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",
                             "عکس زیر ، پیراهن دوم تیم `var.teams.choose(1).name` میباشد.",

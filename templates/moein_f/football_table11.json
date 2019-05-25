@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.win != var.team.win)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.team.win"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["تعداد برد تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["var.team.win"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.win` میباشد.",
                             "تعداد برد تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).win` میباشد."]

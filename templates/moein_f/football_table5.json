@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.gf` میباشد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.team.name"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gf` میباشد.",
                             "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gf` میباشد."]

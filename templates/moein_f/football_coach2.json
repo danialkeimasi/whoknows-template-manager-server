@@ -4,7 +4,7 @@
         "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
         "coachs_same": "db(footballCoach[footballCoach.nation == var.coach.nation] , NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"]
 	},
@@ -15,7 +15,7 @@
 			"text": ["$var.coach.name"]
 	}
 	},
-	"$select": {
+	"&select": {
 		"title": {
 			"text": ["ملیت کدام مربیان `var.coach.nation` میباشد؟"]
 	},

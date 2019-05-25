@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام یک از بازی های زیر در استادیوم `var.match.stadium` برگزار شده است؟"]
 	},

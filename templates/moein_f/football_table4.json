@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم در لیگ `var.team.league` امتیازش برابر `var.team.point` میباشد؟"]
 	},

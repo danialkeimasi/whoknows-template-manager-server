@@ -3,7 +3,7 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.team != var.player.team ] , NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام گزینه چهره ی `var.player.name` میباشد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.player.pic"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["عکس زیر چهره ی `var.player.name` میباشد." ,
                             "عکس زیر چهره ی `var.player.name` میباشد." ,

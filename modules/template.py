@@ -29,8 +29,8 @@ class Template:
         :param debug:
         """
 
-        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else
-                          inp if mode == 'dict' else
+        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
+                          inp if mode == 'dict' else \
                           None
         self.__problems = []
         

@@ -3,7 +3,7 @@
         "player": "db(footballPlayer)",
         "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["`var.player.name` در چه سالی بدنیا آمده است؟"]
 	},

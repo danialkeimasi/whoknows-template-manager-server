@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.hom_score != var.match.home_score], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["$var.match.home_score"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["در بازی `var.match.name` تیم `var.match.home` چه تعداد گل به ثمر رساند؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["$var.match.home_score"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["در بازی `var.match.name` تیم `var.match.home` توانست `var.match.home_score` بار دروازه ی حریف را باز کند.",
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).home_score` بار دروازه ی حریف را باز کند."]

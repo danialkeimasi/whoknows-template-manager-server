@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.pos < var.team.pos)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم در جدول لیگ `var.team.league` نسبت به سایر گزینه ها رتبه ی پایین تری دارد؟"]
 	},

@@ -3,7 +3,7 @@
         "team": "db(footballTable)",
         "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf > var.team.gf)] ,NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام تیم در لیگ `var.team.league` گل زده ی کمتری نسبت به سایر گزینه ها دارد؟"]
 	},

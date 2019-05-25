@@ -5,7 +5,7 @@
 		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
 		"ans_cnt": "rand(range(1,var.NOC+1))"
 	},
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": [
 				"کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
@@ -24,7 +24,7 @@
 			]
 		}
 	},
-	"$select": {
+	"&select": {
 		"title": {
 			"text": [
 				"از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",

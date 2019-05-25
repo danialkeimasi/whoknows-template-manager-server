@@ -5,7 +5,7 @@
         "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
 	},
@@ -16,7 +16,7 @@
 			"text": ["$var.team.coach"]
 	}
 	},
-	"$select": {
+	"&select": {
 		"title": {
 			"text": ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
     },

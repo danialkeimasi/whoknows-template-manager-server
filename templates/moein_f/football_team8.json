@@ -5,7 +5,7 @@
         "countries": "listSub(footballTeam.country, var.team.country)",
         "True_or_False": "rand([True,False])"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["`var.team.coach` در کدام کشور مربیگری میکند؟"]
 	},
@@ -16,7 +16,7 @@
 			"text": ["var.team.country"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["`var.team.coach` در چه کشوری مربیگری میکند؟"]
 	},
@@ -24,7 +24,7 @@
 			"text": ["var.team.country"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
                             "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]

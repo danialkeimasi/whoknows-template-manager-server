@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["$var.match.stadium"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["$var.match.stadium"]
 	}
 	},
-	"bool": {
+	"&bool": {
 		"title": {
 			"text": ["بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
                             "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]

@@ -2,7 +2,7 @@
 	"values": {
         "player": "db(footballPlayer)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["قد `var.player.name` چند سانتی متر است؟"]
 	},
@@ -13,7 +13,7 @@
 			"text": ["var.player.height"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["قد `var.player.name` چند سانتی متر است؟"]
 	},
@@ -21,7 +21,7 @@
 			"text": ["var.player.height"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["قد `var.player.name` برابر `var.player.height` است.",
                             "قد `var.player.name` برابر `wrong_guess(var.player.height, 5 , 1)` است."]

@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"]
 	},

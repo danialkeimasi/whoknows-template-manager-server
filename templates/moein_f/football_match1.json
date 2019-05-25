@@ -3,7 +3,7 @@
         "match": "db(footballMatch)",
         "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["در بازی `var.match.name` داور وسط بازی چه کسی بود؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["$var.match.ref"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["در بازی `var.match.name` داور وسط بازی چه کسی بود؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["$var.match.ref"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["داوری بازی `var.team.name` بر عهده ی `var.match.ref` بود.",
                             "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."]

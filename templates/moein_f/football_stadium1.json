@@ -3,7 +3,7 @@
         "stadium": "db(footballStadium)",
         "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)"
     },
-	"$choose": {
+	"&choose": {
 		"title": {
 			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
 	},
@@ -14,7 +14,7 @@
 			"text": ["var.stadium.capacity"]
 	}
 	},
-	"$write": {
+	"&write": {
 		"title": {
 			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
 	},
@@ -22,7 +22,7 @@
 			"text": ["var.stadium.capacity"]
 	}
 	},
-	"$bool": {
+	"&bool": {
 		"title": {
 			"text": ["گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
                             "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."]
