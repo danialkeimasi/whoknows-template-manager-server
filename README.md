@@ -12,32 +12,47 @@ Setting up is simple, just follow these steps.
     apt install git python3 python3-pip
 ```
 
-##### 2. Clone the repository:
-    git clone ...
+2. Clone the repository:
+```
+git clone ...
+```
 
-##### 3. Go to repository folder:
-    cd guessit-template-manager
+3. Go to repository folder:
+```
+cd guessit-template-manager
+```
 
-##### 4. Install dependencies:
-    pip install -r requirements.txt
+4. Install dependencies:
+```
+pip install -r requirements.txt
+```
 
-##### 5. Start server:
-    python3 app.py
-
+5. Start server:
+```
+python3 app.py
+```
 
 ####  Docker :
 
-##### 1. Clone the repository:
-    git clone ...
+1. Clone the repository:
+```
+git clone ...
+```
 
-##### 2. Go to repository folder:
-    cd guessit-template-manager
+2. Go to repository folder:
+```
+cd guessit-template-manager
+```
 
-##### 3. Build image from dockerfile:
-    docker build -t guessit-template-manager
+3. Build image from dockerfile:
+```
+docker build -t guessit-template-manager
+```
 
-##### 4. Run docker image:
-    docker run -it guessit-template-manager
+4. Run docker image:
+```
+docker run -it guessit-template-manager
+```
 
 
 ## What it does?
@@ -68,28 +83,54 @@ for a big question game.
 
 # Question template example
 ```
-[
-  {
-    "values"	: {
-      "team"          : "db( footballTeam )",
-      "team_same"     : "db( footballTeam[ footballTeam.league == var.team.league ] )",
-      "leagues"       : "listSub(footballTeam.league, var.team.league)",
-      "CL"            : "var.leagues",
-      "True_or_False" : "rand( [True,False] )"
+{
+    "values": {
+        "value": "db(dataset_name[query])"
     },
-
-    "title_true_false"      : ["تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند" , "تیم `var.team.name` در لیگ `var.CL.choose(1)` فعالیت میکند"], 
-    "title_multichoices"    : ["تیم `var.team.name` در کدام لیگ فعالیت میکند" , "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟" ],
-    "title_writing"         : ["تیم `var.team.name` در کدام لیگ فعالیت میکند"],
-    "answer_multichoices"   : ["var.team.league"],
-    "answer_writing"        : ["var.team.league"],
-    "answer_true_false"     : ["var.True_or_False"],
-    "choices_multichoices"  : ["var.CL.choose(NOC)"],
-    "__usage"               : ["contest"],
-    "__number"              : 1,
-    "__level"               : 1
-  }
-]
+    "&bool": {
+        "title": {}
+    },
+    "&choose": {
+        "title": {},
+        "answer": {},
+        "choice": {}
+    },
+    "&write": {
+        "title": {},
+        "answer": {}
+    },
+    "&select": {
+        "title": {},
+        "choice": {},
+        "answer": {}
+    },
+    "datasets": [],
+    "tags": [],
+    "usage": [
+        "contest"
+    ],
+    "__state": "idea",
+    "__test_info": {
+        "duplication": {
+            "similars": []
+        },
+        "acceptance": {
+            "votes": []
+        },
+        "data": {
+            "datasets": []
+        },
+        "structure": {
+            "sections": []
+        },
+        "generation": {
+            "result": []
+        }
+    },
+    "__idea": [
+        ""
+    ]
+}
 ```
 
 # Template cheat sheet
@@ -115,4 +156,4 @@ var.loaded_dataset.choose( number_of_elements ).property | select number of duc 
 # Data Catalogs
 you can find data catalogs in here
   
-[sample](https://github.com/danialkeimasi/guessit-question-manager/blob/master/data_catalogs/__sample.md)
+[data-catalog dir](https://github.com/danialkeimasi/whoknows-template-manager/blob/master/data_catalogs/)
