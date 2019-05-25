@@ -2,7 +2,6 @@ from server.flask import getApp
 from flask import json, request
 from config.config import config, mongo_client, logger
 from modules.template import Template
-from modules.tools.json_mongo_encoder import JSONEncoder
 from bson import json_util, ObjectId
 
 
