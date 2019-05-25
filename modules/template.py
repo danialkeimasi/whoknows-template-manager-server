@@ -64,7 +64,7 @@ class Template:
         get all the question types that can make with the template
         :return list of question types:
         """
-        return [key for key in self.__template.keys() if key.startswith('__')]
+        return [key for key in self.__template.keys() if key.startswith('$')]
 
 
     def __check_json_format(self):
@@ -234,7 +234,7 @@ class Template:
         if self.__problems:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
-        question_type = choose(self.get_question_types()) if question_type is None else f'__{question_type}'
+        question_type = choose(self.get_question_types()) if question_type is None else f'${question_type}'
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)
