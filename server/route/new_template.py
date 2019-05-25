@@ -2,6 +2,7 @@ from server.flask import getApp
 from flask import json, request
 from config.config import config, mongo_client, logger
 from modules.template import Template
+from modules.tools.json_mongo_encoder import JSONEncoder
 
 
 def add():
@@ -44,4 +45,4 @@ def add():
                 'problem': ['you must send the idea as a post json request.'],
             }
         
-        return json.dumps(response)
+        return JSONEncoder().encode(response)

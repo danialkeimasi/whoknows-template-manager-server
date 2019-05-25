@@ -43,6 +43,6 @@ def add():
         response = {
             'ok': True,
             'templates': templates,
-        }
+        }   
 
-        return JSONEncoder().encode(templates)
+        return JSONEncoder().encode(response)
