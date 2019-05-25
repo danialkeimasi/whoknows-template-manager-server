@@ -9,12 +9,12 @@ import copy
 from modules.tools.functions import choose, rand, to_list
 from modules.question import Question
 import random
-from config.config import mongo_client, ListHandler
+from config.config import mongo_client, ListHandler, config
 
 
 class Template:
 
-    __template_formatter = json.load(open('./templates/template_v2/template_formatter.json'))
+    __template_formatter = json.load(open(config.dir.template_formatter))
     __default_metadata = {
         'NOC': 3,
         'NOS': 4,
