@@ -182,7 +182,7 @@ class Template:
                 for q_property_format_name in template[q_type_name][q_property_name].keys():
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
-                        if raw_str.startswith('&'):
+                        if raw_str.startswith('$'):
                             template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:])
                         
                         else:
