@@ -6,8 +6,7 @@ import re
 
 import pandas as pd
 
-from config.config import logger
-from config.config import mongo_client, ListHandler, config
+from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer
 from modules.tools.functions import choose, rand
@@ -32,7 +31,7 @@ class Template:
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
             inp if mode == 'dict' else \
                 None
-                
+
         self.__problems = []
 
         if debug:
