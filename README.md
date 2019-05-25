@@ -9,7 +9,7 @@ Setting up is simple, just follow these steps.
 
 1. Install python and pip and git:  
 ```
-    apt install git python3 python3-pip
+apt install git python3 python3-pip
 ```
 
 2. Clone the repository:
