@@ -183,7 +183,7 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
                         if raw_str.startswith('&'):
-                            template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:-1])
+                            template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:])
                         
                         else:
                             while re.search(reg_str, raw_str):
