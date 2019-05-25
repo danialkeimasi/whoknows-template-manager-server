@@ -77,7 +77,7 @@ API documentation url :
 --------------------------------------------------------------------------------
 
 
-# Guessit Question Manager
+# Whoknows Template Manager
 generates questions by the given data and templates.  
 for a big question game.
 
@@ -122,7 +122,7 @@ for a big question game.
 # Template cheat sheet
 you can make question templates with following cheat sheet
 
-## Load
+### Load
 this commands must use in "values" part of templates
 
 Command | Description
@@ -132,7 +132,7 @@ db( loaded_dataset[ condition ] ) | filter a loaded dataset and get subdata from
 rand( dataset , number_of_elements ) | choose randomly from a dataset (or list) of data by numbers that we want
 listSub(loaded2.property, loaded1.propery) | subtract two dataset: loaded2 data that not have loaded1.property in it
 
-## Choosing
+### Choosing
 Command | Description
 ------- | -------
 var.loaded_dataset.choose( number_of_elements ).property | select number of duc from loaded dataset and get a list of properties
