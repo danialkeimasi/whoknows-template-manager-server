@@ -32,6 +32,7 @@ def add():
         
         if idea:
             empty_template = json.load(open(config.dir.empty_template))
+            empty_template['__idea'] = idea
             insert_object = mongo_client.TemplateManager.templates.insert_one(empty_template)
             response = {
                 'ok' : insert_object.acknowledged,
