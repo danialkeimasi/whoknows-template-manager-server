@@ -21,15 +21,28 @@
     },
     "datasets": [],
     "tags": [],
-    "usage": ["contest"],
+    "usage": [
+        "contest"
+    ],
     "__state": "idea",
     "__test_info": {
-        "duplication":{
-            "similars":[]
+        "duplication": {
+            "similars": []
         },
-        "acceptance":{
-            "votes":[]
+        "acceptance": {
+            "votes": []
+        },
+        "data": {
+            "datasets": []
+        },
+        "structure": {
+            "sections": []
+        },
+        "generation": {
+            "result": []
         }
     },
-    "__idea": [""]
+    "__idea": [
+        ""
+    ]
 }

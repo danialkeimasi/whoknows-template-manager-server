@@ -1,15 +1,12 @@
 from server.flask import getApp
 from flask import json, request
 from config.config import config, mongo_client, logger
-import random
-import functools
-import glob
 from modules.template import Template
 
 
 def add():
     app = getApp()
-    @app.route('/get_question', methods=['GET'])
+    @app.route('/question/generate', methods=['GET'])
     def get_question_get():
 
         response = {
@@ -22,7 +19,7 @@ def add():
 
         return json.dumps(response)
 
-    @app.route('/get_question', methods=['POST'])
+    @app.route('/question/generate', methods=['POST'])
     def get_question_post():
         '''
         get question part of server
@@ -39,13 +36,7 @@ def add():
                 "ok": False
             }
         else:
-            # 1 find the templates that $match with tags that we want and use $sample
-            #   for select number of templates randomly
-
-            # 2 generate a list of questiostions by len of "count"
-
-            # 3 prepare response dictionary and return it with json.dump
-
+            
             templates = list(mongo_client.TemplateManager.templates.aggregate([
                             {'$match' : {'ok': True} },
                             {'$match' : {'tags': { '$in' : tags } } },
