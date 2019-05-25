@@ -1,32 +1,43 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
+        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
     },
-    "title_multichoices": [
-        "پیراهن دروازه بانی زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن دروازه بان کدام تیم است؟"
-    ],
-    "title_writing": [
-        "پیراهن دروازه بانی زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن دروازه بان چه تیمی است؟"
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
-        "var.team.name"
-    ],
-    "choices_multichoices": [
-        "var.teams.name"
-    ],
-    "subtitle_multichoices": [
-        "var.team.gkkit"
-    ],
-    "subtitle_writing": [
-        "var.team.gkkit"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 20,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["پیراهن دروازه بانی زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن دروازه بان کدام تیم است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+    },
+        "subtitle"      :  {
+            "text"       : ["var.team.gkkit"]
+    }
+    },
+	"__write"          : {
+		"title"         : {
+			"text"       : ["پیراهن دروازه بانی زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن دروازه بان چه تیمی است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+    },
+        "subtitle"      :  {
+            "text"       : ["var.team.gkkit"]
+    }
+	},
+	"_id" : "football_team20",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

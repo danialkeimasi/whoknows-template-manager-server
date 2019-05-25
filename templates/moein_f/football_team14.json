@@ -1,45 +1,4 @@
 {
-    "values": {
-        "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)",
-        "True_or_False": "rand([True,False])"
-    },
-    "title_multichoices": [
-        "لباس دوم تیم `var.team.name` کدام است؟ " 
-    ],
-    "title_true_false": [
-        "عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن دوم تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، لباس دوم تیم `var.team.name` میباشد.",
-        "عکس زیر ، لباس دوم تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، لباس تیم `var.team.name` میباشد.",
-        "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.awaykit"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.choose(NOC).awaykit"
-    ],
-    "subtitle_true_false": [
-        "var.team.awaykit"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 14,
-    "__level": 2
-}
-
-
-
-
-{
 	"values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
@@ -55,17 +14,6 @@
 			"text"       : ["var.team.awaykit"]
 	}
 	},
-	"__write"          : {
-		"title"        : {
-			"text"       : ["عکس زیر ، پیراهن دوم کدام تیم است؟"]
-	},
-		"answer"        : {
-			"text"       : ["var.team.name"]
-    },
-        "subtitle"      : {
-            "text"       : ["var.team.awaykit"]  
-        }
-    },
     "__bool"          : {
 		"title"        : {
 			"text"       : ["عکس زیر ، پیراهن دوم تیم `var.team.name` میباشد.",
@@ -76,11 +24,12 @@
                             "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
                             "عکس زیر ، لباس تیم `var.team.name` میباشد.",
                             "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
-            ],
+            ]
+    },
         "subtitle"   : {
             "text"   : ["var.team.awaykit"]
     }
-	},
+
 	},
 
 	"_id" : "football_team14",

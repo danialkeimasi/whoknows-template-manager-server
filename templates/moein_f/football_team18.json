@@ -1,32 +1,43 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
         "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
     },
-    "title_multichoices": [
-        "پیراهن زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن کدام تیم است؟"
-    ],
-    "title_writing": [
-        "پیراهن زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن چه تیمی است؟"
-    ],
-    "answer_multichoices": [
-        "var.team.name"
-    ],
-    "answer_writing": [
-        "var.team.name"
-    ],
-    "choices_multichoices": [
-        "var.teams.name"
-    ],
-    "subtitle_multichoices": [
-        "var.team.awaykit"
-    ],
-    "subtitle_writing": [
-        "var.team.awaydkit"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 18,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["پیراهن زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن کدام تیم است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.name"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+    },
+        "subtitle"      :  {
+            "text"       : ["var.team.awaykit"]
+    }
+    },
+	"__write"          : {
+		"title"         : {
+			"text"       : ["پیراهن زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن چه تیمی است؟"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.name"]
+    },
+        "subtitle"      :  {
+            "text"       : ["var.team.awaykit"]
+    }
+	},
+	"_id" : "football_team18",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

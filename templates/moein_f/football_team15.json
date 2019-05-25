@@ -1,37 +1,44 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
     },
-    "title_multichoices": [
-        "لباس سوم تیم `var.team.name` کدام است؟ "
-    ],
-    "title_true_false": [
-        "عکس زیر ، پیراهن سوم تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن سوم تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، لباس سوم تیم `var.team.name` میباشد.",
-        "عکس زیر ، لباس سوم تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، لباس تیم `var.team.name` میباشد.",
-        "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.thirdkit"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.choose(NOC).thirdkit"
-    ],
-    "subtitle_true_false": [
-        "var.team.thirdkit"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 15,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["لباس سوم تیم `var.team.name` کدام است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.thirdkit"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.thirdkit"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["عکس زیر ، پیراهن سوم تیم `var.team.name` میباشد.",
+                            "عکس زیر ، پیراهن سوم تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس سوم تیم `var.team.name` میباشد.",
+                            "عکس زیر ، لباس سوم تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس تیم `var.team.name` میباشد.",
+                            "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."]
+    },
+        "subtitle"     : {
+            "text"      : ["var.team.thirdkit"]
+        } 
+	},
+	"_id" : "football_team15",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

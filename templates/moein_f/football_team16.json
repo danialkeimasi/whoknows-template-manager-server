@@ -1,33 +1,37 @@
 {
-    "values": {
+	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)",
-        "True_or_False": "rand([True,False])"
+        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
     },
-    "title_multichoices": [
-        "لباس دروازه بان تیم 'var.team.name' کدام است؟"
-    ],
-    "title_true_false": [
-        "عکس زیر ، پیراهن دروازه بان تیم `var.team.name` میباشد.",
-        "عکس زیر ، پیراهن دروازه بان تیم `var.teams.choose(1).name` میباشد.",
-        "عکس زیر ، لباس دروازه بان تیم `var.team.name` میباشد.",
-        "عکس زیر ، لباس دروازه بان تیم `var.teams.choose(1).name` میباشد."
-    ],
-    "answer_multichoices": [
-        "var.team.gkkit"
-    ],
-    "answer_true_false": [
-        "var.True_or_False"
-    ],
-    "choices_multichoices": [
-        "var.teams.choose(NOC).gkkit"
-    ],
-    "subtitle_true_false": [
-        "var.team.gkkit"
-    ],
-    "__usage": [
-        "contest"
-    ],
-    "__number": 16,
-    "__level": 2
-}
+	"__choose"          : {
+		"title"        : {
+			"text"       : ["لباس دروازه بان تیم 'var.team.name' کدام است؟"]
+	},
+		"choice"        : {
+			"text"       : ["var.teams.gkkit"]
+	},
+		"answer"        : {
+			"text"       : ["var.team.gkkit"]
+	}
+	},
+	"__bool"          : {
+		"title"        : {
+			"text"       : ["عکس زیر ، پیراهن دروازه بان تیم `var.team.name` میباشد.",
+                            "عکس زیر ، پیراهن دروازه بان تیم `var.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس دروازه بان تیم `var.team.name` میباشد.",
+                            "عکس زیر ، لباس دروازه بان تیم `var.teams.choose(1).name` میباشد."]
+	}
+	},
+	"_id" : "football_team16",
+	"datasets": ["footballTeam"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "",
+	"tags": ["football", "footballTeam", "team", "club"],
+	"state": "",
+	"state_info": {},
+	"idea": [""]
+
+
+} 

@@ -2,8 +2,7 @@
 	"values": {
         "team": "db(footballTeam)",
         "team1": "db(footballTeam[footballTeam.stadium != var.team.stadium])",
-        "stadiums": "listSub(footballTeam.stadium , var.team.stadium)",
-        "True_or_False": "rand([True,False])"
+        "stadiums": "listSub(footballTeam.stadium , var.team.stadium)"
     },
 	"__choose"          : {
 		"title"        : {
