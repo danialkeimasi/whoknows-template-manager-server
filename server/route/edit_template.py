@@ -34,10 +34,10 @@ def add():
         problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in user_req else []
 
         if problems == []:
-            replace_res = mongo_client.TemplateManager.templates.replace_one({'_id': ObjectId(user_req['_id'])}, user_req)
+            replace_res = mongo_client.TemplateManager.templates.replace_one({'_id': user_req['_id']}, user_req)
             response = {
                 'ok' : replace_res.acknowledged,
-                '_id': replace_res.upserted_id
+                '_id': replace_res.upserted_id,
             }
         else:
             response = {
