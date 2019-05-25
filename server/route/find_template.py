@@ -33,13 +33,13 @@ def add():
         tags     = user_req['tags']     if 'tags'  in user_req else None
         ok       = user_req['ok']       if 'ok'    in user_req else None
         count    = user_req['count']    if 'count' in user_req else None
-    
-        pipeline = [{'$match' : query }]                       if query is not None else [] + \
-                   [{'$match' : {'ok': ok} }]                  if ok    is not None else [] + \
-                   [{'$match' : {'tags': { '$in' : tags } } }] if tags  is not None else [] + \
-                   [{'$limit': count}]                         if count is not None else []
+
+        pipeline =  []
+        pipeline += [{'$match' : query }]                       if query is not None else []
+        pipeline += [{'$match' : {'ok': ok} }]                  if ok    is not None else []
+        pipeline += [{'$match' : {'tags': { '$in' : tags } } }] if tags  is not None else []
+        pipeline += [{'$limit': count}]                         if count is not None else []
         
-        print(pipeline)
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
         
         response = {
