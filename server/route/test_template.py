@@ -1,6 +1,8 @@
-from server.flask import getApp
 from flask import json, request
+
 from modules.template import Template
+from server.flask import getApp
+
 
 def add():
     app = getApp()

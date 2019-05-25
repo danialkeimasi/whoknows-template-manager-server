@@ -1,7 +1,8 @@
-from server.flask import getApp
 from flask import json, request
-from config.config import config, mongo_client, logger
+
+from config.config import mongo_client, logger
 from modules.template import Template
+from server.flask import getApp
 
 
 def add():
