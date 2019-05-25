@@ -3,6 +3,15 @@ from flask import json, request
 from config.config import config, mongo_client, logger
 from modules.template import Template
 
+from bson import ObjectId
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
+
 
 def add():
     app = getApp()
@@ -38,10 +47,11 @@ def add():
                    [{'$limit': count}]                         if count is not None else []
         
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
-
+        templates = list(map(lambda i: i.update({'_id': }), templates))
         response = {
             'ok': True,
             'templates': templates,
         }
 
-        return json.dumps(response)
+        return json.dumps(json.encode(templates, cls=JSONEncoder)
+)

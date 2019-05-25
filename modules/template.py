@@ -183,7 +183,6 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
                         if raw_str.startswith('&'):
-                        # if raw_str[0] == '`' and raw_str[-1] == '`':
                             template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:-1])
                         
                         else:
@@ -213,7 +212,7 @@ class Template:
 
         template = self.__template
         question = template[question_type]
-
+        
         question.update({
             'type': question_type[1:],
             'tags': template['tags'],
