@@ -213,7 +213,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'type': question_type[2:],
+            'type': question_type[1:],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
