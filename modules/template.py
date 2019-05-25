@@ -1,15 +1,16 @@
-from config.config import logger, config
-import json
-from pprint import pprint
-import re
-import pandas as pd
-import os
-from modules.tools.data_container import DataContainer, db, listSub
 import copy
-from modules.tools.functions import choose, rand, to_list
-from modules.question import Question
+import json
+import os
 import random
+import re
+
+import pandas as pd
+
+from config.config import logger
 from config.config import mongo_client, ListHandler, config
+from modules.question import Question
+from modules.tools.data_container import DataContainer
+from modules.tools.functions import choose, rand
 
 
 class Template:

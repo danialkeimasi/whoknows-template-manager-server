@@ -1,9 +1,4 @@
-import re
-import json
 import random
-from config.config import logger, config
-import pandas as pd
-
 
 
 def rand(needList, count=0, exceptions=[]):

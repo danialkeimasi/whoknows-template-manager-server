@@ -1,7 +1,7 @@
-from modules.tools.functions import choose
-from config.config import logger
 from collections.abc import Iterable
 
+from config.config import logger
+from modules.tools.functions import choose
 
 
 class DataContainer():
