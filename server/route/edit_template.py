@@ -27,6 +27,7 @@ def add():
         update the template in the database
         
         '''
+        print(dir(request))
         template = json_util.loads(request.text) if request.json is not None else {}
 
         problems = []
