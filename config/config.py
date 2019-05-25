@@ -5,10 +5,8 @@ from pymongo import MongoClient
 from log4mongo.handlers import MongoHandler
 from pprint import pprint
 
-
-with open("./config/config.yml" , 'r') as yamlfileobj:
+with open("./config/config.yml", 'r') as yamlfileobj:
     config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
-
 
 logging.basicConfig(
     datefmt='%y-%b-%d %H:%M:%S',
@@ -33,11 +31,10 @@ mongo_client = MongoClient(
 
 
 class ListHandler(logging.Handler):
-    
-        def __init__(self, log_list):
-                logging.Handler.__init__(self)
-                self.log_list = log_list
 
-        def emit(self, record):
-                self.log_list.append(record.msg) 
+    def __init__(self, log_list):
+        logging.Handler.__init__(self)
+        self.log_list = log_list
 
+    def emit(self, record):
+        self.log_list.append(record.msg)

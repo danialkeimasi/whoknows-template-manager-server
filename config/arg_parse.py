@@ -8,15 +8,13 @@ from modules.template import Template
 from config.config import mongo_client, logger
 
 
-
 def arg_parse():
     '''
     command line interface
     '''
 
     parser = argparse.ArgumentParser(description='Process some integers.')
-    
-    
+
     parser.add_argument(
         '-r', '--run',
         dest='function', default=None,
@@ -30,7 +28,7 @@ def arg_parse():
         type=str,
         help='address of template you wanna work on',
     )
-    
+
     parser.add_argument(
         '-c', '--count',
         dest='count', default=None,
@@ -47,12 +45,10 @@ def arg_parse():
 
     args = parser.parse_args()
 
-
     if args.log_level:
-
         log_levels = ['notset', 'debug', 'info', 'warning', 'error', 'critical']
         logger.setLevel(log_levels.index(args.log_level) * 10 if args.log_level in log_levels else 0)
-        
+
         '''
             Level 	    Numeric value
             CRITICAL 	50
@@ -67,8 +63,8 @@ def arg_parse():
         template = Template(args.template, debug=True, mode='file')
 
     if args.function:
-        logger.debug( f'Running function {args.function}')
-        
+        logger.debug(f'Running function {args.function}')
+
         if args.function in ['test']:
             template.test_function()
 
