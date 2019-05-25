@@ -14,7 +14,7 @@ apt install git python3 python3-pip
 
 2. Clone the repository:
 ```sh
-git clone ...
+git clone https://github.com/danialkeimasi/whoknows-template-manager
 ```
 
 3. Go to repository folder:
