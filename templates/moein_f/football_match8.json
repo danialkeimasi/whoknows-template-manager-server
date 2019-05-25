@@ -28,14 +28,14 @@
                 "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "]
 	}
 	},
-	"_id" : "football_match8",
+	
 	"datasets": ["footballCoach"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 } 

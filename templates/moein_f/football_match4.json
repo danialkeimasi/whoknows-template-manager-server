@@ -14,15 +14,15 @@
 			"text"       : ["$var.match.name"]
 	}
 	},
-	"_id" : "football_match4",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

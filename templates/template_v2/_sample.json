@@ -7,11 +7,11 @@
     "usage": ["contest"],
     "level": 2,
     "score_function": "default",
-    "time_function": "",
+    "time_function": "default",
     "tags": [],
-    "state": "",
-    "state_info": {},
-    "idea": [""],
+    "__state": "",
+    "__test_info": {},
+    "__idea": [""],
 
     "$choose": {
       "title": {

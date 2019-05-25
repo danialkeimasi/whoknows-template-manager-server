@@ -28,15 +28,15 @@
                             "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
 	}
 	},
-	"_id" : "football_table3",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

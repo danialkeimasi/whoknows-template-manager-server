@@ -34,16 +34,16 @@
                             "`var.team.coach` و `var.team1.coach` در لیگ های `var.leagues.choose(1)` و `var.team.league` مربیگری میکنند."]
 	}
 	},
-	"_id" : "football_team6",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "club", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

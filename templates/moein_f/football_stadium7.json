@@ -28,15 +28,15 @@
                             "ورزشگاه `var.stadium.name` در سال `var.stadiums.choose(1).year` تاسیس شده است."]
 	}
 	},
-	"_id" : "football_stadium7",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

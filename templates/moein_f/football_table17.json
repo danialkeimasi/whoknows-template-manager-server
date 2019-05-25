@@ -22,15 +22,15 @@
                             " در لیگ `var.team.league` تیم `var.teams.choose(1).name` رتبه ی بهتری نسبت به تیم `var.team.name` دارد."]
 	}
 	},
-	"_id" : "football_table17",
+	
 	"datasets": ["footballTable"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTable", "league" ,"table"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

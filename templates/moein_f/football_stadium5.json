@@ -28,15 +28,15 @@
                             "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."]
 	}
 	},
-	"_id" : "football_stadium5",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

@@ -44,7 +44,7 @@
 		}
 	},
 
-	"_id": "football_team2",
+	
 	"datasets": [
 		"footballTeam"
 	],
@@ -53,14 +53,14 @@
 	],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": [
 		"football",
 		"footballTeam"
 	],
-	"state": "",
-	"state_info": {},
-	"idea": [
+	"__state": "",
+	"__test_info": {},
+	"__idea": [
 		""
 	]
 }

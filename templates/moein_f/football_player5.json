@@ -27,16 +27,16 @@
 			"text"       : ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
 	}
 	},
-	"_id" : "football_player5",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

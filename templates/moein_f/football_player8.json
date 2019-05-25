@@ -28,15 +28,15 @@
                             "`var.player.name` در تیم `var.player.team` با شماره ی `var.players.choose(1).club_number` بازی میکند."]
 	}
 	},
-	"_id" : "football_player8",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

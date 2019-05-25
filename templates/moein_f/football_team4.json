@@ -37,16 +37,16 @@
                             "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."]
 	}
 	},
-	"_id" : "football_team4",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

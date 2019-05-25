@@ -27,16 +27,16 @@
 			"text"       : ["$var.teams_same.choose(var.ans_cnt).coach"]
 	}
 	},
-	"_id" : "football_team7",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "club", "team"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

@@ -28,16 +28,16 @@
                 "در بازی `var.match.name` تیم `var.match.home` توانست `var.matches.choose(1).away_score` بار دروازه ی حریف را باز کند."]
 	}
 	},
-	"_id" : "football_match10",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

@@ -30,16 +30,16 @@
                             "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]
 	}
 	},
-	"_id" : "football_team8",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "team", "club"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

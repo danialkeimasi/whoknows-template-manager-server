@@ -28,16 +28,16 @@
                             "`var.coach.name` اهل کشور `var.coachs.choose(1).nation` میباشد."]
 	}
 	},
-	"_id" : "football_coach1",
+	
 	"datasets": ["footballCoach"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballCoach", "coach"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

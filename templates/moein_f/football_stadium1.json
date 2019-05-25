@@ -28,15 +28,15 @@
                             "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."]
 	}
 	},
-	"_id" : "football_stadium1",
+	
 	"datasets": ["footballStadium"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballStadium", "stadium"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

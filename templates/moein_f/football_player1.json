@@ -19,15 +19,15 @@
 			"text"       : ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
 	}
 	},
-	"_id" : "football_player1",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

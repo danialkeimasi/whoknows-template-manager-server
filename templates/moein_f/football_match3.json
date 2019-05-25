@@ -28,15 +28,15 @@
                             "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]
 	}
 	},
-	"_id" : "football_match3",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

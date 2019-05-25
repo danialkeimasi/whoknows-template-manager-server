@@ -30,13 +30,13 @@
    }
  },
 
- "_id": "football_team1",
+ 
  "datasets": ["footballTeam"],
  "usage": ["contest"],
  "score_function": "default",
- "time_function": "",
+ "time_function": "default",
  "tags": ["football", "footballTeam"],
- "state": "",
- "state_info": {},
- "idea": [""]
+ "__state": "",
+ "__test_info": {},
+ "__idea": [""]
 }

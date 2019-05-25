@@ -28,15 +28,15 @@
                             "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."]
 	}
 	},
-	"_id" : "football_match1",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 

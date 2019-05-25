@@ -28,16 +28,16 @@
             "بازی `var.match.name` با نتیجه ی `var.match.choose(1).scores` به اتمام رسید."]
 	}
 	},
-	"_id" : "football_match5",
+	
 	"datasets": ["footballMatch"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballMatch", "match"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

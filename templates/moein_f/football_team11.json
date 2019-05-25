@@ -30,16 +30,16 @@
                             "ورزشگاه خانگی تیم `var.team.name` ، `var.team1.stadium` میباشد."]
 	}
 	},
-	"_id" : "football_team11",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballTeam", "team", "club"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

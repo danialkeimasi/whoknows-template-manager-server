@@ -40,16 +40,16 @@
                             "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."]
 	}
 	},
-	"_id" : "football_team9",
+	
 	"datasets": ["footballTeam"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "team", "club"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 
 } 

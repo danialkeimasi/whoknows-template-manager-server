@@ -27,15 +27,15 @@
                             "قد `var.player.name` برابر `wrong_guess(var.player.height, 5 , 1)` است."]
 	}
 	},
-	"_id" : "football_player10",
+	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
 	"score_function": "default",
-	"time_function": "",
+	"time_function": "default",
 	"tags": ["football", "footballPlayer", "player"],
-	"state": "",
-	"state_info": {},
-	"idea": [""]
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
 
 } 
