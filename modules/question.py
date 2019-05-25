@@ -11,4 +11,7 @@ class Question:
 
     def check_question(self):
         problems = []
+        question = self.__question
+        
+        
         return problems
