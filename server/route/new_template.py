@@ -29,13 +29,18 @@ def add():
         '''
         user_req = request.json     if request.json is not None else {}
         idea     = user_req['idea'] if 'idea' in user_req else None
-
+        
         if idea:
-            empty_template = json.load(open())
+            empty_template = json.load(open(config.dir.empty_template))
+            insert_object = mongo_client.TemplateManager.templates.insert_one(empty_template)
             response = {
-                'ok': True,
-                'templates': templates,
+                'ok' : insert_object.acknowledged,
+                '_id': insert_object.inserted_id
             }
-
+        else:
+            response = {
+                'ok' : False,
+                'problem': ['you must send the idea as a post json request.'],
+            }
         
         return json.dumps(response)
