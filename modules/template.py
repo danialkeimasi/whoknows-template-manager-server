@@ -66,7 +66,7 @@ class Template:
         get all the question types that can make with the template
         :return list of question types:
         """
-        return [key for key in self.__template.keys() if key.startswith('$')]
+        return [key for key in self.__template.keys() if key.startswith('&')]
 
 
     def __check_json_format(self):
@@ -182,8 +182,8 @@ class Template:
                 for q_property_format_name in template[q_type_name][q_property_name].keys():
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
                         
-                        # if raw_str.startswith('$'):
-                        if raw_str[0] == '`' and raw_str[-1] == '`':
+                        if raw_str.startswith('&'):
+                        # if raw_str[0] == '`' and raw_str[-1] == '`':
                             template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:-1])
                         
                         else:
@@ -236,7 +236,7 @@ class Template:
         if self.__problems:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
-        question_type = choose(self.get_question_types()) if question_type is None else f'${question_type}'
+        question_type = choose(self.get_question_types()) if question_type is None else f'&{question_type}'
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)
