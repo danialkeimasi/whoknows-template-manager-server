@@ -82,7 +82,7 @@ generates questions by the given data and templates.
 for a big question game.
 
 # Question template example
-```
+```json
 {
     "values": {
         "value": "db(dataset_name[query])"
