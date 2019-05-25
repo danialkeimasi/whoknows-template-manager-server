@@ -1,3 +1,67 @@
+## What is template-manager?
+It's a flask server that implements API and functionality for writing and testing templates and generating question from them.
+
+
+## How to install?
+Setting up is simple, just follow these steps.
+
+### Python :
+
+1. Install python and pip and git:
+`apt install git python3 python3-pip`
+
+2. Clone the repository:
+`git clone ...`
+
+3. Go to repository folder:
+`cd guessit-template-manager`
+
+4. Install dependencies:
+ `pip install -r requirements.txt`
+
+5. Start server:
+ `python3 app.py`
+
+
+###  Docker :
+
+1. Clone the repository:
+`git clone ...`
+
+2. Go to repository folder:
+`cd guessit-template-manager`
+
+3. Build image from dockerfile:
+`docker build -t guessit-template-manager`
+
+4. Run docker image:
+`docker run -it guessit-template-manager`
+
+
+## What it does?
+
+- Write template:
+
+- Test template:
+
+- generate question:
+
+
+## How it works?
+
+
+## How to use?
+API documentation url : 
+
+
+## Who is in charge: 
+- Mohammad Parsian
+- Danial Keimasi
+- Moein Samadi
+
+--------------------------------------------------------------------------------
+
+
 # Guessit Question Manager
 generates questions by the given data and templates.  
 for a big question game.
