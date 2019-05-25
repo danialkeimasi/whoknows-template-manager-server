@@ -106,30 +106,16 @@ for a big question game.
     },
     "datasets": [],
     "tags": [],
-    "usage": [
-        "contest"
-    ],
+    "usage": ["contest"],
     "__state": "idea",
     "__test_info": {
-        "duplication": {
-            "similars": []
-        },
-        "acceptance": {
-            "votes": []
-        },
-        "data": {
-            "datasets": []
-        },
-        "structure": {
-            "sections": []
-        },
-        "generation": {
-            "result": []
-        }
+        "duplication": { "similars": [] },
+        "acceptance": { "votes": [] },
+        "data": { "datasets": [] },
+        "structure": { "sections": [] },
+        "generation": { "result": [] }
     },
-    "__idea": [
-        ""
-    ]
+    "__idea": [""]
 }
 ```
 
