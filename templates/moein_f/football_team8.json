@@ -1,45 +1,65 @@
 {
-	"values": {
-        "team": "db(footballTeam)",
-        "team1": "db(footballTeam[footballTeam.league != var.team.league])",
-        "countries": "listSub(footballTeam.country, var.team.country)",
-        "True_or_False": "rand([True,False])"
+  "values": {
+    "team": "db(footballTeam)",
+    "team1": "db(footballTeam[footballTeam.league != var.team.league])",
+    "countries": "listSub(footballTeam.country, var.team.country)",
+    "True_or_False": "rand([True,False])"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "`var.team.coach` در کدام کشور مربیگری میکند؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["`var.team.coach` در کدام کشور مربیگری میکند؟"]
-	},
-		"choice": {
-			"text": ["var.countries.choose(NOC)"]
-	},
-		"answer": {
-			"text": ["var.team.country"]
-	}
-	},
-	"&write": {
-		"title": {
-			"text": ["`var.team.coach` در چه کشوری مربیگری میکند؟"]
-	},
-		"answer": {
-			"text": ["var.team.country"]
-	}
-	},
-	"&bool": {
-		"title": {
-			"text": ["`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
-                            "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."]
-	}
-	},
-	
-	"datasets": ["footballTeam"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballPlayer", "team", "club"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-
-} 
+    "choice": {
+      "text": [
+        "var.countries.choose(NOC)"
+      ]
+    },
+    "answer": {
+      "text": [
+        "var.team.country"
+      ]
+    }
+  },
+  "&write": {
+    "title": {
+      "text": [
+        "`var.team.coach` در چه کشوری مربیگری میکند؟"
+      ]
+    },
+    "answer": {
+      "text": [
+        "var.team.country"
+      ]
+    }
+  },
+  "&bool": {
+    "title": {
+      "text": [
+        "`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
+        "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."
+      ]
+    }
+  },
+  "datasets": [
+    "footballTeam"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballPlayer",
+    "team",
+    "club"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}

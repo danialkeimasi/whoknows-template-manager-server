@@ -1,41 +1,62 @@
 {
-	"values": {
-        "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.pos1 != var.match.pos1], NOC)"
+  "values": {
+    "match": "db(footballMatch)",
+    "matches": "db(footballMatch[footballMatch.pos1 != var.match.pos1], NOC)"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
-	},
-		"choice": {
-			"text": ["$var.matches.pos2"]
-	},
-		"answer": {
-			"text": ["$var.match.pos2"]
-	}
-	},
-	"&write": {
-		"title": {
-			"text": ["در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"]
-	},
-		"answer": {
-			"text": ["$var.match.pos2"]
-	}
-	},
-	"&bool": {
-		"title": {
-			"text": ["میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.match.pos2` بود.",
-                "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "]
-	}
-	},
-	
-	"datasets": ["footballCoach"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballMatch", "match"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
+    "choice": {
+      "text": [
+        "$var.matches.pos2"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.pos2"
+      ]
+    }
+  },
+  "&write": {
+    "title": {
+      "text": [
+        "در بازی `var.match.name` مالکیت تیم `var.match.guest` چقدر بود؟"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.pos2"
+      ]
+    }
+  },
+  "&bool": {
+    "title": {
+      "text": [
+        "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.match.pos2` بود.",
+        "میزان مالکیت توپ تیم `var.match.guest` در باز ی`var.match.name` برابر `var.matches.choose(1).pos2` بود. "
+      ]
+    }
+  },
+  "datasets": [
+    "footballCoach"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballMatch",
+    "match"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
 } 

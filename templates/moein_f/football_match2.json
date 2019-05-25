@@ -1,29 +1,42 @@
 {
-	"values": {
-        "match": "db(footballMatch)",
-        "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
+  "values": {
+    "match": "db(footballMatch)",
+    "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "`var.match.ref` داوری کدام بازی را برعهده داشته است؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["`var.match.ref` داوری کدام بازی را برعهده داشته است؟"]
-	},
-		"choice": {
-			"text": ["$var.matches.ref"]
-	},
-		"answer": {
-			"text": ["$var.match.name"]
-	}
-	},
-	
-	"datasets": ["footballMatch"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballMatch", "match"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-
-} 
+    "choice": {
+      "text": [
+        "$var.matches.ref"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.name"
+      ]
+    }
+  },
+  "datasets": [
+    "footballMatch"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballMatch",
+    "match"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}

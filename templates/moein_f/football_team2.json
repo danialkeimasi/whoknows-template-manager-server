@@ -1,66 +1,64 @@
 {
-	"values": {
-		"team": "db(footballTeam)",
-		"teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
-		"teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
-		"ans_cnt": "rand(range(1,var.NOC+1))"
-	},
-	"&choose": {
-		"title": {
-			"text": [
-				"کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
-				"کدام تیم در لیگ `var.team.league` حضور دارد؟",
-				"کدام تیم در لیگ `var.team.league` فعالیت میکند؟"
-			]
-		},
-		"choice": {
-			"text": [
-				"$var.teams.name"
-			]
-		},
-		"answer": {
-			"text": [
-				"$var.team.name"
-			]
-		}
-	},
-	"&select": {
-		"title": {
-			"text": [
-				"از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
-				"تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
-				"کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"
-			]
-		},
-		"choice": {
-			"text": [
-				"$var.teams.choose(var.NOC - var.ans_cnt + 1).name"
-			]
-		},
-		"answer": {
-			"text": [
-				"$var.teams_same.choose(var.ans_cnt).name"
-			]
-		}
-	},
-
-	
-	"datasets": [
-		"footballTeam"
-	],
-	"usage": [
-		"contest"
-	],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": [
-		"football",
-		"footballTeam"
-	],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [
-		""
-	]
+  "values": {
+    "team": "db(footballTeam)",
+    "teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
+    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
+    "ans_cnt": "rand(range(1,var.NOC+1))"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `var.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"
+      ]
+    },
+    "choice": {
+      "text": [
+        "$var.teams.name"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.team.name"
+      ]
+    }
+  },
+  "&select": {
+    "title": {
+      "text": [
+        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
+        "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
+        "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"
+      ]
+    },
+    "choice": {
+      "text": [
+        "$var.teams.choose(var.NOC - var.ans_cnt + 1).name"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.teams_same.choose(var.ans_cnt).name"
+      ]
+    }
+  },
+  "datasets": [
+    "footballTeam"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballTeam"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
 }

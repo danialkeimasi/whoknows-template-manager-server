@@ -1,29 +1,42 @@
 {
-	"values": {
-        "match": "db(footballMatch)",
-        "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
+  "values": {
+    "match": "db(footballMatch)",
+    "matches": "db(footballMatch[(footballMatch.home_scores != var.match.home_scores) & (footballMatch.home_scores != var.match.away_scores)], NOC)"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["کدام بازی با نتیجه ی `var.match.scores` به اتمام رسید؟"]
-	},
-		"choice": {
-			"text": ["$var.matches.name"]
-	},
-		"answer": {
-			"text": ["$var.match.name"]
-	}
-	},
-	
-	"datasets": ["footballMatch"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballMatch", "match"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-
-} 
+    "choice": {
+      "text": [
+        "$var.matches.name"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.name"
+      ]
+    }
+  },
+  "datasets": [
+    "footballMatch"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballMatch",
+    "match"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}

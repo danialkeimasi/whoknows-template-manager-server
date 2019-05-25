@@ -1,42 +1,62 @@
 {
-	"values": {
-        "match": "db(footballMatch)",
-        "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
+  "values": {
+    "match": "db(footballMatch)",
+    "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
-	},
-		"choice": {
-			"text": ["$var.matches.stadium"]
-	},
-		"answer": {
-			"text": ["$var.match.stadium"]
-	}
-	},
-	"&write": {
-		"title": {
-			"text": ["بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"]
-	},
-		"answer": {
-			"text": ["$var.match.stadium"]
-	}
-	},
-	"&bool": {
-		"title": {
-			"text": ["بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
-                            "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."]
-	}
-	},
-	
-	"datasets": ["footballMatch"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballMatch", "match"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-} 
+    "choice": {
+      "text": [
+        "$var.matches.stadium"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.stadium"
+      ]
+    }
+  },
+  "&write": {
+    "title": {
+      "text": [
+        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.match.stadium"
+      ]
+    }
+  },
+  "&bool": {
+    "title": {
+      "text": [
+        "بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
+        "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."
+      ]
+    }
+  },
+  "datasets": [
+    "footballMatch"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballMatch",
+    "match"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}

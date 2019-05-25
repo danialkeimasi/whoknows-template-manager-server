@@ -1,42 +1,62 @@
 {
-	"values": {
-        "team": "db(footballTeam)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach) ] ,NOC)",
-        "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
-        "ans_cnt": "rand(range(1,NOC+1))"
+  "values": {
+    "team": "db(footballTeam)",
+    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach) ] ,NOC)",
+    "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
+    "ans_cnt": "rand(range(1,NOC+1))"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "کدام مربی در لیگ `var.team.league` مربیگری میکند؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["کدام مربی در لیگ `var.team.league` مربیگری میکند؟"]
-	},
-		"choice": {
-			"text": ["$var.teams.choose(NOC).coach"]
-	},
-		"answer": {
-			"text": ["$var.team.coach"]
-	}
-	},
-	"&select": {
-		"title": {
-			"text": ["کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"]
+    "choice": {
+      "text": [
+        "$var.teams.choose(NOC).coach"
+      ]
     },
-        "choice":  {
-            "text":["$var.teams.choose(NOC - var.ans_cnt + 1).coach"]
-    },        
-		"answer": {
-			"text": ["$var.teams_same.choose(var.ans_cnt).coach"]
-	}
-	},
-	
-	"datasets": ["footballTeam"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballTeam", "club", "team"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-
-} 
+    "answer": {
+      "text": [
+        "$var.team.coach"
+      ]
+    }
+  },
+  "&select": {
+    "title": {
+      "text": [
+        "کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"
+      ]
+    },
+    "choice": {
+      "text": [
+        "$var.teams.choose(NOC - var.ans_cnt + 1).coach"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.teams_same.choose(var.ans_cnt).coach"
+      ]
+    }
+  },
+  "datasets": [
+    "footballTeam"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballTeam",
+    "club",
+    "team"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}

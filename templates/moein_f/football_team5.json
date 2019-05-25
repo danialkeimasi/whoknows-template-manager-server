@@ -1,40 +1,57 @@
 {
-	"values": {
-        "team": "db(footballTeam)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
+  "values": {
+    "team": "db(footballTeam)",
+    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach == var.team.coach)] ,NOC)"
+  },
+  "&choose": {
+    "title": {
+      "text": [
+        "`var.team.coach` مربی کدام تیم است؟",
+        "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
+        "`var.team.coach` مربی کنونی کدام تیم است؟"
+      ]
     },
-	"&choose": {
-		"title": {
-			"text": ["`var.team.coach` مربی کدام تیم است؟",
-                            "`var.team.coach` مربیگری کدام تیم را برعهده دارد؟",
-                            "`var.team.coach` مربی کنونی کدام تیم است؟"]
-	},
-		"choice": {
-			"text": ["$var.teams_same.name"]
-	},
-		"answer": {
-			"text": ["$var.team.name"]
-	}
-	},
-	"&write": {
-		"title": {
-			"text": ["`var.team.coach` مربی چه تیمی است؟",
-                            "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"]
-	},
-		"answer": {
-			"text": ["$var.team.name"]
-	}
-	},
-	
-	"datasets": ["footballTeam"],
-	"usage": ["contest"],
-	"level": 2,
-	"score_function": "default",
-	"time_function": "default",
-	"tags": ["football", "footballTeam", "team"],
-	"__state": "",
-	"__test_info": {},
-	"__idea": [""]
-
-
-} 
+    "choice": {
+      "text": [
+        "$var.teams_same.name"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.team.name"
+      ]
+    }
+  },
+  "&write": {
+    "title": {
+      "text": [
+        "`var.team.coach` مربی چه تیمی است؟",
+        "`var.team.coach` مربیگری چه تیمی را بر عهده دارد؟"
+      ]
+    },
+    "answer": {
+      "text": [
+        "$var.team.name"
+      ]
+    }
+  },
+  "datasets": [
+    "footballTeam"
+  ],
+  "usage": [
+    "contest"
+  ],
+  "level": 2,
+  "score_function": "default",
+  "time_function": "default",
+  "tags": [
+    "football",
+    "footballTeam",
+    "team"
+  ],
+  "__state": "",
+  "__test_info": {},
+  "__idea": [
+    ""
+  ]
+}
