@@ -47,7 +47,7 @@ def add():
                    [{'$limit': count}]                         if count is not None else []
         
         templates = list(mongo_client.TemplateManager.templates.aggregate(pipeline))
-        templates = list(map(lambda i: i.update({'_id': }), templates))
+        
         response = {
             'ok': True,
             'templates': templates,
