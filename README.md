@@ -1,5 +1,5 @@
-## What is template-manager?
-It's a flask server that implements API and functionality for writing and testing templates and generating question from them.
+## Template Manager
+a flask server that implements API and functionality for writing and testing templates and generating question from them, that used in a question game named whoknows
 
 
 ## How to install?
