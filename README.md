@@ -5,49 +5,47 @@ It's a flask server that implements API and functionality for writing and testin
 ## How to install?
 Setting up is simple, just follow these steps.
 
-### Python :
+#### Python :
 
-1. Install python and pip and git:
-`apt install git python3 python3-pip`
+##### 1. Install python and pip and git:
+    apt install git python3 python3-pip
 
-2. Clone the repository:
-`git clone ...`
+##### 2. Clone the repository:
+    git clone ...
 
-3. Go to repository folder:
-`cd guessit-template-manager`
+##### 3. Go to repository folder:
+    cd guessit-template-manager
 
-4. Install dependencies:
- `pip install -r requirements.txt`
+##### 4. Install dependencies:
+    pip install -r requirements.txt
 
-5. Start server:
- `python3 app.py`
+##### 5. Start server:
+    python3 app.py
 
 
-###  Docker :
+####  Docker :
 
-1. Clone the repository:
-`git clone ...`
+##### 1. Clone the repository:
+    git clone ...
 
-2. Go to repository folder:
-`cd guessit-template-manager`
+##### 2. Go to repository folder:
+    cd guessit-template-manager
 
-3. Build image from dockerfile:
-`docker build -t guessit-template-manager`
+##### 3. Build image from dockerfile:
+    docker build -t guessit-template-manager
 
-4. Run docker image:
-`docker run -it guessit-template-manager`
+##### 4. Run docker image:
+    docker run -it guessit-template-manager
 
 
 ## What it does?
+Template manager implements functionality for the followings concepts:
 
 - Write template:
 
 - Test template:
 
 - generate question:
-
-
-## How it works?
 
 
 ## How to use?
