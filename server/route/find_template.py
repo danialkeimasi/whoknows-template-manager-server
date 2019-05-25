@@ -2,15 +2,7 @@ from server.flask import getApp
 from flask import json, request
 from config.config import config, mongo_client, logger
 from modules.template import Template
-
-from bson import ObjectId
-
-class JSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, ObjectId):
-            return str(o)
-        return json.JSONEncoder.default(self, o)
-
+from modules.tools.json_mongo_encoder import JSONEncoder
 
 
 def add():
