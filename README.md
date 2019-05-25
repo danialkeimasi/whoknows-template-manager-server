@@ -1,5 +1,5 @@
 ## Template Manager
-this repository contains a flask server that implements REST API and functionality for writing and testing templates and generating question from the given templates and data. this questions used in a question game named whoknows
+this repository contains a flask server that implements REST API and functionality for writing and testing templates and generating question from the given templates and data. this questions used in a question game named (whoknows)[whoknows.ir]
 
 ![whoknows logo](http://s8.picofile.com/file/8361648192/logo_5_3.png)
 
