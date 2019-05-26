@@ -200,15 +200,10 @@ class Template:
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
-        template = self.__template
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        pass
 
     def __test_acceptance(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        pass
 
     def __test_data(self):
         """
@@ -233,22 +228,26 @@ class Template:
         """
         check's the format of template json and save problems in __problems
         """
-        problems = []
+        sections = []
         template_consts = ['usage', 'values', 'datasets', 'time_function',
                            'score_function', 'tags', '__state', '__test_info',
                            '__idea']
 
         for key in template_consts:
-            if not (key in self.__template):
-                problems.append(f'template object must have a "{key}" in it')
-
+            if key in self.__template:
+                sections.append({'name': key, 'ok': True, 'problem':[]})
+            else:
+                sections.append({'name': key, 'ok': False, 
+                                 'problem': [f'template object must have a "{key}" in it']})
+                
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
+            problems = []
+
             if not (q_type in self.__template_formatter):
                 problems.append(f"there is an undefined question type in template: {q_type}")
-                
 
             for q_prop in self.__template[q_type]:
                 if not (q_prop in self.__template_formatter[q_type]):
@@ -260,19 +259,17 @@ class Template:
 
             if q_prop_requires_list:
                 problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
+            
+            sections.append({'name': q_type, 'ok': problems != [], 'problem': problems})
+        
+        self.__template['__test_info']['structure']['sections'] = sections
 
-        logger.critical(problems)
-        self.__update_problems(problems)
 
     def __test_generation(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        pass
 
     def __test_manual(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        pass
 
 
 def load_data(dataset_name):
