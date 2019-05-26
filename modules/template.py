@@ -222,8 +222,7 @@ class Template:
                 {'$project':{'_id': 1, 'name': 1, 'state': 1, 'ok': { '$eq': [ "$state", 'in_use' ] }}}
             ]))
 
-        not_finded_datasets = \
-            list(set(template_datasets) - set([ds['name'] for ds in finded_datasets]))
+        not_finded_datasets = list(set(template_datasets) - set([ds['name'] for ds in finded_datasets]))
 
         datasets_list = finded_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_finded_datasets]
 
