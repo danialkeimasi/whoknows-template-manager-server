@@ -217,15 +217,10 @@ class Template:
         problems = []
         template_datasets = self.__template['datasets']
 
-        finded_datasets = \
-            list(mongo_client.DataManager.datasets.find({'name': {'$in': template_datasets}}, {'_id':1, 'name': 1, 'state': 1}))
-        
-        for i, ds in enumerate(finded_datasets):
-            if ds['state'] == 'in_use':
-                finded_datasets[i]['ok'] = True
-            else:
-                finded_datasets[i]['ok'] = False
-
+        finded_datasets = list(mongo_client.DataManager.datasets.aggregate([
+                {'$match'  :{'name': {'$in': template_datasets}}},
+                {'$project':{'_id': 1, 'name': 1, 'state': 1, 'ok': { '$eq': [ "$state", 'in_use' ] }}}
+            ]))
 
         not_finded_datasets = \
             list(set(template_datasets) - set([ds['name'] for ds in finded_datasets]))
