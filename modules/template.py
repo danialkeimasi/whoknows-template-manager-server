@@ -116,7 +116,6 @@ class Template:
                                 eval_result = eval(exp)
                                 # if not isinstance(eval_result, str) or not (isinstance(eval_result, list) and len(eval_result) == 1):
                                 #     raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
-
                                 raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result,
                                                                                                    list) else eval_result)
 
@@ -201,6 +200,7 @@ class Template:
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
+        template = self.__template
 
         logger.critical(problems)
         self.__update_problems(problems)
@@ -215,11 +215,24 @@ class Template:
         check if necessary databases for this template is exist and save problems in __problems
         """
         problems = []
-        datasets = self.__template['datasets']
+        template_datasets = self.__template['datasets']
 
-        for ds_name in datasets:
-            if not os.path.isfile(f'{config.dir.dataset}/{ds_name}db.json'):
-                problems.append(f'dataset named "{ds_name}" not found in {config.dir.dataset}/ dir.')
+        finded_datasets = \
+            list(mongo_client.DataManager.datasets.find({'name': {'$in': template_datasets}}, {'_id':1, 'name': 1, 'state': 1}))
+        
+        for i, ds in enumerate(finded_datasets):
+            if ds['state'] == 'in_use':
+                finded_datasets[i]['ok'] = True
+            else:
+                finded_datasets[i]['ok'] = False
+
+
+        not_finded_datasets = \
+            list(set(template_datasets) - set([ds['name'] for ds in finded_datasets]))
+
+        datasets_list = finded_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_finded_datasets]
+
+        self.__template['__test_info']['data']['datasets'] = finded_datasets
 
         logger.critical(problems)
         self.__update_problems(problems)
