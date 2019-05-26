@@ -203,7 +203,8 @@ class Template:
         pass
 
     def __test_acceptance(self):
-        pass
+        votes = self.__template['__test_info']['acceptance']['votes']
+        return len(votes) >= config.template.min_vote
 
     def __test_data(self):
         """
@@ -221,13 +222,18 @@ class Template:
 
         datasets_list = finded_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_finded_datasets]
 
-        self.__template['__test_info']['data']['datasets'] = finded_datasets
+        self.__template['__test_info']['data']['datasets'] = datasets_list
 
+        for ds in datasets_list:
+            if not ds['ok']:
+                return False
+        return True
 
     def __test_structure(self):
         """
         check's the format of template json and save problems in __problems
         """
+        test_bool = True
         sections = []
         template_consts = ['usage', 'values', 'datasets', 'time_function',
                            'score_function', 'tags', '__state', '__test_info',
@@ -237,6 +243,7 @@ class Template:
             if key in self.__template:
                 sections.append({'name': key, 'ok': True, 'problem':[]})
             else:
+                test_bool = False if test_bool else test_bool
                 sections.append({'name': key, 'ok': False, 
                                  'problem': [f'template object must have a "{key}" in it']})
                 
@@ -259,17 +266,22 @@ class Template:
 
             if q_prop_requires_list:
                 problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
-            
+
+            test_bool = problems != [] if test_bool else test_bool
             sections.append({'name': q_type, 'ok': problems != [], 'problem': problems})
         
         self.__template['__test_info']['structure']['sections'] = sections
-
+        return test_bool
 
     def __test_generation(self):
         pass
 
     def __test_manual(self):
         pass
+
+    def usage_tagging(self):
+        usage_list = self.__template['usage']
+        return usage_list != []
 
 
 def load_data(dataset_name):
