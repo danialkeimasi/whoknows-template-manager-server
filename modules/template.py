@@ -103,8 +103,8 @@ class Template:
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
 
         for q_type_name in q_type_names:
-            for q_property_name in template[q_type_name].keys():
-                for q_property_format_name in template[q_type_name][q_property_name].keys():
+            for q_property_name in template[q_type_name]:
+                for q_property_format_name in template[q_type_name][q_property_name]:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
 
                         if raw_str.startswith('$'):
@@ -214,7 +214,6 @@ class Template:
         """
         check if necessary databases for this template is exist and save problems in __problems
         """
-        problems = []
         template_datasets = self.__template['datasets']
 
         finded_datasets = list(mongo_client.DataManager.datasets.aggregate([
@@ -229,21 +228,19 @@ class Template:
 
         self.__template['__test_info']['data']['datasets'] = finded_datasets
 
-        logger.critical(problems)
-        self.__update_problems(problems)
 
     def __test_structure(self):
         """
         check's the format of template json and save problems in __problems
         """
         problems = []
-        template_consts = ['usage', 'values', 'time_function',
+        template_consts = ['usage', 'values', 'datasets', 'time_function',
                            'score_function', 'tags', '__state', '__test_info',
-                           '__idea', 'datasets']
+                           '__idea']
 
-        for item in template_consts:
-            if not (item in self.__template):
-                problems.append(f'template must have a "{item}" part in it')
+        for key in template_consts:
+            if not (key in self.__template):
+                problems.append(f'template object must have a "{key}" in it')
 
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
@@ -251,16 +248,18 @@ class Template:
         for q_type in question_types:
             if not (q_type in self.__template_formatter):
                 problems.append(f"there is an undefined question type in template: {q_type}")
+                
 
-            for q_property_name in self.__template[q_type].keys():
-                if not (q_property_name in self.__template_formatter[q_type]):
-                    problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
+            for q_prop in self.__template[q_type]:
+                if not (q_prop in self.__template_formatter[q_type]):
+                    problems.append(f'there is an undefined field in "{q_type}" question in template: {q_prop}')
 
-            q_requirements = [item for item in
+            q_prop_requires_list = [item for item in
                               set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
                               if self.__template_formatter[q_type][item]]
-            if q_requirements:
-                problems.append(f"there is no {q_requirements} in {q_type} type question")
+
+            if q_prop_requires_list:
+                problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
 
         logger.critical(problems)
         self.__update_problems(problems)
