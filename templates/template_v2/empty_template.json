@@ -38,6 +38,9 @@
         },
         "generation": {
             "result": []
+        },
+        "manual": {
+            "votes": []
         }
     },
     "__idea": [

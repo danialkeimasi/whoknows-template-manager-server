@@ -277,7 +277,9 @@ class Template:
         pass
 
     def __test_manual(self):
-        pass
+        votes = self.__template['__test_info']['manual']['votes']
+        return len(votes) >= config.template.min_vote
+
 
     def usage_tagging(self):
         usage_list = self.__template['usage']
