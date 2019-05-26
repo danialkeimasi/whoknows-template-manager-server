@@ -200,7 +200,7 @@ class Template:
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
-        pass
+        return True
 
     def __test_acceptance(self):
         votes = self.__template['__test_info']['acceptance']['votes']
@@ -281,7 +281,7 @@ class Template:
         return len(votes) >= config.template.min_vote
 
 
-    def usage_tagging(self):
+    def __test_usage_tagging(self):
         usage_list = self.__template['usage']
         return usage_list != []
 
