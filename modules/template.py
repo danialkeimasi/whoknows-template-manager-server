@@ -153,7 +153,9 @@ class Template:
             question['answer'] = {'text': [str(bool_answer).lower()]}
         
         if 'choice' in question:
-            question['choice'] += question['answer']
+            for field in question['choice']:
+                question['choice'][field] += question['answer'][field]
+
 
         return Question(question)
 
