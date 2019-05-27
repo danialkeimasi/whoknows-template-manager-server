@@ -47,7 +47,7 @@ class DataContainer():
             work same as choose(1)
 
         '''
-        return choose(self.DClist, 1)
+        return choose(self.DClist)
 
     def choose(self, num):
         '''

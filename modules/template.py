@@ -9,7 +9,7 @@ import pandas as pd
 from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
-from modules.tools.functions import choose, rand
+from modules.tools.functions import choose, rand, to_list
 
 
 class Template:
@@ -108,14 +108,14 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
 
                         if raw_str.startswith('$'):
-                            template[q_type_name][q_property_name][q_property_format_name] = eval(raw_str[1:])
+                            template[q_type_name][q_property_name][q_property_format_name] = to_list(eval(raw_str[1:]))
 
                         else:
                             while re.search(reg_str, raw_str):
                                 exp = re.search(reg_str, raw_str).group(1)
                                 eval_result = eval(exp)
-                                # if not isinstance(eval_result, str) or not (isinstance(eval_result, list) and len(eval_result) == 1):
-                                #     raise ValueError(f'there is some error with template: {q_type_name}, {q_property_name}, {q_property_format_name}: {eval_result}')
+
+                                # TODO: check if eval_result is list or not, its true if eval_result is not list
 
                                 raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result,
                                                                                                    list) else eval_result)
@@ -151,6 +151,9 @@ class Template:
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
+        
+        if 'choice' in question:
+            question['choice'] += question['answer']
 
         return Question(question)
 
