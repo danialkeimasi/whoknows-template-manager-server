@@ -19,15 +19,15 @@ logging.basicConfig(
     # datefmt='%H:%M:%S',
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(f'{config.dir.project}/template_engine.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{config.dir.project}/config/last_run.log', mode='w+', encoding='utf8', delay=0),
         stream_handler,
         # MongoHandler(host=config.mongo.ip, port=config.mongo.port,
         #              username=config.mongo.username, password=config.mongo.password,
         #              authentication_db=config.mongo.authentication_db, database_name='TemplateManager', collection='log'),
-
     ]
 )
 logger = logging.getLogger('TemplateEngine')
+logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
 mongo_client = MongoClient(
     f'mongodb://{config.mongo.username}:{config.mongo.password}@{config.mongo.ip}:{config.mongo.port}'
