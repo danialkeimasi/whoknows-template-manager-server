@@ -105,7 +105,7 @@ def db(doc, count=0):
 
 def listSub(data1, data2):
     data1 = list(data1) if isinstance(data1, Iterable) and not isinstance(data1, str) else [data1]
-    data2 = list(data2) if isinstance(data2, Iterable) and not isinstance(data1, str) else [data2]
+    data2 = list(data2) if isinstance(data2, Iterable) and not isinstance(data2, str) else [data2]
 
     logger.debug(f'listSub: {data1[:5]} - {data2[:5]}')
     subedList = [item for item in data1 if not item in data2]
