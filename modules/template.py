@@ -330,4 +330,4 @@ def free_template_datasets(datasets):
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
-        globals().drop(db)
+        globals().pop(db)
