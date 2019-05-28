@@ -21,8 +21,8 @@ class Question:
         return self.__problems != []
 
     def test_question(self):
-        problems = []
-        question = self.__question
+        self.__problems = []
+        self.__test_structure()
 
 
     def __test_structure(self):
@@ -39,6 +39,5 @@ class Question:
         if not_found_field != []:
             problems += [f'question must have the following fields: {not_found_field}']
         
-        self.__problems = problems
+        self.__problems += problems
         return problems != []
-        
