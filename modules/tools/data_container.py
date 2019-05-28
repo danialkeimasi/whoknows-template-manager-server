@@ -84,8 +84,6 @@ def db(doc, count=0):
         number of items which is needed (default is 1)
     '''
 
-    logger.info(f'count={count}')
-
     try:
         if len(doc.index) < (count if count != 0 else 1):
             logger.info(f'not enough data for db function to choose from, len(doc)={len(doc)} < count={count}')
@@ -99,14 +97,17 @@ def db(doc, count=0):
 
     data = data.to_dict('records')
     logger.info(f'done')
+    return_data = data[0] if count == 0 else data
 
-    return DataContainer(data[0] if count == 0 else data)
+    logger.debug(f'db loaded this:' + data[0] if count == 0 else data[:5])
+    return DataContainer(return_data)
 
 
 def listSub(data1, data2):
     data1 = list(data1) if isinstance(data1, Iterable) else [data1]
     data2 = list(data2) if isinstance(data2, Iterable) else [data2]
 
+    logger.debug(f'listSub: {data1[:5]} - {data2[:5]}')
     subedList = [item for item in data1 if not item in data2]
 
     return DataContainer(subedList)
