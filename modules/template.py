@@ -209,7 +209,7 @@ class Template:
             logger.critical(json.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
 
         logger.removeHandler(log_list_handler)
-        print('log_list', log_list)
+        # print('log_list', log_list)
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
