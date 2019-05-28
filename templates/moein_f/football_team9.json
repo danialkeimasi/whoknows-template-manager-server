@@ -2,8 +2,7 @@
   "values": {
     "team": "db(footballTeam)",
     "team1": "db(footballTeam[(footballTeam.name != var.team.name) & (footballTeam.league == var.team.league)])",
-    "players": "listSub(footballTeam.players, var.team.captain)",
-    "True_or_False": "rand([True,False])"
+    "players": "listSub(footballTeam.players, var.team.captain)"
   },
   "&choose": {
     "title": {
@@ -13,7 +12,7 @@
     },
     "choice": {
       "text": [
-        "var.players.choose(NOC)"
+        "var.players.choose(var.NOC)"
       ]
     },
     "answer": {
