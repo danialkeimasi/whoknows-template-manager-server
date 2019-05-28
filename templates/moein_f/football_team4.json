@@ -2,7 +2,7 @@
   "values": {
     "team": "db(footballTeam)",
     "team1": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)])",
-    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)] ,NOC)",
+    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)], var.NOC)",
     "True_or_False": "rand([True,False])"
   },
   "&choose": {
