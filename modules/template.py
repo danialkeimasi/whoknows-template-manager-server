@@ -323,7 +323,7 @@ def load_template_datasets(necesery_datasets):
         globals()[db] = load_data(db)
 
 def free_template_datasets(datasets):
-    logger.debug(f'free: {necesery_datasets}')
+    logger.debug(f'free: {datasets}')
 
     for db in datasets:
         globals()[db].clear()
