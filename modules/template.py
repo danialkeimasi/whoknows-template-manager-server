@@ -36,7 +36,7 @@ class Template:
 
         self.__problems = []
         self.__template['__test_info'] = self.__empty_template['__test_info']
-        
+
         if debug:
             self.__test_structure()
             self.__test_data()
@@ -330,5 +330,4 @@ def free_template_datasets(datasets):
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
-        globals()[db] = None
-
+        globals().drop(db)
