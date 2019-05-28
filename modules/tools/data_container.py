@@ -85,7 +85,7 @@ def db(doc, count=0):
         number of items which is needed (default is 1)
     '''
 
-    logger.info(f'db(): count={count}')
+    logger.info(f'count={count}')
 
     try:
         if len(doc.index) < (count if count != 0 else 1):
@@ -95,11 +95,11 @@ def db(doc, count=0):
         data = doc.sample(count if count != 0 else 1)
 
     except Exception as error:
-        logger.error(f'def db => {error}')
+        logger.error(f'{error}')
         return DataContainer([])
 
     data = data.to_dict('records')
-    logger.info(f'def db => done')
+    logger.info(f'done')
 
     return DataContainer(data[0] if count == 0 else data)
 

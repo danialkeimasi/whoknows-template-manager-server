@@ -121,6 +121,7 @@ class Template:
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
+        free_template_datasets(self.__template['datasets'])
         return Template(template)
 
     def get_question(self, bool_answer, question_type, format):
@@ -310,7 +311,15 @@ def load_data(dataset_name):
 
 
 def load_template_datasets(necesery_datasets):
-    logger.debug(f'{necesery_datasets}')
+    logger.debug(f'load: {necesery_datasets}')
 
     for db in necesery_datasets:
         globals()[db] = load_data(db)
+
+def free_template_datasets(datasets):
+    logger.debug(f'free: {necesery_datasets}')
+
+    for db in datasets:
+        globals()[db].clear()
+        globals()[db] = None
+
