@@ -103,8 +103,8 @@ class Template:
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
 
         for q_type_name in q_type_names:
-            for q_property_name in template[q_type_name].keys():
-                for q_property_format_name in template[q_type_name][q_property_name].keys():
+            for q_property_name in template[q_type_name]:
+                for q_property_format_name in template[q_type_name][q_property_name]:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
 
                         if raw_str.startswith('$'):
@@ -122,6 +122,7 @@ class Template:
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
+        free_template_datasets(self.__template['datasets'])
         return Template(template)
 
     def get_question(self, bool_answer, question_type, format):
@@ -206,71 +207,90 @@ class Template:
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        return True
 
     def __test_acceptance(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        votes = self.__template['__test_info']['acceptance']['votes']
+        return len(votes) >= config.template.min_vote
 
     def __test_data(self):
         """
         check if necessary databases for this template is exist and save problems in __problems
         """
-        problems = []
-        datasets = self.__template['datasets']
+        template_datasets = self.__template['datasets']
 
-        for ds_name in datasets:
-            if not os.path.isfile(f'{config.dir.dataset}/{ds_name}db.json'):
-                problems.append(f'dataset named "{ds_name}" not found in {config.dir.dataset}/ dir.')
+        finded_datasets = list(mongo_client.DataManager.datasets.aggregate([
+            {'$match': {'name': {'$in': template_datasets}}},
+            {'$project': {'_id': 1, 'name': 1, 'state': 1,
+                          'ok': {'$eq': ["$state", 'in_use']}}}
+        ]))
 
-        logger.critical(problems)
-        self.__update_problems(problems)
+        not_finded_datasets = list(set(template_datasets) - set([ds['name'] for ds in finded_datasets]))
+
+        datasets_list = finded_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_finded_datasets]
+
+        self.__template['__test_info']['data']['datasets'] = datasets_list
+
+        for ds in datasets_list:
+            if not ds['ok']:
+                return False
+        return True
 
     def __test_structure(self):
         """
         check's the format of template json and save problems in __problems
         """
-        problems = []
-        template_consts = ['usage', 'values', 'time_function',
+        test_bool = True
+        sections = []
+        template_consts = ['usage', 'values', 'datasets', 'time_function',
                            'score_function', 'tags', '__state', '__test_info',
-                           '__idea', 'datasets']
+                           '__idea']
 
-        for item in template_consts:
-            if not (item in self.__template):
-                problems.append(f'template must have a "{item}" part in it')
-
+        for key in template_consts:
+            if key in self.__template:
+                sections.append({'name': key, 'ok': True, 'problem':[]})
+            else:
+                test_bool = False if test_bool else test_bool
+                sections.append({'name': key, 'ok': False, 
+                                 'problem': [f'template object must have a "{key}" in it']})
+                
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
+            problems = []
+
             if not (q_type in self.__template_formatter):
                 problems.append(f"there is an undefined question type in template: {q_type}")
 
-            for q_property_name in self.__template[q_type].keys():
-                if not (q_property_name in self.__template_formatter[q_type]):
-                    problems.append(f'there is an undefined part in "{q_type}" type in template: {q_property_name}')
+            for q_prop in self.__template[q_type]:
+                if not (q_prop in self.__template_formatter[q_type]):
+                    problems.append(f'there is an undefined field in "{q_type}" question in template: {q_prop}')
 
-            q_requirements = [item for item in
+            q_prop_requires_list = [item for item in
                               set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
                               if self.__template_formatter[q_type][item]]
-            if q_requirements:
-                problems.append(f"there is no {q_requirements} in {q_type} type question")
 
-        logger.critical(problems)
-        self.__update_problems(problems)
+            if q_prop_requires_list:
+                problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
+
+            test_bool = problems != [] if test_bool else test_bool
+            sections.append({'name': q_type, 'ok': problems != [], 'problem': problems})
+        
+        self.__template['__test_info']['structure']['sections'] = sections
+        return test_bool
 
     def __test_generation(self):
-
-        logger.critical(problems)
-        self.__update_problems(problems)
+        pass
 
     def __test_manual(self):
+        votes = self.__template['__test_info']['manual']['votes']
+        return len(votes) >= config.template.min_vote
 
-        logger.critical(problems)
-        self.__update_problems(problems)
+
+    def __test_usage_tagging(self):
+        usage_list = self.__template['usage']
+        return usage_list != []
 
 
 def load_data(dataset_name):
@@ -297,7 +317,15 @@ def load_data(dataset_name):
 
 
 def load_template_datasets(necesery_datasets):
-    logger.debug(f'{necesery_datasets}')
+    logger.debug(f'load: {necesery_datasets}')
 
     for db in necesery_datasets:
         globals()[db] = load_data(db)
+
+def free_template_datasets(datasets):
+    logger.debug(f'free: {necesery_datasets}')
+
+    for db in datasets:
+        globals()[db].clear()
+        globals()[db] = None
+

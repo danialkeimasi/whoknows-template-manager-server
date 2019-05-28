@@ -33,3 +33,6 @@ mongo:
   password: parishadbg18
   authentication_db: admin
 
+
+template:
+  min_vote: 2
