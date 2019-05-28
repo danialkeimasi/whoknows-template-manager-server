@@ -14,6 +14,8 @@ from modules.tools.functions import choose, rand, to_list
 
 class Template:
     __template_formatter = json.load(open(config.dir.template_formatter))
+    __empty_template = json.load(open(config.dir.empty_template))
+    
     __default_metadata = {
         'NOC': 3,
         'NOS': 4,
@@ -33,7 +35,8 @@ class Template:
                 None
 
         self.__problems = []
-
+        self.__template['__test_info'] = self.__empty_template['__test_info']
+        
         if debug:
             self.__test_structure()
             self.__test_data()
