@@ -30,7 +30,7 @@ class Question:
         problems = []
 
         if 'type' not in question:
-            problems += ['there is no type field in question']
+            problems += ['there is no "type" field in question']
 
         q_type = question['type']
         q_field_required = [q_field for q_field in self.__template_formatter[f'${q_type}'] if self.__template_formatter[f'${q_type}'][q_field]]
@@ -39,5 +39,6 @@ class Question:
         if not_found_field != []:
             problems += [f'question must have the following fields: {not_found_field}']
         
-        
+        self.__problems = problems
+        return problems != []
         
