@@ -277,6 +277,7 @@ class Template:
             test_bool = problems != [] if test_bool else test_bool
             sections.append({'name': q_type, 'ok': problems != [], 'problem': problems})
         
+        pprint(self.__template)
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
@@ -292,7 +293,7 @@ class Template:
         usage_list = self.__template['usage']
         return usage_list != []
 
-
+from pprint import pprint
 def load_data(dataset_name):
     '''
     Loads the given dataset and returns it
