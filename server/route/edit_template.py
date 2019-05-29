@@ -37,11 +37,11 @@ def add():
         if problems == []:
             replace_res = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, template)
 
-            template = mongo_client.TemplateManager.templates.find_one({'_id': replace_res.upserted_id})
+            template_updated = mongo_client.TemplateManager.templates.find_one({'_id': template['_id']})
             response = {
                 'ok': replace_res.acknowledged,
-                '_id': replace_res.upserted_id,
-                'template': template
+                '_id': template['_id'],
+                'template': template_updated
             }
         else:
             response = {
