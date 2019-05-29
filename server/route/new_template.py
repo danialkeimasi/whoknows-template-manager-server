@@ -33,12 +33,18 @@ def add():
         idea = user_req['idea'] if 'idea' in user_req else None
 
         if idea:
+
             empty_template = json.load(open(config.dir.empty_template))
+            
             empty_template['__idea'] = idea
             insert_object = mongo_client.TemplateManager.templates.insert_one(empty_template)
+            
+            template = mongo_client.TemplateManager.templates.find_one({'_id': insert_object.inserted_id})
+            
             response = {
                 'ok': insert_object.acknowledged,
-                '_id': insert_object.inserted_id
+                '_id': insert_object.inserted_id,
+                'template': template
             }
         else:
             response = {
