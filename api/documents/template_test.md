@@ -1,26 +1,26 @@
 # New Template
 
-add a new template by given idea
+Test the given template and return its state
 
 * #### URL
 
-  /template/new
+  /template/test
 
 * #### Method:
 
   `POST`
-  
+
 * #### Data Params
 
      **Required:**
- 
-   `idea=string`
+
+   `template`
 
 * #### Success Response:
 
   * **Code:** 200 <br />
     **Content:** `[{...}, ...]`
- 
+
 * #### Error Response:
 
   * **Code:** 404 NOT FOUND <br />

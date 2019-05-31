@@ -1,6 +1,6 @@
 # New Template
 
-Returns json data about a single user.
+Find a list of templates by given request
 
 * #### URL
 
@@ -15,6 +15,9 @@ Returns json data about a single user.
      **Optional:**
 
    `count=int`
+   `query=object`
+   `tags=[string]`
+   
 
 * #### Success Response:
 
