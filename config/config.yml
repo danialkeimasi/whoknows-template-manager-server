@@ -9,8 +9,8 @@ dir:
   questions: ./modules
   result: ./template_engine/result
   dataset: ../datasets
-  empty_template: ./templates/template_v2/empty_template.json
-  template_formatter: ./templates/template_v2/template_formatter.json
+  empty_template: ./config/samples/empty_template.json
+  template_formatter: ./config/samples/template_formatter.json
 
 datasets:
   - movie
