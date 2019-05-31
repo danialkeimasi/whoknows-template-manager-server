@@ -10,9 +10,13 @@ from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list
+from pprint import pprint
 
 
 class Template:
+    """
+    a class for template
+    """
     __template_formatter = json.load(open(config.dir.template_formatter))
     __empty_template = json.load(open(config.dir.empty_template))
     
@@ -26,10 +30,11 @@ class Template:
     def __init__(self, inp, debug=False, mode='dict'):
         """
         check template structure if debug is true
-        :param inp: template
-        :param debug:
-        """
 
+        :param inp: dict | file_address
+        :param debug: bool
+        :param mode:
+        """
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
             inp if mode == 'dict' else \
                 None
@@ -167,7 +172,13 @@ class Template:
         return Question(question)
 
     def generate_question(self, metadata={}, question_type=None, format={}):
-
+        """
+        generate question by this template
+        :param metadata:
+        :param question_type:
+        :param format:
+        :return:
+        """
         if self.__problems:
             raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
@@ -180,6 +191,11 @@ class Template:
         return question_object
 
     def add_function(self):
+        """
+        you can insert this template to the mongodb by this function
+        :return:
+        TODO: must deleted
+        """
 
         logger.info('trying to add tempalte to mongo ...')
         template = self.dict()
@@ -192,6 +208,11 @@ class Template:
         return result
 
     def test_function(self):
+        """
+        test the template
+        :return:
+        """
+        template = self.__template
         log_list = []
         log_list_handler = ListHandler(log_list)
         logger.addHandler(log_list_handler)
@@ -213,15 +234,24 @@ class Template:
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
+        """
+        return duplicate templates that we found in the database
+        :return:
+        """
         return True
 
     def __test_acceptance(self):
+        """
+        return True if votes in this template reach the goal
+        :return:
+        """
         votes = self.__template['__test_info']['acceptance']['votes']
         return len(votes) >= config.template.min_vote
 
     def __test_data(self):
         """
         check if necessary databases for this template is exist and save problems in __problems
+        :return:
         """
         template_datasets = self.__template['datasets']
 
@@ -245,6 +275,7 @@ class Template:
     def __test_structure(self):
         """
         check's the format of template json and save problems in __problems
+        :return:
         """
         test_bool = True
         sections = []
@@ -288,9 +319,17 @@ class Template:
         return test_bool
 
     def __test_generation(self):
+        """
+        test the template by generate a number of question
+        :return:
+        """
         pass
 
     def __test_manual(self):
+        """
+        return True if votes in this template reach the goal
+        :return:
+        """
         votes = self.__template['__test_info']['manual']['votes']
         return len(votes) >= config.template.min_vote
 
@@ -299,7 +338,7 @@ class Template:
         usage_list = self.__template['usage']
         return usage_list != []
 
-from pprint import pprint
+
 def load_data(dataset_name):
     '''
     Loads the given dataset and returns it
@@ -324,6 +363,11 @@ def load_data(dataset_name):
 
 
 def load_template_datasets(necesery_datasets):
+    """
+    load the datasets that given to the ram
+    :param necesery_datasets:
+    :return:
+    """
     logger.debug(f'load: {necesery_datasets}')
 
     dbs = {}
@@ -332,7 +376,13 @@ def load_template_datasets(necesery_datasets):
 
     return dbs
 
+
 def free_template_datasets(datasets):
+    """
+    free the datasts from ram
+    :param datasets:
+    :return:
+    """
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
