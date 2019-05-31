@@ -1,4 +1,4 @@
-# New Template
+# Template find
 
 Find a list of templates by given request
 
@@ -17,7 +17,7 @@ Find a list of templates by given request
    `count=int`
    `query=object`
    `tags=[string]`
-   
+
 
 * #### Success Response:
 

@@ -1,4 +1,4 @@
-# New Template
+# Template edit
 
 You can edit a template by using this route.
 

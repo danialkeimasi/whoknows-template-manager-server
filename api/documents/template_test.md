@@ -1,4 +1,4 @@
-# New Template
+# Template test
 
 Test the given template and return its state
 
