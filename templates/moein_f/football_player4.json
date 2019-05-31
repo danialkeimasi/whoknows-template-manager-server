@@ -1,7 +1,7 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
+        "players": "db(footballPlayer[footballPlayer.release_clause_euro != var.player.release_clause_euro], NOC)"
     },
 	"&choose": {
 		"title": {

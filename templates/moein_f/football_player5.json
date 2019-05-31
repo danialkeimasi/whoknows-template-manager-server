@@ -5,7 +5,10 @@
     },
 	"&choose": {
 		"title": {
-			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
+			"text": [
+				"شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , 
+				"شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"
+			]
 	},
 		"choice": {
 			"text": ["var.players.club_number"]
@@ -16,7 +19,10 @@
 	},
 	"&write": {
 		"title": {
-			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , "شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"]
+			"text": [
+				"شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , 
+				"شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"
+			]
 	},
 		"answer": {
 			"text": ["var.player.club_number"]
@@ -24,10 +30,12 @@
 	},
 	"&bool": {
 		"title": {
-			"text": ["شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.player.club_number` میباشد." , "شماره پیراهن `var.player.name` در تیم باشگاهی اش ، `var.players.choose(1).club_number` میباشد."]
+			"text": [
+				"شماره پیراهن `var.player.name` در تیم باشگاهی اش ،`var.player.club_number` میباشد." , 
+				"شماره پیراهن `var.player.name` در تیم باشگاهی اش ،`var.players.choose(1).club_number` میباشد."
+			]
 	}
 	},
-	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,

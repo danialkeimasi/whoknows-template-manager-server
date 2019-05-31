@@ -1,17 +1,17 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.release != var.player.release], NOC)"
+        "players": "db(footballPlayer[footballPlayer.release_clause_euro != var.player.release_clause_euro], NOC)"
     },
 	"&choose": {
 		"title": {
 			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
 		"choice": {
-			"text": ["$var.players.release"]
+			"text": ["$var.players.release_clause_euro"]
 	},
 		"answer": {
-			"text": ["$var.player.release"]
+			"text": ["$var.player.release_clause_euro"]
 	}
 	},
 	"&write": {
@@ -19,13 +19,15 @@
 			"text": ["بند آزادسازی `var.player.name` چقدر است؟ (یورو)"]
 	},
 		"answer": {
-			"text": ["$var.player.release"]
+			"text": ["$var.player.release_clause_euro"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
-                            "بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."]
+			"text": [
+				"بند آزادسازی `var.player.name` برابر `var.player.release_clause_euro` یورو میباشد.",
+				"بند آزادسازی `var.player.name` برابر `var.players.choose(1).release_clause_euro` یورو میباشد."
+			]
 	}
 	},
 	

@@ -1,20 +1,19 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.year != var.player.year] , NOC)"
+		"players": "db(footballPlayer[footballPlayer.birthyear != var.player.birthyear] , NOC)"
     },
 	"&choose": {
 		"title": {
 			"text": ["`var.player.name` در چه سالی بدنیا آمده است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.year"]
+			"text": ["$var.players.birthyear"]
 	},
 		"answer": {
-			"text": ["$var.player.year"]
+			"text": ["$var.player.birthyear"]
 	}
 	},
-	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
