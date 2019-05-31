@@ -6,7 +6,7 @@ this repository contains a flask server that implements REST API and functionali
 ## :minidisc: How to install?
 Setting up is simple, just follow these steps.
 
-### Python :
+- ### Python :
 
 1. Install python and pip and git:
 ```sh
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-### Docker :
+- ### Docker :
 
 1. Clone the repository:
 ```sh
