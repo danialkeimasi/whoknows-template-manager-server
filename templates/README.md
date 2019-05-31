@@ -56,7 +56,7 @@ listSub(loaded2.property, loaded1.propery) | subtract two dataset: loaded2 data 
 Command | Description
 ------- | -------
 var.loaded_dataset.choose( number_of_elements ).property | select number of duc from loaded dataset and get a list of properties
-var.loaded_dataset.one.property | select one doc from loaded dataset and get a list of properties
+var.loaded_dataset.one().property | select one doc from loaded dataset and get a list of properties
 
 
 --------------------------------------------------------------------------------
