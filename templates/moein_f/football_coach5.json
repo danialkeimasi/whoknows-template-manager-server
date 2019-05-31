@@ -1,0 +1,62 @@
+{
+    "values": {
+      "coach": "db(footballCoach)",
+      "coachs": "db(footballCoach[(footballCoach.birthyear < var.coach.birthyear-3) & (footballCoach.birthyear > var.coach.birthyear+3)] , NOC)"
+    },
+    "&choose": {
+      "title": {
+        "text": [
+          "`var.coach.name` متولد چه سالی است؟"
+        ]
+      },
+      "choice": {
+        "text": [
+          "$var.coachs.birthyear"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.birthyear"
+        ]
+      }
+    },
+    "&write": {
+      "title": {
+        "text": [
+          "`var.coach.name` متولد چه سالی است؟"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.birthyear"
+        ]
+      }
+    },
+    "&bool": {
+      "title": {
+        "text": [
+          "`var.coach.name` متولد سال `var.coach.birthyear` میباشد.",
+          "`var.coach.name` متولد سال `var.coachs.choose(1).birthyear` میباشد."
+        ]
+      }
+    },
+    "datasets": [
+      "footballCoach"
+    ],
+    "usage": [
+      "contest"
+    ],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "default",
+    "tags": [
+      "football",
+      "footballCoach",
+      "coach"
+    ],
+    "__state": "",
+    "__test_info": {},
+    "__idea": [
+      ""
+    ]
+  }

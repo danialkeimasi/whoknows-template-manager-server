@@ -1,0 +1,55 @@
+{
+    "values": {
+      "coach": "db(footballCoach)",
+      "coachs": "db(footballCoach[footballCoach.team != var.coach.team] , NOC)"
+    },
+    "&choose": {
+      "title": {
+        "text": [
+          "`var.coach.name` مربی چه تیمی است؟",
+          "`var.coach.name` مربی کدام تیم است؟"
+        ]
+      },
+      "choice": {
+        "text": [
+          "$var.coachs.team"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.team"
+        ]
+      }
+    },
+    "&write": {
+      "title": {
+        "text": [
+          "`var.coach.name` مربی چه تیمی است؟"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.team"
+        ]
+      }
+    },
+    "datasets": [
+      "footballCoach"
+    ],
+    "usage": [
+      "contest"
+    ],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "default",
+    "tags": [
+      "football",
+      "footballCoach",
+      "coach"
+    ],
+    "__state": "",
+    "__test_info": {},
+    "__idea": [
+      ""
+    ]
+  }
