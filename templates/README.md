@@ -64,4 +64,4 @@ var.loaded_dataset.one.property | select one doc from loaded dataset and get a l
 # Data Catalogs
 you can find data catalogs in here
   
-[data-catalog dir](data_catalogs)
+[data-catalog dir](../data_catalogs)
