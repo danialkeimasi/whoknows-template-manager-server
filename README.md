@@ -20,7 +20,7 @@ Setting up is simple, just follow these steps.
     
     3. Go to repository folder:
         ```sh
-        cd guessit-template-manager
+        cd whoknows-template-manager
         ```
     
     4. Install dependencies:
@@ -42,17 +42,17 @@ Setting up is simple, just follow these steps.
     
     2. Go to repository folder:
         ```sh
-        cd guessit-template-manager
+        cd whoknows-template-manager
         ```
     
     3. Build image from dockerfile:
         ```sh
-        docker build -t guessit-template-manager
+        docker build -t whoknows-template-manager
         ```
     
     4. Run docker image:
         ```sh
-        docker run -it guessit-template-manager
+        docker run -it whoknows-template-manager
         ```
 
 ## :mag: What it does?
