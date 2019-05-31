@@ -75,8 +75,8 @@ Template manager implements functionality for the followings concepts:
 5. [template test](api/documents/template_test.md)
   
 - ### Templates Documentation
-    you can read about templates and learn how to write a template [here](templates/).
-
+    1. you can read about templates and learn how to write a template [here](templates/).
+    2. if you need to know about data-catalogs click [here](data_catalogs/)
 ## :bust_in_silhouette: Who is in charge: 
 - Mohammad Parsian
 - Danial Keimasi
