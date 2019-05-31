@@ -3,7 +3,7 @@ this repository contains a flask server that implements REST API and functionali
 
 ![whoknows logo](http://s8.picofile.com/file/8361648192/logo_5_3.png)
 
-## How to install?
+## :minidisc: How to install?
 Setting up is simple, just follow these steps.
 
 ### Python :
@@ -55,8 +55,7 @@ docker build -t guessit-template-manager
 docker run -it guessit-template-manager
 ```
 
-
-## What it does?
+## :mag: What it does?
 Template manager implements functionality for the followings concepts:
 
 - Write template:
@@ -66,14 +65,14 @@ Template manager implements functionality for the followings concepts:
 - generate question:
 
 
-## How to use?
-you can read the API documentation here:
+## :question: How to use?
+### API documentation url : 
 
 1. [template new](server/documents/template_new.md)
 2. [template find](server/documents/template_find.md)
 
 
-## Who is in charge: 
+## :bust_in_silhouette: Who is in charge: 
 - Mohammad Parsian
 - Danial Keimasi
 - Moein Samadi
