@@ -67,7 +67,7 @@ Template manager implements functionality for the followings concepts:
 
 
 ## How to use?
-API documentation url : 
+### :cloud:API documentation url : 
 
 1. [template new](server/documents/template_new.md)
 2. [template find](server/documents/template_find.md)
