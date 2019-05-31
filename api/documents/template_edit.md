@@ -1,10 +1,10 @@
-# Template find
+# Template edit
 
-Find a list of templates by given request
+You can edit a template by using this route.
 
 * #### URL
 
-  /template/find
+  /template/new
 
 * #### Method:
 
@@ -12,12 +12,9 @@ Find a list of templates by given request
 
 * #### Data Params
 
-     **Optional:**
+     **Required:**
 
-   `count=int`
-   `query=object`
-   `tags=[string]`
-
+   `template`
 
 * #### Success Response:
 

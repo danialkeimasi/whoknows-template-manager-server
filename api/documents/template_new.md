@@ -1,6 +1,6 @@
-# New Template
+# Template new
 
-Returns json data about a single user.
+add a new template by given idea
 
 * #### URL
 

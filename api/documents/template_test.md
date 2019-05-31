@@ -1,10 +1,10 @@
-# Template find
+# Template test
 
-Find a list of templates by given request
+Test the given template and return its state
 
 * #### URL
 
-  /template/find
+  /template/test
 
 * #### Method:
 
@@ -12,12 +12,9 @@ Find a list of templates by given request
 
 * #### Data Params
 
-     **Optional:**
+     **Required:**
 
-   `count=int`
-   `query=object`
-   `tags=[string]`
-
+   `template`
 
 * #### Success Response:
 
