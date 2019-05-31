@@ -22,12 +22,12 @@ def add():
 
     @app.route('/template/find', methods=['POST'])
     def find_template_post():
-        '''
+        """
         find template by query from mongo
 
         api context:
             find template py post request
-        '''
+        """
         user_req = json_util.loads(request.data) if request.json is not None else {}
         query = user_req['query'] if 'query' in user_req else None
         tags = user_req['tags'] if 'tags' in user_req else None

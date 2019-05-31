@@ -9,9 +9,9 @@ from config.config import mongo_client, logger
 
 
 def arg_parse():
-    '''
+    """
     command line interface
-    '''
+    """
 
     parser = argparse.ArgumentParser(description='Process some integers.')
 
@@ -49,7 +49,7 @@ def arg_parse():
         log_levels = ['notset', 'debug', 'info', 'warning', 'error', 'critical']
         logger.setLevel(log_levels.index(args.log_level) * 10 if args.log_level in log_levels else 0)
 
-        '''
+        """
             Level 	    Numeric value
             CRITICAL 	50
             ERROR 	    40
@@ -57,7 +57,7 @@ def arg_parse():
             INFO 	    20
             DEBUG 	    10
             NOTSET 	    0
-        '''
+        """
 
     if args.template:
         template = Template(args.template, debug=True, mode='file')

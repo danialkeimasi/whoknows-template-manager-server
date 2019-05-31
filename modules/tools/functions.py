@@ -2,7 +2,7 @@ import random
 
 
 def rand(needList, count=0, exceptions=[]):
-    '''
+    """
 	Return a list of random numbers in range of [start , ... , end], Returns only one number(not list) of count is not given
 	Parameters
 	----------
@@ -12,7 +12,7 @@ def rand(needList, count=0, exceptions=[]):
 		number of random numbers that is needed
 	exceptions : list
 		list of numbers which is needed to be excluded from range
-	'''
+	"""
 
     for item in ['needList', 'exceptions']:
         if (not isinstance(locals()[item], list) and not isinstance(locals()[item], range)):
@@ -31,7 +31,7 @@ def rand(needList, count=0, exceptions=[]):
 
 
 def choose(items, count=0):
-    '''
+    """
     Return a random sebset of given items with length of count as a list(returns only one item if count is None, Not as a list)
 
     Parameters
@@ -40,12 +40,12 @@ def choose(items, count=0):
         a list of items that we want to choose from
     count : int
         number of random numbers that is needed
-    '''
+    """
     return rand(needList=items, count=count)
 
 
 def to_list(data):
-    '''
+    """
     if data is not a list, return it as a list
-    '''
+    """
     return data if isinstance(data, list) else [data]

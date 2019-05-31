@@ -23,12 +23,12 @@ def add():
 
     @app.route('/question/generate', methods=['POST'])
     def get_question_post():
-        '''
+        """
         get question part of server
 
         api context:
             get the question py post request
-        '''
+        """
         user_req = request.json
         tags = user_req['tags'] if 'tags' in user_req else None
         count = user_req['count'] if 'count' in user_req else 1

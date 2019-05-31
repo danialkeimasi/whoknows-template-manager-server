@@ -5,15 +5,15 @@ from modules.tools.functions import choose
 
 
 class DataContainer():
-    '''
+    """
     Data Manager class for working with datasets and accessing it's data easier
-    '''
+    """
     exp = []
 
     def __init__(self, exp=None):
-        '''
+        """
         constract a DataManager
-        '''
+        """
         self.exp = exp
         if exp == []:
             # TODO: some error must added
@@ -39,19 +39,19 @@ class DataContainer():
                 self.exp = exp
 
     def one(self):
-        '''
+        """
         choose random from a list of DataManagers by len of 1
 
         ---
             work same as choose(1)
 
-        '''
+        """
         return choose(self.DClist)
 
     def choose(self, num):
-        '''
+        """
         choose random from a list of DataManagers by len of "num"
-        '''
+        """
         if isinstance(self.exp, list) and not isinstance(self.exp[0], dict):
             return choose(self.exp, num)
         else:
@@ -59,21 +59,21 @@ class DataContainer():
 
     @property
     def PYlist(self):
-        '''
+        """
         converts the DataManager object to a python List
-        '''
+        """
         return self.exp
 
     @property
     def DClist(self):
-        '''
+        """
         converts the DataManager object to a dataManager List
-        '''
+        """
         return [DataContainer([item]) for item in self.exp]
 
 
 def db(doc, count=0):
-    '''
+    """
     Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
 
     Parmeters
@@ -82,7 +82,7 @@ def db(doc, count=0):
         dataframe that we want to choose from
     count : int
         number of items which is needed (default is 1)
-    '''
+    """
 
     try:
         if len(doc.index) < (count if count != 0 else 1):

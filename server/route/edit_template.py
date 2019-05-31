@@ -23,11 +23,11 @@ def add():
 
     @app.route('/template/edit', methods=['POST'])
     def edit_template_post():
-        '''
+        """
         find template by _id that exist in template
         update the template in the database
         
-        '''
+        """
         template = json_util.loads(request.data) if request.json is not None else {}
 
         problems = []

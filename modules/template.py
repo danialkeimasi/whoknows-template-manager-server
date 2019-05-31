@@ -340,14 +340,14 @@ class Template:
 
 
 def load_data(dataset_name):
-    '''
+    """
     Loads the given dataset and returns it
 
     Parameters
     ----------
     dataset_name : str
         name of dataset
-    '''
+    """
     data = pd.DataFrame()
 
     for i in range(5):
