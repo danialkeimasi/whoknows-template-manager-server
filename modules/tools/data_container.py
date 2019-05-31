@@ -104,6 +104,12 @@ def db(doc, count=0):
 
 
 def listSub(data1, data2):
+    """
+    sub 2 lists
+    :param data1:
+    :param data2:
+    :return:
+    """
     data1 = list(data1) if isinstance(data1, Iterable) and not isinstance(data1, str) else [data1]
     data2 = list(data2) if isinstance(data2, Iterable) and not isinstance(data2, str) else [data2]
 

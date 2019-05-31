@@ -4,6 +4,9 @@ from config.config import config
 
 
 class Question:
+    """
+    a simple class for a question
+    """
     __template_formatter = json.load(open(config.dir.template_formatter))
 
     def __init__(self, question_dict):
@@ -12,20 +15,40 @@ class Question:
         self.test_question()
 
     def dict(self):
+        """
+        get the question as dict
+        :return:
+        """
         return self.__question
     
     def problems(self):
+        """
+        get the problems
+        :return:
+        """
         return self.__problems
 
     def is_ok(self):
+        """
+        check if question is ok
+        :return:
+        """
         return self.__problems != []
 
     def test_question(self):
+        """
+        run the question test function
+        :return:
+        """
         self.__problems = []
         self.__test_structure()
 
 
     def __test_structure(self):
+        """
+        test the structure of template
+        :return:
+        """
         question = self.__question
         problems = []
 
