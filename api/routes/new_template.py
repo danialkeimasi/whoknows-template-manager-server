@@ -2,7 +2,7 @@ from bson import json_util
 from flask import json, request
 
 from config.config import config, mongo_client
-from server.flask import getApp
+from api.flask import getApp
 
 
 def add():
@@ -13,7 +13,7 @@ def add():
 
         response = {
             'ok': False,
-            'error': 'please use post request to add new template to server',
+            'error': 'please use post request to add new template to api',
             'request': {
                 'idea': 'the idea of template',
             }

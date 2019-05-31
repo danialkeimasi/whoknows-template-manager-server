@@ -68,8 +68,8 @@ Template manager implements functionality for the followings concepts:
 ## :question: How to use?
 ### API documentation url : 
 
-1. [template new](server/documents/template_new.md)
-2. [template find](server/documents/template_find.md)
+1. [template new](api/documents/template_new.md)
+2. [template find](api/documents/template_find.md)
 
 
 ## :bust_in_silhouette: Who is in charge: 

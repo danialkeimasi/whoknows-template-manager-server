@@ -2,7 +2,7 @@ from bson import json_util
 from flask import json, request
 
 from config.config import mongo_client
-from server.flask import getApp
+from api.flask import getApp
 
 
 def add():

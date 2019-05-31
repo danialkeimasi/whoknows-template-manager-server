@@ -2,7 +2,7 @@ from flask import json, request
 
 from config.config import mongo_client, logger
 from modules.template import Template
-from server.flask import getApp
+from api.flask import getApp
 
 
 def add():
@@ -24,7 +24,7 @@ def add():
     @app.route('/question/generate', methods=['POST'])
     def get_question_post():
         """
-        get question part of server
+        get question part of api
 
         api context:
             get the question py post request
