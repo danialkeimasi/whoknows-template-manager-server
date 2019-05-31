@@ -2,26 +2,26 @@
 
 Returns json data about a single user.
 
-* ##### URL
+* #### URL
 
   /template/new
 
-* ##### Method:
+* #### Method:
 
   `POST`
   
-* ##### Data Params
+* #### Data Params
 
      **Required:**
  
    `idea=string`
 
-* ##### Success Response:
+* #### Success Response:
 
   * **Code:** 200 <br />
     **Content:** `[{...}, ...]`
  
-* ##### Error Response:
+* #### Error Response:
 
   * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "User doesn't exist" }`
