@@ -1,10 +1,12 @@
-from server.routes import index, get_question, test_template, find_template, new_template, edit_template
+import glob
+import importlib
+import re
+import os
 
 
 def add_routes():
-    index.add()
-    get_question.add()
-    test_template.add()
-    find_template.add()
-    new_template.add()
-    edit_template.add()
+    files = [os.path.basename(path)[:-3] for path in glob.glob('./server/routes/*.py')
+                                            if not os.path.basename(path).startswith('__')]
+
+    for file in files:
+        importlib.import_module(f'server.routes.{file}').add()
