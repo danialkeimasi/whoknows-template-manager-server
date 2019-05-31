@@ -143,4 +143,4 @@ var.loaded_dataset.choose( number_of_elements ).property | select number of duc 
 # Data Catalogs
 you can find data catalogs in here
   
-[data-catalog dir](https://github.com/danialkeimasi/whoknows-template-manager/blob/master/data_catalogs/)
+[data-catalog dir](data_catalogs)
