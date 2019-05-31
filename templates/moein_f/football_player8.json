@@ -8,10 +8,10 @@
 			"text": ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
 	},
 		"choice": {
-			"text": ["var.players.choose(NOC).club_number"]
+			"text": ["$var.players.choose(NOC).club_number"]
 	},
 		"answer": {
-			"text": ["var.player.club_number"]
+			"text": ["$var.player.club_number"]
 	}
 	},
 	"&write": {
@@ -19,7 +19,7 @@
 			"text": ["شماره ی پیراهن `var.player.name` در تیم `var.player.team` چند است؟"]
 	},
 		"answer": {
-			"text": ["var.player.club_number"]
+			"text": ["$var.player.club_number"]
 	}
 	},
 	"&bool": {

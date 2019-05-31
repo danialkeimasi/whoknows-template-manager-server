@@ -1,0 +1,77 @@
+{
+    "values": {
+      "coach": "db(footballCoach)",
+      "coachs": "db(footballCoach[footballCoach.name != var.coach.name], NOC)"
+    },
+    "&choose": {
+      "title": {
+        "text": [
+          "عکس زیر تصویر کدام مربی میباشد؟"
+        ]
+      },
+      "choice": {
+        "text": [
+          "$var.coachs.name"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.name"
+        ]
+      },
+      "subtitle": {
+        "image": [
+          "$var.coach.pic"
+        ]
+      }
+    },
+    "&write": {
+      "title": {
+        "text": [
+          "نام مربی زیر چیست؟"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.coach.name"
+        ]
+      },
+      "subtitle": {
+        "image": [
+          "$var.coach.pic"
+        ]
+      }
+    },
+    "&bool": {
+      "title": {
+        "text": [
+          "عکس زیر تصویر `var.coach.name` میباشد.",
+          "عکس زیر تصویر `var.coachs.choose(1).name` میباشد."
+        ]
+      },
+      "subtitle": {
+          "image": [
+              "$var.coach.pic"
+          ]
+      }
+    },
+    "datasets": [
+      "footballCoach"
+    ],
+    "usage": [
+      "contest"
+    ],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "default",
+    "tags": [
+      "football",
+      "footballCoach",
+      "coach"
+    ],
+    "__state": "",
+    "__test_info": {},
+    "__idea": [
+      ""
+    ]
+  }

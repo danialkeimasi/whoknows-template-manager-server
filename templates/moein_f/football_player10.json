@@ -10,7 +10,7 @@
 			"text": ["wrong_guess(var.player.height, NOC)"]
 	},
 		"answer": {
-			"text": ["var.player.height"]
+			"text": ["$var.player.height"]
 	}
 	},
 	"&write": {
@@ -18,7 +18,7 @@
 			"text": ["قد `var.player.name` چند سانتی متر است؟"]
 	},
 		"answer": {
-			"text": ["var.player.height"]
+			"text": ["$var.player.height"]
 	}
 	},
 	"&bool": {

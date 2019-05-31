@@ -1,0 +1,42 @@
+{
+    "values": {
+      "coach": "db(footballCoach)",
+      "coachs": "db(footballCoach[footballCoach.name != var.coach.name], NOC)"
+    },
+    "&choose": {
+      "title": {
+        "text": [
+          "کدام گزینه عکس `var.coach.name` میباشد؟"
+        ]
+      },
+      "choice": {
+        "image": [
+          "$var.coachs.pic"
+        ]
+      },
+      "answer": {
+        "image": [
+          "$var.coach.pic"
+        ]
+      }
+    },
+    "datasets": [
+      "footballCoach"
+    ],
+    "usage": [
+      "contest"
+    ],
+    "level": 2,
+    "score_function": "default",
+    "time_function": "default",
+    "tags": [
+      "football",
+      "footballCoach",
+      "coach"
+    ],
+    "__state": "",
+    "__test_info": {},
+    "__idea": [
+      ""
+    ]
+  }

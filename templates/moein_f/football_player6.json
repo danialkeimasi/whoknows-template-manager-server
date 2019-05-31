@@ -8,10 +8,10 @@
 			"text": ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},
 		"choice": {
-			"text": ["var.players.name"]
+			"text": ["$var.players.name"]
 	},
 		"answer": {
-			"text": ["var.player.name"]
+			"text": ["$var.player.name"]
 	}
 	},
 	"&write": {
@@ -19,7 +19,7 @@
 			"text": ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
 	},
 		"answer": {
-			"text": ["var.player.name"]
+			"text": ["$var.player.name"]
 	}
 	},
 	

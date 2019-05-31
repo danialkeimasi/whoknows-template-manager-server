@@ -1,0 +1,41 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.name != var.player.name], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["عکس زیر چهره ی کدام بازیکن است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.name"]
+	},
+		"answer": {
+			"text": ["$var.player.name"]
+	},
+		"subtitle": {
+			"image": ["$var.player.pic"]
+		}
+	},
+    "&select": {
+		"title": {
+			"text": ["عکس زیر چهره ی کدام بازیکن است؟"]
+	},
+		"answer": {
+			"text": ["$var.player.name"]
+	},
+		"subtitle": {
+			"image": ["$var.player.pic"]
+		}
+	},
+    "datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+}
