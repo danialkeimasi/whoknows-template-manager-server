@@ -1,14 +1,14 @@
 from flask import Flask
 
 from flask_cors import CORS
-import server.routeHandle
+import server.routesHandle
 import server.flask
 
 from config.arg_parse import arg_parse
 
 server.flask.app = Flask(__name__)
 CORS(server.flask.getApp())
-server.routeHandle.addRoutes()
+server.routesHandle.add_routes()
 
 if __name__ == '__main__':
     isThereArg = arg_parse()
