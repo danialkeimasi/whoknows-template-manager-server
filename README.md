@@ -66,14 +66,16 @@ Template manager implements functionality for the followings concepts:
 
 
 ## :question: How to use?
-### API documentation url : 
+- ### API Documentation
 
 1. [question generate](api/documents/question_generate.md)
 2. [template edit](api/documents/template_edit.md)
 3. [template find](api/documents/template_find.md)
 4. [template new](api/documents/template_new.md)
 5. [template test](api/documents/template_test.md)
-
+  
+- ### Templates Documentation
+    you can read about templates and learn how to write a template [here](templates/).
 
 ## :bust_in_silhouette: Who is in charge: 
 - Mohammad Parsian
