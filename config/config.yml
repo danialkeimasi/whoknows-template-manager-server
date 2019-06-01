@@ -36,3 +36,45 @@ mongo:
 
 template:
   min_vote: 2
+
+  states:
+    - idea
+    - writing
+    - repair
+    - ready
+    - verified
+    - in_use
+
+  tests:
+    writing:
+      required:
+        - duplication
+        - acceptance
+        - data
+      values:
+        -
+
+    repair:
+      required:
+        - structure
+      values:
+        - 
+
+    ready:
+      required:
+        - generation
+      values:
+        - 
+
+    verified:
+      required:
+        - manual
+      values:
+        -
+
+    in_use:
+      required:
+        - usage_tagging
+      values:
+        -
+

@@ -339,6 +339,13 @@ class Template:
         return usage_list != []
 
 
+    def test_update(self):
+        
+        print(config.template.states)
+        print(config.template.tests)
+
+
+
 def load_data(dataset_name):
     """
     Loads the given dataset and returns it
