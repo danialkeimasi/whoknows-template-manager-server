@@ -4,7 +4,6 @@ from config.config import mongo_client, logger
 from modules.template import Template
 from api.flask import getApp
 
-
 def add():
     app = getApp()
 

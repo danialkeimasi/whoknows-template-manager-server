@@ -350,7 +350,7 @@ def load_data(dataset_name):
     """
     data = pd.DataFrame()
 
-    for i in range(5):
+    for try_count in range(5):
         try:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
             data = pd.DataFrame(json.load(open(f'{config.dir.dataset}/{dataset_name}db.json', encoding='utf-8')))
