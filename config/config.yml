@@ -51,30 +51,20 @@ template:
         - duplication
         - acceptance
         - data
-      values:
-        -
 
     repair:
       required:
-        - structure
-      values:
-        - 
+        - structure 
 
     ready:
       required:
-        - generation
-      values:
-        - 
+        - generation 
 
     verified:
       required:
         - manual
-      values:
-        -
 
     in_use:
       required:
         - usage_tagging
-      values:
-        -
 
