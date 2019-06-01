@@ -55,7 +55,32 @@
     "footballTeam"
   ],
   "__state": "",
-  "__test_info": {},
+  "__test_info": {
+    "duplication": {
+      "similars": []
+    },
+    "acceptance": {
+      "votes": [1, 2, 3, 4]
+    },
+    "data": {
+      "datasets": [
+        {
+          "name": "footballTeam",
+          "state": "null",
+          "ok": false
+        }
+      ]
+    },
+    "structure": {
+      "sections": []
+    },
+    "generation": {
+      "result": []
+    },
+    "manual": {
+      "votes": [1, 2, 3, 4]
+    }
+  },
   "__idea": [
     ""
   ]

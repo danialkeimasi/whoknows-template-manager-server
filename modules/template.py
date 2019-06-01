@@ -40,7 +40,8 @@ class Template:
                 None
 
         self.__problems = []
-        self.__template['__test_info'] = self.__empty_template['__test_info']
+        if '__test_info' not in self.__template:
+            self.__template['__test_info'] = self.__empty_template['__test_info']
 
         if debug:
             self.__test_structure()
@@ -311,10 +312,9 @@ class Template:
             if q_prop_requires_list:
                 problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
 
-            test_bool = problems != [] if test_bool else test_bool
-            sections.append({'name': q_type, 'ok': problems != [], 'problem': problems})
+            test_bool = problems == [] if test_bool else test_bool
+            sections.append({'name': q_type, 'ok': problems == [], 'problem': problems})
         
-        pprint(self.__template)
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
@@ -323,7 +323,21 @@ class Template:
         test the template by generate a number of question
         :return:
         """
-        pass
+        count = 50
+        success_rate = 0
+        acceptable_percent = 75
+
+        for try_count in range(count):
+            try:
+                ques = self.generate_question()
+                if ques.is_ok():
+                    success_rate += 1
+            except Exception as e:
+                print(e)
+        self.__template['__test_info']['generation']['result'].append({'count': count, 'success_rate': success_rate})
+        
+        print(((success_rate / count) * 100))
+        return ((success_rate / count) * 100) >= acceptable_percent 
 
     def __test_manual(self):
         """
@@ -340,9 +354,22 @@ class Template:
 
 
     def test_update(self):
+        tests = config.template.tests
+        self.__template['__state'] = config.template.states[0]
+
+        state_number = 0
+        test_functions = []
         
-        print(config.template.states)
-        print(config.template.tests)
+        for state in config.template.states[1:]:
+            test_functions = { t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
+            if not all(test_functions.values()):
+                break
+            else:
+                state_number += 1
+        print(test_functions)
+        print(config.template.states[state_number])
+        # print(self.__template['__test_info'])
+        
 
 
 

@@ -46,6 +46,9 @@ template:
     - in_use
 
   tests:
+    idea:
+      required:
+        
     writing:
       required:
         - duplication

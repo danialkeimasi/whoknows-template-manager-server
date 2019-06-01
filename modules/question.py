@@ -33,7 +33,7 @@ class Question:
         check if question is ok
         :return:
         """
-        return self.__problems != []
+        return self.__problems == []
 
     def test_question(self):
         """
