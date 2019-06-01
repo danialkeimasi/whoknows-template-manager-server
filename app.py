@@ -16,3 +16,10 @@ if __name__ == '__main__':
     if not isThereArg:
         api.flask.getApp().run(debug=True, host='0.0.0.0', port='3001')
         # api.flask.getApp().run(debug=True)
+
+# from modules.template import Template
+# from pprint import pprint
+
+# t = Template('d:/Programming/Python/whoKnows/guessit-question-manager/templates/moein_f/football_team1.json', mode='file')
+# t.test_update()
+# # pprint(t.dict())
