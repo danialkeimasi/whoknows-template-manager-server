@@ -1,0 +1,33 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.nation != var.player.nation], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["`var.player.name` اهل کدام کشور است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.nation"]
+	},
+		"answer": {
+			"text": ["$var.player.nation"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["`var.player.name` اهل کشور `var.player.nation` میباشد." ,
+                    "`var.player.name` اهل کشور `var.players.choose(1).nation` میباشد."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 
