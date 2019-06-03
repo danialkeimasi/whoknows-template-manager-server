@@ -14,6 +14,15 @@
 			"text": ["$var.player.nation"]
 	}
 	},
+	"&write": {
+		"title": {
+			"text": ["`var.player.name` اهل چه کشوری است؟"]
+	},
+		"answer": {
+			"text": ["$var.player.nation"]
+	}
+	},
+
 	"&bool": {
 		"title": {
 			"text": ["`var.player.name` اهل کشور `var.player.nation` میباشد." ,

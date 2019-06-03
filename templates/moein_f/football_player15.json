@@ -1,0 +1,45 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.foot != var.player.foot], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.foot == var.player.foot], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["کدام بازیکن `var.player.foot` پا است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.name"]
+	},
+		"answer": {
+			"text": ["$var.player.name"]
+	}
+	},
+	"&select": {
+		"title": {
+			"text": ["کدام بازیکنان `var.player.foot` پا هستند؟"]
+	},
+		"choice": {
+			"text": ["$var.players.choose(1).name"]
+	},
+		"answer": {
+			"text": ["$var.players_same.name"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["پای تخصصی `var.player.name`، `var.player.foot` است." ,
+                    "پای تخصصی `var.player.name`، `var.players.choose(1).foot` است."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 

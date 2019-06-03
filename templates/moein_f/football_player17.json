@@ -1,0 +1,33 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "player2": "db(footballPlayer[(footballPlayer.joined != var.player.joined) & (footballPlayer.club == var.player.club)])"
+    },
+	"&choose": {
+		"title": {
+			"text": ["`var.player.name` در چه تاریخی به `var.player.club` پیوست؟"]
+	},
+		"choice": {
+			"text": ["$var.players.joined"]
+	},
+		"answer": {
+			"text": ["$var.player.joined"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["`var.player.name` در تاریخ `var.player.joined` به باشگاه `var.player.club` پیوسته است." ,
+                    "`var.player.name` در تاریخ `var.player2.joined` به باشگاه `var.player.club` پیوسته است."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 

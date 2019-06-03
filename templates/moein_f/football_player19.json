@@ -1,0 +1,33 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "player2": "db(footballPlayer[(footballPlayer.contract_valid_until != var.player.contract_valid_until) & (footballPlayer.club == var.player.club)])"
+    },
+	"&choose": {
+		"title": {
+			"text": ["`var.player.name` تا چه تاریخی با `var.player.club` قرارداد دارد؟"]
+	},
+		"choice": {
+			"text": ["$var.players.contract_valid_until"]
+	},
+		"answer": {
+			"text": ["$var.player.contract_valid_until"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["`var.player.name` تا تاریخ `var.player.contract_valid_until` با تیم `var.player.club` قرارداد دارد." ,
+                    "`var.player.name` تا تاریخ `var.player2.contract_valid_until` با تیم `var.player.club` قرارداد دارد."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 
