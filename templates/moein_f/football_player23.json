@@ -1,0 +1,41 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[(footballPlayer.wage > var.player.wage + 5000000) | (footballPlayer.wage < var.player.wage - 5000000)], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["حقوق ماهیانه `var.player.name` چقدر است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.wage"]
+	},
+		"answer": {
+			"text": ["$var.player.wage"]
+	}
+	},
+	"&write": {
+		"title": {
+			"text": ["حقوق ماهیانه `var.player.name` چقدر است؟"]
+	},
+		"answer": {
+			"text": ["$var.player.wage"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["حقوق ماهیانه `var.player.name` در تیم `var.player.club` برابر `var.player.wage` یورو میباشد." ,
+                    "حقوق ماهیانه `var.player.name` در تیم `var.player.club` برابر `var.players.choose(1).wage` یورو میباشد."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 

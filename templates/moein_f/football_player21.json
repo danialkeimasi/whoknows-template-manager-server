@@ -1,0 +1,33 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[(footballPlayer.value > var.player.value + 10000000) | (footballPlayer.value < var.player.value - 10000000)])"
+    },
+	"&choose": {
+		"title": {
+			"text": ["ارزش `var.player.name` در سایت transfermarkt چقدر تعیین شده است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.value"]
+	},
+		"answer": {
+			"text": ["$var.player.value"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["در سایت transfermarkt ارزش `var.player.name` `var.player.value` یورو تعیین شده است." ,
+                    "در سایت transfermarkt ارزش `var.player.name` `var.players.choose(1).value` یورو تعیین شده است."]
+        }
+    },
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 
