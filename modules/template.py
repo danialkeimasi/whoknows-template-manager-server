@@ -10,6 +10,7 @@ from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list
+from bson import json_util
 from pprint import pprint
 
 
@@ -225,10 +226,11 @@ class Template:
 
         else:
             logger.info('> parsed template :')
-            logger.critical(json.dumps(self.parse().dict(), indent=4, ensure_ascii=False))
+            logger.critical(json_util.dumps(self.parse().dict(), indent=4, ensure_ascii=False))
 
             logger.info('> question :')
-            logger.critical(json.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
+            logger.critical(json_util.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
+
 
         logger.removeHandler(log_list_handler)
         # print('log_list', log_list)
