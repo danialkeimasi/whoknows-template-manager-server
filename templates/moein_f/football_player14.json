@@ -1,12 +1,12 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.nation != var.player.nation], NOC)",
-        "players_same": "db(footballPlayer[footballPlayer.nation == var.player.nation], NOC)"
+        "players": "db(footballPlayer[footballPlayer.nationality != var.player.nationality], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.nationality == var.player.nationality], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام بازیکن اهل کشور `var.player.nation` میباشد؟"]
+			"text": ["کدام بازیکن اهل کشور `var.player.nationality` میباشد؟"]
 	},
 		"choice": {
 			"text": ["$var.players.name"]
@@ -17,7 +17,7 @@
     },
     "&select": {
 		"title": {
-			"text": ["کدام بازیکنان اهل کشور `var.player.nation` میباشند؟"]
+			"text": ["کدام بازیکنان اهل کشور `var.player.nationality` میباشند؟"]
 	},
 		"choice": {
 			"text": ["$var.players.choose(1).name"]

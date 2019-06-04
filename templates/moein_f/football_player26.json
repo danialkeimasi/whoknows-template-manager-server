@@ -1,0 +1,42 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.national_number != var.player.national_number], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["شماره ی پیراهن `var.player.name` در تیم ملی `var.player.national_team` چند است؟"]
+	},
+		"choice": {
+			"text": ["$var.players.choose(NOC).national_number"]
+	},
+		"answer": {
+			"text": ["$var.player.national_number"]
+	}
+	},
+	"&write": {
+		"title": {
+			"text": ["شماره ی پیراهن `var.player.name` در تیم ملی `var.player.national_team` چند است؟"]
+	},
+		"answer": {
+			"text": ["$var.player.national_number"]
+	}
+	},
+	"&bool": {
+		"title": {
+			"text": ["`var.player.name` در تیم ملی `var.player.national_team` با شماره ی `var.player.national_number` بازی میکند.",
+                            "`var.player.name` در تیم ملی `var.player.national_team` با شماره ی `var.players.choose(1).national_number` بازی میکند."]
+	}
+	},
+	
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 
