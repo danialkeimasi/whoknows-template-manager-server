@@ -32,7 +32,7 @@ def add():
         tags = user_req['tags'] if 'tags' in user_req else None
         count = user_req['count'] if 'count' in user_req else 1
 
-        if tags is None or count is None:
+        if tags is None:
             response = {
                 "ok": False
             }
