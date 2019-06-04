@@ -1,28 +1,31 @@
 {
 	"values": {
-        "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.club_number != var.player.club_number] , NOC)"
-    },
+		"player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.height_in_cm != var.player.height_in_cm], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.height_in_cm == var.player.height_in_cm], NOC)"
+	},
 	"&choose": {
 		"title": {
-			"text": ["شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"]
+			"text": ["قد کدام بازیکن برابر `var.player.height_in_cm` میباشد؟"]
 	},
 		"choice": {
-			"text": ["$var.players.choose(NOC).name"]
+			"text": ["$var.players.name"]
 	},
 		"answer": {
 			"text": ["$var.player.name"]
 	}
 	},
-	"&write": {
+	"&select": {
 		"title": {
-			"text": ["شماره ی `var.player.club_number` در تیم `var.player.team` متعلق به کیست؟" , "چه کسی پیراهن شماره `var.player.club_number` را در تیم `var.player.team` بر تن میکند؟"]
+            "text": ["بازیکنانی که قدی برابر `var.player.height_in_cm` دارند را انتخاب کنید."]
+	},
+		"choice": {
+			"text": ["$var.players.chooose(1).name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$var.players_same.name"]
 	}
 	},
-	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
@@ -32,5 +35,4 @@
 	"__state": "",
 	"__test_info": {},
 	"__idea": [""]
-
 } 

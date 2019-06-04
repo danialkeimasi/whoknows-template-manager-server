@@ -1,0 +1,27 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "player2": "db(footballPlayer[(footballPlayer.joined != var.player.joined) & (footballPlayer.club == var.player.club)]"
+    },
+	"&choose": {
+		"title": {
+			"text": ["کدام بازیکن تا تاریخ `var.player.contract_valid_until` با تیم `var.player.club` قرارداد دارد؟"]
+	},
+		"choice": {
+			"text": ["$var.players.name"]
+	},
+		"answer": {
+			"text": ["$var.player2.name"]
+	}
+	},
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 

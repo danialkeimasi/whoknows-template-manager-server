@@ -1,0 +1,23 @@
+{
+	"values": {
+        "player": "db(footballPlayer)"
+    },
+	"&write": {
+		"title": {
+			"text": ["`var.player.name` چپ است یا راست پا؟"]
+	},
+		"answer": {
+			"text": ["$var.player.foot"]
+	}
+	},
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+
+} 

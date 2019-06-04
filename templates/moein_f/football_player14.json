@@ -1,0 +1,38 @@
+{
+	"values": {
+        "player": "db(footballPlayer)",
+        "players": "db(footballPlayer[footballPlayer.nation != var.player.nation], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.nation == var.player.nation], NOC)"
+    },
+	"&choose": {
+		"title": {
+			"text": ["کدام بازیکن اهل کشور `var.player.nation` میباشد؟"]
+	},
+		"choice": {
+			"text": ["$var.players.name"]
+	},
+		"answer": {
+			"text": ["$var.player.name"]
+	}
+    },
+    "&select": {
+		"title": {
+			"text": ["کدام بازیکنان اهل کشور `var.player.nation` میباشند؟"]
+	},
+		"choice": {
+			"text": ["$var.players.choose(1).name"]
+	},
+		"answer": {
+			"text": ["$var.players_same.name"]
+	}
+	},
+	"datasets": ["footballPlayer"],
+	"usage": ["contest"],
+	"level": 2,
+	"score_function": "default",
+	"time_function": "default",
+	"tags": ["football", "footballPlayer", "player"],
+	"__state": "",
+	"__test_info": {},
+	"__idea": [""]
+} 

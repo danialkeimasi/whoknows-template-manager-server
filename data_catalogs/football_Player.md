@@ -51,6 +51,17 @@
     </td>
   </tr>
 
+
+  <tr>
+    <td>national_number</td>
+    <td>string</td>
+    <td>[1-9][0-9]{0,1}</td>
+    <td>
+    شماره ی پیراهن بازیکن در تیم ملی اش
+    </td>
+  </tr>
+
+
   <tr>
     <td>height_in_cm</td>
     <td>unsignint</td>

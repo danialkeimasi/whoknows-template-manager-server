@@ -1,16 +1,17 @@
 {
 	"values": {
-        "player": "db(footballPlayer)"
-    },
+		"player": "db(footballPlayer)",
+		"players": "db(footballPlayer[footballPlayer.height_in_cm != var.player.height_in_cm], NOC) "
+	},
 	"&choose": {
 		"title": {
 			"text": ["قد `var.player.name` چند سانتی متر است؟"]
 	},
 		"choice": {
-			"text": ["wrong_guess(var.player.height, NOC)"]
+			"text": ["$var.players.height_in_cm"]
 	},
 		"answer": {
-			"text": ["$var.player.height"]
+			"text": ["$var.player.height_in_cm"]
 	}
 	},
 	"&write": {
@@ -18,13 +19,13 @@
 			"text": ["قد `var.player.name` چند سانتی متر است؟"]
 	},
 		"answer": {
-			"text": ["$var.player.height"]
+			"text": ["$var.player.height_in_cm"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["قد `var.player.name` برابر `var.player.height` است.",
-                            "قد `var.player.name` برابر `wrong_guess(var.player.height, 5 , 1)` است."]
+			"text": ["قد `var.player.name` برابر `var.player.height_in_cm` است.",
+                            "قد `var.player.name` برابر `var.height_in_cm` است."]
 	}
 	},
 	

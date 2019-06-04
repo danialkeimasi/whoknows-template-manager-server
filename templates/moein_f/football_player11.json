@@ -25,7 +25,6 @@
             "image": ["$var.player.pic"]
             }
 	},
-	
 	"datasets": ["footballPlayer"],
 	"usage": ["contest"],
 	"level": 2,
