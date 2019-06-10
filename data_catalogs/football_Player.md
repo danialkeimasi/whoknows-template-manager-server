@@ -152,4 +152,15 @@
     </td>
   </tr>
 
+
+  <tr>
+    <td>continent</td>
+    <td>string</td>
+    <td>[A-Za-z ]{4,20}</td>
+    <td>
+    نام قاره ای که کشور بازیکن در آن قرار دارد
+    </td>
+  </tr>
+
+
 </table> 
