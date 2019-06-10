@@ -82,6 +82,28 @@
     نتیجه مسابقه بصورت 2-1 
     </td>
   </tr>
+  
+  
+  
+  <tr>
+    <td>penalty</td>
+    <td>string</td>
+    <td>\d{1,2}\-\d{1,2}</td>
+    <td>
+    نتیجه پنالتی ها بصورت 4-3 
+    </td>
+  </tr>
+  
+  
+  
+  <tr>
+    <td>winner</td>
+    <td>string</td>
+    <td>.{3,30}</td>
+    <td>
+    تیم برنده مسابقه 
+    </td>
+  </tr>
 
   <tr>
     <td>stadium</td>
