@@ -338,7 +338,7 @@ class Template:
             except Exception as e:
                 problem_list.append(str(e))
         self.__template['__test_info']['generation']['result'].append({
-            'count': count, 
+            'count': count,
             'success_count': success_count,
             'problems': problem_list
         })
