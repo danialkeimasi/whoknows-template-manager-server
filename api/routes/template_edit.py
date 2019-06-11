@@ -34,7 +34,7 @@ def add():
         template = user_req['template'] if 'template' in user_req else {}
 
         problems = []
-        problems += ['you must send the template as a json post'] if template is {} else []
+        problems += ['you must send the template as a json post'] if template == {} else []
         problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in template else []
 
         if problems == []:
