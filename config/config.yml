@@ -57,7 +57,7 @@ template:
 
     repair:
       required:
-        - structure 
+        - structure
 
     ready:
       required:
