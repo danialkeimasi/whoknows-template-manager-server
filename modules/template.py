@@ -326,20 +326,25 @@ class Template:
         :return:
         """
         count = 50
-        success_rate = 0
+        success_count = 0
         acceptable_percent = 75
 
+        problem_list = []
         for try_count in range(count):
             try:
                 ques = self.generate_question()
                 if ques.is_ok():
-                    success_rate += 1
+                    success_count += 1
             except Exception as e:
-                print(e)
-        self.__template['__test_info']['generation']['result'].append({'count': count, 'success_rate': success_rate})
+                problem_list.append(str(e))
+        self.__template['__test_info']['generation']['result'].append({
+            'count': count, 
+            'success_count': success_count,
+            'problems': problem_list
+        })
         
-        print(((success_rate / count) * 100))
-        return ((success_rate / count) * 100) >= acceptable_percent 
+        print(((success_count / count) * 100))
+        return ((success_count / count) * 100) >= acceptable_percent 
 
     def __test_manual(self):
         """
