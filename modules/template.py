@@ -367,7 +367,7 @@ class Template:
                 break
             else:
                 state_number += 1
-
+        self.__template['__last_test'] = test_functions
         self.__template['__state'] = config.template.states[state_number]
 
         return self
