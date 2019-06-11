@@ -281,9 +281,10 @@ class Template:
         """
         test_bool = True
         sections = []
-        template_consts = ['usage', 'values', 'datasets', 'time_function',
-                           'score_function', 'tags', '__state', '__test_info',
-                           '__idea']
+        template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea'
+        # 'time_function',
+        # 'score_function',
+        ]
 
         for key in template_consts:
             if key in self.__template:
