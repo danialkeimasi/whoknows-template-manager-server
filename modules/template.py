@@ -368,8 +368,12 @@ class Template:
                 break
             else:
                 state_number += 1
-        print(test_functions)
-        print(config.template.states[state_number])
+
+        self.__template['__state'] = config.template.states[state_number]
+
+        return self
+        # print(test_functions)
+        # print(config.template.states[state_number])
         # print(self.__template['__test_info'])
         
 

@@ -3,12 +3,13 @@ from flask import json, request
 
 from config.config import mongo_client
 from api.flask import getApp
+from modules.template import Template
 
 
 def add():
     app = getApp()
 
-    @app.route('/template/edit', methods=['GET'])
+    @app.route('/template/test_save', methods=['GET'])
     def edit_template_get():
 
         response = {
@@ -21,28 +22,33 @@ def add():
 
         return json.dumps(response)
 
-    @app.route('/template/edit', methods=['POST'])
+    @app.route('/template/test_save', methods=['POST'])
     def edit_template_post():
         """
+        test the template and update the state
         find template by _id that exist in template
         update the template in the database
         
         """
-        template = json_util.loads(request.data) if request.json is not None else {}
+        request = json_util.loads(request.data) if request.json is not None else {}
+        template = request['template'] if 'template' in request else {}
 
         problems = []
         problems += ['you must send the template as a json post'] if template is {} else []
         problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in template else []
 
         if problems == []:
-            replace_res = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, template)
+            
+            updated_template = Template(template).test_update().dict()
+            replace_response = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, updated_template)
 
             template_updated = mongo_client.TemplateManager.templates.find_one({'_id': template['_id']})
             response = {
-                'ok': replace_res.acknowledged,
+                'ok': replace_response.acknowledged,
                 '_id': template['_id'],
                 'template': template_updated
             }
+
         else:
             response = {
                 'ok': False,
