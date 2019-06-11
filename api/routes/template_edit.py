@@ -30,8 +30,8 @@ def add():
         update the template in the database
         
         """
-        request = json_util.loads(request.data) if request.json is not None else {}
-        template = request['template'] if 'template' in request else {}
+        user_req = json_util.loads(request.data) if request.json is not None else {}
+        template = user_req['template'] if 'template' in user_req else {}
 
         problems = []
         problems += ['you must send the template as a json post'] if template is {} else []
