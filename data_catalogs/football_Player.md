@@ -64,7 +64,7 @@
 
   <tr>
     <td>height_in_cm</td>
-    <td>unsignint</td>
+    <td>int</td>
     <td>[1,2]\d\d</td>
     <td>
     قد بازیکن به سانتی متر
@@ -73,7 +73,7 @@
 
   <tr>
     <td>age</td>
-    <td>unsignint</td>
+    <td>int</td>
     <td>[1,2,3,4,5][0-9]</td>
     <td>
     سن بازیکن
@@ -109,7 +109,7 @@
   
   <tr>
     <td>release_clause_euro</td>
-    <td>unsignint</td>
+    <td>int</td>
     <td>[\d]{3,10}</td>
     <td>
     مبلغ فسخ قرارداد بازیکن به یورو
@@ -118,7 +118,7 @@
 
   <tr>
     <td>value_in_euro</td>
-    <td>unsignint</td>
+    <td>int</td>
     <td>[\d]{4,10}</td>
     <td>
     ارزش بازیکن در سایت ترانسفرمارکت به یورو
@@ -127,7 +127,7 @@
 
   <tr>
     <td>wage_euro</td>
-    <td>unsignint</td>
+    <td>int</td>
     <td>[\d]{4,9}</td>
     <td>
     حقوق هفتگی بازیکن به یورو
