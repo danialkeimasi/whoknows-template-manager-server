@@ -1,0 +1,77 @@
+{
+    "values": {
+      "cup": "db(footballCup)",
+      "cups": "db(footballCup[(footballCup.champ != var.cup.champ) & (footballCup.name == var.cup.name)] ,var.NOC)"
+    },
+    "&choose": {
+      "title": {
+        "text": [
+          "تیم `var.cup.champ` در کدام سال قهرمان `var.cup.name` شد؟"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.cup.year"
+        ]
+      },
+      "choice": {
+        "text": [
+          "$var.cups.year"
+        ]
+      }
+    },
+    "&write": {
+      "title": {
+        "text": [
+            "تیم `var.cup.champ` در چه سالی قهرمان `var.cup.name` شد؟"
+        ]
+      },
+      "answer": {
+        "text": [
+          "$var.cup.year"
+        ]
+      }
+    },
+    "datasets": [
+      "footballCup"
+    ],
+    "usage": [
+      "contest"
+    ],
+    "score_function": "default",
+    "time_function": "default",
+    "tags": [
+      "football",
+      "footballCup"
+    ],
+    "__state": "",
+    "__test_info": {
+      "duplication": {
+        "similars": []
+      },
+      "acceptance": {
+        "votes": [1, 2, 3, 4]
+      },
+      "data": {
+        "datasets": [
+          {
+            "name": "footballCup",
+            "state": "null",
+            "ok": false
+          }
+        ]
+      },
+      "structure": {
+        "sections": []
+      },
+      "generation": {
+        "result": []
+      },
+      "manual": {
+        "votes": [1, 2, 3, 4]
+      }
+    },
+    "__idea": [
+      ""
+    ]
+  }
