@@ -39,7 +39,7 @@ def add():
         else:
 
             templates = list(mongo_client.TemplateManager.templates.aggregate([
-                {'$match': {'ok': True}},
+                {'$match': {'__state': 'in_use'}},
                 {'$match': {'tags': {'$in': tags}}},
                 {'$sample': {'size': count}},
             ]))
