@@ -21,7 +21,7 @@ class Template:
     """
     __template_formatter = json.load(open(config.dir.template_formatter))
     __empty_template = json.load(open(config.dir.empty_template))
-    __schema_validator = jsonschema.Draft3Validator(schema)
+    __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
 
     __default_metadata = {
         'NOC': 3,
