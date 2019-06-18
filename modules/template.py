@@ -5,6 +5,7 @@ import random
 import re
 
 import pandas as pd
+import jsonschema
 
 from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
@@ -20,7 +21,8 @@ class Template:
     """
     __template_formatter = json.load(open(config.dir.template_formatter))
     __empty_template = json.load(open(config.dir.empty_template))
-    
+    __schema_validator = jsonschema.Draft3Validator(schema)
+
     __default_metadata = {
         'NOC': 3,
         'NOS': 4,
@@ -273,6 +275,16 @@ class Template:
             if not ds['ok']:
                 return False
         return True
+
+    def __test_schema(self):
+        try:
+            self.__schema_validator.validate(self.__template)
+            return True
+            
+        except Exception as e:
+            self.__template['__test_info']['structure']['schema_error'] = str(e)
+            return False
+            
 
     def __test_structure(self):
         """

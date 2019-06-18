@@ -1,0 +1,350 @@
+{
+    "type": "object",
+    "properties": {
+        "_id": {
+            "required": false
+        },
+        "__idea": {
+            "required": true,
+            "type": "string"
+        },
+        "tags": {
+            "required": true,
+            "type": "array"
+        },
+        "usage": {
+            "required": true,
+            "type": "array"
+        },
+        "datasets": {
+            "required": true,
+            "type": "array"
+        },
+        "values": {
+            "required": true,
+            "type": "object"
+        },
+        "&choose": {
+            "required": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "answer": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "choice": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "subtitle": {
+                    "required": false,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "&bool": {
+            "required": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "subtitle": {
+                    "required": false,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "&write": {
+            "required": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "answer": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "subtitle": {
+                    "required": false,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "$select": {
+            "required": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "answer": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "choice": {
+                    "required": true,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                },
+                "subtitle": {
+                    "required": false,
+                    "type": "object",
+                    "propertioes": {
+                        "text": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "photo": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "video": {
+                            "required": false,
+                            "type": "array"
+                        },
+                        "audio": {
+                            "required": false,
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "__state": {
+            "required": true,
+            "type": "string"
+        },
+        "__test_info": {
+            "required": true,
+            "type": "object"
+        },
+        "__last_test": {
+            "required": false,
+            "type": "object"
+        }
+    }
+}
