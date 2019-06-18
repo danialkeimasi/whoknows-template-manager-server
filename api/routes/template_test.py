@@ -10,7 +10,7 @@ def add():
     app = getApp()
 
     @app.route('/template/test_save', methods=['GET'])
-    def edit_template_get():
+    def test_get():
 
         response = {
             'ok': False,
@@ -23,7 +23,7 @@ def add():
         return json.dumps(response)
 
     @app.route('/template/test_save', methods=['POST'])
-    def edit_template_post():
+    def test_post():
         """
         test the template and update the state
         find template by _id that exist in template
