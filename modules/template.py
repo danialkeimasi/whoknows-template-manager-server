@@ -95,20 +95,20 @@ class Template:
             metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
 
         problems = []
-        var = DataContainer()
-        setattr(var, 'bool_answer', bool_answer)
+        val = DataContainer()
+        setattr(val, 'bool_answer', bool_answer)
 
         for key, value in metadata.items():
-            setattr(var, key, value)
+            setattr(val, key, value)
 
-        # get the values to the "var"
+        # get the values to the "val"
         values_dict = {}
         for key, value in self.__template['values'].items():
             logger.info(f'{key} is going to eval')
             eval_result = eval(value)
 
             values_dict.update({key: eval_result})
-            setattr(var, key, eval_result)
+            setattr(val, key, eval_result)
 
         template = copy.deepcopy(self.__template)
         # template.update({'values': values_dict})
