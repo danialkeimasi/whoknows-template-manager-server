@@ -1,14 +1,18 @@
 {
+    "__idea": [""],
+    "tags": [""],
+    "usage": [""],
+    "datasets": ["dataset"],
     "values": {
-        "value": "db(dataset_name[query])"
-    },
-    "&bool": {
-        "title": {}
+        "key": "query"
     },
     "&choose": {
         "title": {},
         "answer": {},
         "choice": {}
+    },
+    "&bool": {
+        "title": {}
     },
     "&write": {
         "title": {},
@@ -16,12 +20,9 @@
     },
     "&select": {
         "title": {},
-        "choice": {},
-        "answer": {}
+        "answer": {},
+        "choice": {}
     },
-    "datasets": [],
-    "tags": [],
-    "usage": [],
     "__state": "idea",
     "__test_info": {
         "duplication": {
@@ -42,6 +43,5 @@
         "manual": {
             "votes": []
         }
-    },
-    "__idea": [""]
+    }
 }
