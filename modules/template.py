@@ -337,14 +337,24 @@ class Template:
                     success_count += 1
             except Exception as e:
                 problem_list.append(str(e))
+        
+        problem_set = []
+        for problem in set(problem_list):
+            problem_set.append({
+                'error': problem,
+                'count': problem_list.count(problem)
+            })
+
+        success_percent = success_count / count * 100
+
         self.__template['__test_info']['generation']['result'].append({
             'count': count,
             'success_count': success_count,
-            'problems': problem_list
+            'success_percent': success_percent,
+            'problems': problem_set
         })
         
-        print(((success_count / count) * 100))
-        return ((success_count / count) * 100) >= acceptable_percent 
+        return (success_percent) >= acceptable_percent
 
     def __test_manual(self):
         """
