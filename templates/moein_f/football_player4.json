@@ -1,17 +1,17 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.release_clause_euro != var.player.release_clause_euro], NOC)"
+        "players": "db(footballPlayer[footballPlayer.release_clause_euro != val.player.release_clause_euro], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["بند آزادسازی کدام بازیکن برابر `var.player.release_clause_euro` یورو میباشد؟"]
+			"text": ["بند آزادسازی کدام بازیکن برابر `val.player.release_clause_euro` یورو میباشد؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	

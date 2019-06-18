@@ -1,7 +1,7 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[footballCoach.name != var.coach.name], NOC)"
+      "coachs": "db(footballCoach[footballCoach.name != val.coach.name], NOC)"
     },
     "&choose": {
       "title": {
@@ -11,17 +11,17 @@
       },
       "choice": {
         "text": [
-          "$var.coachs.name"
+          "$val.coachs.name"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       },
       "subtitle": {
         "image": [
-          "$var.coach.pic"
+          "$val.coach.pic"
         ]
       }
     },
@@ -33,25 +33,25 @@
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       },
       "subtitle": {
         "image": [
-          "$var.coach.pic"
+          "$val.coach.pic"
         ]
       }
     },
     "&bool": {
       "title": {
         "text": [
-          "عکس زیر تصویر `var.coach.name` میباشد.",
-          "عکس زیر تصویر `var.coachs.choose(1).name` میباشد."
+          "عکس زیر تصویر `val.coach.name` میباشد.",
+          "عکس زیر تصویر `val.coachs.choose(1).name` میباشد."
         ]
       },
       "subtitle": {
           "image": [
-              "$var.coach.pic"
+              "$val.coach.pic"
           ]
       }
     },

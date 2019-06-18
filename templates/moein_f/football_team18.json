@@ -1,20 +1,20 @@
 {
 	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
+        "teams": "db(footballTeam[footballTeam.stadium != val.team.stadium], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
 			"text"       : ["پیراهن زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن کدام تیم است؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.teams.name"]
+			"text"       : ["val.teams.name"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"]
+			"text"       : ["val.team.name"]
     },
         "subtitle"      :  {
-            "text"       : ["var.team.awaykit"]
+            "text"       : ["val.team.awaykit"]
     }
     },
 	"__write"          : {
@@ -22,10 +22,10 @@
 			"text"       : ["پیراهن زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن چه تیمی است؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"]
+			"text"       : ["val.team.name"]
     },
         "subtitle"      :  {
-            "text"       : ["var.team.awaykit"]
+            "text"       : ["val.team.awaykit"]
     }
 	},
 	"_id" : "football_team18",

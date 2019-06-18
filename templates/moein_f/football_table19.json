@@ -1,23 +1,23 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point < var.team.point)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.point < val.team.point)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم در جدول لیگ `var.team.league` امتیاز بیشتری دارد؟"]
+			"text": ["کدام تیم در جدول لیگ `val.team.league` امتیاز بیشتری دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` امتیاز بیشتری نسبت به تیم `var.teams.choose(1).name دارد.",
-                            "تیم `var.teams.choose(1).name` در لیگ `var.team.league` امتیاز بیشتری نسبت به تیم `var.team.name دارد."]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` امتیاز بیشتری نسبت به تیم `val.teams.choose(1).name دارد.",
+                            "تیم `val.teams.choose(1).name` در لیگ `val.team.league` امتیاز بیشتری نسبت به تیم `val.team.name دارد."]
 	}
 	},
 	

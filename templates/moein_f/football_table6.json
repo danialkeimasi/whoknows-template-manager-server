@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.gf != val.team.gf] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چه تعداد گل زده است؟"]
 	},
 		"choice": {
-			"text": ["var.teams.gf"]
+			"text": ["val.teams.gf"]
 	},
 		"answer": {
-			"text": ["var.team.gf"]
+			"text": ["val.team.gf"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل زده است؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چه تعداد گل زده است؟"]
 	},
 		"answer": {
-			"text": ["var.team.gf"]
+			"text": ["val.team.gf"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
-                            "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` `val.team.point` امتیاز دارد." ,
+                            "تیم `val.team.name` در لیگ `val.team.league` `val.teams.choose(1).point` امتیاز دارد."]
 	}
 	},
 	

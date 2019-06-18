@@ -1,17 +1,17 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.point != val.team.point)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم در لیگ `var.team.league` امتیازش برابر `var.team.point` میباشد؟"]
+			"text": ["کدام تیم در لیگ `val.team.league` امتیازش برابر `val.team.point` میباشد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	

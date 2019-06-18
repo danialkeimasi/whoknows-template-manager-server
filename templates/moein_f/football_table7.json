@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga != var.team.ga)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.ga != val.team.ga)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل خورده است؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چه تعداد گل خورده است؟"]
 	},
 		"choice": {
-			"text": ["var.teams.ga"]
+			"text": ["val.teams.ga"]
 	},
 		"answer": {
-			"text": ["var.team.ga"]
+			"text": ["val.team.ga"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه تعداد گل خورده است؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چه تعداد گل خورده است؟"]
 	},
 		"answer": {
-			"text": ["var.team.ga"]
+			"text": ["val.team.ga"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.ga` میباشد.",
-                            "تعداد گل خورده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).ga` میباشد."]
+			"text": ["تعداد گل خورده تیم `val.team.name` در لیگ `val.team.league` برابر `val.team.ga` میباشد.",
+                            "تعداد گل خورده تیم `val.team.name` در لیگ `val.team.league` برابر `val.teams.choose(1).ga` میباشد."]
 	}
 	},
 	

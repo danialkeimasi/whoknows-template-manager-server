@@ -1,34 +1,34 @@
 {
     "values": {
       "cup": "db(footballCup)",
-      "cups": "db(footballCup[(footballCup.second != var.cup.second) & (footballCup.name == var.cup.name)] ,var.NOC)"
+      "cups": "db(footballCup[(footballCup.second != val.cup.second) & (footballCup.name == val.cup.name)] ,val.NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "تیم `var.cup.second` در کدام سال نایب قهرمان `var.cup.name` شد؟"
+          "تیم `val.cup.second` در کدام سال نایب قهرمان `val.cup.name` شد؟"
         ]
       },
       "answer": {
         "text": [
-          "$var.cup.year"
+          "$val.cup.year"
         ]
       },
       "choice": {
         "text": [
-          "$var.cups.year"
+          "$val.cups.year"
         ]
       }
     },
     "&write": {
       "title": {
         "text": [
-            "تیم `var.cup.second` در چه سالی نایب قهرمان `var.cup.name` شد؟"
+            "تیم `val.cup.second` در چه سالی نایب قهرمان `val.cup.name` شد؟"
         ]
       },
       "answer": {
         "text": [
-          "$var.cup.year"
+          "$val.cup.year"
         ]
       }
     },

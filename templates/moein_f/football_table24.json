@@ -1,17 +1,17 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.ga > var.team.ga)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.ga > val.team.ga)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم در لیگ `var.team.league` گل خورده ی کمتری نسبت به سایر گزینه ها دارد؟"]
+			"text": ["کدام تیم در لیگ `val.team.league` گل خورده ی کمتری نسبت به سایر گزینه ها دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	

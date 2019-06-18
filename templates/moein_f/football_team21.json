@@ -1,29 +1,29 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.name ], NOC)",
+        "teams": "db(footballTeam[footballTeam.name != val.team.name ], NOC)",
         "True_or_False": "rand([True,False])"
     },
     "title_multichoices": [
-        "لوگوی تیم 'var.team.name' کدام است؟"
+        "لوگوی تیم 'val.team.name' کدام است؟"
     ],
     "title_true_false": [
-        "عکس زیر ، لوگوی تیم 'var.team.name' میباشد.",
-        "عکس زیر ، لوگوی تیم 'var.teams.choose(1).name' میباشد.",
-        "لوگوی زیر ، متعلق به تیم 'var.team.name' میباشد.",
-        "لوگوی زیر ، متعلق به تیم 'var.teams.choose(1).name' میباشد."
+        "عکس زیر ، لوگوی تیم 'val.team.name' میباشد.",
+        "عکس زیر ، لوگوی تیم 'val.teams.choose(1).name' میباشد.",
+        "لوگوی زیر ، متعلق به تیم 'val.team.name' میباشد.",
+        "لوگوی زیر ، متعلق به تیم 'val.teams.choose(1).name' میباشد."
     ],
     "answer_multichoices": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "answer_true_false": [
-        "var.True_or_False"
+        "val.True_or_False"
     ],
     "choices_multichoices": [
-        "var.teams.logo"
+        "val.teams.logo"
     ],
     "subtitle_true_false": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "__usage": [
         "contest"

@@ -1,44 +1,44 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "team1": "db(footballTeam[footballTeam.league != var.team.league])",
-    "countries": "listSub(footballTeam.country, var.team.country)",
+    "team1": "db(footballTeam[footballTeam.league != val.team.league])",
+    "countries": "listSub(footballTeam.country, val.team.country)",
     "True_or_False": "rand([True,False])"
   },
   "&choose": {
     "title": {
       "text": [
-        "`var.team.coach` در کدام کشور مربیگری میکند؟"
+        "`val.team.coach` در کدام کشور مربیگری میکند؟"
       ]
     },
     "choice": {
       "text": [
-        "var.countries.choose(NOC)"
+        "val.countries.choose(NOC)"
       ]
     },
     "answer": {
       "text": [
-        "var.team.country"
+        "val.team.country"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "`var.team.coach` در چه کشوری مربیگری میکند؟"
+        "`val.team.coach` در چه کشوری مربیگری میکند؟"
       ]
     },
     "answer": {
       "text": [
-        "var.team.country"
+        "val.team.country"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "`var.team.coach` در کشور `var.team.league` مربیگری میکند؟.",
-        "`var.team.coach` در کشور `var.team1.league` مربیگری میکند."
+        "`val.team.coach` در کشور `val.team.league` مربیگری میکند؟.",
+        "`val.team.coach` در کشور `val.team1.league` مربیگری میکند."
       ]
     }
   },

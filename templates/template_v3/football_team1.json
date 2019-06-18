@@ -1,44 +1,44 @@
 {
   "values": {
     "team": {"$DataContainer": "db(footballTeam)"},
-    "team_same": {"$DataContainer": "db(footballTeam[footballTeam.league == var.team.league])"},
-    "leagues": {"$DataContainer": "listSub(footballTeam.league, var.team.league)"}
+    "team_same": {"$DataContainer": "db(footballTeam[footballTeam.league == val.team.league])"},
+    "leagues": {"$DataContainer": "listSub(footballTeam.league, val.team.league)"}
   },
   "&bool": {
     "title": {
       "text": [
-        "تیم `var.team.name` در لیگ `var.team.league` فعالیت میکند؟",
-        "تیم `var.team.name` در لیگ `var.leagues.choose(1)` فعالیت میکند؟"
+        "تیم `val.team.name` در لیگ `val.team.league` فعالیت میکند؟",
+        "تیم `val.team.name` در لیگ `val.leagues.choose(1)` فعالیت میکند؟"
       ]
     }
   },
   "&choose": {
     "title": {
       "text": [
-        "تیم `var.team.name` در کدام لیگ فعالیت میکند؟",
-        "تیم `var.team.name` و `var.team_same.name` در کدام لیگ فعالیت میکنند؟"
+        "تیم `val.team.name` در کدام لیگ فعالیت میکند؟",
+        "تیم `val.team.name` و `val.team_same.name` در کدام لیگ فعالیت میکنند؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.league"
+        "$val.team.league"
       ]
     },
     "choice": {
       "text": [
-        "$var.leagues.choose(var.NOC)"
+        "$val.leagues.choose(val.NOC)"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "تیم `var.team.name` در چه لیگی فعالیت میکند؟"
+        "تیم `val.team.name` در چه لیگی فعالیت میکند؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.league"
+        "$val.team.league"
       ]
     }
   },

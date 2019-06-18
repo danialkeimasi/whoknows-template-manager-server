@@ -1,31 +1,31 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.wage > var.player.wage + 5000000) | (footballPlayer.wage < var.player.wage - 5000000)], NOC)"
+        "players": "db(footballPlayer[(footballPlayer.wage > val.player.wage + 5000000) | (footballPlayer.wage < val.player.wage - 5000000)], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["حقوق ماهیانه `var.player.name` چقدر است؟"]
+			"text": ["حقوق ماهیانه `val.player.name` چقدر است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.wage"]
+			"text": ["$val.players.wage"]
 	},
 		"answer": {
-			"text": ["$var.player.wage"]
+			"text": ["$val.player.wage"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["حقوق ماهیانه `var.player.name` چقدر است؟"]
+			"text": ["حقوق ماهیانه `val.player.name` چقدر است؟"]
 	},
 		"answer": {
-			"text": ["$var.player.wage"]
+			"text": ["$val.player.wage"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["حقوق ماهیانه `var.player.name` در تیم `var.player.club` برابر `var.player.wage` یورو میباشد." ,
-                    "حقوق ماهیانه `var.player.name` در تیم `var.player.club` برابر `var.players.choose(1).wage` یورو میباشد."]
+			"text": ["حقوق ماهیانه `val.player.name` در تیم `val.player.club` برابر `val.player.wage` یورو میباشد." ,
+                    "حقوق ماهیانه `val.player.name` در تیم `val.player.club` برابر `val.players.choose(1).wage` یورو میباشد."]
         }
     },
 	"datasets": ["footballPlayer"],

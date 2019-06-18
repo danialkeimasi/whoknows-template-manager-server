@@ -1,8 +1,8 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-        "teams_same": "db(footballTeam[(footballTeam.league == var.team.league)] ,NOC)",
+        "teams": "db(footballTeam[footballTeam.league != val.team.league] ,NOC)",
+        "teams_same": "db(footballTeam[(footballTeam.league == val.team.league)] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_multichoices": [
@@ -12,16 +12,16 @@
         "تیم هایی که در یک لیگ مشترک فعالیت دارند راانتخاب کنید."
     ],
     "answer_multichoices": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "answer_selective": [
-        "var.teams_same.choose(ans_cnt).logo"
+        "val.teams_same.choose(ans_cnt).logo"
     ],
     "choices_multichoices": [
-        "var.teams.choose(NOC).logo"
+        "val.teams.choose(NOC).logo"
     ],
     "choices_selective": [
-        "var.teams.choose(NOC - ans_cnt + 1).logo"
+        "val.teams.choose(NOC - ans_cnt + 1).logo"
     ],
     "__usage": [
         "contest"

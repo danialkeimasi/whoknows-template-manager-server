@@ -1,51 +1,51 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "team1": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)])",
-    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach)], var.NOC)",
+    "team1": "db(footballTeam[(footballTeam.league == val.team.league) & (footballTeam.coach != val.team.coach)])",
+    "teams_same": "db(footballTeam[(footballTeam.league == val.team.league) & (footballTeam.coach != val.team.coach)], val.NOC)",
     "True_or_False": "rand([True,False])"
   },
   "&choose": {
     "title": {
       "text": [
-        "مربی تیم `var.team.name` کدام است؟",
-        "کدام یک از افراد زیر مربی تیم `var.team.name` میباشد؟",
-        "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
-        "مربی کنونی تیم `var.team.name` در کدام گزینه آمده است؟"
+        "مربی تیم `val.team.name` کدام است؟",
+        "کدام یک از افراد زیر مربی تیم `val.team.name` میباشد؟",
+        "مربیگری تیم `val.team.name` بر عهده ی کیست؟",
+        "مربی کنونی تیم `val.team.name` در کدام گزینه آمده است؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.teams_same.coach"
+        "$val.teams_same.coach"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.coach"
+        "$val.team.coach"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "مربی تیم `var.team.name` کیست؟",
-        "مربیگری تیم `var.team.name` بر عهده ی کیست؟",
-        "مربی کنونی تیم `var.team.name` چه کسی است؟"
+        "مربی تیم `val.team.name` کیست؟",
+        "مربیگری تیم `val.team.name` بر عهده ی کیست؟",
+        "مربی کنونی تیم `val.team.name` چه کسی است؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.coach"
+        "$val.team.coach"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "مربی تیم `var.team.name` بر عهده ی `var.team.coach` میباشد.",
-        "مربیگری تیم `var.team1.name` بر عهده ی `var.team.coach` میباشد.",
-        "در حال حاضر `var.team.coach` مربیگری تیم `var.team.name` را برعهده دارد.",
-        "در حال حاضر `var.team.coach` مربیگری تیم `var.team1.name` را برعهده دارد."
+        "مربی تیم `val.team.name` بر عهده ی `val.team.coach` میباشد.",
+        "مربیگری تیم `val.team1.name` بر عهده ی `val.team.coach` میباشد.",
+        "در حال حاضر `val.team.coach` مربیگری تیم `val.team.name` را برعهده دارد.",
+        "در حال حاضر `val.team.coach` مربیگری تیم `val.team1.name` را برعهده دارد."
       ]
     }
   },

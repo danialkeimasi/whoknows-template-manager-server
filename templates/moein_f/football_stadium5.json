@@ -1,31 +1,31 @@
 {
 	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.city != var.stadium.city], NOC)"
+        "stadiums": "db(footballStadium[footballStadium.city != val.stadium.city], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+			"text": ["ورزشگاه `val.stadium.name` در چه شهری قرار دارد؟"]
 	},
 		"choice": {
-			"text": ["var.stadiums.city"]
+			"text": ["val.stadiums.city"]
 	},
 		"answer": {
-			"text": ["var.stadium.city"]
+			"text": ["val.stadium.city"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در چه شهری قرار دارد؟"]
+			"text": ["ورزشگاه `val.stadium.name` در چه شهری قرار دارد؟"]
 	},
 		"answer": {
-			"text": ["var.stadium.city"]
+			"text": ["val.stadium.city"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در شهر `var.stadium.city` قرار دارد.",
-                            "ورزشگاه `var.stadium.name` در شهر `var.stadiums.choose(1).city` قرار دارد."]
+			"text": ["ورزشگاه `val.stadium.name` در شهر `val.stadium.city` قرار دارد.",
+                            "ورزشگاه `val.stadium.name` در شهر `val.stadiums.choose(1).city` قرار دارد."]
 	}
 	},
 	

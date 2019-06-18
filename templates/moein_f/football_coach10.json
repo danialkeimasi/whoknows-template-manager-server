@@ -1,22 +1,22 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[footballCoach.name != var.coach.name], NOC)"
+      "coachs": "db(footballCoach[footballCoach.name != val.coach.name], NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "کدام گزینه عکس `var.coach.name` میباشد؟"
+          "کدام گزینه عکس `val.coach.name` میباشد؟"
         ]
       },
       "choice": {
         "image": [
-          "$var.coachs.pic"
+          "$val.coachs.pic"
         ]
       },
       "answer": {
         "image": [
-          "$var.coach.pic"
+          "$val.coach.pic"
         ]
       }
     },

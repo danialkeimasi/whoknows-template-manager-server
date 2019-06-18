@@ -1,23 +1,23 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.value > var.player.value + 10000000) | (footballPlayer.value < var.player.value - 10000000)])"
+        "players": "db(footballPlayer[(footballPlayer.value > val.player.value + 10000000) | (footballPlayer.value < val.player.value - 10000000)])"
     },
 	"&choose": {
 		"title": {
-			"text": ["ارزش `var.player.name` در سایت transfermarkt چقدر تعیین شده است؟"]
+			"text": ["ارزش `val.player.name` در سایت transfermarkt چقدر تعیین شده است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.value"]
+			"text": ["$val.players.value"]
 	},
 		"answer": {
-			"text": ["$var.player.value"]
+			"text": ["$val.player.value"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["در سایت transfermarkt ارزش `var.player.name` `var.player.value` یورو تعیین شده است." ,
-                    "در سایت transfermarkt ارزش `var.player.name` `var.players.choose(1).value` یورو تعیین شده است."]
+			"text": ["در سایت transfermarkt ارزش `val.player.name` `val.player.value` یورو تعیین شده است." ,
+                    "در سایت transfermarkt ارزش `val.player.name` `val.players.choose(1).value` یورو تعیین شده است."]
         }
     },
 	"datasets": ["footballPlayer"],

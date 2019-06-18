@@ -1,31 +1,31 @@
 {
 	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity] , NOC)"
+        "stadiums": "db(footballStadium[footballStadium.capacity != val.stadium.capacity] , NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+			"text": ["ورزشگاه `val.stadium.name` چقدر گنجایش دارد؟"]
 	},
 		"choice": {
-			"text": ["var.stadiums.capacity"]
+			"text": ["val.stadiums.capacity"]
 	},
 		"answer": {
-			"text": ["var.stadium.capacity"]
+			"text": ["val.stadium.capacity"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` چقدر گنجایش دارد؟"]
+			"text": ["ورزشگاه `val.stadium.name` چقدر گنجایش دارد؟"]
 	},
 		"answer": {
-			"text": ["var.stadium.capacity"]
+			"text": ["val.stadium.capacity"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["گنجایش ورزشگاه `var.stadium.name` برابر `var.stadium.capacity` میباشد.",
-                            "گنجایش ورزشگاه `var.stadium.name` برابر `var.stadiums.choose(1).capacity` میباشد."]
+			"text": ["گنجایش ورزشگاه `val.stadium.name` برابر `val.stadium.capacity` میباشد.",
+                            "گنجایش ورزشگاه `val.stadium.name` برابر `val.stadiums.choose(1).capacity` میباشد."]
 	}
 	},
 	

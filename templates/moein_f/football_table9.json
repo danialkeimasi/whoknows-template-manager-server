@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd != var.team.gd)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.gd != val.team.gd)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+			"text": ["تفاضل گل تیم `val.team.name` در لیگ `val.team.league` برابر کدام گزینه است؟"]
 	},
 		"choice": {
-			"text": ["var.teams.gd"]
+			"text": ["val.teams.gd"]
 	},
 		"answer": {
-			"text": ["var.team.gd"]
+			"text": ["val.team.gd"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+			"text": ["تفاضل گل تیم `val.team.name` در لیگ `val.team.league` چند است؟"]
 	},
 		"answer": {
-			"text": ["var.team.gd"]
+			"text": ["val.team.gd"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gd` میباشد.",
-                            "تفاضل گل تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gd` میباشد."]
+			"text": ["تفاضل گل تیم `val.team.name` در لیگ `val.team.league` برابر `val.team.gd` میباشد.",
+                            "تفاضل گل تیم `val.team.name` در لیگ `val.team.league` برابر `val.teams.choose(1).gd` میباشد."]
 	}
 	},
 	

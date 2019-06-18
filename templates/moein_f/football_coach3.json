@@ -1,42 +1,42 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[footballCoach.team != var.coach.team] , NOC)"
+      "coachs": "db(footballCoach[footballCoach.team != val.coach.team] , NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "مربی تیم `var.coach.team` کدام است؟"
+          "مربی تیم `val.coach.team` کدام است؟"
         ]
       },
       "choice": {
         "text": [
-          "$var.coachs.name"
+          "$val.coachs.name"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       }
     },
     "&write": {
       "title": {
         "text": [
-          "مربی تیم `var.coach.team` چه کسی است؟"
+          "مربی تیم `val.coach.team` چه کسی است؟"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       }
     },
     "&bool": {
       "title": {
         "text": [
-          "`var.coach.name` مربی تیم `var.coach.team` میباشد.",
-          "`var.coach.name` مربی تیم `var.coachs.choose(1).team` میباشد."
+          "`val.coach.name` مربی تیم `val.coach.team` میباشد.",
+          "`val.coach.name` مربی تیم `val.coachs.choose(1).team` میباشد."
         ]
       }
     },

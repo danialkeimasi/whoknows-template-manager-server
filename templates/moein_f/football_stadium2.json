@@ -1,17 +1,17 @@
 {
 	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.capacity != var.stadium.capacity], NOC)"
+        "stadiums": "db(footballStadium[footballStadium.capacity != val.stadium.capacity], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["گنجایش کدام ورزشگاه `var.stadium.capacity` نفر میباشد؟"]
+			"text": ["گنجایش کدام ورزشگاه `val.stadium.capacity` نفر میباشد؟"]
 	},
 		"choice": {
-			"text": ["var.stadiums.name"]
+			"text": ["val.stadiums.name"]
 	},
 		"answer": {
-			"text": ["var.stadium.name"]
+			"text": ["val.stadium.name"]
 	}
 	},
 	

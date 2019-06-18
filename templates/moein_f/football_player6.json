@@ -1,25 +1,25 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
+        "players": "db(footballPlayer[(footballPlayer.club_number != val.player.club_number) & (footballPlayer.club == val.player.club)], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
+			"text": ["در تیم `val.player.club` چه کسی پیراهن شماره `val.player.club_number` را بر تن میکند؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["در تیم `var.player.club` چه کسی پیراهن شماره `var.player.club_number` را بر تن میکند؟"]
+			"text": ["در تیم `val.player.club` چه کسی پیراهن شماره `val.player.club_number` را بر تن میکند؟"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	

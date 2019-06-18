@@ -1,45 +1,45 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
-    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
-    "ans_cnt": "rand(range(1,var.NOC+1))"
+    "teams": "db(footballTeam[footballTeam.league != val.team.league] ,val.NOC)",
+    "teams_same": "db(footballTeam[(footballTeam.league == val.team.league) & (footballTeam.name != val.team.name)] ,val.NOC)",
+    "ans_cnt": "rand(range(1,val.NOC+1))"
   },
   "&choose": {
     "title": {
       "text": [
-        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟",
-        "کدام تیم در لیگ `var.team.league` حضور دارد؟",
-        "کدام تیم در لیگ `var.team.league` فعالیت میکند؟"
+        "کدام یک از تیم های زیر در لیگ `val.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `val.team.league` حضور دارد؟",
+        "کدام تیم در لیگ `val.team.league` فعالیت میکند؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.teams.name"
+        "$val.teams.name"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.name"
+        "$val.team.name"
       ]
     }
   },
   "&select": {
     "title": {
       "text": [
-        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟",
-        "تیمهایی که در لیگ `var.team.league` فعالیت میکنند را انتخاب کنید.",
-        "کدام تیم ها در قالب لیگ `var.team.league` فعالیت میکندد؟`"
+        "از بین گزینه های زیر کدام تیمها در لیگ `val.team.league` حضور دارد؟",
+        "تیمهایی که در لیگ `val.team.league` فعالیت میکنند را انتخاب کنید.",
+        "کدام تیم ها در قالب لیگ `val.team.league` فعالیت میکندد؟`"
       ]
     },
     "choice": {
       "text": [
-        "$var.teams.choose(var.NOC - var.ans_cnt + 1).name"
+        "$val.teams.choose(val.NOC - val.ans_cnt + 1).name"
       ]
     },
     "answer": {
       "text": [
-        "$var.teams_same.choose(var.ans_cnt).name"
+        "$val.teams_same.choose(val.ans_cnt).name"
       ]
     }
   },

@@ -1,32 +1,32 @@
 {
 	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
+        "teams": "db(footballTeam[footballTeam.stadium != val.team.stadium], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
-			"text"       : ["لباس سوم تیم `var.team.name` کدام است؟"]
+			"text"       : ["لباس سوم تیم `val.team.name` کدام است؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.teams.thirdkit"]
+			"text"       : ["val.teams.thirdkit"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.thirdkit"]
+			"text"       : ["val.team.thirdkit"]
 	}
 	},
 	"__bool"          : {
 		"title"        : {
-			"text"       : ["عکس زیر ، پیراهن سوم تیم `var.team.name` میباشد.",
-                            "عکس زیر ، پیراهن سوم تیم `var.teams.choose(1).name` میباشد.",
-                            "عکس زیر ، لباس سوم تیم `var.team.name` میباشد.",
-                            "عکس زیر ، لباس سوم تیم `var.teams.choose(1).name` میباشد.",
-                            "عکس زیر ، پیراهن تیم `var.team.name` میباشد.",
-                            "عکس زیر ، پیراهن تیم `var.teams.choose(1).name` میباشد.",
-                            "عکس زیر ، لباس تیم `var.team.name` میباشد.",
-                            "عکس زیر ، لباس تیم `var.teams.choose(1).name` میباشد."]
+			"text"       : ["عکس زیر ، پیراهن سوم تیم `val.team.name` میباشد.",
+                            "عکس زیر ، پیراهن سوم تیم `val.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس سوم تیم `val.team.name` میباشد.",
+                            "عکس زیر ، لباس سوم تیم `val.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `val.team.name` میباشد.",
+                            "عکس زیر ، پیراهن تیم `val.teams.choose(1).name` میباشد.",
+                            "عکس زیر ، لباس تیم `val.team.name` میباشد.",
+                            "عکس زیر ، لباس تیم `val.teams.choose(1).name` میباشد."]
     },
         "subtitle"     : {
-            "text"      : ["var.team.thirdkit"]
+            "text"      : ["val.team.thirdkit"]
         } 
 	},
 	"_id" : "football_team15",

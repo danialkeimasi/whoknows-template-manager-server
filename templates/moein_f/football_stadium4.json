@@ -1,17 +1,17 @@
 {
 	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
+        "stadiums": "db(footballStadium[footballStadium.year != val.stadium.year] , NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام یک از ورزشگاه های زیر در سال `var.stadium.year` تاسیس شده اند؟"]
+			"text": ["کدام یک از ورزشگاه های زیر در سال `val.stadium.year` تاسیس شده اند؟"]
 	},
 		"choice": {
-			"text": ["var.stadiums.name"]
+			"text": ["val.stadiums.name"]
 	},
 		"answer": {
-			"text": ["var.stadium.name"]
+			"text": ["val.stadium.name"]
 	}
 	},
     

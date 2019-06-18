@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.name != val.team.name)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["رتبه ی تیم `var.team.name` در لیگ `var.team.league` کدام است؟" , "تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+			"text": ["رتبه ی تیم `val.team.name` در لیگ `val.team.league` کدام است؟" , "تیم `val.team.name` در لیگ `val.team.league` چه رتبه ای دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.pos"]
+			"text": ["val.teams.pos"]
 	},
 		"answer": {
-			"text": ["var.team.pos"]
+			"text": ["val.team.pos"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چه رتبه ای دارد؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چه رتبه ای دارد؟"]
 	},
 		"answer": {
-			"text": ["var.team.pos"]
+			"text": ["val.team.pos"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد.",
-                            "تیم  `var.team.name` در لیگ `var.team.league` در رتبه ی `var.teams.choose(1).pos` قرار دارد."]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` در رتبه ی `val.team.pos` قرار دارد.",
+                            "تیم  `val.team.name` در لیگ `val.team.league` در رتبه ی `val.teams.choose(1).pos` قرار دارد."]
 	}
 	},
 	

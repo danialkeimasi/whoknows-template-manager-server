@@ -1,22 +1,22 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.founded != var.team.founded] ,NOC)"
+        "teams": "db(footballTeam[footballTeam.founded != val.team.founded] ,NOC)"
     },
     "title_multichoices": [
-        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+        "تیم `val.team.name` در چه سالی تاسیس شده است؟"
     ],
     "title_writing": [
-        "تیم `var.team.name` در چه سالی تاسیس شده است؟"
+        "تیم `val.team.name` در چه سالی تاسیس شده است؟"
     ],
     "answer_multichoices": [
-        "var.team.founded"
+        "val.team.founded"
     ],
     "answer_writing": [
-        "var.team.founded"
+        "val.team.founded"
     ],
     "choices_multichoices": [
-        "var.teams.founded"
+        "val.teams.founded"
     ],
     "__usage": [
         "contest"

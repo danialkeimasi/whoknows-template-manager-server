@@ -1,31 +1,31 @@
 {
 	"values": {
         "stadium": "db(footballStadium)",
-        "stadiums": "db(footballStadium[footballStadium.year != var.stadium.year] , NOC)"
+        "stadiums": "db(footballStadium[footballStadium.year != val.stadium.year] , NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
+			"text": ["ورزشگاه `val.stadium.name` در چه سالی تاسیس شده است؟"]
 	},
 		"choice": {
-			"text": ["var.stadiums.year"]
+			"text": ["val.stadiums.year"]
 	},
 		"answer": {
-			"text": ["var.stadium.year"]
+			"text": ["val.stadium.year"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در چه سالی تاسیس شده است؟"]
+			"text": ["ورزشگاه `val.stadium.name` در چه سالی تاسیس شده است؟"]
 	},
 		"answer": {
-			"text": ["var.stadium.year"]
+			"text": ["val.stadium.year"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["ورزشگاه `var.stadium.name` در سال `var.stadium.year` تاسیس شده است.",
-                            "ورزشگاه `var.stadium.name` در سال `var.stadiums.choose(1).year` تاسیس شده است."]
+			"text": ["ورزشگاه `val.stadium.name` در سال `val.stadium.year` تاسیس شده است.",
+                            "ورزشگاه `val.stadium.name` در سال `val.stadiums.choose(1).year` تاسیس شده است."]
 	}
 	},
 	

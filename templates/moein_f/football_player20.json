@@ -1,17 +1,17 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "player2": "db(footballPlayer[(footballPlayer.joined != var.player.joined) & (footballPlayer.club == var.player.club)]"
+        "player2": "db(footballPlayer[(footballPlayer.joined != val.player.joined) & (footballPlayer.club == val.player.club)]"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام بازیکن تا تاریخ `var.player.contract_valid_until` با تیم `var.player.club` قرارداد دارد؟"]
+			"text": ["کدام بازیکن تا تاریخ `val.player.contract_valid_until` با تیم `val.player.club` قرارداد دارد؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player2.name"]
+			"text": ["$val.player2.name"]
 	}
 	},
 	"datasets": ["footballPlayer"],

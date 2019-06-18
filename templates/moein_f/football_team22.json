@@ -1,7 +1,7 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.stadium != var.team.stadium], NOC)"
+        "teams": "db(footballTeam[footballTeam.stadium != val.team.stadium], NOC)"
     },
     "title_multichoices": [
         "لوگو زیر متعلق به کدام تیم است؟"
@@ -10,19 +10,19 @@
         "لوگو زیر متعلق به چه تیمی است؟"
     ],
     "answer_multichoices": [
-        "var.team.name"
+        "val.team.name"
     ],
     "answer_writing": [
-        "var.team.name"
+        "val.team.name"
     ],
     "choices_multichoices": [
-        "var.teams.name"
+        "val.teams.name"
     ],
     "subtitle_multichoices": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "subtitle_writing": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "__usage": [
         "contest"

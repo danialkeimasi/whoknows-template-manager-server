@@ -1,23 +1,23 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gd < var.team.gd)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.gd < val.team.gd)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم در لیگ `var.team.league` تفاضل گل بیشتری نسبت به سایر گزینه ها دارد؟"]
+			"text": ["کدام تیم در لیگ `val.team.league` تفاضل گل بیشتری نسبت به سایر گزینه ها دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تفاضل گل تیم `var.team.name` در لیگ `var.team.league` از تیم `var.teams.choose(1).name بیشتر است.",
-                            "تفاضل گل تیم `var.teams.choose(1).name` در لیگ `var.team.league` از تیم `var.team.name بیشتر است."]
+			"text": ["تفاضل گل تیم `val.team.name` در لیگ `val.team.league` از تیم `val.teams.choose(1).name بیشتر است.",
+                            "تفاضل گل تیم `val.teams.choose(1).name` در لیگ `val.team.league` از تیم `val.team.name بیشتر است."]
 	}
 	},
 	

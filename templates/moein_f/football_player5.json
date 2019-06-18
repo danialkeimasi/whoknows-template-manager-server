@@ -1,38 +1,38 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[(footballPlayer.club_number != var.player.club_number) & (footballPlayer.club == var.player.club)], NOC)"
+        "players": "db(footballPlayer[(footballPlayer.club_number != val.player.club_number) & (footballPlayer.club == val.player.club)], NOC)"
     },
 	"&choose": {
 		"title": {
 			"text": [
-				"شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , 
-				"شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"
+				"شماره پیراهن `val.player.name` در تیم باشگاهی اش چند است؟" , 
+				"شماره پیراهن `val.player.name` در تیم `val.player.club` چند است؟"
 			]
 	},
 		"choice": {
-			"text": ["var.players.club_number"]
+			"text": ["val.players.club_number"]
 	},
 		"answer": {
-			"text": ["var.player.club_number"]
+			"text": ["val.player.club_number"]
 	}
 	},
 	"&write": {
 		"title": {
 			"text": [
-				"شماره پیراهن `var.player.name` در تیم باشگاهی اش چند است؟" , 
-				"شماره پیراهن `var.player.name` در تیم `var.player.club` چند است؟"
+				"شماره پیراهن `val.player.name` در تیم باشگاهی اش چند است؟" , 
+				"شماره پیراهن `val.player.name` در تیم `val.player.club` چند است؟"
 			]
 	},
 		"answer": {
-			"text": ["var.player.club_number"]
+			"text": ["val.player.club_number"]
 	}
 	},
 	"&bool": {
 		"title": {
 			"text": [
-				"شماره پیراهن `var.player.name` در تیم باشگاهی اش ،`var.player.club_number` میباشد." , 
-				"شماره پیراهن `var.player.name` در تیم باشگاهی اش ،`var.players.choose(1).club_number` میباشد."
+				"شماره پیراهن `val.player.name` در تیم باشگاهی اش ،`val.player.club_number` میباشد." , 
+				"شماره پیراهن `val.player.name` در تیم باشگاهی اش ،`val.players.choose(1).club_number` میباشد."
 			]
 	}
 	},

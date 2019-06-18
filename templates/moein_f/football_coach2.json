@@ -1,40 +1,40 @@
 {
   "values": {
     "coach": "db(footballCoach)",
-    "coachs": "db(footballCoach[footballCoach.nation != var.coach.nation] , NOC)",
-    "coachs_same": "db(footballCoach[footballCoach.nation == var.coach.nation] , NOC)"
+    "coachs": "db(footballCoach[footballCoach.nation != val.coach.nation] , NOC)",
+    "coachs_same": "db(footballCoach[footballCoach.nation == val.coach.nation] , NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "کدام یک از مربیان زیر اهل کشور `var.coach.nation` میباشند؟"
+        "کدام یک از مربیان زیر اهل کشور `val.coach.nation` میباشند؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.coachs.name"
+        "$val.coachs.name"
       ]
     },
     "answer": {
       "text": [
-        "$var.coach.name"
+        "$val.coach.name"
       ]
     }
   },
   "&select": {
     "title": {
       "text": [
-        "ملیت کدام مربیان `var.coach.nation` میباشد؟"
+        "ملیت کدام مربیان `val.coach.nation` میباشد؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.coachs.choose(1).name"
+        "$val.coachs.choose(1).name"
       ]
     },
     "answer": {
       "text": [
-        "$var.coachs_same.name"
+        "$val.coachs_same.name"
       ]
     }
   },

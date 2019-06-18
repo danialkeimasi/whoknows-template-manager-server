@@ -1,22 +1,22 @@
 {
   "values": {
     "match": "db(footballMatch)",
-    "matchs": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
+    "matchs": "db(footballMatch[footballMatch.ref != val.match.ref], NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "`var.match.ref` داوری کدام بازی را برعهده داشته است؟"
+        "`val.match.ref` داوری کدام بازی را برعهده داشته است؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.matches.ref"
+        "$val.matches.ref"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.name"
+        "$val.match.name"
       ]
     }
   },

@@ -1,9 +1,9 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "teams": "db(footballTeam[footballTeam.league != var.team.league] ,var.NOC)",
-    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.name != var.team.name)] ,var.NOC)",
-    "league": "listSub(footballTeam.league, var.team.league)"
+    "teams": "db(footballTeam[footballTeam.league != val.team.league] ,val.NOC)",
+    "teams_same": "db(footballTeam[(footballTeam.league == val.team.league) & (footballTeam.name != val.team.name)] ,val.NOC)",
+    "league": "listSub(footballTeam.league, val.team.league)"
   },
   "&choose": {
     "title": {
@@ -14,12 +14,12 @@
     },
     "choice": {
       "text": [
-        "$var.teams.choose(var.NOC).name"
+        "$val.teams.choose(val.NOC).name"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.name"
+        "$val.team.name"
       ]
     }
   },
@@ -32,24 +32,24 @@
     },
     "choice": {
       "text": [
-        "$var.team.name"
+        "$val.team.name"
       ]
     },
     "answer": {
       "text": [
-        "$var.teams_same.choose(var.NOC).name"
+        "$val.teams_same.choose(val.NOC).name"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        " تیم های `var.team.name`,  `var.teams_same.choose(1).name` در یک لیگ مشترک فعالیت میکنند.",
-        "تیم های `var.team.name` , `var.teams.choose(1).name` در یک لیگ فعالیت میکنند.",
-        "تیم های `var.team.name` , `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
-        "تیم های `var.team.name` , `var.teams.choose(1).name` در لیگ `var.league.choose(1)` فعالیت میکنند.",
-        "هر دو تیم `var.team.name` , `var.teams_same.choose(1).name` در لیگ `var.team.league` فعالیت میکنند.",
-        "هر دو تیم `var.team.name` , `var.teams.choose(1).name` در لیگ `var.team.league` فعالیت میکنند."
+        " تیم های `val.team.name`,  `val.teams_same.choose(1).name` در یک لیگ مشترک فعالیت میکنند.",
+        "تیم های `val.team.name` , `val.teams.choose(1).name` در یک لیگ فعالیت میکنند.",
+        "تیم های `val.team.name` , `val.teams_same.choose(1).name` در لیگ `val.team.league` فعالیت میکنند.",
+        "تیم های `val.team.name` , `val.teams.choose(1).name` در لیگ `val.league.choose(1)` فعالیت میکنند.",
+        "هر دو تیم `val.team.name` , `val.teams_same.choose(1).name` در لیگ `val.team.league` فعالیت میکنند.",
+        "هر دو تیم `val.team.name` , `val.teams.choose(1).name` در لیگ `val.team.league` فعالیت میکنند."
       ]
     }
   },

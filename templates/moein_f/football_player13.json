@@ -1,32 +1,32 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.nationality != var.player.nationality], NOC)"
+        "players": "db(footballPlayer[footballPlayer.nationality != val.player.nationality], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["`var.player.name` اهل کدام کشور است؟"]
+			"text": ["`val.player.name` اهل کدام کشور است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.nationality"]
+			"text": ["$val.players.nationality"]
 	},
 		"answer": {
-			"text": ["$var.player.nationality"]
+			"text": ["$val.player.nationality"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["`var.player.name` اهل چه کشوری است؟"]
+			"text": ["`val.player.name` اهل چه کشوری است؟"]
 	},
 		"answer": {
-			"text": ["$var.player.nationality"]
+			"text": ["$val.player.nationality"]
 	}
 	},
 
 	"&bool": {
 		"title": {
-			"text": ["`var.player.name` اهل کشور `var.player.nationality` میباشد." ,
-                    "`var.player.name` اهل کشور `var.players.choose(1).nationality` میباشد."]
+			"text": ["`val.player.name` اهل کشور `val.player.nationality` میباشد." ,
+                    "`val.player.name` اهل کشور `val.players.choose(1).nationality` میباشد."]
         }
     },
 	"datasets": ["footballPlayer"],

@@ -1,35 +1,35 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.foot != var.player.foot], NOC)",
-        "players_same": "db(footballPlayer[footballPlayer.foot == var.player.foot], NOC)"
+        "players": "db(footballPlayer[footballPlayer.foot != val.player.foot], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.foot == val.player.foot], NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام بازیکن `var.player.foot` پا است؟"]
+			"text": ["کدام بازیکن `val.player.foot` پا است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	"&select": {
 		"title": {
-			"text": ["کدام بازیکنان `var.player.foot` پا هستند؟"]
+			"text": ["کدام بازیکنان `val.player.foot` پا هستند؟"]
 	},
 		"choice": {
-			"text": ["$var.players.choose(1).name"]
+			"text": ["$val.players.choose(1).name"]
 	},
 		"answer": {
-			"text": ["$var.players_same.name"]
+			"text": ["$val.players_same.name"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["پای تخصصی `var.player.name`، `var.player.foot` است." ,
-                    "پای تخصصی `var.player.name`، `var.players.choose(1).foot` است."]
+			"text": ["پای تخصصی `val.player.name`، `val.player.foot` است." ,
+                    "پای تخصصی `val.player.name`، `val.players.choose(1).foot` است."]
         }
     },
 	"datasets": ["footballPlayer"],

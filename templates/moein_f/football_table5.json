@@ -1,23 +1,23 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.gf != var.team.gf)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.gf != val.team.gf)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم تعداد گلهای زده اش در لیگ `var.team.league` برابر `var.team.gf` میباشد؟"]
+			"text": ["کدام تیم تعداد گلهای زده اش در لیگ `val.team.league` برابر `val.team.gf` میباشد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.gf` میباشد.",
-                            "تعداد گل زده تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).gf` میباشد."]
+			"text": ["تعداد گل زده تیم `val.team.name` در لیگ `val.team.league` برابر `val.team.gf` میباشد.",
+                            "تعداد گل زده تیم `val.team.name` در لیگ `val.team.league` برابر `val.teams.choose(1).gf` میباشد."]
 	}
 	},
 	

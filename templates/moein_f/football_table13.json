@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.losts != var.team.losts)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.losts != val.team.losts)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر کدام گزینه است؟"]
+			"text": ["تعداد باخت تیم `val.team.name` در لیگ `val.team.league` برابر کدام گزینه است؟"]
 	},
 		"choice": {
-			"text": ["var.teams.losts"]
+			"text": ["val.teams.losts"]
 	},
 		"answer": {
-			"text": ["var.team.losts"]
+			"text": ["val.team.losts"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` چند است؟"]
+			"text": ["تعداد باخت تیم `val.team.name` در لیگ `val.team.league` چند است؟"]
 	},
 		"answer": {
-			"text": ["var.team.losts"]
+			"text": ["val.team.losts"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.team.lost` میباشد.",
-                            "تعداد باخت تیم `var.team.name` در لیگ `var.team.league` برابر `var.teams.choose(1).lost` میباشد."]
+			"text": ["تعداد باخت تیم `val.team.name` در لیگ `val.team.league` برابر `val.team.lost` میباشد.",
+                            "تعداد باخت تیم `val.team.name` در لیگ `val.team.league` برابر `val.teams.choose(1).lost` میباشد."]
 	}
 	},
 	

@@ -1,42 +1,42 @@
 {
   "values": {
     "match": "db(footballMatch)",
-    "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
+    "matches": "db(footballMatch[footballMatch.stadium != val.match.stadium], NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
+        "بازی `val.match.name` در چه ورزشگاهی برگزار شد؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.matches.stadium"
+        "$val.matches.stadium"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.stadium"
+        "$val.match.stadium"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "بازی `var.match.name` در چه ورزشگاهی برگزار شد؟"
+        "بازی `val.match.name` در چه ورزشگاهی برگزار شد؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.stadium"
+        "$val.match.stadium"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "بازی `var.match.name` در ورزشگاه `var.match.stadium` برگزار شد.",
-        "بازی `var.match.name` در ورزشگاه `var.matches.choose(1).stadium` برگزار شد."
+        "بازی `val.match.name` در ورزشگاه `val.match.stadium` برگزار شد.",
+        "بازی `val.match.name` در ورزشگاه `val.matches.choose(1).stadium` برگزار شد."
       ]
     }
   },

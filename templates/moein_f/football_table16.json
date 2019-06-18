@@ -1,17 +1,17 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.draws != var.team.draws)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.draws != val.team.draws)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم تعداد مساوی هایش در لیگ `var.team.league` برابر `var.team.tie` میباشد؟"]
+			"text": ["کدام تیم تعداد مساوی هایش در لیگ `val.team.league` برابر `val.team.tie` میباشد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	

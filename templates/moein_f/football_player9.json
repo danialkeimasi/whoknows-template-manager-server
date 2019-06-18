@@ -1,29 +1,29 @@
 {
 	"values": {
 		"player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.height_in_cm != var.player.height_in_cm], NOC)",
-        "players_same": "db(footballPlayer[footballPlayer.height_in_cm == var.player.height_in_cm], NOC)"
+        "players": "db(footballPlayer[footballPlayer.height_in_cm != val.player.height_in_cm], NOC)",
+        "players_same": "db(footballPlayer[footballPlayer.height_in_cm == val.player.height_in_cm], NOC)"
 	},
 	"&choose": {
 		"title": {
-			"text": ["قد کدام بازیکن برابر `var.player.height_in_cm` میباشد؟"]
+			"text": ["قد کدام بازیکن برابر `val.player.height_in_cm` میباشد؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	"&select": {
 		"title": {
-            "text": ["بازیکنانی که قدی برابر `var.player.height_in_cm` دارند را انتخاب کنید."]
+            "text": ["بازیکنانی که قدی برابر `val.player.height_in_cm` دارند را انتخاب کنید."]
 	},
 		"choice": {
-			"text": ["$var.players.chooose(1).name"]
+			"text": ["$val.players.chooose(1).name"]
 	},
 		"answer": {
-			"text": ["$var.players_same.name"]
+			"text": ["$val.players_same.name"]
 	}
 	},
 	"datasets": ["footballPlayer"],

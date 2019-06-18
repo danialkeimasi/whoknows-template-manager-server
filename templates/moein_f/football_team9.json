@@ -1,23 +1,23 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "team1": "db(footballTeam[(footballTeam.name != var.team.name) & (footballTeam.league == var.team.league)])",
-    "players": "listSub(footballTeam.players, var.team.captain)"
+    "team1": "db(footballTeam[(footballTeam.name != val.team.name) & (footballTeam.league == val.team.league)])",
+    "players": "listSub(footballTeam.players, val.team.captain)"
   },
   "&choose": {
     "title": {
       "text": [
-        "کاپیتان تیم `var.team.name` کدام بازیکن است؟"
+        "کاپیتان تیم `val.team.name` کدام بازیکن است؟"
       ]
     },
     "choice": {
       "text": [
-        "var.players.choose(var.NOC)"
+        "val.players.choose(val.NOC)"
       ]
     },
     "answer": {
       "text": [
-        "var.team.captain"
+        "val.team.captain"
       ]
     }
   },
@@ -32,22 +32,22 @@
   "&write": {
     "title": {
       "text": [
-        "کاپیتان تیم `var.team.name` چه کسی است؟"
+        "کاپیتان تیم `val.team.name` چه کسی است؟"
       ]
     },
     "answer": {
       "text": [
-        "var.team.captain"
+        "val.team.captain"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "کاپیتان تیم `var.team.name` ، `var.team.captain` میباشد.",
-        "کاپیتان تیم `var.team.name` ، `var.players.choose(1).name` میباشد.",
-        "`var.team.captain` کاپیتان تیم `var.team.name` میباشد.",
-        "`var.team1.captain` کاپیتان تیم `var.team.name` میباشد."
+        "کاپیتان تیم `val.team.name` ، `val.team.captain` میباشد.",
+        "کاپیتان تیم `val.team.name` ، `val.players.choose(1).name` میباشد.",
+        "`val.team.captain` کاپیتان تیم `val.team.name` میباشد.",
+        "`val.team1.captain` کاپیتان تیم `val.team.name` میباشد."
       ]
     }
   },

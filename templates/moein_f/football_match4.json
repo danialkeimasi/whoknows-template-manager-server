@@ -1,22 +1,22 @@
 {
   "values": {
     "match": "db(footballMatch)",
-    "matches": "db(footballMatch[footballMatch.stadium != var.match.stadium], NOC)"
+    "matches": "db(footballMatch[footballMatch.stadium != val.match.stadium], NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "کدام یک از بازی های زیر در استادیوم `var.match.stadium` برگزار شده است؟"
+        "کدام یک از بازی های زیر در استادیوم `val.match.stadium` برگزار شده است؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.matches.name"
+        "$val.matches.name"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.name"
+        "$val.match.name"
       ]
     }
   },

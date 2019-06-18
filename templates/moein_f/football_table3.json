@@ -1,31 +1,31 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.point != var.team.point)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.point != val.team.point)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چند امتیاز دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.point"]
+			"text": ["val.teams.point"]
 	},
 		"answer": {
-			"text": ["var.team.point"]
+			"text": ["val.team.point"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` چند امتیاز دارد؟"]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` چند امتیاز دارد؟"]
 	},
 		"answer": {
-			"text": ["var.team.point"]
+			"text": ["val.team.point"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["تیم `var.team.name` در لیگ `var.team.league` `var.team.point` امتیاز دارد." ,
-                            "تیم `var.team.name` در لیگ `var.team.league` `var.teams.choose(1).point` امتیاز دارد."]
+			"text": ["تیم `val.team.name` در لیگ `val.team.league` `val.team.point` امتیاز دارد." ,
+                            "تیم `val.team.name` در لیگ `val.team.league` `val.teams.choose(1).point` امتیاز دارد."]
 	}
 	},
 	

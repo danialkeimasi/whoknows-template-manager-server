@@ -1,40 +1,40 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[(footballCoach.birthyear < var.coach.birthyear-3) & (footballCoach.birthyear > var.coach.birthyear+3)], NOC)",
-      "coachs_same": "db(footballCoach[footballCoach.birthyear == var.coach.birthyear], NOC)"
+      "coachs": "db(footballCoach[(footballCoach.birthyear < val.coach.birthyear-3) & (footballCoach.birthyear > val.coach.birthyear+3)], NOC)",
+      "coachs_same": "db(footballCoach[footballCoach.birthyear == val.coach.birthyear], NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "کدام مربی `var.coach.age` سال سن دارد؟"
+          "کدام مربی `val.coach.age` سال سن دارد؟"
         ]
       },
       "choice": {
         "text": [
-          "$var.coachs.name"
+          "$val.coachs.name"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       }
     },
     "&select": {
         "title": {
           "text": [
-            "کدام مربیان `var.coach.age` سال سن دارند؟"
+            "کدام مربیان `val.coach.age` سال سن دارند؟"
           ]
         },
         "choice": {
           "text": [
-            "$var.coachs.choose(1).name"
+            "$val.coachs.choose(1).name"
           ]
         },
         "answer": {
           "text": [
-            "$var.coachs_same.name"
+            "$val.coachs_same.name"
           ]
         }
       },

@@ -1,20 +1,20 @@
 {
 	"values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.name != var.team.name], NOC)"
+        "teams": "db(footballTeam[footballTeam.name != val.team.name], NOC)"
     },
 	"__choose"          : {
 		"title"        : {
 			"text"       : ["پیراهن دروازه بانی زیر متعلق به کدام تیم است؟" , "عکس زیر پیراهن دروازه بان کدام تیم است؟"]
 	},
 		"choice"        : {
-			"text"       : ["var.teams.name"]
+			"text"       : ["val.teams.name"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"]
+			"text"       : ["val.team.name"]
     },
         "subtitle"      :  {
-            "text"       : ["var.team.gkkit"]
+            "text"       : ["val.team.gkkit"]
     }
     },
 	"__write"          : {
@@ -22,10 +22,10 @@
 			"text"       : ["پیراهن دروازه بانی زیر متعلق به چه تیمی است؟" , "عکس زیر پیراهن دروازه بان چه تیمی است؟"]
 	},
 		"answer"        : {
-			"text"       : ["var.team.name"]
+			"text"       : ["val.team.name"]
     },
         "subtitle"      :  {
-            "text"       : ["var.team.gkkit"]
+            "text"       : ["val.team.gkkit"]
     }
 	},
 	"_id" : "football_team20",

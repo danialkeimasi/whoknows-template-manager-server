@@ -1,41 +1,41 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[(footballCoach.birthyear < var.coach.birthyear-3) & (footballCoach.birthyear > var.coach.birthyear+3)] , NOC)",
-      "coachs_same": "db(footballCoach[(footballCoach.birthyear == var.coach.birthyear) & (footballCoach.name != var.coach.name)] , NOC)"
+      "coachs": "db(footballCoach[(footballCoach.birthyear < val.coach.birthyear-3) & (footballCoach.birthyear > val.coach.birthyear+3)] , NOC)",
+      "coachs_same": "db(footballCoach[(footballCoach.birthyear == val.coach.birthyear) & (footballCoach.name != val.coach.name)] , NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "کدام مربی متولد سال `var.coach.birthyear` است؟"
+          "کدام مربی متولد سال `val.coach.birthyear` است؟"
         ]
       },
       "choice": {
         "text": [
-          "$var.coachs.name"
+          "$val.coachs.name"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.name"
+          "$val.coach.name"
         ]
       }
     },
     "&select": {
         "title": {
           "text": [
-            "کدام مربیان متولد سال `var.coach.birthyear` میباشند؟",
-            "مربیانی که متولد سال `var.coach.birthyear` هستند را انتخاب کنید."
+            "کدام مربیان متولد سال `val.coach.birthyear` میباشند؟",
+            "مربیانی که متولد سال `val.coach.birthyear` هستند را انتخاب کنید."
           ]
         },
         "choice": {
           "text": [
-            "$var.coachs.choose(1).name"
+            "$val.coachs.choose(1).name"
           ]
         },
         "answer": {
           "text": [
-            "$var.coachs_same.name"
+            "$val.coachs_same.name"
           ]
         }
       },    

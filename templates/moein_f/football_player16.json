@@ -4,10 +4,10 @@
     },
 	"&write": {
 		"title": {
-			"text": ["`var.player.name` چپ است یا راست پا؟"]
+			"text": ["`val.player.name` چپ است یا راست پا؟"]
 	},
 		"answer": {
-			"text": ["$var.player.foot"]
+			"text": ["$val.player.foot"]
 	}
 	},
 	"datasets": ["footballPlayer"],

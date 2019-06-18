@@ -1,48 +1,48 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "team1": "db(footballTeam[footballTeam.league != var.team.league])",
-    "leagues": "listSub(footballTeam.league, [var.team.league , var.team1.league])",
+    "team1": "db(footballTeam[footballTeam.league != val.team.league])",
+    "leagues": "listSub(footballTeam.league, [val.team.league , val.team1.league])",
     "True_or_False": "rand([True,False])"
   },
   "&choose": {
     "title": {
       "text": [
-        "`var.team.coach` در کدام لیگ مربیگری میکند؟"
+        "`val.team.coach` در کدام لیگ مربیگری میکند؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.leagues.choose(NOC)"
+        "$val.leagues.choose(NOC)"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.league"
+        "$val.team.league"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "`var.team.coach` در چه لیگی مربیگری میکند؟"
+        "`val.team.coach` در چه لیگی مربیگری میکند؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.league + var.team.name"
+        "$val.team.league + val.team.name"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "`var.team.coach` در لیگ `var.team.league` مربیگری میکند.",
-        "`var.team.coach` در لیگ `var.team1.league` مربیگری میکند.",
-        "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند.",
-        "`var.team.coach` و `var.team1.coach` به ترتیب در لیگ های `var.team1.league` و `var.leagues.choose(1)` مربیگری میکنند.",
-        "`var.team.coach` و `var.team1.coach` در لیگ های `var.team.league` و `var.team1.league` مربیگری میکنند.",
-        "`var.team.coach` و `var.team1.coach` در لیگ های `var.leagues.choose(1)` و `var.team.league` مربیگری میکنند."
+        "`val.team.coach` در لیگ `val.team.league` مربیگری میکند.",
+        "`val.team.coach` در لیگ `val.team1.league` مربیگری میکند.",
+        "`val.team.coach` و `val.team1.coach` به ترتیب در لیگ های `val.team.league` و `val.team1.league` مربیگری میکنند.",
+        "`val.team.coach` و `val.team1.coach` به ترتیب در لیگ های `val.team1.league` و `val.leagues.choose(1)` مربیگری میکنند.",
+        "`val.team.coach` و `val.team1.coach` در لیگ های `val.team.league` و `val.team1.league` مربیگری میکنند.",
+        "`val.team.coach` و `val.team1.coach` در لیگ های `val.leagues.choose(1)` و `val.team.league` مربیگری میکنند."
       ]
     }
   },

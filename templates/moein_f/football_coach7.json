@@ -1,42 +1,42 @@
 {
     "values": {
       "coach": "db(footballCoach)",
-      "coachs": "db(footballCoach[(footballCoach.birthyear < var.coach.birthyear-3) & (footballCoach.birthyear > var.coach.birthyear+3)] , NOC)"
+      "coachs": "db(footballCoach[(footballCoach.birthyear < val.coach.birthyear-3) & (footballCoach.birthyear > val.coach.birthyear+3)] , NOC)"
     },
     "&choose": {
       "title": {
         "text": [
-          "`var.coach.name` چند سال سن دارد؟"
+          "`val.coach.name` چند سال سن دارد؟"
         ]
       },
       "choice": {
         "text": [
-          "$var.coachs.age"
+          "$val.coachs.age"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.age"
+          "$val.coach.age"
         ]
       }
     },
     "&write": {
       "title": {
         "text": [
-          "`var.coach.name` چند سال سن دارد؟"
+          "`val.coach.name` چند سال سن دارد؟"
         ]
       },
       "answer": {
         "text": [
-          "$var.coach.age"
+          "$val.coach.age"
         ]
       }
     },
     "&bool": {
       "title": {
         "text": [
-          "`var.coach.name` ، `var.coach.age` سال سن دارد.",
-          "`var.coach.name` ، `var.coachs.choose(1).age` سال سن دارد."
+          "`val.coach.name` ، `val.coach.age` سال سن دارد.",
+          "`val.coach.name` ، `val.coachs.choose(1).age` سال سن دارد."
         ]
       }
     },

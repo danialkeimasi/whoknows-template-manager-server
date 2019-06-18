@@ -1,42 +1,42 @@
 {
   "values": {
     "match": "db(footballMatch)",
-    "matches": "db(footballMatch[footballMatch.ref != var.match.ref], NOC)"
+    "matches": "db(footballMatch[footballMatch.ref != val.match.ref], NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "در بازی `var.match.name` داور وسط بازی چه کسی بود؟"
+        "در بازی `val.match.name` داور وسط بازی چه کسی بود؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.matches.ref"
+        "$val.matches.ref"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.ref"
+        "$val.match.ref"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "در بازی `var.match.name` داور وسط بازی چه کسی بود؟"
+        "در بازی `val.match.name` داور وسط بازی چه کسی بود؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.ref"
+        "$val.match.ref"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "داوری بازی `var.team.name` بر عهده ی `var.match.ref` بود.",
-        "داوری بازی `var.team.name` بر عهده ی `var.matches.choose(1).ref` بود."
+        "داوری بازی `val.team.name` بر عهده ی `val.match.ref` بود.",
+        "داوری بازی `val.team.name` بر عهده ی `val.matches.choose(1).ref` بود."
       ]
     }
   },

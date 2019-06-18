@@ -1,42 +1,42 @@
 {
   "values": {
     "match": "db(footballMatch)",
-    "matches": "db(footballMatch[footballMatch.scores != var.match.scores], NOC)"
+    "matches": "db(footballMatch[footballMatch.scores != val.match.scores], NOC)"
   },
   "&choose": {
     "title": {
       "text": [
-        "نتیجه بازی `var.match.name` کدام گزینه است؟"
+        "نتیجه بازی `val.match.name` کدام گزینه است؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.matches.stadium"
+        "$val.matches.stadium"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.stadium"
+        "$val.match.stadium"
       ]
     }
   },
   "&write": {
     "title": {
       "text": [
-        "بازی `var.match.name` با چه نتیجه ای به اتمام رسید؟"
+        "بازی `val.match.name` با چه نتیجه ای به اتمام رسید؟"
       ]
     },
     "answer": {
       "text": [
-        "$var.match.stadium"
+        "$val.match.stadium"
       ]
     }
   },
   "&bool": {
     "title": {
       "text": [
-        "بازی `var.match.name` با نتیجه ی `var.match.scores` به اتمام رسید.",
-        "بازی `var.match.name` با نتیجه ی `var.match.choose(1).scores` به اتمام رسید."
+        "بازی `val.match.name` با نتیجه ی `val.match.scores` به اتمام رسید.",
+        "بازی `val.match.name` با نتیجه ی `val.match.choose(1).scores` به اتمام رسید."
       ]
     }
   },

@@ -1,25 +1,25 @@
 {
 	"values": {
         "team": "db(footballTable)",
-        "teams": "db(footballTable[(footballTable.league == var.team.league) & (footballTable.name != var.team.name)] ,NOC)"
+        "teams": "db(footballTable[(footballTable.league == val.team.league) & (footballTable.name != val.team.name)] ,NOC)"
     },
 	"&choose": {
 		"title": {
-			"text": ["کدام تیم در لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد؟"]
+			"text": ["کدام تیم در لیگ `val.team.league` در رتبه ی `val.team.pos` قرار دارد؟"]
 	},
 		"choice": {
-			"text": ["var.teams.name"]
+			"text": ["val.teams.name"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	"&write": {
 		"title": {
-			"text": ["چه تیمی در جدول لیگ `var.team.league` در رتبه ی `var.team.pos` قرار دارد؟"]
+			"text": ["چه تیمی در جدول لیگ `val.team.league` در رتبه ی `val.team.pos` قرار دارد؟"]
 	},
 		"answer": {
-			"text": ["var.team.name"]
+			"text": ["val.team.name"]
 	}
 	},
 	

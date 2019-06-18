@@ -1,41 +1,41 @@
 {
   "values": {
     "team": "db(footballTeam)",
-    "teams_same": "db(footballTeam[(footballTeam.league == var.team.league) & (footballTeam.coach != var.team.coach) ] ,NOC)",
-    "teams": "db(footballTeam[(footballTeam.league != var.team.league)] ,NOC)",
+    "teams_same": "db(footballTeam[(footballTeam.league == val.team.league) & (footballTeam.coach != val.team.coach) ] ,NOC)",
+    "teams": "db(footballTeam[(footballTeam.league != val.team.league)] ,NOC)",
     "ans_cnt": "rand(range(1,NOC+1))"
   },
   "&choose": {
     "title": {
       "text": [
-        "کدام مربی در لیگ `var.team.league` مربیگری میکند؟"
+        "کدام مربی در لیگ `val.team.league` مربیگری میکند؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.teams.choose(NOC).coach"
+        "$val.teams.choose(NOC).coach"
       ]
     },
     "answer": {
       "text": [
-        "$var.team.coach"
+        "$val.team.coach"
       ]
     }
   },
   "&select": {
     "title": {
       "text": [
-        "کدام مربیان در لیگ `var.team.league` مربیگری میکنند؟"
+        "کدام مربیان در لیگ `val.team.league` مربیگری میکنند؟"
       ]
     },
     "choice": {
       "text": [
-        "$var.teams.choose(NOC - var.ans_cnt + 1).coach"
+        "$val.teams.choose(NOC - val.ans_cnt + 1).coach"
       ]
     },
     "answer": {
       "text": [
-        "$var.teams_same.choose(var.ans_cnt).coach"
+        "$val.teams_same.choose(val.ans_cnt).coach"
       ]
     }
   },

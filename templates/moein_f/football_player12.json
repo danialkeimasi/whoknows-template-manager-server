@@ -1,20 +1,20 @@
 {
 	"values": {
         "player": "db(footballPlayer)",
-        "players": "db(footballPlayer[footballPlayer.name != var.player.name], NOC)"
+        "players": "db(footballPlayer[footballPlayer.name != val.player.name], NOC)"
     },
 	"&choose": {
 		"title": {
 			"text": ["عکس زیر چهره ی کدام بازیکن است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	},
 		"subtitle": {
-			"image": ["$var.player.pic"]
+			"image": ["$val.player.pic"]
 		}
 	},
     "&select": {
@@ -22,10 +22,10 @@
 			"text": ["عکس زیر چهره ی کدام بازیکن است؟"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	},
 		"subtitle": {
-			"image": ["$var.player.pic"]
+			"image": ["$val.player.pic"]
 		}
 	},
     "datasets": ["footballPlayer"],

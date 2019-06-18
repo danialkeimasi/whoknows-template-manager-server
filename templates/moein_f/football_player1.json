@@ -1,34 +1,34 @@
 {
 	"values": {
 		"player": "db(footballPlayer)",
-		"players": "db(footballPlayer[(footballPlayer.year != var.player.year) & (footballPlayer.value > (50000000 - (level*4000000))) & (footballPlayer.value < (125000000 - (level*(12000000))) ] , NOC)",
-		"players_same": "db(footballPlayer[footballPlayer.birthyear == var.player.birthyear] , NOC)"
+		"players": "db(footballPlayer[(footballPlayer.year != val.player.year) & (footballPlayer.value > (50000000 - (level*4000000))) & (footballPlayer.value < (125000000 - (level*(12000000))) ] , NOC)",
+		"players_same": "db(footballPlayer[footballPlayer.birthyear == val.player.birthyear] , NOC)"
 	},
 	"&choose": {
 		"title": {
-			"text": ["کدام بازیکن در سال `var.player.birthyear` متولد شده است؟"]
+			"text": ["کدام بازیکن در سال `val.player.birthyear` متولد شده است؟"]
 	},
 		"choice": {
-			"text": ["$var.players.name"]
+			"text": ["$val.players.name"]
 	},
 		"answer": {
-			"text": ["$var.player.name"]
+			"text": ["$val.player.name"]
 	}
 	},
 	"&select": {
 		"title": {
-			"text": ["کدام بازیکنان در سال `var.player.birthyear` بدنیا آمده اند؟"]
+			"text": ["کدام بازیکنان در سال `val.player.birthyear` بدنیا آمده اند؟"]
 	},
 		"choice": {
-			"text": ["$var.players.choose(1).birthyear"]
+			"text": ["$val.players.choose(1).birthyear"]
 	},
 		"answer": {
-			"text": ["$var.players_same.birthyear"]
+			"text": ["$val.players_same.birthyear"]
 	}
 	},
 	"&bool": {
 		"title": {
-			"text": ["`var.player.name` در سال `var.player.year` متولد شده است." , "`var.player.name` در سال `var.players.choose(1).year` متولد شده است."]
+			"text": ["`val.player.name` در سال `val.player.year` متولد شده است." , "`val.player.name` در سال `val.players.choose(1).year` متولد شده است."]
 	}
 	},
 	

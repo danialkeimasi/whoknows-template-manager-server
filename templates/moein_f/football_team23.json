@@ -1,27 +1,27 @@
 {
     "values": {
         "team": "db(footballTeam)",
-        "teams": "db(footballTeam[footballTeam.league != var.team.league] ,NOC)",
-        "teams_same": "db(footballTeam[footballTeam.league == var.team.league] ,NOC)",
+        "teams": "db(footballTeam[footballTeam.league != val.team.league] ,NOC)",
+        "teams_same": "db(footballTeam[footballTeam.league == val.team.league] ,NOC)",
         "ans_cnt": "rand(range(1,NOC+1))"
     },
     "title_selective": [
-        "از بین گزینه های زیر کدام تیمها در لیگ `var.team.league` حضور دارد؟"
+        "از بین گزینه های زیر کدام تیمها در لیگ `val.team.league` حضور دارد؟"
     ],
     "title_multichoices": [
-        "کدام یک از تیم های زیر در لیگ `var.team.league` حضور دارد؟"
+        "کدام یک از تیم های زیر در لیگ `val.team.league` حضور دارد؟"
     ],
     "answer_multichoices": [
-        "var.team.logo"
+        "val.team.logo"
     ],
     "answer_selective": [
-        "var.teams_same.choose(ans_cnt).logo"
+        "val.teams_same.choose(ans_cnt).logo"
     ],
     "choices_multichoices": [
-        "var.teams.logo"
+        "val.teams.logo"
     ],
     "choices_selective": [
-        "var.teams.choose(NOC - ans_cnt +1).logo"
+        "val.teams.choose(NOC - ans_cnt +1).logo"
     ],
     "__usage": [
         "contest"
