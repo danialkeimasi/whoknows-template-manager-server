@@ -234,7 +234,6 @@ class Template:
 
 
         logger.removeHandler(log_list_handler)
-        # print('log_list', log_list)
         return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
@@ -293,10 +292,7 @@ class Template:
         """
         test_bool = True
         sections = []
-        template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea'
-        # 'time_function',
-        # 'score_function',
-        ]
+        template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea']
 
         for key in template_consts:
             if key in self.__template:
@@ -365,6 +361,7 @@ class Template:
         
         return (success_percent) >= acceptable_percent
 
+
     def __test_manual(self):
         """
         return True if votes in this template reach the goal
@@ -396,11 +393,6 @@ class Template:
         self.__template['__state'] = config.template.states[state_number]
 
         return self
-        # print(test_functions)
-        # print(config.template.states[state_number])
-        # print(self.__template['__test_info'])
-        
-
 
 
 def load_data(dataset_name):
