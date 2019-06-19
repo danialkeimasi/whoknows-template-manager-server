@@ -349,7 +349,7 @@ class Template:
         
         prolems = []
         for sec in sections:
-            problems += sec['problems']
+            problems += sec['problems'] if 'problems' in sec else []
         
         self.__template['__test_info']['structure']['problems'] = problems
         self.__template['__test_info']['structure']['sections'] = sections
