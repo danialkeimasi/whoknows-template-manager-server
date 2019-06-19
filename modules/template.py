@@ -352,10 +352,7 @@ class Template:
         
         problem_set = []
         for problem in set(problem_list):
-            problem_set.append({
-                'error': problem,
-                'count': problem_list.count(problem)
-            })
+            problem_set.append(f'{problem} || count: {problem_list.count(problem)}')
 
         success_percent = success_count / count * 100
 
