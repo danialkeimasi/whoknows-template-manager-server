@@ -241,6 +241,9 @@ class Template:
         return duplicate templates that we found in the database
         :return:
         """
+
+        self.__template['__test_info']['duplication']['similars'] = []
+        self.__template['__test_info']['duplication']['problems'] = []
         return True
 
     def __test_acceptance(self):
@@ -248,14 +251,24 @@ class Template:
         return True if votes in this template reach the goal
         :return:
         """
-        votes = self.__template['__test_info']['acceptance']['votes']
-        return len(votes) >= config.template.min_vote
+        problems = []
+
+        votes_len = len(self.__template['__test_info']['acceptance']['votes'])
+        acceptance_bool = votes_len >= config.template.min_vote
+        
+        if not acceptance_bool:
+            problems.append(f"there was {votes_len} voted, it's not enough!")
+        
+        self.__template['__test_info']['acceptance']['problems'] = problems
+        return acceptance_bool
 
     def __test_data(self):
         """
         check if necessary databases for this template is exist and save problems in __problems
         :return:
         """
+        problems = []
+
         template_datasets = self.__template['datasets']
 
         finded_datasets = list(mongo_client.DataManager.datasets.aggregate([
@@ -268,7 +281,16 @@ class Template:
 
         datasets_list = finded_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_finded_datasets]
 
+        for ds in datasets_list:
+            if not ds['ok'] and ds['state'] == 'null':
+                problems.append(f"{ds['name']} dataset is not found on datasets!")
+            if not ds['ok'] and ds['state'] != 'in_use':
+                problems.append(f"{ds['name']} dataset is not ready to use yet!")
+            if not ds['ok']:
+                problems.append(f"something wrong happend about {ds['name']}!")
+        
         self.__template['__test_info']['data']['datasets'] = datasets_list
+        self.__template['__test_info']['data']['problems'] = problems
 
         for ds in datasets_list:
             if not ds['ok']:
@@ -281,7 +303,7 @@ class Template:
             return True
             
         except Exception as e:
-            self.__template['__test_info']['structure']['schema_error'] = str(e)
+            self.__template['__test_info']['structure']['problems'].append(str(e))
             return False
             
 
@@ -300,7 +322,7 @@ class Template:
             else:
                 test_bool = False if test_bool else test_bool
                 sections.append({'name': key, 'ok': False, 
-                                 'problem': [f'template object must have a "{key}" in it']})
+                                 'problems': [f'template object must have a "{key}" in it']})
                 
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
@@ -323,14 +345,19 @@ class Template:
                 problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
 
             test_bool = problems == [] if test_bool else test_bool
-            sections.append({'name': q_type, 'ok': problems == [], 'problem': problems})
+            sections.append({'name': q_type, 'ok': problems == [], 'problems': problems})
         
+        prolems = []
+        for sec in sections:
+            problems += sec['problems']
+        
+        self.__template['__test_info']['structure']['problems'] = problems
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
     def __test_generation(self):
         """
-        test the template by generate a number of question
+            test the template by generate a number of question
         :return:
         """
         count = 50
@@ -358,7 +385,8 @@ class Template:
             'success_percent': success_percent,
             'problems': problem_set
         })
-        
+
+        self.__template['__test_info']['generation']['problems'] = problem_set
         return (success_percent) >= acceptable_percent
 
 
@@ -367,13 +395,29 @@ class Template:
         return True if votes in this template reach the goal
         :return:
         """
-        votes = self.__template['__test_info']['manual']['votes']
-        return len(votes) >= config.template.min_vote
+        problems = []
+
+        votes_len = len(self.__template['__test_info']['manual']['votes'])
+        manual_tes_bool = votes_len >= config.template.min_vote
+
+        if not manual_tes_bool:
+            problems.append(f"there was {votes_len} voted, it's not enough!")
+
+        self.__template['__test_info']['manual']['problems'] = problems
+        return manual_tes_bool
 
 
     def __test_usage_tagging(self):
+        problems = []
+        
         usage_list = self.__template['usage']
-        return usage_list != []
+        usage_test_bool = usage_list != []
+        
+        if not usage_test_bool:
+            problems.append(f'the template is not have usage tag')
+        
+        self.__template['__test_info']['usage_tagging']['problems'] = problems
+        return usage_test_bool
 
 
     def test_update(self):

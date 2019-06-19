@@ -7,41 +7,119 @@
         "key": "query"
     },
     "&choose": {
-        "title": {},
-        "answer": {},
-        "choice": {}
+        "title": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "answer": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "choice": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "subtitle": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        }
     },
     "&bool": {
-        "title": {}
+        "title": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "subtitle": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        }
     },
     "&write": {
-        "title": {},
-        "answer": {}
+        "title": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "answer": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "subtitle": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        }
     },
     "&select": {
-        "title": {},
-        "answer": {},
-        "choice": {}
+        "title": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "answer": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "choice": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        },
+        "subtitle": {
+            "text": [],
+            "photo": [],
+            "video": [],
+            "audio": []
+        }
     },
     "__state": "idea",
     "__test_info": {
         "duplication": {
-            "similars": []
+            "similars": [],
+            "problems": []
         },
         "acceptance": {
-            "votes": []
+            "votes": [],
+            "problems": []
         },
         "data": {
-            "datasets": []
+            "datasets": [],
+            "problems": []
         },
         "structure": {
-            "sections": []
+            "sections": [],
+            "problems": []
         },
         "generation": {
-            "result": []
+            "result": [],
+            "problems": []
         },
         "manual": {
-            "votes": []
+            "votes": [],
+            "problems": []
+        },
+        "usage_tagging":{
+            "problems":[]
         }
     }
 }
