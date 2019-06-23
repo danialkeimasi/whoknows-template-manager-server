@@ -16,9 +16,23 @@ from pprint import pprint
 
 
 class Template:
+    """ a simple class that implemented to work with a json_type question template
+    
+    Args:
+        inp (dict): the question template in a dict
+        inp (str): the file address of template
+        mode (str): its specified the "inp" arg and can be 'file_address' or 'dict'
+    
+    Attributes:
+        __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure()
+        __empty_template (dict): an empty question template
+        __schema_validator (dict): a schema validator. used in __test_schema()
+        __default_metadata (dict): default metadata values that used in generate_question()
+        
+        __template (dict): template stores here!
+    
     """
-    a class for template
-    """
+    
     __template_formatter = json.load(open(config.dir.template_formatter))
     __empty_template = json.load(open(config.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
@@ -30,50 +44,30 @@ class Template:
         'level': 1,
     }
 
-    def __init__(self, inp, debug=False, mode='dict'):
-        """
-        check template structure if debug is true
-
-        :param inp: dict | file_address
-        :param debug: bool
-        :param mode:
-        """
+    def __init__(self, inp, mode='dict'):
+        
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
-            inp if mode == 'dict' else \
-                None
+                          inp                                   if mode == 'dict' else \
+                          None
 
-        self.__problems = []
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
-        if debug:
-            self.__test_structure()
-            self.__test_data()
-
+        
     def dict(self):
-        """
-        :return template as dict:
+        """ returns question template as a dict object
+        
+        Returns:
+            template (dict): question template
         """
         return self.__template
 
-    def problems(self):
-        """
-        :return problems of a template as dict:
-        """
-        return self.__problems
-
-    def __update_problems(self, problems):
-        """
-        internal function for updating problems
-        :param new problems:
-        """
-        self.__problems += [problem for problem in problems if problem not in self.__problems]
-
     def get_question_types(self):
+        """ get all the question types that can make with the template
+        
+        Returns:
+            question_types (list): all the question types that we can make
         """
-        get all the question types that can make with the template
-        :return list of question types:
-        """
-        return [key for key in self.__template.keys() if key.startswith('&')]
+        return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
     def parse(self, bool_answer=True, metadata={}):
         """
@@ -153,7 +147,7 @@ class Template:
         question = template[question_type]
 
         question.update({
-            'type': question_type[1:],
+            'type': question_type[len(config.format.question.exist):],
             'tags': template['tags'],
             'usage': template['usage'],
             # 'values': template['values'],
@@ -185,59 +179,14 @@ class Template:
         :param format:
         :return:
         """
-        if self.__problems:
-            raise SyntaxError(f'there is some error with the template: {self.__problems}')
 
-        question_type = choose(self.get_question_types()) if question_type is None else f'&{question_type}'
+        question_type = choose(self.get_question_types()) if question_type is None else f'{config.format.question.exist}{question_type}'
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
         return question_object
-
-    def add_function(self):
-        """
-        you can insert this template to the mongodb by this function
-        :return:
-        TODO: must deleted
-        """
-
-        logger.info('trying to add tempalte to mongo ...')
-        template = self.dict()
-        template['problems'] = self.problems()
-        template['ok'] = True if self.problems() == [] else False
-        result = mongo_client.TemplateManager.templates.insert_one(template)
-
-        logger.info(result)
-
-        return result
-
-    def test_function(self):
-        """
-        test the template
-        :return:
-        """
-        template = self.__template
-        log_list = []
-        log_list_handler = ListHandler(log_list)
-        logger.addHandler(log_list_handler)
-
-        if self.problems():
-            logger.info('> There are some error :')
-            for problem in template.problems():
-                logger.error(problem)
-
-        else:
-            logger.info('> parsed template :')
-            logger.critical(json_util.dumps(self.parse().dict(), indent=4, ensure_ascii=False))
-
-            logger.info('> question :')
-            logger.critical(json_util.dumps(self.generate_question().dict(), indent=4, ensure_ascii=False))
-
-
-        logger.removeHandler(log_list_handler)
-        return {'runing_log': log_list, 'template_problems': self.problems}
 
     def __test_duplication(self):
         """

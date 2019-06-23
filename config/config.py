@@ -9,6 +9,7 @@ from pprint import pprint
 with open("./config/config.yml", 'r') as yamlfileobj:
     config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
+print(config)
 stream_handler = colorlog.StreamHandler()
 stream_handler.setFormatter(colorlog.ColoredFormatter())
 

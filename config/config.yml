@@ -73,3 +73,9 @@ template:
       required:
         - usage_tagging
 
+format:
+  question:
+    exist:
+      symbol: "&&"
+    not-exotst:
+      symbol: "&"
