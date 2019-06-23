@@ -16,18 +16,18 @@ from pprint import pprint
 
 
 class Template:
-    """ a simple class that implemented to work with a json_type question template
+    """ a simple class that implemented to work with a json_type question template.
     
     Args:
-        inp (dict): the question template in a dict
-        inp (str): the file address of template
-        mode (str): its specified the "inp" arg and can be 'file_address' or 'dict'
+        inp (dict): the question template in a dict.
+        inp (str): the file address of template.
+        mode (str): its specified the "inp" arg and can be 'file_address' or 'dict'.
     
     Attributes:
-        __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure()
-        __empty_template (dict): an empty question template
-        __schema_validator (dict): a schema validator. used in __test_schema()
-        __default_metadata (dict): default metadata values that used in generate_question()
+        __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure().
+        __empty_template (dict): an empty question template.
+        __schema_validator (dict): a schema validator. used in __test_schema().
+        __default_metadata (dict): default metadata values that used in generate_question().
         
         __template (dict): template stores here!
     
@@ -54,27 +54,32 @@ class Template:
             self.__template['__test_info'] = self.__empty_template['__test_info']
         
     def dict(self):
-        """ returns question template as a dict object
+        """ returns question template as a dict object.
         
         Returns:
-            template (dict): question template
+            dict: question template.
         """
         return self.__template
 
     def get_question_types(self):
-        """ get all the question types that can make with the template
+        """ get all the question types that can make with the template.
         
         Returns:
-            question_types (list): all the question types that we can make
+            list: all the question types that we can make.
         """
         return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
     def parse(self, bool_answer=True, metadata={}):
         """
-        eval the variables in the template with data that we have in datasets
-        and return a new template object that has no variable in sentences
-        :param metadata:
-        :return Template:
+        eval the variables in the template with data that we have in datasets,
+        and return a new template object that has no variable in sentences.
+        
+        Args:
+            bool_answer (bool, optional): a randomly generated boolean that use for bool question_type. Defaults to True.
+            metadata (dict, optional): needed metadata for parsing template. Defaults to {}.
+        
+        Returns:
+            Template: parsed template, replaced every variable with datasets.
         """
 
         dbs = load_template_datasets(self.__template['datasets'])
@@ -135,12 +140,17 @@ class Template:
 
     def get_question(self, bool_answer, question_type, format):
         """
-        change a template structure to the question structure
-        we do it after parsing a template
+        change a template structure to the question structure.
+        we do it after parsing a template.
 
-        :param question_type:
-        :param format:
-        :return:
+        
+        Args:
+            bool_answer (bool): a randomly generated boolean that use for bool question_type.
+            question_type (str): question type that we want.
+            format (str): format of title and choices. range of text, photo, audio, video.
+        
+        Returns:
+            Question: generated question.
         """
 
         template = self.__template
@@ -168,18 +178,23 @@ class Template:
             for field in question['choice']:
                 question['choice'][field] += question['answer'][field]
 
-
         return Question(question)
 
     def generate_question(self, metadata={}, question_type=None, format={}):
+        """ generate question by this template.
+        
+        this function executed on a given template, 
+        and after parsing this template we get question from parsed template.
+        
+        Args:
+            metadata (dict, optional): necessery data for creating question from template. Defaults to {}.
+            question_type ([type], optional): exact question_type that we want. Defaults to None.
+            format (dict, optional): format of title and choices. range of text, photo, audio, video. Defaults to {}.
+        
+        Returns:
+            Question: [description]
         """
-        generate question by this template
-        :param metadata:
-        :param question_type:
-        :param format:
-        :return:
-        """
-
+        
         question_type = choose(self.get_question_types()) if question_type is None else f'{config.format.question.exist}{question_type}'
         bool_answer = rand([True, False])
 
@@ -189,20 +204,23 @@ class Template:
         return question_object
 
     def __test_duplication(self):
-        """
-        return duplicate templates that we found in the database
-        :return:
-        """
+        """ finds duplicate templates that we found in the database.
+        
+        Returns:
+            bool: test if we have not found duplicate template.
 
+        """
         self.__template['__test_info']['duplication']['similars'] = []
         self.__template['__test_info']['duplication']['problems'] = []
         return True
 
     def __test_acceptance(self):
+        """ check acceptance of the idea.
+        
+        Returns:
+            bool: return True if votes in this template reach the goal.
         """
-        return True if votes in this template reach the goal
-        :return:
-        """
+
         problems = []
 
         votes_len = len(self.__template['__test_info']['acceptance']['votes'])
@@ -215,10 +233,12 @@ class Template:
         return acceptance_bool
 
     def __test_data(self):
+        """ check if necessary databases for this template is exist.
+        
+        Returns:
+            bool: return True if we have all wanted datasets.
         """
-        check if necessary databases for this template is exist and save problems in __problems
-        :return:
-        """
+
         problems = []
 
         template_datasets = self.__template['datasets']
@@ -250,6 +270,12 @@ class Template:
         return True
 
     def __test_schema(self):
+        """ schema test for template that proves structure of template.
+        
+        Returns:
+            bool: return True if template struct is validate by schema.
+        """
+
         try:
             self.__schema_validator.validate(self.__template)
             return True
@@ -260,11 +286,13 @@ class Template:
             
 
     def __test_structure(self):
+        """ check's the format of template.
+        
+        Returns:
+            bool: return True if doesn't find any problem.
         """
-        check's the format of template json and save problems in __problems
-        :return:
-        """
-        test_bool = True
+
+        t_bool = True
         sections = []
         template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea']
 
@@ -307,12 +335,17 @@ class Template:
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
-    def __test_generation(self):
+    def __test_generation(self, count = 50):
+        """ test the template by generate a number of question
+        
+        Args:
+            count (int, optional): try count. Defaults to 50.
+        
+        Returns:
+            bool: return True if success_rate reach the goal.
         """
-            test the template by generate a number of question
-        :return:
-        """
-        count = 50
+        
+        
         success_count = 0
         acceptable_percent = 75
 
@@ -343,10 +376,12 @@ class Template:
 
 
     def __test_manual(self):
+        """ test the generated questions by a human and vote if its ok
+        
+        Returns:
+            bool: return True if votes in this template reach the goal
         """
-        return True if votes in this template reach the goal
-        :return:
-        """
+
         problems = []
 
         votes_len = len(self.__template['__test_info']['manual']['votes'])
@@ -391,14 +426,16 @@ class Template:
         return self
 
 def load_data(dataset_name):
-    """
-    Loads the given dataset and returns it
 
-    Parameters
-    ----------
-    dataset_name : str
-        name of dataset
-    """
+    """ Load one dataset and returns it
+    
+    Args:
+        dataset_name (str): name of dataset
+    
+    Returns:
+        pd.DataFrame: the given dataset as a pandas data frame
+    """ 
+
     data = pd.DataFrame()
 
     for try_count in range(5):
@@ -414,11 +451,15 @@ def load_data(dataset_name):
 
 
 def load_template_datasets(necesery_datasets):
+    """ load the datasets that given one by one.
+    
+    Args:
+        necesery_datasets (list): dataset list.
+    
+    Returns:
+        list: list of pandas dataFrames
     """
-    load the datasets that given to the ram
-    :param necesery_datasets:
-    :return:
-    """
+
     logger.debug(f'load: {necesery_datasets}')
 
     dbs = {}
@@ -429,11 +470,13 @@ def load_template_datasets(necesery_datasets):
 
 
 def free_template_datasets(datasets):
+    """ free the datasts from ram
+    
+    Args:
+        datasets (list): dataset list.
     """
-    free the datasts from ram
-    :param datasets:
-    :return:
-    """
+    
+    
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
