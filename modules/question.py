@@ -56,7 +56,7 @@ class Question:
             problems += ['there is no "type" field in question']
 
         q_type = question['type']
-        q_field_required = [q_field for q_field in self.__template_formatter[f'&{q_type}'] if self.__template_formatter[f'&{q_type}'][q_field]]
+        q_field_required = [q_field for q_field in self.__template_formatter[f'{config.format.question.exist}{q_type}'] if self.__template_formatter[f'{config.format.question.exist}{q_type}'][q_field]]
         not_found_field = list(set(q_field_required) - set(question.keys()))
 
         if not_found_field != []:
