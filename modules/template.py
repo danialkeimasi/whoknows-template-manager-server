@@ -476,7 +476,6 @@ def free_template_datasets(datasets):
         datasets (list): dataset list.
     """
     
-    
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
