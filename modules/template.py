@@ -441,7 +441,6 @@ class Template:
 
         return self
 
-http://dl.serverdl.pw/1/files/Lemony.Snickets.A.Series.Of.Unfortunate.Events.2004.Bluray.720p.mkv
 def load_data(dataset_name):
     """
     Loads the given dataset and returns it
