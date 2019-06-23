@@ -6,7 +6,7 @@
     "values": {
         "key": "query"
     },
-    "&choose": {
+    "&&choose": {
         "title": {
             "text": [],
             "photo": [],
@@ -32,7 +32,7 @@
             "audio": []
         }
     },
-    "&bool": {
+    "&&bool": {
         "title": {
             "text": [],
             "photo": [],
@@ -46,7 +46,7 @@
             "audio": []
         }
     },
-    "&write": {
+    "&&write": {
         "title": {
             "text": [],
             "photo": [],
@@ -66,7 +66,7 @@
             "audio": []
         }
     },
-    "&select": {
+    "&&select": {
         "title": {
             "text": [],
             "photo": [],

@@ -24,7 +24,7 @@
             "required": true,
             "type": "object"
         },
-        "&choose": {
+        "&&choose": {
             "required": false,
             "type": "object",
             "properties": {
@@ -118,7 +118,7 @@
                 }
             }
         },
-        "&bool": {
+        "&&bool": {
             "required": false,
             "type": "object",
             "properties": {
@@ -168,7 +168,7 @@
                 }
             }
         },
-        "&write": {
+        "&&write": {
             "required": false,
             "type": "object",
             "properties": {
