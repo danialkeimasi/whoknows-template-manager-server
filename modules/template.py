@@ -161,8 +161,11 @@ class Template:
         })
 
         for type in question['title']:
-            question['title'][type] = choose(
-                [t for i, t in enumerate(question['title'][type]) if i % 2 == int(bool_answer)])
+            if question['title'][type] != []:
+                question['title'][type] = choose(
+                    [t for i, t in enumerate(question['title'][type]) 
+                        if i % 2 == int(bool_answer)]
+                )
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
@@ -438,7 +441,7 @@ class Template:
 
         return self
 
-
+http://dl.serverdl.pw/1/files/Lemony.Snickets.A.Series.Of.Unfortunate.Events.2004.Bluray.720p.mkv
 def load_data(dataset_name):
     """
     Loads the given dataset and returns it
