@@ -75,7 +75,5 @@ template:
 
 format:
   question:
-    exist:
-      symbol: "&&"
-    not-exotst:
-      symbol: "&"
+    exist: "&&"
+    not-exotst: "&"
