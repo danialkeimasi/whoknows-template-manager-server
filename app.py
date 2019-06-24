@@ -9,3 +9,4 @@ if __name__ == '__main__':
 
     if not isThereArg:
         flaskApp.getApp().run(debug=True, port='3001')
+
