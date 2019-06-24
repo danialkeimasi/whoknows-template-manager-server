@@ -425,6 +425,7 @@ class Template:
 
         return self
 
+
 def load_data(dataset_name):
 
     """ Load one dataset and returns it

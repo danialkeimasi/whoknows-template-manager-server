@@ -5,8 +5,16 @@ from modules.tools.functions import choose
 
 
 class DataContainer():
-    """
-    Data Manager class for working with datasets and accessing it's data easier
+    """ Data Manager class for working with datasets and accessing it's data easier
+    
+    we just use setattr for adding data to the data to the object
+
+    Raises:
+        ValueError: if DataContainer input is is empty list
+    
+    Args:
+        exp (): data that you want to use as attribute later
+    
     """
     exp = []
 
@@ -39,19 +47,24 @@ class DataContainer():
                 self.exp = exp
 
     def one(self):
-        """
-        choose random from a list of DataManagers by len of 1
+        """ choose random from a list of DataManagers by len of 1
 
-        ---
-            work same as choose(1)
-
+        
+        Returns:
+            an element of the given list
         """
         return choose(self.DClist)
 
     def choose(self, num):
+        """ choose random from a list of DataManagers by len of "num"
+        
+        Args:
+            num (int): how many item you want to choose
+        
+        Returns:
+            a list of randomly selected elements
         """
-        choose random from a list of DataManagers by len of "num"
-        """
+
         if isinstance(self.exp, list) and not isinstance(self.exp[0], dict):
             return choose(self.exp, num)
         else:
@@ -59,29 +72,37 @@ class DataContainer():
 
     @property
     def PYlist(self):
-        """
-        converts the DataManager object to a python List
+        """ converts the DataManager object to a python List
+        
+        Returns:
+            list: python list of the given data
         """
         return self.exp
 
     @property
     def DClist(self):
-        """
-        converts the DataManager object to a dataManager List
+        """ converts the DataContainer object to a DataContainer List
+        
+        Returns:
+            DataContainer: DataContainer object of the given data
         """
         return [DataContainer([item]) for item in self.exp]
 
 
 def db(doc, count=0):
-    """
-    Gets a panada's Dataframe(doc) and randomly choose count number of items from dataframe and returns the data as a list of dicts
+    """ 
+    Gets a panada's Dataframe(doc) and randomly choose count number of items
+    from dataframe and returns the data as a list of dicts
 
-    Parmeters
-    ----------
-    doc : dataframe
-        dataframe that we want to choose from
-    count : int
-        number of items which is needed (default is 1)
+    Args:
+        doc (dataframe): dataframe that we want to choose from
+        count (int, optional): number of items which is needed (default is 1). Defaults to 0.
+    
+    Raises:
+        ValueError: if not enough data for db function to choose from
+    
+    Returns:
+        DataContainer: loaded data
     """
 
     try:
@@ -104,11 +125,14 @@ def db(doc, count=0):
 
 
 def listSub(data1, data2):
-    """
-    sub 2 lists
-    :param data1:
-    :param data2:
-    :return:
+    """ subtract set for two list
+    
+    Args:
+        data1 (list): left operand
+        data2 (list): right operand
+    
+    Returns:
+        list: result of set subtract
     """
     data1 = list(data1) if isinstance(data1, Iterable) and not isinstance(data1, str) else [data1]
     data2 = list(data2) if isinstance(data2, Iterable) and not isinstance(data2, str) else [data2]

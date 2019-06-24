@@ -4,8 +4,14 @@ from config.config import config
 
 
 class Question:
-    """
-    a simple class for a question
+    """ a simple class for a question
+
+    Args:
+        question_dict (dict): the question in a dict.
+    
+    Attributes:
+        __question (dict): question object as dict
+        __problems (list): list of problems
     """
     __template_formatter = json.load(open(config.dir.template_formatter))
 
@@ -15,39 +21,40 @@ class Question:
         self.test_question()
 
     def dict(self):
-        """
-        get the question as dict
-        :return:
+        """ get the question as dict
+        
+        Returns:
+            dict: question object
         """
         return self.__question
     
     def problems(self):
-        """
-        get the problems
-        :return:
+        """ question problems
+        
+        Returns:
+            list: list of templates
         """
         return self.__problems
 
     def is_ok(self):
-        """
-        check if question is ok
-        :return:
+        """ check if question is ok
+        
+        Returns:
+            bool: return True if there is no problem with question
         """
         return self.__problems == []
 
     def test_question(self):
-        """
-        run the question test function
-        :return:
-        """
+        """ run the question test function again """
         self.__problems = []
         self.__test_structure()
 
 
     def __test_structure(self):
-        """
-        test the structure of template
-        :return:
+        """ test the structure of template
+        
+        Returns:
+            bool: return True if there is no structure problems
         """
         question = self.__question
         problems = []
