@@ -8,7 +8,7 @@ class Question:
 
     Args:
         question_dict (dict): the question in a dict.
-    
+
     Attributes:
         __question (dict): question object as dict
         __problems (list): list of problems
@@ -22,15 +22,15 @@ class Question:
 
     def dict(self):
         """ get the question as dict
-        
+
         Returns:
             dict: question object
         """
         return self.__question
-    
+
     def problems(self):
         """ question problems
-        
+
         Returns:
             list: list of templates
         """
@@ -38,7 +38,7 @@ class Question:
 
     def is_ok(self):
         """ check if question is ok
-        
+
         Returns:
             bool: return True if there is no problem with question
         """
@@ -52,7 +52,7 @@ class Question:
 
     def __test_structure(self):
         """ test the structure of template
-        
+
         Returns:
             bool: return True if there is no structure problems
         """
@@ -68,6 +68,6 @@ class Question:
 
         if not_found_field != []:
             problems += [f'question must have the following fields: {not_found_field}']
-        
+
         self.__problems += problems
         return problems != []

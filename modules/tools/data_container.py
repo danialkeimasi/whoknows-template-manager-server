@@ -6,15 +6,15 @@ from modules.tools.functions import choose
 
 class DataContainer():
     """ Data Manager class for working with datasets and accessing it's data easier
-    
+
     we just use setattr for adding data to the data to the object
 
     Raises:
         ValueError: if DataContainer input is is empty list
-    
+
     Args:
         exp (): data that you want to use as attribute later
-    
+
     """
     exp = []
 
@@ -49,7 +49,7 @@ class DataContainer():
     def one(self):
         """ choose random from a list of DataManagers by len of 1
 
-        
+
         Returns:
             an element of the given list
         """
@@ -57,10 +57,10 @@ class DataContainer():
 
     def choose(self, num):
         """ choose random from a list of DataManagers by len of "num"
-        
+
         Args:
             num (int): how many item you want to choose
-        
+
         Returns:
             a list of randomly selected elements
         """
@@ -73,7 +73,7 @@ class DataContainer():
     @property
     def PYlist(self):
         """ converts the DataManager object to a python List
-        
+
         Returns:
             list: python list of the given data
         """
@@ -82,7 +82,7 @@ class DataContainer():
     @property
     def DClist(self):
         """ converts the DataContainer object to a DataContainer List
-        
+
         Returns:
             DataContainer: DataContainer object of the given data
         """
@@ -90,17 +90,17 @@ class DataContainer():
 
 
 def db(doc, count=0):
-    """ 
+    """
     Gets a panada's Dataframe(doc) and randomly choose count number of items
     from dataframe and returns the data as a list of dicts
 
     Args:
         doc (dataframe): dataframe that we want to choose from
         count (int, optional): number of items which is needed (default is 1). Defaults to 0.
-    
+
     Raises:
         ValueError: if not enough data for db function to choose from
-    
+
     Returns:
         DataContainer: loaded data
     """
@@ -126,11 +126,11 @@ def db(doc, count=0):
 
 def listSub(data1, data2):
     """ subtract set for two list
-    
+
     Args:
         data1 (list): left operand
         data2 (list): right operand
-    
+
     Returns:
         list: result of set subtract
     """

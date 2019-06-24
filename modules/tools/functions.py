@@ -5,7 +5,7 @@ def rand(needList, count=0, exceptions=[]):
     """
     Return a list of random numbers in range of [start , ... , end],
     Returns only one number(not list) of count is not given
-    
+
     Args:
         needList (list, range): a list of items that we want to choose from
         count (int, optional): number of random numbers that is needed. Defaults to 0.
@@ -33,13 +33,13 @@ def choose(items, count=1):
     TODO: i change count default from 0 to 1 that always return list in this function, i dont know what happend to code after this :D
     Return a random sebset of given items with length of count
     as a list(returns only one item if count is None, Not as a list)
-    
+
     Args:
         items (list): a list of items that we want to choose from
         count (int, optional): number of random numbers that is needed. Defaults to 0.
-    
+
     Returns:
-        list: 
+        list:
     """
 
     return rand(needList=items, count=count)
@@ -47,10 +47,10 @@ def choose(items, count=1):
 
 def to_list(data):
     """ if data is not a list, return it as a list
-    
+
     Args:
         data: a not iterable object
-    
+
     Returns:
         list: given object as list
     """

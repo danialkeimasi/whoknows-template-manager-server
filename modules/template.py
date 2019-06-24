@@ -17,22 +17,22 @@ from pprint import pprint
 
 class Template:
     """ a simple class that implemented to work with a json_type question template.
-    
+
     Args:
         inp (dict): the question template in a dict.
         inp (str): the file address of template.
         mode (str): its specified the "inp" arg and can be 'file_address' or 'dict'.
-    
+
     Attributes:
         __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure().
         __empty_template (dict): an empty question template.
         __schema_validator (dict): a schema validator. used in __test_schema().
         __default_metadata (dict): default metadata values that used in generate_question().
-        
+
         __template (dict): template stores here!
-    
+
     """
-    
+
     __template_formatter = json.load(open(config.dir.template_formatter))
     __empty_template = json.load(open(config.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
@@ -45,17 +45,17 @@ class Template:
     }
 
     def __init__(self, inp, mode='dict'):
-        
+
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
                           inp                                   if mode == 'dict' else \
                           None
 
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
-        
+
     def dict(self):
         """ returns question template as a dict object.
-        
+
         Returns:
             dict: question template.
         """
@@ -63,7 +63,7 @@ class Template:
 
     def get_question_types(self):
         """ get all the question types that can make with the template.
-        
+
         Returns:
             list: all the question types that we can make.
         """
@@ -73,11 +73,11 @@ class Template:
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
-        
+
         Args:
             bool_answer (bool, optional): a randomly generated boolean that use for bool question_type. Defaults to True.
             metadata (dict, optional): needed metadata for parsing template. Defaults to {}.
-        
+
         Returns:
             Template: parsed template, replaced every variable with datasets.
         """
@@ -143,12 +143,12 @@ class Template:
         change a template structure to the question structure.
         we do it after parsing a template.
 
-        
+
         Args:
             bool_answer (bool): a randomly generated boolean that use for bool question_type.
             question_type (str): question type that we want.
             format (str): format of title and choices. range of text, photo, audio, video.
-        
+
         Returns:
             Question: generated question.
         """
@@ -167,13 +167,13 @@ class Template:
         for type in question['title']:
             if question['title'][type] != []:
                 question['title'][type] = choose(
-                    [t for i, t in enumerate(question['title'][type]) 
+                    [t for i, t in enumerate(question['title'][type])
                         if i % 2 == int(bool_answer)]
                 )
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
-        
+
         if 'choice' in question:
             for field in question['choice']:
                 question['choice'][field] += question['answer'][field]
@@ -182,19 +182,19 @@ class Template:
 
     def generate_question(self, metadata={}, question_type=None, format={}):
         """ generate question by this template.
-        
-        this function executed on a given template, 
+
+        this function executed on a given template,
         and after parsing this template we get question from parsed template.
-        
+
         Args:
             metadata (dict, optional): necessery data for creating question from template. Defaults to {}.
             question_type ([type], optional): exact question_type that we want. Defaults to None.
             format (dict, optional): format of title and choices. range of text, photo, audio, video. Defaults to {}.
-        
+
         Returns:
             Question: [description]
         """
-        
+
         question_type = choose(self.get_question_types()) if question_type is None else f'{config.format.question.exist}{question_type}'
         bool_answer = rand([True, False])
 
@@ -205,7 +205,7 @@ class Template:
 
     def __test_duplication(self):
         """ finds duplicate templates that we found in the database.
-        
+
         Returns:
             bool: test if we have not found duplicate template.
 
@@ -216,7 +216,7 @@ class Template:
 
     def __test_acceptance(self):
         """ check acceptance of the idea.
-        
+
         Returns:
             bool: return True if votes in this template reach the goal.
         """
@@ -225,16 +225,16 @@ class Template:
 
         votes_len = len(self.__template['__test_info']['acceptance']['votes'])
         acceptance_bool = votes_len >= config.template.min_vote
-        
+
         if not acceptance_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
-        
+
         self.__template['__test_info']['acceptance']['problems'] = problems
         return acceptance_bool
 
     def __test_data(self):
         """ check if necessary databases for this template is exist.
-        
+
         Returns:
             bool: return True if we have all wanted datasets.
         """
@@ -260,7 +260,7 @@ class Template:
                 problems.append(f"{ds['name']} dataset is not ready to use yet!")
             if not ds['ok']:
                 problems.append(f"something wrong happend about {ds['name']}!")
-        
+
         self.__template['__test_info']['data']['datasets'] = datasets_list
         self.__template['__test_info']['data']['problems'] = problems
 
@@ -271,7 +271,7 @@ class Template:
 
     def __test_schema(self):
         """ schema test for template that proves structure of template.
-        
+
         Returns:
             bool: return True if template struct is validate by schema.
         """
@@ -279,15 +279,15 @@ class Template:
         try:
             self.__schema_validator.validate(self.__template)
             return True
-            
+
         except Exception as e:
             self.__template['__test_info']['structure']['problems'].append(str(e))
             return False
-            
+
 
     def __test_structure(self):
         """ check's the format of template.
-        
+
         Returns:
             bool: return True if doesn't find any problem.
         """
@@ -301,9 +301,9 @@ class Template:
                 sections.append({'name': key, 'ok': True, 'problem':[]})
             else:
                 test_bool = False if test_bool else test_bool
-                sections.append({'name': key, 'ok': False, 
+                sections.append({'name': key, 'ok': False,
                                  'problems': [f'template object must have a "{key}" in it']})
-                
+
         question_types = self.get_question_types()
         logger.critical(f"found this question types: {question_types}")
 
@@ -326,26 +326,26 @@ class Template:
 
             test_bool = problems == [] if test_bool else test_bool
             sections.append({'name': q_type, 'ok': problems == [], 'problems': problems})
-        
+
         prolems = []
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
-        
+
         self.__template['__test_info']['structure']['problems'] = problems
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
     def __test_generation(self, count = 50):
         """ test the template by generate a number of question
-        
+
         Args:
             count (int, optional): try count. Defaults to 50.
-        
+
         Returns:
             bool: return True if success_rate reach the goal.
         """
-        
-        
+
+
         success_count = 0
         acceptable_percent = 75
 
@@ -357,7 +357,7 @@ class Template:
                     success_count += 1
             except Exception as e:
                 problem_list.append(str(e))
-        
+
         problem_set = []
         for problem in set(problem_list):
             problem_set.append(f'{problem} || count: {problem_list.count(problem)}')
@@ -377,7 +377,7 @@ class Template:
 
     def __test_manual(self):
         """ test the generated questions by a human and vote if its ok
-        
+
         Returns:
             bool: return True if votes in this template reach the goal
         """
@@ -396,13 +396,13 @@ class Template:
 
     def __test_usage_tagging(self):
         problems = []
-        
+
         usage_list = self.__template['usage']
         usage_test_bool = usage_list != []
-        
+
         if not usage_test_bool:
             problems.append(f'the template is not have usage tag')
-        
+
         self.__template['__test_info']['usage_tagging']['problems'] = problems
         return usage_test_bool
 
@@ -413,7 +413,7 @@ class Template:
 
         state_number = 0
         test_functions = []
-        
+
         for state in config.template.states[1:]:
             test_functions = { t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
             if not all(test_functions.values()):
@@ -429,13 +429,13 @@ class Template:
 def load_data(dataset_name):
 
     """ Load one dataset and returns it
-    
+
     Args:
         dataset_name (str): name of dataset
-    
+
     Returns:
         pd.DataFrame: the given dataset as a pandas data frame
-    """ 
+    """
 
     data = pd.DataFrame()
 
@@ -453,10 +453,10 @@ def load_data(dataset_name):
 
 def load_template_datasets(necesery_datasets):
     """ load the datasets that given one by one.
-    
+
     Args:
         necesery_datasets (list): dataset list.
-    
+
     Returns:
         list: list of pandas dataFrames
     """
@@ -472,11 +472,11 @@ def load_template_datasets(necesery_datasets):
 
 def free_template_datasets(datasets):
     """ free the datasts from ram
-    
+
     Args:
         datasets (list): dataset list.
     """
-    
+
     logger.debug(f'free: {datasets}')
 
     for db in datasets:
