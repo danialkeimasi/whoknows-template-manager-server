@@ -1,6 +1,17 @@
-import glob
 import importlib
+import glob
 import os
+
+from flask_restful import Resource, Api
+from flask_cors import CORS
+from flask import Flask
+
+
+def getApp():
+    return app
+
+def getApi():
+    return api_app
 
 
 def add_routes():
@@ -13,11 +24,13 @@ def add_routes():
         importlib.import_module(f'api.routes.{file}').add()
 
 
-def getApp():
-    return app
+def feed():
+    CORS(app)
+    api_app = Api(app)
 
-def getApi():
-    return api_app
+
+    add_routes()
+
 
 
 
