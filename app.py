@@ -8,4 +8,4 @@ if __name__ == '__main__':
     isThereArg = arg_parse()
 
     if not isThereArg:
-        flaskApp.getApp().run(debug=True, port='3001')
+        flaskApp.getApp().run(debug=True, host='0.0.0.0', port='3001')
