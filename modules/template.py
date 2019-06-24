@@ -292,7 +292,7 @@ class Template:
             bool: return True if doesn't find any problem.
         """
 
-        t_bool = True
+        test_bool = True
         sections = []
         template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea']
 
