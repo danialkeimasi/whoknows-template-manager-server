@@ -2,10 +2,8 @@ from flask import json, request
 
 from config.config import mongo_client, logger
 from modules.template import Template
-from api.flask import getApp
 
-def add():
-    app = getApp()
+def add(app):
 
     @app.route('/question/generate', methods=['GET'])
     def get_question_get():
@@ -60,7 +58,7 @@ def add():
                 'ok': True,
                 'questions': questions,
             }
-        
+
         return json.dumps(response)
 
 

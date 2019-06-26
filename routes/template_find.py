@@ -2,11 +2,9 @@ from bson import json_util
 from flask import json, request
 
 from config.config import mongo_client
-from api.flask import getApp
 
 
-def add():
-    app = getApp()
+def add(app):
 
     @app.route('/template/find', methods=['GET'])
     def find_template_get():

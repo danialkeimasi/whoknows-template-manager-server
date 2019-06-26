@@ -1,12 +1,22 @@
-import api.flask as flaskApp
+import importlib
+import glob
+import os
+
 from config.arg_parse import arg_parse
+from flask import Flask
+from flask_cors import CORS
 
 if __name__ == '__main__':
-    flaskApp.app = flaskApp.Flask(__name__)
-    flaskApp.feed()
+    app = Flask(__name__)
+    CORS(app)
+    files = [os.path.basename(path)[:-3] for path in glob.glob('./routes/*.py')
+                                            if not os.path.basename(path).startswith('__')]
+
+    for file in files:
+        print(file)
+        importlib.import_module(f'routes.{file}').add(app)
 
     isThereArg = arg_parse()
 
     if not isThereArg:
-        flaskApp.getApp().run(debug=True, port='3001')
-
+        app.run(debug=True, port='3001')
