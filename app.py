@@ -1,6 +1,6 @@
-import importlib
-import glob
-import os
+from importlib import import_module
+from glob import glob
+from os.path import basename
 
 from config.arg_parse import arg_parse
 from flask import Flask
@@ -9,11 +9,9 @@ from flask_cors import CORS
 if __name__ == '__main__':
     app = Flask(__name__)
     CORS(app)
-    files = [os.path.basename(path)[:-3] for path in glob.glob('./routes/*.py')
-                                            if not os.path.basename(path).startswith('__')]
 
-    for file in files:
-        importlib.import_module(f'routes.{file}').add(app)
+    for file in [basename(path).replace('.py', '') for path in glob('./routes/*.py') if not basename(path).startswith('__')]:
+        import_module(f'routes.{file}').add(app)
 
     isThereArg = arg_parse()
 
