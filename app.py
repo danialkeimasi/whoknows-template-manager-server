@@ -13,10 +13,9 @@ if __name__ == '__main__':
                                             if not os.path.basename(path).startswith('__')]
 
     for file in files:
-        print(file)
         importlib.import_module(f'routes.{file}').add(app)
 
     isThereArg = arg_parse()
 
     if not isThereArg:
-        app.run(debug=True, host='0.0.0.0', port='3001')
+        app.run(debug=False, host='0.0.0.0', port='3001')
