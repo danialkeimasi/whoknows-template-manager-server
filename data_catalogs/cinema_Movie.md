@@ -17,6 +17,27 @@
  
  
   <tr>
+    <td>genre</td>
+    <td>list</td>
+    <td>.{3,20}</td>
+    <td>
+    ژانرهای فیلم
+    </td>
+  </tr>
+ 
+ 
+  <tr>
+    <td>ages</td>
+    <td>string</td>
+    <td>.{3,10}</td>
+    <td>
+    رده سنی فیلم مانند PG-13
+    </td>
+  </tr>
+ 
+ 
+ 
+  <tr>
     <td>director</td>
     <td>list</td>
     <td>.{3,30}</td>
@@ -56,13 +77,22 @@
   </tr>
 
 
-
   <tr>
     <td>storyline</td>
     <td>string</td>
     <td>.{3,3000}</td>
     <td>
      خلاصه و خط داستانی 
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>based_on</td>
+    <td>string</td>
+    <td>.{3,60}</td>
+    <td>
+     برگرفته از (یعنی فیلم از چه کتاب یا ... اقتباس شده است) 
     </td>
   </tr>
 
@@ -181,15 +211,80 @@
   </tr>
  
  
- 
- 
   <tr>
-    <td>box_office_on_dollar</td>
+    <td>box_office_usa_on_dollar</td>
     <td>unsignint</td>
     <td>\d{1,11}</td>
     <td>
     فروش باکس آفیس 
     </td>
   </tr>
+ 
+ 
+  <tr>
+    <td>opening_weekend_on_dollar</td>
+    <td>unsignint</td>
+    <td>\d{1,11}</td>
+    <td>
+    فروش افتتاحیه آخر هفته باکس آفیس 
+    </td>
+  </tr>
+ 
+ 
+  <tr>
+    <td>color</td>
+    <td>string</td>
+    <td>.{1,15}</td>
+    <td>
+    وضعیت رنگ فیلم (رنگی یا سیاه و سفید) 
+    </td>
+  </tr>
+ 
+ 
+ 
+  <tr>
+    <td>key_words</td>
+    <td>list</td>
+    <td>.{1,20}</td>
+    <td>
+    کلمات کلیدی مرتبط با فیلم 
+    </td>
+  </tr>
+ 
+ 
+  <tr>
+    <td>tagline</td>
+    <td>string</td>
+    <td>.{1,100}</td>
+    <td>
+    برچسب های فیلم بصورت جمله 
+    </td>
+  </tr>
+ 
+ 
+ 
+ 
+  <tr>
+    <td>also_known_as</td>
+    <td>list</td>
+    <td>.{1,50}</td>
+    <td>
+    نام های دیگر فیلم در سایر کشورها 
+    </td>
+  </tr>
+ 
+ 
+ 
+  <tr>
+    <td>quote</td>
+    <td>string</td>
+    <td>.{1,1000}</td>
+    <td>
+    دیالوگ های معروف فیلم 
+    </td>
+  </tr>
+ 
+ 
+ 
  
  </table>
