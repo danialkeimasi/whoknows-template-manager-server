@@ -3,12 +3,17 @@ from flask import json, request
 
 from config.config import mongo_client
 from modules.template import Template
+from flask_restful import reqparse, Api, Resource
 
 
-def add(app):
+class TemplateTest(Resource):
+    """
+    test the template and update the state
+    find template by _id that exist in template
+    update the template in the database
+    """
 
-    @app.route('/template/test_save', methods=['GET'])
-    def test_get():
+    def get(self):
 
         response = {
             'ok': False,
@@ -18,16 +23,10 @@ def add(app):
             }
         }
 
-        return json.dumps(response)
+        return response
 
-    @app.route('/template/test_save', methods=['POST'])
-    def test_post():
-        """
-        test the template and update the state
-        find template by _id that exist in template
-        update the template in the database
-        
-        """
+    def post(self):
+
         user_req = json_util.loads(request.data) if request.json is not None else {}
         template = user_req['template'] if 'template' in user_req else {}
 
@@ -36,7 +35,7 @@ def add(app):
         problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in template else []
 
         if problems == []:
-            
+
             updated_template = Template(template).test_update().dict()
             replace_response = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, updated_template)
 
@@ -54,3 +53,7 @@ def add(app):
             }
 
         return json_util.dumps(response)
+
+
+def add(app):
+    Api(app).add_resource(TemplateTest, '/template/test_save')

@@ -4,8 +4,6 @@ from flask import json, request
 from config.config import config, mongo_client
 from flask_restful import reqparse, Api, Resource
 
-parser = reqparse.RequestParser()
-parser.add_argument('idea', type=str, help='you must send the "idea" of template as a post json request.', required=True)
 
 class TemplateNew(Resource):
     """
@@ -28,7 +26,15 @@ class TemplateNew(Resource):
         return response
 
     def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument(
+            'idea',
+            type=str,
+            help='you must send the "idea" of template as a post json request.',
+            required=True
+        )
         args = parser.parse_args()
+
         idea = args['idea']
 
         empty_template = json.load(open(config.dir.empty_template))
