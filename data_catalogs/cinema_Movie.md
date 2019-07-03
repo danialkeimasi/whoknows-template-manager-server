@@ -17,6 +17,16 @@
  
  
   <tr>
+    <td>year</td>
+    <td>string</td>
+    <td>.{3,40}</td>
+    <td>
+    سال انتشار فیلم
+    </td>
+  </tr>
+ 
+ 
+  <tr>
     <td>genre</td>
     <td>list</td>
     <td>.{3,20}</td>
@@ -34,6 +44,19 @@
     رده سنی فیلم مانند PG-13
     </td>
   </tr>
+ 
+ 
+ 
+  <tr>
+    <td>image</td>
+    <td>list</td>
+    <td>.{3,2000}</td>
+    <td>
+    لینک عکس های فیلم
+    </td>
+  </tr>
+ 
+ 
  
  
  
@@ -58,7 +81,7 @@
 
 
   <tr>
-    <td>Producer</td>
+    <td>producer</td>
     <td>list</td>
     <td>.{3,30}</td>
     <td>
@@ -109,7 +132,7 @@
  
  
   <tr>
-    <td>Cinematography</td>
+    <td>cinematography</td>
     <td>string</td>
     <td>.{3,30}</td>
     <td>
@@ -126,6 +149,42 @@
      تدوینگر 
     </td>
   </tr>
+ 
+ 
+ 
+ 
+  <tr>
+    <td>imdb_rate</td>
+    <td>float</td>
+    <td>\d\.\d</td>
+    <td>
+    امتیاز فیلم در سایت imdb 
+    </td>
+  </tr>
+ 
+ 
+  <tr>
+    <td>rotten tomatoes</td>
+    <td>int</td>
+    <td>\d\d</td>
+    <td>
+    امتیاز فیلم در سایت rotten tomatoes 
+    </td>
+  </tr>
+ 
+ 
+ 
+ 
+  <tr>
+    <td>metacritic</td>
+    <td>int</td>
+    <td>\d\d</td>
+    <td>
+    امتیاز فیلم در سایت metacritic 
+    </td>
+  </tr>
+ 
+ 
  
  
  
