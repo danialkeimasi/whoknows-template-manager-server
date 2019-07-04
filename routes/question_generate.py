@@ -1,12 +1,23 @@
 from flask import json, request
 
+from flask_restful import reqparse, Api, Resource
 from config.config import mongo_client, logger
 from modules.template import Template
+from config.config import config
 
-def add(app):
 
-    @app.route('/question/generate', methods=['GET'])
-    def get_question_get():
+questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
+
+
+class GenerateQuestion(Resource):
+    """
+    get question part of api
+
+    api context:
+        get the question py post request
+    """
+
+    def get():
 
         response = {
             'ok': False,
@@ -18,14 +29,8 @@ def add(app):
 
         return json.dumps(response)
 
-    @app.route('/question/generate', methods=['POST'])
-    def get_question_post():
-        """
-        get question part of api
+    def post():
 
-        api context:
-            get the question py post request
-        """
         user_req = request.json
         tags = user_req['tags'] if 'tags' in user_req else None
         count = user_req['count'] if 'count' in user_req else 1
@@ -62,62 +67,5 @@ def add(app):
         return json.dumps(response)
 
 
-questions_sample = [
-    {
-        'type': 'bool',
-        'title': {
-            'text': ['This title section of a sample bool question']
-        },
-        'subtitle': {
-            'text': ['This subtitle section of a sample bool question']
-        },
-        'choice': {
-            'text': ['This choice section of a sample bool question']
-        },
-        'answer': {
-            'text': ['true']
-        }
-    },
-    {
-        'type': 'choose',
-        'title': {
-            'text': ['This title section of a sample choose question']
-        },
-        'subtitle': {
-            'text': ['This subtitle section of a sample choose question']
-        },
-        'choice': {
-            'text': ['choice number 1', 'choice number 2', 'choice number 3', 'choice number 4']
-        },
-        'answer': {
-            'text': ['choice number 1']
-        }
-    },
-    {
-        'type': 'select',
-        'title': {
-            'text': ['This title section of a sample select question']
-        },
-        'subtitle': {
-            'text': ['This subtitle section of a sample select question']
-        },
-        'choice': {
-            'text': ['choice number 1', 'choice number 2', 'choice number 3', 'choice number 4']
-        },
-        'answer': {
-            'text': ['choice number 1', 'choice number 2']
-        }
-    },
-    {
-        'type': 'write',
-        'title': {
-            'text': ['This title section of a sample write question']
-        },
-        'subtitle': {
-            'text': ['This subtitle section of a sample select question']
-        },
-        'answer': {
-            'text': ['answer']
-        }
-    }
-]
+def add(app):
+    Api(app).add_resource(GenerateQuestion, '/question/generate')

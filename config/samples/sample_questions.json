@@ -1,0 +1,59 @@
+[
+    {
+        "type": "bool",
+        "title": {
+            "text": ["This title section of a sample bool question"]
+        },
+        "subtitle": {
+            "text": ["This subtitle section of a sample bool question"]
+        },
+        "choice": {
+            "text": ["This choice section of a sample bool question"]
+        },
+        "answer": {
+            "text": ["true"]
+        }
+    },
+    {
+        "type": "choose",
+        "title": {
+            "text": ["This title section of a sample choose question"]
+        },
+        "subtitle": {
+            "text": ["This subtitle section of a sample choose question"]
+        },
+        "choice": {
+            "text": ["choice number 1", "choice number 2", "choice number 3", "choice number 4"]
+        },
+        "answer": {
+            "text": ["choice number 1"]
+        }
+    },
+    {
+        "type": "select",
+        "title": {
+            "text": ["This title section of a sample select question"]
+        },
+        "subtitle": {
+            "text": ["This subtitle section of a sample select question"]
+        },
+        "choice": {
+            "text": ["choice number 1", "choice number 2", "choice number 3", "choice number 4"]
+        },
+        "answer": {
+            "text": ["choice number 1", "choice number 2"]
+        }
+    },
+    {
+        "type": "write",
+        "title": {
+            "text": ["This title section of a sample write question"]
+        },
+        "subtitle": {
+            "text": ["This subtitle section of a sample select question"]
+        },
+        "answer": {
+            "text": ["answer"]
+        }
+    }
+]

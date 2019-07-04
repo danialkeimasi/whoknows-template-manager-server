@@ -1,13 +1,20 @@
 from bson import json_util
 from flask import json, request
 
+from flask_restful import reqparse, Api, Resource
 from config.config import mongo_client
 
 
-def add(app):
+class TemplateFind(Resource):
+    """
+    find template by query from mongo
 
-    @app.route('/template/find', methods=['GET'])
-    def find_template_get():
+    api context:
+        find template py post request
+    """
+
+    def get():
+
         response = {
             'ok': False,
             'error': 'please use post request for find template',
@@ -18,14 +25,8 @@ def add(app):
 
         return json.dumps(response)
 
-    @app.route('/template/find', methods=['POST'])
-    def find_template_post():
-        """
-        find template by query from mongo
+    def post():
 
-        api context:
-            find template py post request
-        """
         user_req = json_util.loads(request.data) if request.json is not None else {}
         query = user_req['query'] if 'query' in user_req else None
         tags = user_req['tags'] if 'tags' in user_req else None
@@ -46,3 +47,7 @@ def add(app):
         }
 
         return json_util.dumps(response)
+
+
+def add(app):
+    Api(app).add_resource(GenerateQuestion, '/template/find')
