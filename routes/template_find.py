@@ -49,5 +49,6 @@ class TemplateFind(Resource):
         return json_util.dumps(response)
 
 
+url = '/template/find'
 def add(app):
-    Api(app).add_resource(TemplateFind, '/template/find')
+    Api(app).add_resource(TemplateFind, url)

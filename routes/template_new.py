@@ -53,5 +53,6 @@ class TemplateNew(Resource):
         return json_util.dumps(response)
 
 
+url = '/template/new'
 def add(app):
-    Api(app).add_resource(TemplateNew, '/template/new')
+    Api(app).add_resource(TemplateNew, url)

@@ -67,5 +67,6 @@ class GenerateQuestion(Resource):
         return json.dumps(response)
 
 
+url = '/question/generate'
 def add(app):
-    Api(app).add_resource(GenerateQuestion, '/question/generate')
+    Api(app).add_resource(GenerateQuestion, url)
