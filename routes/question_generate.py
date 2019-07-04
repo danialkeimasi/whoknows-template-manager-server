@@ -9,7 +9,7 @@ from config.config import config
 questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
 
 
-class GenerateQuestion(Resource):
+class GenerateQuestionRoute(Resource):
     """
     get question part of api
 
@@ -17,7 +17,9 @@ class GenerateQuestion(Resource):
         get the question py post request
     """
 
-    def get():
+    url = '/question/generate'
+
+    def get(self):
 
         response = {
             'ok': False,
@@ -27,9 +29,9 @@ class GenerateQuestion(Resource):
             }
         }
 
-        return json.dumps(response)
+        return response
 
-    def post():
+    def post(self):
 
         user_req = request.json
         tags = user_req['tags'] if 'tags' in user_req else None
@@ -67,6 +69,5 @@ class GenerateQuestion(Resource):
         return json.dumps(response)
 
 
-url = '/question/generate'
 def add(app):
-    Api(app).add_resource(GenerateQuestion, url)
+    Api(app).add_resource(GenerateQuestionRoute, GenerateQuestionRoute.url)

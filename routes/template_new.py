@@ -5,13 +5,15 @@ from config.config import config, mongo_client
 from flask_restful import reqparse, Api, Resource
 
 
-class TemplateNew(Resource):
+class TemplateNewRoute(Resource):
     """
     find template by query from mongo
 
     api context:
         find template py post request
     """
+
+    url = '/template/new'
 
     def get(self):
 
@@ -53,6 +55,5 @@ class TemplateNew(Resource):
         return json_util.dumps(response)
 
 
-url = '/template/new'
 def add(app):
-    Api(app).add_resource(TemplateNew, url)
+    Api(app).add_resource(TemplateNewRoute, TemplateNewRoute.url)

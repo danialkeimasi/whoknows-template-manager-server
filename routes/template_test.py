@@ -6,12 +6,15 @@ from modules.template import Template
 from flask_restful import reqparse, Api, Resource
 
 
-class TemplateTest(Resource):
+class TemplateTestRoute(Resource):
     """
     test the template and update the state
     find template by _id that exist in template
     update the template in the database
     """
+
+    url = '/template/test_save'
+
 
     def get(self):
 
@@ -55,6 +58,5 @@ class TemplateTest(Resource):
         return json_util.dumps(response)
 
 
-url = '/template/test_save'
 def add(app):
-    Api(app).add_resource(TemplateTest, url)
+    Api(app).add_resource(TemplateTestRoute, TemplateTestRoute.url)

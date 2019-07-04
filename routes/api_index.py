@@ -5,11 +5,7 @@ from glob import glob
 from flask import json
 from flask_restful import Api, Resource
 
-routes = []
-for file in [basename(path).split('.')[0] for path in glob('./routes/*.py') if not basename(path).startswith('__') and not basename(path).startswith('api_index')]:
-        routes.append(import_module(f'routes.{file}').url)
-
-class ApiIndex(Resource):
+class ApiIndexRoute(Resource):
     """
         index of api
 
@@ -17,17 +13,20 @@ class ApiIndex(Resource):
             show the index of question api and links that can go with
     """
 
+    url = '/'
+
     def get(self):
 
         Response = {
             'ok': True,
             'message': 'question api is on',
-            'routes': routes
+            'routes': {
+                Route.url: Route.__doc__.strip() for Route in Resource.__subclasses__()
+            }
         }
 
         return Response
 
 
-url = '/'
 def add(app):
-    Api(app).add_resource(ApiIndex, url)
+    Api(app).add_resource(ApiIndexRoute, ApiIndexRoute.url)

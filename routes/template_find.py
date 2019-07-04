@@ -5,7 +5,7 @@ from flask_restful import reqparse, Api, Resource
 from config.config import mongo_client
 
 
-class TemplateFind(Resource):
+class TemplateFindRoute(Resource):
     """
     find template by query from mongo
 
@@ -13,7 +13,9 @@ class TemplateFind(Resource):
         find template py post request
     """
 
-    def get():
+    url = '/template/find'
+
+    def get(self):
 
         response = {
             'ok': False,
@@ -23,9 +25,9 @@ class TemplateFind(Resource):
             }
         }
 
-        return json.dumps(response)
+        return response
 
-    def post():
+    def post(self):
 
         user_req = json_util.loads(request.data) if request.json is not None else {}
         query = user_req['query'] if 'query' in user_req else None
@@ -49,6 +51,5 @@ class TemplateFind(Resource):
         return json_util.dumps(response)
 
 
-url = '/template/find'
 def add(app):
-    Api(app).add_resource(TemplateFind, url)
+    Api(app).add_resource(TemplateFindRoute, TemplateFindRoute.url)
