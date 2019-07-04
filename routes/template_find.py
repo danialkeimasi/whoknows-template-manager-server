@@ -50,4 +50,4 @@ class TemplateFind(Resource):
 
 
 def add(app):
-    Api(app).add_resource(GenerateQuestion, '/template/find')
+    Api(app).add_resource(TemplateFind, '/template/find')
