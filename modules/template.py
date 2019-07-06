@@ -196,7 +196,7 @@ class Template:
             Question: [description]
         """
 
-        question_type = choose(self.get_question_types()) if question_type is None else f'{config.format.question.exist}{question_type}'
+        question_type = choose(self.get_question_types(), 0) if question_type is None else f'{config.format.question.exist}{question_type}'
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)
