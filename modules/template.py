@@ -335,7 +335,7 @@ class Template:
         self.__template['__test_info']['structure']['sections'] = sections
         return test_bool
 
-    def __test_generation(self, count = 50):
+    def __test_generation(self, count = 1):
         """ test the template by generate a number of question
 
         Args:
