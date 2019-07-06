@@ -49,7 +49,7 @@ class TemplateFindRoute(Resource):
             'templates': templates,
         }
 
-        return response
+        return {'mamad':2}
 
 
 def add(app):
