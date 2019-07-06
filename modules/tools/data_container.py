@@ -113,7 +113,8 @@ def db(doc, count=0):
         data = doc.sample(count if count != 0 else 1)
 
     except ValueError as error:
-        logger.error(f'{error}')
+
+        logger.exception(error)
         return DataContainer([])
 
     data = data.to_dict('records')

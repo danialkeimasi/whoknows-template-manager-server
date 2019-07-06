@@ -1,6 +1,7 @@
 import copy
 import json
 import os
+import traceback
 import random
 import re
 
@@ -280,8 +281,9 @@ class Template:
             self.__schema_validator.validate(self.__template)
             return True
 
-        except Exception as e:
-            self.__template['__test_info']['structure']['problems'].append(str(e))
+        except Exception as error:
+            error_message = traceback.format_exc()
+            self.__template['__test_info']['structure']['problems'].append(error_message)
             return False
 
 
@@ -357,7 +359,8 @@ class Template:
                 if ques.is_ok():
                     success_count += 1
             except Exception as e:
-                problem_list.append(str(e))
+                error_message = traceback.format_exc()
+                problem_list.append(error_message)
 
         problem_set = []
         for problem in set(problem_list):
@@ -447,7 +450,7 @@ def load_data(dataset_name):
             logger.info(f'loading {dataset_name} dataset is done.')
             break
         except Exception as error:
-            logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error}')
+            logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error} || {error_message}')
 
     return data
 

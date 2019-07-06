@@ -1,5 +1,6 @@
 import flask_restplus
 import json
+import traceback
 from config.config import mongo_client, logger, config
 from modules.template import Template
 from modules.tools import json_tools
@@ -43,7 +44,8 @@ def add(api):
                             questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                             break
                         except Exception as e:
-                            logger.critical(f'failed in generate question => {type(e)}:{e}')
+                            error_message = traceback.format_exc()
+                            logger.critical(f'failed in generate question => {error_message}')
                     else:
                         questions.append(questions_sample[i % len(questions_sample)])
 
