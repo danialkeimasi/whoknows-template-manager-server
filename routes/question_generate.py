@@ -48,16 +48,16 @@ class GenerateQuestionRoute(Resource):
                 {'$match': {'tags': {'$in': tags}}},
                 {'$sample': {'size': count}},
             ]))
+            logger.debug(f'after query for template, number of templates that we found: {len(templates)}')
 
             questions = []
-
             for i in range(count):
                 for try_count in range(5):
                     try:
                         questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                         break
                     except Exception as e:
-                        logger.critical(f'faild in generate question :{e}')
+                        logger.critical(f'failed in generate question => {type(e)}:{e}')
                 else:
                     questions.append(questions_sample[i % len(questions_sample)])
 
