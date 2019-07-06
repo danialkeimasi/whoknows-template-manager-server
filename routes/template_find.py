@@ -30,7 +30,7 @@ class TemplateFindRoute(Resource):
 
     def post(self):
 
-        user_req = json_util.loads(request.data) if request.json is not None else {}
+        user_req = json_util.loads(request.data) if json_util.loads(request.data) is not None else {}
         query = user_req['query'] if 'query' in user_req else None
         tags = user_req['tags'] if 'tags' in user_req else None
         ok = user_req['ok'] if 'ok' in user_req else None
@@ -49,7 +49,7 @@ class TemplateFindRoute(Resource):
             'templates': templates,
         }
 
-        return json.loads(json_util.dumps(response))
+        return response
 
 
 def add(app):
