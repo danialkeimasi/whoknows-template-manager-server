@@ -120,7 +120,7 @@ def db(doc, count=0):
     logger.info(f'done')
     return_data = data[0] if count == 0 else data
 
-    logger.debug(f'db loaded this:' + str(data[0] if count == 0 else data[:5]))
+    # logger.debug(f'db loaded this:' + str(data[0] if count == 0 else data[:5]))
     return DataContainer(return_data)
 
 
