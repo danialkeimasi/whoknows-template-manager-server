@@ -7,13 +7,9 @@ from flask_cors import CORS
 from bson import json_util
 from flask import Flask
 
-class MyConfig(object):
-    RESTFUL_JSON = {'cls': json_util.object_pairs_hook}
-
 if __name__ == '__main__':
 
     app = Flask(__name__)
-    # app.config.from_object(MyConfig)
     CORS(app)
 
     for file in [basename(path).split('.')[0] for path in glob('./routes/*.py') if not basename(path).startswith('__')]:
@@ -22,4 +18,4 @@ if __name__ == '__main__':
     isThereArg = arg_parse()
 
     if not isThereArg:
-        app.run(debug=True, port='3001')
+        app.run(debug=True, host='0.0.0.0', port='3001')
