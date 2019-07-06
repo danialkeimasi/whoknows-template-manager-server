@@ -66,7 +66,7 @@ class GenerateQuestionRoute(Resource):
                 'questions': questions,
             }
 
-        return json.dumps(response)
+        return response
 
 
 def add(app):
