@@ -47,7 +47,7 @@ Setting up is simple, just follow these steps.
     
     3. Build image from dockerfile:
         ```sh
-        docker build -t whoknows-template-manager
+        docker build . -t whoknows-template-manager
         ```
     
     4. Run docker image:
