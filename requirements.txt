@@ -10,4 +10,4 @@ log4mongo
 colorlog
 Flask-Cors
 jsonschema
-flask_restful
+flask-restplus
