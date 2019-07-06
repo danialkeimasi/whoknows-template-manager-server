@@ -154,7 +154,7 @@ class Template:
         """
 
         template = self.__template
-        print(type(template))
+        print(template)
         question = template[question_type]
 
         question.update({
