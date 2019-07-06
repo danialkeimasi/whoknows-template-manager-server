@@ -16,4 +16,4 @@ if __name__ == '__main__':
     isThereArg = arg_parse()
 
     if not isThereArg:
-        app.run(debug=True, port='3001')
+        app.run(debug=True, host='0.0.0.0' port='3001')
