@@ -1,3 +1,4 @@
+import json
 from bson import json_util
 from flask import json, request
 
@@ -48,7 +49,7 @@ class TemplateFindRoute(Resource):
             'templates': templates,
         }
 
-        return json_util.dumps(response)
+        return json.loads(json_util.dumps(response))
 
 
 def add(app):

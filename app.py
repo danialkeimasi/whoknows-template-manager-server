@@ -7,10 +7,6 @@ from flask_cors import CORS
 from bson import json_util
 from flask import Flask
 
-import flask.ext.restful.representations.json
-
-flask.ext.restful.representations.json.settings["cls"] = json_util
-
 
 if __name__ == '__main__':
 
