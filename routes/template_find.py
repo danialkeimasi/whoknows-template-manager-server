@@ -48,7 +48,7 @@ class TemplateFindRoute(Resource):
             'templates': templates,
         }
 
-        return dict(json_util.dumps(response))
+        return json_util.dumps(response)
 
 
 def add(app):
