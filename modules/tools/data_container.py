@@ -112,7 +112,7 @@ def db(doc, count=0):
 
         data = doc.sample(count if count != 0 else 1)
 
-    except Exception as error:
+    except ValueError as error:
         logger.error(f'{error}')
         return DataContainer([])
 

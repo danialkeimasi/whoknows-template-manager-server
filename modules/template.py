@@ -351,12 +351,16 @@ class Template:
 
         problem_list = []
         for try_count in range(count):
-            try:
-                ques = self.generate_question()
-                if ques.is_ok():
-                    success_count += 1
-            except Exception as e:
-                problem_list.append(str(e))
+            ques = self.generate_question()
+            if ques.is_ok():
+                success_count += 1
+
+            # try:
+            #     ques = self.generate_question()
+            #     if ques.is_ok():
+            #         success_count += 1
+            # except Exception as e:
+            #     problem_list.append(str(e))
 
         problem_set = []
         for problem in set(problem_list):
