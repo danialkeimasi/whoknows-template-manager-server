@@ -99,7 +99,7 @@
             "problems": []
         },
         "acceptance": {
-            "votes": [],
+            "votes": [1,2,3,4,5],
             "problems": []
         },
         "data": {
@@ -115,7 +115,7 @@
             "problems": []
         },
         "manual": {
-            "votes": [],
+            "votes": [1,2,3,4,5],
             "problems": []
         },
         "usage_tagging":{
