@@ -5,6 +5,8 @@ from config.config import mongo_client
 from modules.template import Template
 from flask_restful import reqparse, Api, Resource
 
+from modules.tools import json_tools
+
 
 class TemplateTestRoute(Resource):
     """
@@ -55,7 +57,7 @@ class TemplateTestRoute(Resource):
                 'problem': problems,
             }
 
-        return json_util.dumps(response)
+        return json_tools.to_extended(response)
 
 
 def add(app):

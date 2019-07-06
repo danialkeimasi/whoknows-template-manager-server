@@ -5,6 +5,8 @@ from config.config import mongo_client, logger
 from modules.template import Template
 from config.config import config
 
+from modules.tools import json_tools
+
 
 questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
 
@@ -66,8 +68,7 @@ class GenerateQuestionRoute(Resource):
                 'questions': questions,
             }
 
-        return response
-
+        return json_tools.to_extended(response)
 
 def add(app):
     Api(app).add_resource(GenerateQuestionRoute, GenerateQuestionRoute.url)
