@@ -39,12 +39,11 @@ def add(api):
                 questions = []
                 for i in range(count):
                     for try_count in range(5):
-                        questions.append(Template(templates[i % len(templates)]).generate_question().dict())
-                        # try:
-                            
-                        #     break
-                        # except Exception as e:
-                        #     logger.critical(f'failed in generate question => {type(e)}:{e}')
+                        try:
+                            questions.append(Template(templates[i % len(templates)]).generate_question().dict())
+                            break
+                        except Exception as e:
+                            logger.critical(f'failed in generate question => {type(e)}:{e}')
                     else:
                         questions.append(questions_sample[i % len(questions_sample)])
 
