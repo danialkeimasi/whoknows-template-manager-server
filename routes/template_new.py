@@ -6,6 +6,14 @@ from config.config import config, mongo_client
 
 from modules.tools import json_tools
 
+parser = flask_restplus.reqparse.RequestParser()
+parser.add_argument(
+    'idea',
+    type=str,
+    help='you must send the "idea" of template as a post json request.',
+    required=True
+)
+
 
 def add(api):
     @api.route('/template/new')
@@ -18,13 +26,7 @@ def add(api):
         """
 
         def post(self):
-            parser = reqparse.RequestParser()
-            parser.add_argument(
-                'idea',
-                type=str,
-                help='you must send the "idea" of template as a post json request.',
-                required=True
-            )
+
             args = parser.parse_args()
 
             idea = args['idea']
