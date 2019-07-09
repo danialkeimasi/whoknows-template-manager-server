@@ -72,7 +72,7 @@ class Template:
 
     def parse(self, bool_answer=True, metadata={}):
         """
-        eval the variables in the template with data that we have in datasets,
+        exec the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
 
         Args:
@@ -104,11 +104,11 @@ class Template:
         # get the values to the "val"
         values_dict = {}
         for key, value in self.__template['values'].items():
-            logger.info(f'{key} is going to eval')
-            eval_result = eval(value)
+            logger.info(f'{key} is going to exec')
+            exec_result = exec(value)
 
-            values_dict.update({key: eval_result})
-            setattr(val, key, eval_result)
+            values_dict.update({key: exec_result})
+            setattr(val, key, exec_result)
 
         template = copy.deepcopy(self.__template)
         # template.update({'values': values_dict})
@@ -122,17 +122,17 @@ class Template:
                     for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
 
                         if raw_str.startswith('$'):
-                            template[q_type_name][q_property_name][q_property_format_name] = to_list(eval(raw_str[1:]))
+                            template[q_type_name][q_property_name][q_property_format_name] = to_list(exec(raw_str[1:]))
 
                         else:
                             while re.search(reg_str, raw_str):
                                 exp = re.search(reg_str, raw_str).group(1)
-                                eval_result = eval(exp)
+                                exec_result = exec(exp)
 
-                                # TODO: check if eval_result is list or not, its true if eval_result is not list
+                                # TODO: check if exec_result is list or not, its true if exec_result is not list
 
-                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result,
-                                                                                                   list) else eval_result)
+                                raw_str = raw_str.replace(f'`{exp}`', exec_result[0] if isinstance(exec_result,
+                                                                                                   list) else exec_result)
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
