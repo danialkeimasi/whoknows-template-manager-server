@@ -53,7 +53,8 @@ class DataContainer():
         Returns:
             an element of the given list
         """
-        return choose(self.DClist)
+        data = choose(self.PYlist, 0)
+        return data
 
     def choose(self, num):
         """ choose random from a list of DataManagers by len of "num"
