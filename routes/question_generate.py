@@ -6,6 +6,7 @@ from flask import json, request
 from config.config import mongo_client, logger, config
 from modules.template import Template
 from modules.tools import json_tools
+from modules.tools.functions import traceback_shortener
 
 questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
 
@@ -46,7 +47,7 @@ def add(api):
                             questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                             break
                         except Exception as e:
-                            error_message = ' | '.join([trace.strip() for trace in traceback.format_exc().split('\n')])
+                            error_message = traceback_shortener(traceback.format_exc())
                             logger.critical(f'failed in generate question => {error_message}')
                     else:
                         questions.append(questions_sample[i % len(questions_sample)])

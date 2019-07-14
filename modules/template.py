@@ -11,7 +11,7 @@ import jsonschema
 from config.config import logger, mongo_client, ListHandler, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
-from modules.tools.functions import choose, rand, to_list
+from modules.tools.functions import choose, rand, to_list, traceback_shortener
 from bson import json_util
 from pprint import pprint
 
@@ -281,7 +281,7 @@ class Template:
             return True
 
         except Exception as error:
-            error_message = ' | '.join([trace.strip() for trace in traceback.format_exc().split('\n')])
+            error_message = traceback_shortener(traceback.format_exc())
             self.__template['__test_info']['structure']['problems'].append(error_message)
             return False
 
@@ -358,7 +358,7 @@ class Template:
                 if ques.is_ok():
                     success_count += 1
             except Exception as e:
-                error_message = ' | '.join([trace.strip() for trace in traceback.format_exc().split('\n')])
+                error_message = traceback_shortener(traceback.format_exc())
                 problem_list.append(error_message)
 
         problem_set = []

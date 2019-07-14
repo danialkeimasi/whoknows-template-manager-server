@@ -1,4 +1,6 @@
 import random
+import os
+import re
 
 
 def rand(needList, count=0, exceptions=[]):
@@ -55,3 +57,16 @@ def to_list(data):
         list: given object as list
     """
     return data if isinstance(data, list) else [data]
+
+
+def traceback_shortener(long_error):
+    regex = r'"(.*?)"'
+
+    error_list = [trace.strip() for trace in long_error.strip().split('\n')[1::]]
+    short_error = f'Error: {error_list[-1]} => Traceback: ' + ' || '.join(error_list[0:-1])
+
+    while re.search(regex, short_error):
+        path = re.search(regex, short_error).group(1)
+        short_error = short_error.replace(f'"{path}"', os.path.basename(path))
+
+    return short_error
