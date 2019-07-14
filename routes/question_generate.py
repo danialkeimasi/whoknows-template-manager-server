@@ -46,7 +46,7 @@ def add(api):
                             questions.append(Template(templates[i % len(templates)]).generate_question().dict())
                             break
                         except Exception as e:
-                            error_message = traceback.format_exc()
+                            error_message = [trace.strip() for trace in traceback.format_exc().split('\n')]
                             logger.critical(f'failed in generate question => {error_message}')
                     else:
                         questions.append(questions_sample[i % len(questions_sample)])

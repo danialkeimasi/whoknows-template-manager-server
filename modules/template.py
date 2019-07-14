@@ -281,7 +281,7 @@ class Template:
             return True
 
         except Exception as error:
-            error_message = traceback.format_exc()
+            error_message = [trace.strip() for trace in traceback.format_exc().split('\n')]
             self.__template['__test_info']['structure']['problems'].append(error_message)
             return False
 
@@ -358,7 +358,7 @@ class Template:
                 if ques.is_ok():
                     success_count += 1
             except Exception as e:
-                error_message = traceback.format_exc()
+                error_message = [trace.strip() for trace in traceback.format_exc().split('\n')]
                 problem_list.append(error_message)
 
         problem_set = []
