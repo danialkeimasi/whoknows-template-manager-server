@@ -27,7 +27,7 @@ class DataContainer():
         self.exp = exp
         if exp == []:
             # TODO: some error must added
-            raise ValueError('DataContainer input is is empty list, some error must happend in data queries')
+            raise ValueError('DataContainer input is empty list, some error must happend in data queries')
 
         else:
             if exp and not (isinstance(exp, list) and isinstance(exp[0], str)):
