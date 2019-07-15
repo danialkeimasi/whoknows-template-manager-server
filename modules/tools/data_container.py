@@ -1,3 +1,5 @@
+import itertools
+
 from collections.abc import Iterable
 
 from config.config import logger
@@ -140,6 +142,9 @@ def listSub(data1, data2):
 
     data1 = list(data1) if isinstance(data1, Iterable) and not isinstance(data1, str) else [data1]
     data2 = list(data2) if isinstance(data2, Iterable) and not isinstance(data2, str) else [data2]
+
+    data1 = list(itertools.chain(*data1)) if isinstance(data1[0], list) else data1
+    data2 = list(itertools.chain(*data2)) if isinstance(data2[0], list) else data2
 
     subedList = [item for item in data1 if not item in data2]
 
