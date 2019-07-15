@@ -168,8 +168,8 @@ class Template:
             if question['title'][type] != []:
                 question['title'][type] = choose(
                     [t for i, t in enumerate(question['title'][type])
-                        if i % 2 == int(bool_answer)]
-                )
+                        if i % 2 == int(bool_answer)],
+                ) if len(question['title'][type]) > 1 else question['title'][type]
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}

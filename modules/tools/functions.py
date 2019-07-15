@@ -3,7 +3,7 @@ import os
 import re
 
 
-def rand(needList, count=0, exceptions=[]):
+def rand(needList, count=0, exceptions=[], accept_empty=False):
     """
     Return a list of random numbers in range of [start , ... , end],
     Returns only one number(not list) of count is not given
@@ -17,6 +17,9 @@ def rand(needList, count=0, exceptions=[]):
     for item in ['needList', 'exceptions']:
         if (not isinstance(locals()[item], list) and not isinstance(locals()[item], range)):
             raise ValueError(f'wrong type for {item} - you use {type(locals()[item])}')
+
+    if len(needList) == 0 and accept_empty:
+        return []
 
     if len(needList) - len(exceptions) < count:
         raise ValueError(f'you choose {count} from {len(needList) - len(exceptions)}')
