@@ -112,7 +112,7 @@ class Template:
                 setattr(val, key, eval_result)
 
             except Exception as e:
-                raise type(e)(f'in the validating values: {key}: {type(e)}: {e}') from e
+                raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
 
         template = copy.deepcopy(self.__template)
         # template.update({'values': values_dict})
