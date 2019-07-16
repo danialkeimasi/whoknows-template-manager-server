@@ -131,7 +131,10 @@ class Template:
                         else:
                             while re.search(reg_str, raw_str):
                                 exp = re.search(reg_str, raw_str).group(1)
-                                eval_result = eval(exp)
+                                try:
+                                    eval_result = eval(exp)
+                                except Exception as e:
+                                    raise type(e)(f"in the validating ['{q_type_name}']['{q_property_format_name}'][{i}]: in parsing `{exp}`: {e}") from e
 
                                 # TODO: check if eval_result is list or not, its true if eval_result is not list
 
