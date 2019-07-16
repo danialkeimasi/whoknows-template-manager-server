@@ -130,7 +130,7 @@ class Template:
                                 exp = raw_str[1:]
                                 template[q_type_name][q_property_name][q_property_format_name] = to_list(eval(exp))
                             except Exception as e:
-                                raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']['{q_property_format_name}'][{i}]: in parsing ${exp}: {e}") from e
+                                raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']['{q_property_format_name}'][{i}]: in parsing {raw_str}: {e}") from e
 
                         else:
                             while re.search(reg_str, raw_str):
