@@ -113,7 +113,8 @@ class Template:
 
             except Exception as e:
                 if len(e.args) >= 1:
-                    e.args = (f'in validating the values: {key}: {e.args[0]}') + e.args[1:]
+                    (f'in validating the values: {key}: ' + e.args[0],) + e.args[1:]
+                    e.args = () + e.args[1:]
                 raise
 
         template = copy.deepcopy(self.__template)
