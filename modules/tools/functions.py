@@ -63,14 +63,15 @@ def to_list(data):
 
 
 def traceback_shortener(long_error):
+
     error_list = [trace.strip() for trace in long_error.strip().split('\n')[1::]]
-    return error_list[-1]
+    # return error_list[-1]
 
-    # short_error = f'Error: {error_list[-1]} => Traceback: {" || ".join(error_list[0:-1])}'
+    short_error = f'Error: {error_list[-1]} => Traceback: {" || ".join(error_list[0:-1])}'
 
-    # regex = r'"(.*?)"'
-    # while re.search(regex, short_error):
-    #     path = re.search(regex, short_error).group(1)
-    #     short_error = short_error.replace(f'"{path}"', os.path.basename(path))
+    regex = r'"(.*?)"'
+    while re.search(regex, short_error):
+        path = re.search(regex, short_error).group(1)
+        short_error = short_error.replace(f'"{path}"', os.path.basename(path))
 
-    # return short_error
+    return short_error
