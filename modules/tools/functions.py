@@ -63,6 +63,7 @@ def to_list(data):
 
 
 def traceback_shortener(long_error):
+    return long_error
     regex = r'"(.*?)"'
 
     error_list = [trace.strip() for trace in long_error.strip().split('\n')[1::]]
