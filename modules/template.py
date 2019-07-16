@@ -111,7 +111,7 @@ class Template:
                 # values_dict.update({key: eval_result})
                 setattr(val, key, eval_result)
 
-            except Exception as err:
+            except Exception as e:
                 if len(e.args) >= 1:
                     e.args = (f'in validating the values: {key}: {e.args[0]}') + e.args[1:]
                 raise
