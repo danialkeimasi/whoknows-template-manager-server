@@ -188,6 +188,7 @@ class Template:
         if 'choice' in question:
             for field in question['choice']:
                 question['choice'][field] += question['answer'][field]
+                random.shuffle(question['choice'][field])
 
         return Question(question)
 
