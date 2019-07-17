@@ -23,7 +23,7 @@ logging.basicConfig(
         stream_handler,
         # MongoHandler(host=config.mongo.ip, port=config.mongo.port,
         #              username=config.mongo.username, password=config.mongo.password,
-        #              authentication_db=config.mongo.authentication_db, database_name='TemplateManager', collection='log'),
+        #              authentication_db=config.mongo.authentication_db, database_name='template_manager', collection='log'),
     ]
 )
 logger = logging.getLogger('TemplateEngine')

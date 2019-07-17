@@ -30,9 +30,9 @@ def add(api):
             if problems == []:
 
                 updated_template = Template(template).test_update().dict()
-                replace_response = mongo_client.TemplateManager.templates.replace_one({'_id': template['_id']}, updated_template)
+                replace_response = mongo_client.template_manager.templates.replace_one({'_id': template['_id']}, updated_template)
 
-                template_updated = mongo_client.TemplateManager.templates.find_one({'_id': template['_id']})
+                template_updated = mongo_client.template_manager.templates.find_one({'_id': template['_id']})
                 response = {
                     'ok': replace_response.acknowledged,
                     '_id': template['_id'],

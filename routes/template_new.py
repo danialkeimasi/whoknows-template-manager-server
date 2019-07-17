@@ -34,9 +34,9 @@ def add(api):
             empty_template = json.load(open(config.dir.empty_template))
             empty_template['__idea'] = idea
 
-            insert_object = mongo_client.TemplateManager.templates.insert_one(empty_template)
+            insert_object = mongo_client.template_manager.templates.insert_one(empty_template)
 
-            template = mongo_client.TemplateManager.templates.find_one({'_id': insert_object.inserted_id})
+            template = mongo_client.template_manager.templates.find_one({'_id': insert_object.inserted_id})
 
             response = {
                 'ok': insert_object.acknowledged,

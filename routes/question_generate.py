@@ -33,7 +33,7 @@ def add(api):
                 }
             else:
 
-                templates = list(mongo_client.TemplateManager.templates.aggregate([
+                templates = list(mongo_client.template_manager.templates.aggregate([
                     {'$match': {'__state': 'in_use'}},
                     {'$match': {'tags': {'$in': tags}}},
                     {'$sample': {'size': count}},
