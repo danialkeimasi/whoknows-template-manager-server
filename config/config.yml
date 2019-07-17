@@ -29,10 +29,10 @@ datasets:
   - volleyballTeam
 
 mongo:
-  ip: 198.143.179.211
-  port: 27017
-  username: admin
-  password: parishadbg18
+  ip: s7.liara.ir
+  port: 31102
+  username: root
+  password: Js17EZXZNFtIWnjKLlEtJifx
   authentication_db: admin
 
 
