@@ -271,9 +271,9 @@ class Template:
         for ds in datasets_list:
             if not ds['ok'] and ds['state'] == 'null':
                 problems.append(f"{ds['name']} dataset is not found on datasets!")
-            if not ds['ok'] and ds['state'] != 'in_use':
+            elif not ds['ok'] and ds['state'] != 'in_use':
                 problems.append(f"{ds['name']} dataset is not ready to use yet!")
-            if not ds['ok']:
+            elif not ds['ok']:
                 problems.append(f"something wrong happend about {ds['name']}!")
 
         self.__template['__test_info']['data']['datasets'] = datasets_list
