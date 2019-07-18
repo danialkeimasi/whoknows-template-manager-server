@@ -94,7 +94,7 @@ class Template:
         for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
             metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
 
-        self.metadata = metadata
+        template['metadata'] = metadata
 
         problems = []
         val = DataContainer()
@@ -192,7 +192,7 @@ class Template:
                 question['choice'][field] += question['answer'][field]
                 random.shuffle(question['choice'][field])
 
-        question['metadata'] = self.metadata
+        question['metadata'] = template['metadata'] if 'metadata' in template else None
         return Question(question)
 
     def generate_question(self, metadata={}, question_type=None, format={}):
