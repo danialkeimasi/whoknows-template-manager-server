@@ -80,8 +80,8 @@ class Question:
 
                 choice_lengths = list(set([len(item) for item in question['choice']]) - set([0]))
                 answer_lengths = list(set([len(item) for item in question['answer']]) - set([0]))
-                if not(len(choice_lengths) == 1 and len(answer_lengths) == 1 and choice_lengths[0] - answer_lengths[0] == metadata['NOC']):
-                    problems.append(f'metadata: {metadata} - choice part: {question["choice"]} - answer part: {question["answer"]}')
+                if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (choice_lengths[0] - answer_lengths[0] == metadata['NOC'])):
+                    problems.append(f'{choice_lengths}, {answer_lengths} NOC: {metadata["NOC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
 
         self.__problems += problems
         return problems != []
