@@ -73,12 +73,15 @@ class Question:
 
         if metadata:
             if q_type == 'choose':
-                if not('choice' in question):
-                    problems.append('there is no choice in question with type of choose')
+                for item in ['choice', 'answer']:
+                    if not(item in question):
+                        question[item] = None
+                        problems.append(f'there is no {item} in question with type of choose')
 
-                lengths = list(set([len(item) for item in question['choice']]) - set([0]))
-                if not(len(lengths) == 1 and lengths[0] == metadata['NOC'] + 1):
-                    problems.append(f'metadata: {metadata} - choice part: {question["choice"]}')
+                choice_lengths = list(set([len(item) for item in question['choice']]) - set([0]))
+                answer_lengths = list(set([len(item) for item in question['answer']]) - set([0]))
+                if not(len(choice_lengths) == 1 and len(answer_lengths) == 1 and choice_lengths[0] - answer_lengths[0] == metadata['NOC']):
+                    problems.append(f'metadata: {metadata} - choice part: {question["choice"]} - answer part: {question["answer"]}')
 
         self.__problems += problems
         return problems != []
