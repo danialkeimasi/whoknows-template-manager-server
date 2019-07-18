@@ -82,11 +82,11 @@ class Template:
         Returns:
             Template: parsed template, replaced every variable with datasets.
         """
+        template = copy.deepcopy(self.__template)
 
         dbs = load_template_datasets(self.__template['datasets'])
         for key, value in dbs.items():
             locals()[key] = value
-
 
         self.__default_metadata['NOA'] = random.randint(0, 4)
         self.__default_metadata['level'] = random.randint(1, 11)
@@ -105,7 +105,7 @@ class Template:
 
         # get the values to the "val"
         # values_dict = {}
-        for key, value in self.__template['values'].items():
+        for key, value in template['values'].items():
             logger.info(f'{key} is going to eval')
 
             try:
@@ -116,7 +116,6 @@ class Template:
             except Exception as e:
                 raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
 
-        template = copy.deepcopy(self.__template)
         # template.update({'values': values_dict})
 
         q_type_names = Template(template).get_question_types()
