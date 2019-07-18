@@ -78,8 +78,8 @@ class Question:
                         question[item] = None
                         problems.append(f'there is no {item} in question with type of choose')
 
-                choice_lengths = list(set([len(item) for item in question['choice']]) - set([0]))
-                answer_lengths = list(set([len(item) for item in question['answer']]) - set([0]))
+                choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
+                answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
                 if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (choice_lengths[0] - answer_lengths[0] == metadata['NOC'])):
                     problems.append(f'{choice_lengths}, {answer_lengths} NOC: {metadata["NOC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
 
