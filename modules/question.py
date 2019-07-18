@@ -78,7 +78,7 @@ class Question:
 
                 lengths = list(set([len(item) for item in question['choice']]) - set([0]))
                 if not(len(lengths) == 1 and lengths[0] == metadata['NOC'] + 1):
-                    problems.append(f'choices in te question is have some problems: {question["choice"]}')
+                    problems.append(f'metadata: {metadata} - choice part: {question["choice"]}')
 
         self.__problems += problems
         return problems != []
