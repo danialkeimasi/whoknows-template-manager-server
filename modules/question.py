@@ -74,11 +74,11 @@ class Question:
         if metadata:
             if q_type == 'choose':
                 if not('choice' in question):
-                    problems += 'there is no choice in question with type of choose'
+                    problems.append('there is no choice in question with type of choose')
 
                 lengths = list(set([len(item) for item in question['choice']]) - set([0]))
                 if not(len(lengths) == 1 and lengths[0] == metadata['NOC'] + 1):
-                    problems += 'there is some problem with choices in the question'
+                    problems.append('there is some problem with choices in the question')
 
         self.__problems += problems
         return problems != []
