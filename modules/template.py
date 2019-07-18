@@ -264,6 +264,8 @@ class Template:
                           'ok': {'$eq': ["$headers.state", 'in_use']}}}
         ]))
 
+        print(found_datasets)
+
         not_found_datasets = list(set(template_datasets) - set([ds['name'] for ds in found_datasets]))
 
         datasets_list = found_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_found_datasets]
