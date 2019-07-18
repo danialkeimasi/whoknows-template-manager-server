@@ -44,7 +44,7 @@ def add(api):
                 for i in range(count):
                     for try_count in range(5):
                         try:
-                            questions.append(Template(templates[i % len(templates)]).generate_question().dict())
+                            questions.append(Template(templates[i % len(templates)]).generate_question().raise_if_problems().dict())
                             break
                         except Exception as e:
                             error_message = traceback_shortener(traceback.format_exc())

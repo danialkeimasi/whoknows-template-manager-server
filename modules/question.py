@@ -50,6 +50,10 @@ class Question:
         self.__problems = []
         self.__test_structure()
 
+    def raise_if_problems(self):
+        if not self.is_ok():
+            raise TypeError(f"question error: {self.problems()}")
+        return self
 
     def __test_structure(self):
         """ test the structure of template
