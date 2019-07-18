@@ -258,10 +258,10 @@ class Template:
 
         template_datasets = self.__template['datasets']
 
-        found_datasets = list(mongo_client.DataManager.datasets.aggregate([
+        found_datasets = list(mongo_client.data_manager.datasets.aggregate([
             {'$match': {'headers.name': {'$in': template_datasets}}},
-            # {'$project': {'_id': 1, 'headers.name': 1, 'headers.state': 1,
-            #               'ok': {'$eq': ["$headers.state", 'in_use']}}}
+            {'$project': {'_id': 1, 'headers.name': 1, 'headers.state': 1,
+                          'ok': {'$eq': ["$headers.state", 'in_use']}}}
         ]))
 
         not_found_datasets = list(set(template_datasets) - set([ds['name'] for ds in found_datasets]))
