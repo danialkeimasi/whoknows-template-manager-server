@@ -73,6 +73,7 @@ class Question:
 
         if metadata:
             if q_type == 'choose':
+
                 for item in ['choice', 'answer']:
                     if not(item in question):
                         question[item] = None
@@ -82,6 +83,20 @@ class Question:
                 answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
                 if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (choice_lengths[0] - answer_lengths[0] == metadata['NOC'])):
                     problems.append(f'{choice_lengths}, {answer_lengths} NOC: {metadata["NOC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
+
+            elif q_type == 'select':
+
+                for item in ['choice', 'answer']:
+                    if not(item in question):
+                        question[item] = None
+                        problems.append(f'there is no {item} in question with type of select')
+
+                choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
+                answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
+
+                if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (answer_lengths[0] == metadata['NOA'])):
+                        problems.append(f'{choice_lengths}, {answer_lengths} NOA: {metadata["NOA"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
+
 
         self.__problems += problems
         return problems != []
