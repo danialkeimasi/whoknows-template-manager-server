@@ -264,19 +264,17 @@ class Template:
                           'ok': {'$eq': ["$headers.state", 'in_use']}}}
         ]))
 
-        print(found_datasets)
+        not_found_datasets = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
 
-        not_found_datasets = list(set(template_datasets) - set([ds['name'] for ds in found_datasets]))
-
-        datasets_list = found_datasets + [{'name': ds, 'state': 'null', 'ok': False} for ds in not_found_datasets]
+        datasets_list = found_datasets + [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
 
         for ds in datasets_list:
-            if not ds['ok'] and ds['state'] == 'null':
-                problems.append(f"{ds['name']} dataset is not found on datasets! {found_datasets}")
-            elif not ds['ok'] and ds['state'] != 'in_use':
-                problems.append(f"{ds['name']} dataset is not ready to use yet!")
+            if not ds['ok'] and ds['headers']['state'] == 'null':
+                problems.append(f"{ds['headers']['name']} dataset is not found on datasets! {found_datasets}")
+            elif not ds['ok'] and ds['headers']['state'] != 'in_use':
+                problems.append(f"{ds['headers']['name']} dataset is not ready to use yet!")
             elif not ds['ok']:
-                problems.append(f"something wrong happend about {ds['name']}!")
+                problems.append(f"something wrong happend about {ds['headers']['name']}!")
 
         self.__template['__test_info']['data']['datasets'] = datasets_list
         self.__template['__test_info']['data']['problems'] = problems
