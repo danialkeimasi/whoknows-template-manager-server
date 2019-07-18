@@ -270,7 +270,7 @@ class Template:
 
         for ds in datasets_list:
             if not ds['ok'] and ds['state'] == 'null':
-                problems.append(f"{ds['name']} dataset is not found on datasets!")
+                problems.append(f"{ds['name']} dataset is not found on datasets! {found_datasets}")
             elif not ds['ok'] and ds['state'] != 'in_use':
                 problems.append(f"{ds['name']} dataset is not ready to use yet!")
             elif not ds['ok']:
