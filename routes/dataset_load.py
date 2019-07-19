@@ -32,17 +32,14 @@ def add(api):
 
             args = parser.parse_args()
             dataset_name = args['dataset_name']
-            return {'db': dataset_name}
 
             dataset = list(mongo_client.data[dataset_name].find())
             if dataset != []:
-                json.dumps(
-                    json_tools.to_extended(dataset),
-                    open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8')
-                )
+                print('poof')
 
                 return {
-                    'ok': True
+                    'ok': True,
+                    'dataset_size': len(dataset)
                 }
             else:
                 return {
