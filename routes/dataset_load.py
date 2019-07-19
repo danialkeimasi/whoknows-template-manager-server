@@ -35,7 +35,10 @@ def add(api):
 
             dataset = list(mongo_client.data[dataset_name].find())
             if dataset != []:
-                print('poof')
+                json.dump(
+                    json_tools.to_extended(dataset),
+                    open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8')
+                )
 
                 return {
                     'ok': True,
