@@ -29,11 +29,10 @@ def add(api):
         """
 
         def post(self):
-            return {
-                'pashm':'boland'
-            }
+
             args = parser.parse_args()
             dataset_name = args['dataset_name']
+            return {'db': dataset_name}
 
             dataset = list(mongo_client.data[dataset_name].find())
             if dataset != []:
