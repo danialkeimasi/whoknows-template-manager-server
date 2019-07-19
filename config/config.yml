@@ -78,3 +78,25 @@ format:
   question:
     exist: "&&"
     not-exotst: "&"
+
+file_formats:
+  photo:
+    - png
+    - jpg
+    - jpeg
+    - gif
+    - svg
+
+  video:
+    - mp4
+    - 3gp
+    - avi
+    - mov
+    - flv
+    - wmv
+  
+  audio:
+    - mp3
+    - m4a
+    - flac
+    

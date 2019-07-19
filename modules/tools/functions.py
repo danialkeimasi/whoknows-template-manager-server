@@ -1,6 +1,7 @@
 import random
 import os
 import re
+from config.config import config
 
 
 def rand(needList, count=0, exceptions=[], accept_empty=False):
@@ -75,3 +76,29 @@ def traceback_shortener(long_error):
         short_error = short_error.replace(f'"{path}"', os.path.basename(path))
 
     return short_error
+
+
+def find_format(val):
+    """
+    Finds the format of given data, if it's a link then returns link's format else text
+
+    P-S:
+        If data is a list by self (more than one item),
+        We know that all of them have same format,
+        So, we just find the format of first one.
+
+        Examples :
+                "http://www.host.com/image.jpg" ---> image
+                "http://www.host.com/audio.mp3" ---> audio
+    """
+
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.photo]):
+        return 'photo'
+
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.audio]):
+        return 'audio'
+
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.video]):
+        return 'video'
+
+    return 'text'
