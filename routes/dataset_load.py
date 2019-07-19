@@ -19,7 +19,7 @@ parser.add_argument(
 
 
 def add(api):
-    @api.route('/template/find')
+    @api.route('/dataset/load')
     class TemplateFindRoute(flask_restplus.Resource):
         """
         find template by query from mongo
