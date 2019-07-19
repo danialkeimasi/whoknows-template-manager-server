@@ -20,7 +20,7 @@ def add(api):
 
         def post(self):
 
-            user_req = json_util.loads(request.data) if request.json is not None else {}
+            user_req = json_util.loads(request.data) if json_util.loads(request.data) is not None else {}
             template = user_req['template'] if 'template' in user_req else {}
 
             problems = []
