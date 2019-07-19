@@ -94,9 +94,8 @@ file_formats:
     - mov
     - flv
     - wmv
-  
+
   audio:
     - mp3
     - m4a
     - flac
-    
