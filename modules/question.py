@@ -1,6 +1,7 @@
 import json
 
 from config.config import config
+from modules.tools.functions import find_format
 
 
 class Question:
@@ -66,14 +67,19 @@ class Question:
         problems = []
 
         if 'type' not in question:
-            problems += ['there is no "type" field in question']
+            problems.append('there is no "type" field in question')
 
         q_type = question['type']
         q_field_required = [q_field for q_field in self.__template_formatter[f'{config.format.question.exist}{q_type}'] if self.__template_formatter[f'{config.format.question.exist}{q_type}'][q_field]]
         not_found_field = list(set(q_field_required) - set(question.keys()))
 
         if not_found_field != []:
-            problems += [f'question must have the following fields: {not_found_field}']
+            problems.append(f'question must have the following fields: {not_found_field}')
+
+        for item in ['title', 'subtitle', 'choice', 'answer']:
+            for typ, values in question[item].values():
+                if not all([typ == find_format(value)] for value in values):
+                    problems.append(f'there is a bad format (use other some type of data in the wrong place) in the {item}')
 
         if metadata:
             if q_type == 'choose':
