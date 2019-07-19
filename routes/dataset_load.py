@@ -37,7 +37,8 @@ def add(api):
             if dataset != []:
                 json.dump(
                     json_tools.to_extended(dataset),
-                    open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8')
+                    open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8'),
+                    indent=4, ensure_ascii=False
                 )
 
                 return {
