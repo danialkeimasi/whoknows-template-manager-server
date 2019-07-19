@@ -34,9 +34,14 @@ def add(api):
             dataset_name = args['dataset_name']
 
             dataset = list(mongo_client.data[dataset_name].find())
+            if dataset != []:
+                json.dumps(open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8'))
 
-            json.dumps(open(f'../datasets/{dataset_name}.json', mode='w+', encoding='utf-8'))
-
-            return {
-                'ok': True
-            }
+                return {
+                    'ok': True
+                }
+            else:
+                return {
+                    'ok': False,
+                    'problem': 'dataset is empty'
+                }
