@@ -466,7 +466,7 @@ def load_data(dataset_name):
             logger.info(f'loading {dataset_name} dataset is done.')
             break
         except Exception as error:
-            logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error} || {error_message}')
+            logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error}')
 
     return data
 
