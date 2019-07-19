@@ -77,8 +77,8 @@ class Question:
             problems.append(f'question must have the following fields: {not_found_field}')
 
         for item in ['title', 'subtitle', 'choice', 'answer']:
-            for typ, values in question[item].values():
-                if not all([typ == find_format(value)] for value in values):
+            for typ in question[item]:
+                if not all([typ == find_format(value)] for value in question[item][typ]):
                     problems.append(f'there is a bad format (use other some type of data in the wrong place) in the {item}')
 
         if metadata:
