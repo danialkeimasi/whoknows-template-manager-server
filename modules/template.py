@@ -129,7 +129,7 @@ class Template:
                         if raw_str.startswith('$'):
                             try:
                                 exp = raw_str[1:]
-                                template[q_type_name][q_property_name][q_property_format_name] = to_list(eval(exp))
+                                template[q_type_name][q_property_name][q_property_format_name] = list(map(str, to_list(eval(exp))))
                             except Exception as e:
                                 raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
 
@@ -143,7 +143,7 @@ class Template:
 
                                 # TODO: check if eval_result is list or not, its true if eval_result is not list
 
-                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result, list) else eval_result)
+                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result, list) else str(eval_result))
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
