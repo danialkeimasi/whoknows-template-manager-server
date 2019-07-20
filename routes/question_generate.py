@@ -11,6 +11,22 @@ from modules.tools.functions import traceback_shortener
 questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
 
 
+
+parser = flask_restplus.reqparse.RequestParser()
+parser.add_argument(
+    'tags',
+    type=list,
+    help='you must send the "idea" of template as a post json request.',
+    required=True
+)
+parser.add_argument(
+    'count',
+    type=int,
+    help='you must send the "idea" of template as a post json request.',
+    required=True
+)
+
+
 def add(api):
     @api.route('/question/generate')
     class GenerateQuestionRoute(flask_restplus.Resource):
@@ -41,19 +57,25 @@ def add(api):
                 logger.debug(f'after query for template, number of templates that we found: {len(templates)}')
 
                 questions = []
-                for i in range(count):
-                    for try_count in range(5):
+
+                try_count = 5
+                i = 0
+                while (len(questions) < count) and (i < count * try_count):
+                    for _ in range(try_count):
                         try:
                             questions.append(Template(templates[i % len(templates)]).generate_question().raise_if_problems().dict())
                             break
                         except Exception as e:
                             error_message = traceback_shortener(traceback.format_exc())
-                            logger.critical(f'failed in generate question => {error_message}')
+                            logger.error(f'failed in generate question => {error_message}')
                     else:
-                        questions.append(questions_sample[i % len(questions_sample)])
+                        # TODO: do some report for this template to the database
+                        pass
+
+                    i += 1
 
                 response = {
-                    'ok': True,
+                    'ok': len(questions) == count,
                     'questions': questions,
                 }
 
