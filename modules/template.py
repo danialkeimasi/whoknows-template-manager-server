@@ -224,9 +224,14 @@ class Template:
             bool: test if we have not found duplicate template.
 
         """
-        self.__template['__test_info']['duplication']['similars'] = []
-        self.__template['__test_info']['duplication']['problems'] = []
-        return True
+        is_ok = True
+        self.__template['__test_info']['duplication'].update({
+            'similars': [],
+            'problems': [],
+            'ok': is_ok
+        })
+
+        return is_ok
 
     def __test_acceptance(self):
         """ check acceptance of the idea.
@@ -243,7 +248,11 @@ class Template:
         if not acceptance_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
 
-        self.__template['__test_info']['acceptance']['problems'] = problems
+        self.__template['__test_info']['acceptance'].update({
+            'problems': problems,
+            'ok': acceptance_bool
+        })
+
         return acceptance_bool
 
     def __test_data(self):
@@ -275,13 +284,15 @@ class Template:
             elif not ds['ok']:
                 problems.append(f"something wrong happend about {ds['headers']['name']}!")
 
-        self.__template['__test_info']['data']['datasets'] = datasets_list
-        self.__template['__test_info']['data']['problems'] = problems
+        is_ok = all([ds['ok'] for ds in datasets_list])
 
-        for ds in datasets_list:
-            if not ds['ok']:
-                return False
-        return True
+        self.__template['__test_info']['data'].update({
+            'datasets': datasets_list,
+            'problems': problems,
+            'ok': is_ok,
+        })
+
+        return is_ok
 
     def __test_schema(self):
         """ schema test for template that proves structure of template.
@@ -295,8 +306,12 @@ class Template:
             return True
 
         except Exception as error:
+
             error_message = traceback_shortener(traceback.format_exc())
+
             self.__template['__test_info']['structure']['problems'].append(error_message)
+            self.__template['__test_info']['structure']['ok'] = False
+
             return False
 
 
@@ -346,8 +361,12 @@ class Template:
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
 
-        self.__template['__test_info']['structure']['problems'] = problems
-        self.__template['__test_info']['structure']['sections'] = sections
+
+        self.__template['__test_info']['structure'].update({
+            'problems': problems,
+            'sections':sections,
+            'ok': test_bool
+        })
         return test_bool
 
     def __test_generation(self, count = 50):
@@ -391,8 +410,14 @@ class Template:
             'problems': problem_set
         })
 
-        self.__template['__test_info']['generation']['problems'] = problem_set
-        return (success_percent) >= acceptable_percent
+        is_ok = (success_percent) >= acceptable_percent
+
+        self.__template['__test_info']['generation'].update({
+            'problems': problem_set,
+            'ok': is_ok
+        })
+
+        return is_ok
 
 
     def __test_manual(self):
@@ -410,7 +435,11 @@ class Template:
         if not manual_tes_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
 
-        self.__template['__test_info']['manual']['problems'] = problems
+        self.__template['__test_info']['manual'].update({
+            'problems': problems,
+            'ok': manual_tes_bool
+        })
+
         return manual_tes_bool
 
 
@@ -423,23 +452,33 @@ class Template:
         if not usage_test_bool:
             problems.append(f'the template is not have usage tag')
 
-        self.__template['__test_info']['usage_tagging']['problems'] = problems
+        self.__template['__test_info']['usage_tagging'].update({
+            'problems': problems,
+            'ok': usage_test_bool
+        })
+
         return usage_test_bool
 
 
     def test_update(self):
+
         tests = config.template.tests
         self.__template['__state'] = config.template.states[0]
+
+        for test_name in self.__template['__test_info']:
+            self.__template['__test_info'][test_name].update({'ok': False})
 
         state_number = 0
         test_functions = []
 
         for state in config.template.states[1:]:
+
             test_functions = { t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
             if not all(test_functions.values()):
                 break
             else:
                 state_number += 1
+
         self.__template['__last_test'] = test_functions
         self.__template['__state'] = config.template.states[state_number]
 
