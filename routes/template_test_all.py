@@ -11,11 +11,9 @@ from modules.tools import json_tools
 
 def add(api):
     @api.route('/template/test_all')
-    class TemplateTestRoute(flask_restplus.Resource):
+    class TemplateTestAllRoute(flask_restplus.Resource):
         """
-        test the template and update the state
-        find template by _id that exist in template
-        update the template in the database
+        test the templates and update the state of all templates
         """
 
         def post(self):
