@@ -10,7 +10,7 @@ from modules.tools import json_tools
 
 
 def add(api):
-    @api.route('/template/test_save')
+    @api.route('/template/test_all')
     class TemplateTestRoute(flask_restplus.Resource):
         """
         test the template and update the state
