@@ -28,7 +28,6 @@ class Template:
         __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure().
         __empty_template (dict): an empty question template.
         __schema_validator (dict): a schema validator. used in __test_schema().
-        __default_metadata (dict): default metadata values that used in generate_question().
 
         __template (dict): template stores here!
 
@@ -38,12 +37,6 @@ class Template:
     __empty_template = json.load(open(config.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
 
-    __default_metadata = {
-        'NOC': 3,
-        'NOS': 4,
-        'NOA': 2,
-        'level': 1,
-    }
 
     def __init__(self, inp, mode='dict'):
 
@@ -70,14 +63,14 @@ class Template:
         """
         return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
-    def parse(self, bool_answer=True, metadata={}):
+    def parse(self, bool_answer=True, metadata):
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
 
         Args:
             bool_answer (bool, optional): a randomly generated boolean that use for bool question_type. Defaults to True.
-            metadata (dict, optional): needed metadata for parsing template. Defaults to {}.
+            metadata (dict): needed metadata for parsing template.
 
         Returns:
             Template: parsed template, replaced every variable with datasets.
@@ -87,12 +80,6 @@ class Template:
         dbs = load_template_datasets(self.__template['datasets'])
         for key, value in dbs.items():
             locals()[key] = value
-
-        self.__default_metadata['NOA'] = random.randint(0, 4)
-        self.__default_metadata['level'] = random.randint(1, 11)
-
-        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
-            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
 
         template['metadata'] = metadata
 
@@ -129,9 +116,12 @@ class Template:
                         if raw_str.startswith('$'):
                             try:
                                 exp = raw_str[1:]
-                                template[q_type_name][q_property_name][q_property_format_name] = list(map(str, to_list(eval(exp))))
+                                template[q_type_name][q_property_name][q_property_format_name] = \
+                                    list(map(str, to_list(eval(exp))))
+
                             except Exception as e:
-                                raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
+                                raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
+                                    "['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
 
                         else:
                             while re.search(reg_str, raw_str):
@@ -139,11 +129,13 @@ class Template:
                                 try:
                                     eval_result = eval(exp)
                                 except Exception as e:
-                                    raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']['{q_property_format_name}'][{i}]: `{exp}`: {e}") from e
+                                    raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
+                                        "['{q_property_format_name}'][{i}]: `{exp}`: {e}") from e
 
                                 # TODO: check if eval_result is list or not, its true if eval_result is not list
 
-                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if isinstance(eval_result, list) else str(eval_result))
+                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
+                                    isinstance(eval_result, list) else str(eval_result))
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
@@ -209,7 +201,19 @@ class Template:
             Question: [description]
         """
 
-        question_type = choose(self.get_question_types(), 0) if question_type is None else f'{config.format.question.exist}{question_type}'
+        default_metadata = {
+            'NOC': 3,
+            'NOS': 4,
+            'NOA': random.randint(0, 4),
+            'level': random.randint(1, 11),
+        }
+
+        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
+            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
+
+        question_type = choose(self.get_question_types(), 0) if question_type is None else \
+            f'{config.format.question.exist}{question_type}'
+
         bool_answer = rand([True, False])
 
         parsed_template = self.parse(bool_answer, metadata)
@@ -274,7 +278,8 @@ class Template:
 
         not_found_datasets = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
 
-        datasets_list = found_datasets + [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
+        datasets_list = found_datasets + \
+            [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
 
         for ds in datasets_list:
             if not ds['ok'] and ds['headers']['state'] == 'null':
