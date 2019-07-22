@@ -63,7 +63,7 @@ class Template:
         """
         return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
-    def parse(self, bool_answer=True, metadata):
+    def parse(self, metadata, bool_answer=True):
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
@@ -216,7 +216,7 @@ class Template:
 
         bool_answer = rand([True, False])
 
-        parsed_template = self.parse(bool_answer, metadata)
+        parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
         return question_object
