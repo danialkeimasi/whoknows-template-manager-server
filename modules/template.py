@@ -209,7 +209,7 @@ class Template:
         }
 
         for not_found_metadata_name in set(default_metadata.keys()) - set(metadata.keys()):
-            metadata[not_found_metadata_name] = default_metadata[not_found_metadata_name]
+            metadata[not_found_metadata_name] = default_metadata.pop(not_found_metadata_name)
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
