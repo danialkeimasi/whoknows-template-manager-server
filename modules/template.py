@@ -215,7 +215,7 @@ class Template:
             f'{config.format.question.exist}{question_type}'
 
         bool_answer = rand([True, False])
-    
+
         parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
