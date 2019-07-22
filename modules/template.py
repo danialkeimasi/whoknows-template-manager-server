@@ -208,14 +208,14 @@ class Template:
             'level': random.randint(1, 11),
         }
 
-        for not_found_metadata_name in set(self.__default_metadata.keys()) - set(metadata.keys()):
-            metadata[not_found_metadata_name] = self.__default_metadata[not_found_metadata_name]
+        for not_found_metadata_name in set(default_metadata.keys()) - set(metadata.keys()):
+            metadata[not_found_metadata_name] = default_metadata[not_found_metadata_name]
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
 
         bool_answer = rand([True, False])
-
+    
         parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
