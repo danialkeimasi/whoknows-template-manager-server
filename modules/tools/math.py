@@ -12,9 +12,8 @@ from math import *
 
 
 def poly(operands, operators, show=False):
-
-    for i, operator in enumerate(operators):
-        if show:
+    if show:
+        for i, operator in enumerate(operators):
             if operator == '*':
                 operators[i] = '×'
             elif operator == '/':
