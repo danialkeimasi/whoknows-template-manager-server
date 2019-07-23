@@ -32,12 +32,12 @@ def add(api):
                 updated_template = Template(template).test_update().dict()
 
                 query = {'_id': template['_id']} if '_id' in template else {}
-                update_response = mongo_client.template_manager.templates.update_one(query, updated_template, upsert=True)
+                update_response = mongo_client.template_manager.templates.update(query, updated_template, upsert=True)
                 pprint(update_response)
 
                 template_updated = mongo_client.template_manager.templates.find_one({'_id': template['_id']})
                 response = {
-                    'ok': update_response.acknowledged,
+                    'ok': update_response['ok'],
                     '_id': template['_id'],
                     'template': template_updated
                 }
