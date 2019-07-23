@@ -16,7 +16,8 @@ questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8')
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(
     'tags',
-    type=list, location='json',
+    type=list,
+    location='json',
     help='you must send the "tags" of template as a post json request.',
     required=True
 )
@@ -26,12 +27,12 @@ parser.add_argument(
     help='you must send the "count" of template as a post json request.',
     required=True
 )
-# parser.add_argument(
-#     'metadata',
-#     type=dict,
-#     help='you must send the "metadata" of template as a post json request.',
-#     required=False
-# )
+parser.add_argument(
+    'metadata',
+    type=dict,
+    help='you must send the "metadata" of template as a post json request.',
+    required=False
+)
 
 
 def add(api):
@@ -50,7 +51,7 @@ def add(api):
 
             tags = args['tags']
             count = args['count']
-            # metadata = args['metadata']
+            metadata = args['metadata']
 
             templates = list(mongo_client.template_manager.templates.aggregate([
                 {'$match': {'__state': 'in_use'}},
@@ -66,7 +67,7 @@ def add(api):
             while (len(questions) < count) and (i < count * try_count):
                 for _ in range(try_count):
                     try:
-                        questions.append(Template(templates[i % len(templates)]).generate_question().raise_if_problems().dict())
+                        questions.append(Template(templates[i % len(templates)]).generate_question(metadata=metadata).raise_if_problems().dict())
                         break
                     except Exception as e:
                         error_message = traceback_shortener(traceback.format_exc())
