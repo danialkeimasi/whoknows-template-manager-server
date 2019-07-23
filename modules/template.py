@@ -200,12 +200,13 @@ class Template:
         Returns:
             Question: [description]
         """
-
+        _NOA = lambda: random.randint(1, 4)
+        _level = lambda: random.randint(1, 11)
         default_metadata = {
             'NOC': 3,
             'NOS': 4,
-            'NOA': random.randint(1, 4),
-            'level': random.randint(1, 11),
+            'NOA': _NOA(),
+            'level': _level(),
         }
 
         for not_found_metadata_name in set(default_metadata.keys()) - set(metadata.keys()):
