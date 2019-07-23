@@ -25,12 +25,12 @@ parser.add_argument(
     help='you must send the "count" of template as a post json request.',
     required=True
 )
-parser.add_argument(
-    'metadata',
-    type=dict,
-    help='you must send the "metadata" of template as a post json request.',
-    required=False
-)
+# parser.add_argument(
+#     'metadata',
+#     type=dict,
+#     help='you must send the "metadata" of template as a post json request.',
+#     required=False
+# )
 
 
 def add(api):
@@ -49,7 +49,7 @@ def add(api):
 
             tags = args['tags']
             count = args['count']
-            metadata = args['metadata']
+            # metadata = args['metadata']
 
             templates = list(mongo_client.template_manager.templates.aggregate([
                 {'$match': {'__state': 'in_use'}},
