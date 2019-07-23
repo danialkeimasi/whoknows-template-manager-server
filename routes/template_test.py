@@ -25,12 +25,13 @@ def add(api):
 
             problems = []
             problems += ['you must send the template as a json post'] if template == {} else []
-            problems += ['the template must have "_id" property that exists in mongodb'] if '_id' not in template else []
 
             if problems == []:
 
                 updated_template = Template(template).test_update().dict()
-                replace_response = mongo_client.template_manager.templates.replace_one({'_id': template['_id']}, updated_template)
+
+                query = {'_id': template['_id']} if '_id' in template else {}
+                replace_response = mongo_client.template_manager.templates.update(query, updated_template, upsert=True)
 
                 template_updated = mongo_client.template_manager.templates.find_one({'_id': template['_id']})
                 response = {
