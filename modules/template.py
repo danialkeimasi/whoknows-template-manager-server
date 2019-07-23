@@ -200,14 +200,13 @@ class Template:
         Returns:
             Question: [description]
         """
-        metadata_generator = lambda: {
+
+        default_metadata = {
             'NOC': 3,
             'NOS': 4,
-            'NOA': random.randint(0, 4),
-            'level': random.randint(1, 11),
+            'NOA': rand(range(1, 4)),
+            'level': rand(range(1, 11)),
         }
-
-        default_metadata = metadata_generator()
 
         for not_found_metadata_name in set(default_metadata.keys()) - set(metadata.keys()):
             metadata[not_found_metadata_name] = default_metadata[not_found_metadata_name]
