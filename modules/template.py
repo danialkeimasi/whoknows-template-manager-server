@@ -208,8 +208,8 @@ class Template:
             'level': random.randint(1, 10),
         }
 
-        for found_metadata_name in [i for i in default_metadata if i in metadata]:
-            default_metadata.pop(found_metadata_name)
+        # for found_metadata_name in [i for i in default_metadata if i in metadata]:
+        #     default_metadata.pop(found_metadata_name)
 
         metadata.update(default_metadata)
 
@@ -221,7 +221,6 @@ class Template:
         parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
-        self.__template.pop('metadata')
         return question_object
 
     def __test_duplication(self):
@@ -251,6 +250,8 @@ class Template:
 
         votes_len = len(self.__template['__test_info']['acceptance']['votes'])
         acceptance_bool = votes_len >= config.template.min_vote
+
+        acceptance_bool = True # tmp
 
         if not acceptance_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
