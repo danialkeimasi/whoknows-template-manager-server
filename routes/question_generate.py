@@ -14,7 +14,6 @@ questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8')
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(
     'tags',
-    type=list,
     help='you must send the "tags" of template as a post json request.',
     required=True
 )
