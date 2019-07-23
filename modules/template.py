@@ -211,7 +211,7 @@ class Template:
         # for found_metadata_name in [i for i in default_metadata if i in metadata]:
         #     default_metadata.pop(found_metadata_name)
 
-        metadata.update(default_metadata)
+        metadata = default_metadata
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
