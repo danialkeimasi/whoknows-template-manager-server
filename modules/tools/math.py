@@ -23,7 +23,7 @@ def pretty(exp):
     }
 
     for item, pretty in operators.items():
-        exp.replace(item, pretty)
+        exp = exp.replace(item, pretty)
 
     return exp
 
@@ -47,7 +47,7 @@ def calc(exp):
     }
 
     for item, pretty in operators.items():
-        exp.replace(item, pretty)
+        exp = exp.replace(item, pretty)
 
     result = eval(exp)
     return int(result) if int(result) == result else result
