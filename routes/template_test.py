@@ -7,6 +7,7 @@ from modules.template import Template
 from flask_restful import reqparse, Api, Resource
 
 from modules.tools import json_tools
+from pprint import pprint
 
 
 def add(api):
@@ -31,11 +32,11 @@ def add(api):
                 updated_template = Template(template).test_update().dict()
 
                 query = {'_id': template['_id']} if '_id' in template else {}
-                replace_response = mongo_client.template_manager.templates.update(query, updated_template, upsert=True)
-
+                update_response = mongo_client.template_manager.templates.update(query, updated_template, upsert=True)
+                pprint(update)
                 template_updated = mongo_client.template_manager.templates.find_one({'_id': template['_id']})
                 response = {
-                    'ok': replace_response.acknowledged,
+                    'ok': update_response.acknowledged,
                     '_id': template['_id'],
                     'template': template_updated
                 }
