@@ -12,7 +12,7 @@ from math import *
 
 
 def expression(operands, operators):
-    return f"{' '.join([f'{operands[i]} {operators[i]}' for i in range(len(operators))])} {operands[-1]}"
+    return pretty(f"{' '.join([f'{operands[i]} {operators[i]}' for i in range(len(operators))])} {operands[-1]}")
 
 
 def pretty(exp):
@@ -38,4 +38,17 @@ def number(begin, end, step):
         begin += step
 
     return numbers
+
+def calc(express):
+
+    operators = {
+        '×': '*',
+        '÷': '/'
+    }
+
+    for item, pretty in operators.items():
+        exp.replace(item, pretty)
+
+    result = eval(exp)
+    return int(result) if int(result) == result else result
 
