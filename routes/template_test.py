@@ -52,5 +52,4 @@ def add(api):
                     'ok': False,
                     'problem': problems,
                 }
-            pprint(response)
             return json_tools.to_extended(response)
