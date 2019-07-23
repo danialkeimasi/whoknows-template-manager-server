@@ -13,10 +13,11 @@ from math import *
 
 def poly(operands, operators):
 
-    for i, operator in enumerate(operators):
-        if operator == '*':
-            operators[i] = '×'
-        elif operator == '/':
-            operators[i] = '÷'
+    for i, operator in enumerate(operators, show=False):
+        if show:
+            if operator == '*':
+                operators[i] = '×'
+            elif operator == '/':
+                operators[i] = '÷'
 
     return f"{' '.join([f'{operands[i]} {operators[i]}' for i in range(len(operators))])} {operands[-1]}"
