@@ -14,6 +14,7 @@ from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener
 from bson import json_util
 from pprint import pprint
+import copy
 
 
 class Template:
@@ -208,10 +209,12 @@ class Template:
             'level': random.randint(1, 10),
         }
 
-        # for found_metadata_name in [i for i in default_metadata if i in metadata]:
-        #     default_metadata.pop(found_metadata_name)
+        input_metadata = copy.deepcopy(metadata)
+        for found_metadata_name in [i for i in default_metadata if i in metadata]:
+            default_metadata.pop(found_metadata_name)
 
-        metadata = default_metadata
+        input_metadata.update(default_metadata)
+        metadata = input_metadata
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
