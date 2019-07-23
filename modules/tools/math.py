@@ -39,7 +39,7 @@ def number(begin, end, step):
 
     return numbers
 
-def calc(express):
+def calc(exp):
 
     operators = {
         '×': '*',
