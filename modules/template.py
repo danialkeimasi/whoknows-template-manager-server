@@ -207,9 +207,11 @@ class Template:
             'NOA': random.randint(1, 4),
             'level': random.randint(1, 10),
         }
-        metadata = default_metadata
-        # for not_found_metadata_name in set(default_metadata.keys()) - set(metadata.keys()):
-        #     metadata[not_found_metadata_name] = default_metadata[not_found_metadata_name]
+
+        for found_metadata_name in [i for i in default_metadata if i in metadata]:
+            default_metadata.pop(found_metadata_name)
+
+        metadata.update(default_metadata)
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
