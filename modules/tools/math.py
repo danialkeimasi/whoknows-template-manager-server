@@ -11,12 +11,18 @@ from math import *
 """
 
 
-def poly(operands, operators, show=False):
-    if show:
-        for i, operator in enumerate(operators):
-            if operator == '*':
-                operators[i] = '×'
-            elif operator == '/':
-                operators[i] = '÷'
-
+def expression(operands, operators):
     return f"{' '.join([f'{operands[i]} {operators[i]}' for i in range(len(operators))])} {operands[-1]}"
+
+
+def pretty(exp):
+
+    operators = {
+        '*': '×',
+        '/': '÷'
+    }
+
+    for item, pretty in operators.items():
+        exp.replace(item, pretty)
+
+    return exp
