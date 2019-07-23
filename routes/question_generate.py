@@ -31,7 +31,8 @@ parser.add_argument(
     'metadata',
     type=dict,
     help='you must send the "metadata" of template as a post json request.',
-    required=False
+    required=False,
+    default={}
 )
 
 
