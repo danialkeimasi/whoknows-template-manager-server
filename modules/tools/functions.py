@@ -102,3 +102,8 @@ def find_format(val):
         return 'video'
 
     return 'text'
+
+
+def generate(data, count):
+    return [choose(data, 0) for i in range(count)]
+
