@@ -11,9 +11,9 @@ from math import *
 """
 
 
-def poly(operands, operators):
+def poly(operands, operators, show=False):
 
-    for i, operator in enumerate(operators, show=False):
+    for i, operator in enumerate(operators):
         if show:
             if operator == '*':
                 operators[i] = '×'
