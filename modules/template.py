@@ -221,6 +221,7 @@ class Template:
         parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
         question_object = parsed_template.get_question(bool_answer, question_type, format)
 
+        self.__template.pop('metadata')
         return question_object
 
     def __test_duplication(self):
