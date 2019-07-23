@@ -251,7 +251,9 @@ class Template:
 
         problems = []
 
-        votes_len = len(self.__template['__test_info']['acceptance']['votes'])
+        votes_len = len(self.__template['__test_info']['acceptance']['votes']) \
+                if 'votes' in self.__template['__test_info']['acceptance'] else 0
+
         acceptance_bool = votes_len >= config.template.min_vote
 
         acceptance_bool = True # tmp
@@ -441,7 +443,9 @@ class Template:
 
         problems = []
 
-        votes_len = len(self.__template['__test_info']['manual']['votes'])
+        votes_len = len(self.__template['__test_info']['manual']['votes']) \
+            if 'votes' in self.__template['__test_info']['manual'] else 0
+
         manual_tes_bool = votes_len >= config.template.min_vote
 
         manual_tes_bool = True # tmp
