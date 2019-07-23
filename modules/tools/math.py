@@ -26,3 +26,16 @@ def pretty(exp):
         exp.replace(item, pretty)
 
     return exp
+
+
+def number(begin, end, step):
+
+    numbers = []
+    begin, end = (begin, end) if begin <= end else (end, begin)
+
+    while begin <= end:
+        numbers.append(int(begin) if int(begin) == begin else begin)
+        begin += step
+
+    return numbers
+
