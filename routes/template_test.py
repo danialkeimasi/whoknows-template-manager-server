@@ -38,7 +38,7 @@ def add(api):
                     _id = update_response.inserted_id
                 else:
                     update_response = mongo_client.template_manager.templates.replace_one(query, updated_template, upsert=True)
-                    _id = template['id']
+                    _id = template['_id']
 
                 template_updated = mongo_client.template_manager.templates.find_one({'_id': _id})
                 response = {
