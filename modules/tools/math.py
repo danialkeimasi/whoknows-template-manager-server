@@ -5,6 +5,7 @@ from decimal import Decimal
 from math import *
 
 from modules.tools.functions import choose
+from random import randint
 
 
 """
