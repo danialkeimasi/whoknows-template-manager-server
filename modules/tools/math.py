@@ -67,8 +67,10 @@ def guess_operand(num, level):
 
     if mod:
         operand_range = [item for item in operand_range if item % mod == num % mod]
+    
+    operand_range_sorted = sorted(operand_range, key=lambda x: fabs(num - x))
 
-    return operand_range
+    return operand_range[:2] + choose(operand_range, 2)
 
                   
 def choice_generator(operands, operators, level):
@@ -86,5 +88,6 @@ def choice_generator(operands, operators, level):
     choices = choices[ r :  r + 10]
 
     return choices
+
 
 
