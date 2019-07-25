@@ -384,7 +384,7 @@ class Template:
         })
         return test_bool
 
-    def __test_generation(self, count = 50):
+    def __test_generation(self, count = 5):
         """ test the template by generate a number of question
 
         Args:
