@@ -54,5 +54,4 @@ def calc(exp):
 
 
 def guess(num, level):
-    pass
-
+    r = max(10, num // pymath.log(pymath.fabs(num) + 2, 2))
