@@ -9,49 +9,49 @@ Setting up is simple, just follow these steps.
 - ### Python :
     
     1. Install python and pip and git:
-        ```sh
+        ```
         apt install git python3 python3-pip
         ```
     
     2. Clone the repository:
-        ```sh
+        ```
         git clone https://github.com/danialkeimasi/whoknows-template-manager
         ```
     
     3. Go to repository folder:
-        ```sh
+        ```
         cd whoknows-template-manager
         ```
     
     4. Install dependencies:
-        ```sh
+        ```
         pip install -r requirements.txt
         ```
     
     5. Start server:
-        ```sh
+        ```
         python3 app.py
         ```
 
 - ### Docker :
     
     1. Clone the repository:
-        ```sh
+        ```
         git clone https://github.com/danialkeimasi/whoknows-template-manager
         ```
     
     2. Go to repository folder:
-        ```sh
+        ```
         cd whoknows-template-manager
         ```
     
     3. Build image from dockerfile:
-        ```sh
+        ```
         docker build . -t whoknows-template-manager
         ```
     
     4. Run docker image:
-        ```sh
+        ```
         docker run -it whoknows-template-manager
         ```
 
