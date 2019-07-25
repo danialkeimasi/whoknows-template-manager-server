@@ -83,7 +83,7 @@ def choice_generator(operands, operators, level):
     operands_choice = list(itertools.product(*operands_guess_list))
     expressions_choice = [expression(operand, operators) for operand in operands_choice]
     
-    choices = list(set([calc(exp) for exp in expressions_choice]) - set([answer]))
+    choices = list(set([calc(exp) for exp in expressions_choice]) - set([answer, 0]))
     choices = sorted(choices, key=lambda x: fabs(answer - x))
     
     part = 10 - level
