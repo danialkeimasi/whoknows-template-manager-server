@@ -39,6 +39,7 @@ def number(begin, end, step):
 
     return numbers
 
+
 def calc(exp):
 
     operators = {
@@ -55,3 +56,8 @@ def calc(exp):
 
 def guess(num, level):
     r = max(10, num // pymath.log(pymath.fabs(num) + 2, 2))
+    
+
+
+
+
