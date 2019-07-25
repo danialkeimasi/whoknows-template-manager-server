@@ -1,7 +1,10 @@
 import math as pymath
 import itertools
+
 from decimal import Decimal
 from math import *
+
+from modules.tools.functions import choose
 
 
 """
