@@ -85,6 +85,6 @@ def choice_generator(operands, operators, level):
     r = len(choices) // 11 * part
     choices = choices[ r :  r + 10]
 
-    return choices, len(choices)
+    return choices
 
 
