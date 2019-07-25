@@ -54,10 +54,4 @@ def calc(exp):
 
 
 def guess(num, level):
-    mod_min = 2
-    mod_max = 4
-    mod_formul = mod_max - level / 6
-    mod_num = mod_min if mod_formul < mod_min else mod_max if mod_formul > mod_max else int(mod_formul)
-
-    nums = [i for i in number(num - num // 1.5, num + num // 1.5, 1) if i % mod_num == num % mod_num]
-    domain = max(nums) - min(nums)
+    pass
