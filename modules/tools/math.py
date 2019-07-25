@@ -1,3 +1,4 @@
+from decimal import Decimal
 import math as pymath
 from math import *
 
@@ -32,10 +33,11 @@ def number(begin, end, step):
 
     numbers = []
     begin, end = (begin, end) if begin <= end else (end, begin)
+    step = int(step)
 
     while begin <= end:
         numbers.append(int(begin) if int(begin) == begin else begin)
-        begin += step
+        begin = float(Decimal(str(begin)) + Decimal(str(step)))
 
     return numbers
 
@@ -54,10 +56,34 @@ def calc(exp):
     return int(result) if int(result) == result else result
 
 
-def guess(num, level):
-    r = max(10, num // pymath.log(pymath.fabs(num) + 2, 2))
+def guess_operand(num, level):
     
+    r = max(5, int(num // pymath.log(pymath.fabs(num) + 2, 2)))
+    operand_range = number(float(Decimal(str(num)) - Decimal(str(r))), float(Decimal(str(num)) + Decimal(str(r))), 1)
+    operand_range = list(set(operand_range))
+    
+    mod = 2 if level >= 7 else None
 
+    if mod:
+        operand_range = [item for item in operand_range if item % mod == num % mod]
 
+    return operand_range
+
+                  
+def choice_generator(operands, operators, level):
+    answer = calc(expression(operands, operators))
+
+    operands_guess_list = [guess_operand(operand, level) for operand in operands]
+    operands_choice = list(itertools.product(*operands_guess_list))
+    expressions_choice = [expression(operand, operators) for operand in operands_choice]
+    
+    choices = list(set([calc(exp) for exp in expressions_choice]) - set([answer]))
+    choices = sorted(choices, key=lambda x: fabs(answer - x))
+    
+    part = 10 - level
+    r = len(choices) // 11 * part
+    choices = choices[ r :  r + 10]
+
+    return choices, len(choices)
 
 
