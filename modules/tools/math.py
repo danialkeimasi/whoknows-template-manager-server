@@ -73,7 +73,7 @@ def guess_operand(num, level):
     
     operand_range_sorted = sorted(operand_range, key=lambda x: fabs(num - x))
 
-    return operand_range[:2] + choose(operand_range, 2)
+    return operand_range[:2] + choose(operand_range, 1)
 
                   
 def choice_generator(operands, operators, level):
