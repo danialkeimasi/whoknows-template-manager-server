@@ -484,7 +484,7 @@ class Template:
         self.__template['__state'] = config.template.states[0]
 
         for test_name in self.__template['__test_info']:
-            self.__template['__test_info'][test_name].update({'ok': False})
+            self.__template['__test_info'][test_name].update({'ok': False, 'problems':[]})
 
         state_number = 0
         test_functions = []
