@@ -376,7 +376,6 @@ class Template:
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
 
-
         self.__template['__test_info']['structure'].update({
             'problems': problems,
             'sections':sections,
