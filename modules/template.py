@@ -372,7 +372,7 @@ class Template:
             test_bool = problems == [] if test_bool else test_bool
             sections.append({'name': q_type, 'ok': problems == [], 'problems': problems})
 
-        prolems = []
+        problems = []
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
 
