@@ -235,11 +235,11 @@ class Template:
 
         """
         is_ok = True
-        self.__template['__test_info']['duplication'].update({
+        self.__template['__test_info']['duplication'] = {
             'similars': [],
             'problems': [],
             'ok': is_ok
-        })
+        }
 
         return is_ok
 
@@ -252,8 +252,13 @@ class Template:
 
         problems = []
 
-        votes_len = len(self.__template['__test_info']['acceptance']['votes']) \
-                if 'votes' in self.__template['__test_info']['acceptance'] else 0
+        if 'acceptance' not in self.__template['__test_info']:
+            self.__template['__test_info']['acceptance'] = {}
+
+        if 'votes' not in self.__template['__test_info']['acceptance']:
+            self.__template['__test_info']['acceptance']['votes'] = []
+
+        votes_len = len(self.__template['__test_info']['acceptance']['votes'])
 
         acceptance_bool = votes_len >= config.template.min_vote
 
@@ -262,10 +267,10 @@ class Template:
         if not acceptance_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
 
-        self.__template['__test_info']['acceptance'].update({
+        self.__template['__test_info']['acceptance'] = {
             'problems': problems,
             'ok': acceptance_bool
-        })
+        }
 
         return acceptance_bool
 
@@ -301,11 +306,11 @@ class Template:
 
         is_ok = all([ds['ok'] for ds in datasets_list])
 
-        self.__template['__test_info']['data'].update({
+        self.__template['__test_info']['data'] = {
             'datasets': datasets_list,
             'problems': problems,
             'ok': is_ok,
-        })
+        }
 
         return is_ok
 
@@ -323,6 +328,12 @@ class Template:
         except Exception as error:
 
             error_message = traceback_shortener(traceback.format_exc())
+
+            if 'structure' not in self.__template['__test_info']:
+                self.__template['__test_info']['structure'] = {}
+
+            if 'problems' not in self.__template['__test_info']['structure']:
+                self.__template['__test_info']['structure']['problems'] = []
 
             self.__template['__test_info']['structure']['problems'].append(error_message)
             self.__template['__test_info']['structure']['ok'] = False
@@ -377,11 +388,11 @@ class Template:
             problems += sec['problems'] if 'problems' in sec else []
 
 
-        self.__template['__test_info']['structure'].update({
+        self.__template['__test_info']['structure'] = {
             'problems': problems,
-            'sections':sections,
+            'sections': sections,
             'ok': test_bool
-        })
+        }
         return test_bool
 
     def __test_generation(self, count = 50):
@@ -430,10 +441,10 @@ class Template:
 
         is_ok = (success_percent) >= acceptable_percent
 
-        self.__template['__test_info']['generation'].update({
+        self.__template['__test_info']['generation'] = {
             'problems': problem_set,
             'ok': is_ok
-        })
+        }
 
         return is_ok
 
@@ -446,9 +457,13 @@ class Template:
         """
 
         problems = []
+        if 'manual' not in self.__template['__test_info']:
+            self.__template['__test_info']['manual'] = {}
 
-        votes_len = len(self.__template['__test_info']['manual']['votes']) \
-            if 'votes' in self.__template['__test_info']['manual'] else 0
+        if 'votes' not in self.__template['__test_info']['manual']:
+            self.__template['__test_info']['manual']['votes'] = []
+
+        votes_len = len(self.__template['__test_info']['manual']['votes'])
 
         manual_tes_bool = votes_len >= config.template.min_vote
 
@@ -457,10 +472,10 @@ class Template:
         if not manual_tes_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
 
-        self.__template['__test_info']['manual'].update({
+        self.__template['__test_info']['manual'] = {
             'problems': problems,
             'ok': manual_tes_bool
-        })
+        }
 
         return manual_tes_bool
 
