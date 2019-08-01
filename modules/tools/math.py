@@ -35,7 +35,7 @@ def pretty(exp):
 
 
 def randint(begin, end, func=None):
-    choose(number(begin, end, func=func), 0)
+    return choose(number(begin, end, func=func), 0)
 
 
 def number(begin, end, step=1, func=None):
