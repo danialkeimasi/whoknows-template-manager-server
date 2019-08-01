@@ -105,7 +105,7 @@ def divisors(n):
         return []
 
     divs = [1, n]
-    for i in range(2, int(math.sqrt(n)) + 1):
+    for i in range(2, int(pymath.sqrt(n)) + 1):
         if n % i == 0:
             divs += [i, n // i]
 
