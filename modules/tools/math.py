@@ -5,7 +5,7 @@ from decimal import Decimal
 from math import *
 
 from modules.tools.functions import choose
-from random import randint
+import random
 
 
 """
@@ -34,6 +34,10 @@ def pretty(exp):
     return exp
 
 
+def randint(begin, end, func=None):
+    choose(number(begin, end, func=func), 0)
+
+
 def number(begin, end, step, func=None):
 
     numbers = []
@@ -41,7 +45,7 @@ def number(begin, end, step, func=None):
     step = int(step)
 
     while begin <= end:
-        if func(begin):
+        if func is None or func(begin):
             numbers.append(int(begin) if int(begin) == begin else begin)
 
         begin = float(Decimal(str(begin)) + Decimal(str(step)))
