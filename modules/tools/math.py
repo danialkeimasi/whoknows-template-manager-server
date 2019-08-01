@@ -94,4 +94,22 @@ def choice_generator(operands, operators, level):
     return choices
 
 
+def divisors(n):
+    if n < 1:
+        return []
+
+    divs = [1, n]
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            divs += [i, n // i]
+
+    return sorted(list(set(divs)))
+
+
+def is_prime(n):
+    return n > 1 and (n == 2 or len(divisors(n)) == 2)
+
+
+def is_composite(n):
+    return n > 1 and not is_prime(n)
 
