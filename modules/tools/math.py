@@ -38,7 +38,7 @@ def randint(begin, end, func=None):
     choose(number(begin, end, func=func), 0)
 
 
-def number(begin, end, step, func=None):
+def number(begin, end, step=1, func=None):
 
     numbers = []
     begin, end = (begin, end) if begin <= end else (end, begin)
