@@ -34,14 +34,16 @@ def pretty(exp):
     return exp
 
 
-def number(begin, end, step):
+def number(begin, end, step, func=None):
 
     numbers = []
     begin, end = (begin, end) if begin <= end else (end, begin)
     step = int(step)
 
     while begin <= end:
-        numbers.append(int(begin) if int(begin) == begin else begin)
+        if func(begin):
+            numbers.append(int(begin) if int(begin) == begin else begin)
+
         begin = float(Decimal(str(begin)) + Decimal(str(step)))
 
     return numbers
