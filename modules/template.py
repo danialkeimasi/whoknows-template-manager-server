@@ -376,6 +376,7 @@ class Template:
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
 
+
         self.__template['__test_info']['structure'].update({
             'problems': problems,
             'sections':sections,
@@ -416,6 +417,9 @@ class Template:
             problem_set.append(f'{problem} || count: {problem_list.count(problem)}')
 
         success_percent = success_count / count * 100
+
+        if 'result' not in self.__template['__test_info']['generation']:
+            self.__template['__test_info']['generation']['result'] = []
 
         self.__template['__test_info']['generation']['result'].append({
             'count': count,
