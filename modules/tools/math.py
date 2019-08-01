@@ -5,7 +5,7 @@ from decimal import Decimal
 from math import *
 
 from modules.tools.functions import choose
-from random import randint
+import random
 
 
 """
@@ -34,14 +34,20 @@ def pretty(exp):
     return exp
 
 
-def number(begin, end, step):
+def randint(begin, end, func=None):
+    return choose(number(begin, end, func=func), 0)
+
+
+def number(begin, end, step=1, func=None):
 
     numbers = []
     begin, end = (begin, end) if begin <= end else (end, begin)
     step = int(step)
 
     while begin <= end:
-        numbers.append(int(begin) if int(begin) == begin else begin)
+        if func is None or func(begin):
+            numbers.append(int(begin) if int(begin) == begin else begin)
+
         begin = float(Decimal(str(begin)) + Decimal(str(step)))
 
     return numbers
@@ -94,4 +100,22 @@ def choice_generator(operands, operators, level):
     return choices
 
 
+def divisors(n):
+    if n < 1:
+        return []
+
+    divs = [1, n]
+    for i in range(2, int(pymath.sqrt(n)) + 1):
+        if n % i == 0:
+            divs += [i, n // i]
+
+    return sorted(list(set(divs)))
+
+
+def is_prime(n):
+    return n > 1 and (n == 2 or len(divisors(n)) == 2)
+
+
+def is_composite(n):
+    return n > 1 and not is_prime(n)
 
