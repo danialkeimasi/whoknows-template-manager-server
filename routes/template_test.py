@@ -17,7 +17,6 @@ parser.add_argument(
     type=dict,
     help='you must send the template as a json post',
     required=True,
-    default={}
 )
 
 
