@@ -15,20 +15,22 @@ parser.add_argument(
     type=list,
     location='json',
     help='you must send the "tags" of template as a post json request.',
-    required=True
+    required=False,
+    default=None
 )
 parser.add_argument(
     'count',
     type=int,
     help='you must send the "count" of template as a post json request.',
-    required=True
+    required=False,
+    default=None
 )
 parser.add_argument(
-    'metadata',
+    'query',
     type=dict,
     help='you must send the "metadata" of template as a post json request.',
     required=False,
-    default={}
+    default=None
 )
 
 
@@ -44,17 +46,16 @@ def add(api):
 
         def post(self):
 
-            user_req = json_util.loads(request.data) if json_util.loads(request.data) is not None else {}
-            query = user_req['query'] if 'query' in user_req else None
-            tags = user_req['tags'] if 'tags' in user_req else None
-            ok = user_req['ok'] if 'ok' in user_req else None
-            count = user_req['count'] if 'count' in user_req else None
+            args = parser.parse_args()
+
+            tags = args['tags']
+            count = args['count']
+            query = args['query']
 
             pipeline = []
-            pipeline += [{'$match': query}] if query is not None else []
-            pipeline += [{'$match': {'ok': ok}}] if ok is not None else []
             pipeline += [{'$match': {'tags': {'$in': tags}}}] if tags is not None else []
             pipeline += [{'$limit': count}] if count is not None else []
+            pipeline += [{'$match': query}] if query is not None else []
 
             templates = list(mongo_client.template_manager.templates.aggregate(pipeline))
 
