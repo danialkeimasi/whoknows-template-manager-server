@@ -466,7 +466,6 @@ class Template:
         votes_len = len(self.__template['__test_info']['manual']['votes'])
 
         manual_tes_bool = votes_len >= config.template.min_vote
-
         manual_tes_bool = True # tmp
 
         if not manual_tes_bool:

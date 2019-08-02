@@ -10,6 +10,17 @@ from modules.tools import json_tools
 from pprint import pprint
 
 
+parser = flask_restplus.reqparse.RequestParser()
+
+parser.add_argument(
+    'template',
+    type=dict,
+    help='you must send the template as a json post',
+    required=True,
+    default={}
+)
+
+
 def add(api):
     @api.route('/template/test_save')
     class TemplateTestRoute(flask_restplus.Resource):
@@ -21,35 +32,25 @@ def add(api):
 
         def post(self):
 
-            user_req = json_util.loads(request.data) if json_util.loads(request.data) is not None else {}
-            template = user_req['template'] if 'template' in user_req else {}
+            args = parser.parse_args()
+            template = json_util.loads(args['template'])
 
-            problems = []
-            problems += ['you must send the template as a json post'] if template == {} else []
+            updated_template = Template(template).test_update().dict()
 
-            if problems == []:
+            query = {'_id': template['_id']} if '_id' in template else {}
 
-                updated_template = Template(template).test_update().dict()
-
-                query = {'_id': template['_id']} if '_id' in template else {}
-
-                if query == {}:
-                    update_response = mongo_client.template_manager.templates.insert_one(updated_template)
-                    _id = update_response.inserted_id
-                else:
-                    update_response = mongo_client.template_manager.templates.replace_one(query, updated_template, upsert=True)
-                    _id = template['_id']
-
-                template_updated = mongo_client.template_manager.templates.find_one({'_id': _id})
-                response = {
-                    'ok': update_response.acknowledged,
-                    '_id': _id,
-                    'template': template_updated
-                }
-
+            if query == {}:
+                update_response = mongo_client.template_manager.templates.insert_one(updated_template)
+                _id = update_response.inserted_id
             else:
-                response = {
-                    'ok': False,
-                    'problem': problems,
-                }
+                update_response = mongo_client.template_manager.templates.replace_one(query, updated_template, upsert=True)
+                _id = template['_id']
+
+            template_updated = mongo_client.template_manager.templates.find_one({'_id': _id})
+            response = {
+                'ok': update_response.acknowledged,
+                '_id': _id,
+                'template': template_updated
+            }
+
             return json_tools.to_extended(response)

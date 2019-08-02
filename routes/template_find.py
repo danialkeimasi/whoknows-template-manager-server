@@ -8,6 +8,30 @@ from config.config import mongo_client
 
 from modules.tools import json_tools
 
+
+parser = flask_restplus.reqparse.RequestParser()
+parser.add_argument(
+    'tags',
+    type=list,
+    location='json',
+    help='you must send the "tags" of template as a post json request.',
+    required=True
+)
+parser.add_argument(
+    'count',
+    type=int,
+    help='you must send the "count" of template as a post json request.',
+    required=True
+)
+parser.add_argument(
+    'metadata',
+    type=dict,
+    help='you must send the "metadata" of template as a post json request.',
+    required=False,
+    default={}
+)
+
+
 def add(api):
     @api.route('/template/find')
     class TemplateFindRoute(flask_restplus.Resource):
