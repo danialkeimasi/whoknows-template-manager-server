@@ -33,7 +33,7 @@ def add(api):
         def post(self):
 
             args = parser.parse_args()
-            template = json_util.loads(args['template'])
+            template = json_tools.to_shell_mode(args['template'])
 
             updated_template = Template(template).test_update().dict()
 
