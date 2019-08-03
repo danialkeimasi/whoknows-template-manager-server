@@ -19,7 +19,8 @@ parser.add_argument(
     type=list,
     location='json',
     help='you must send the "tags" of template as a post json request.',
-    required=True
+    required=False,
+    default=None
 )
 parser.add_argument(
     'query',
