@@ -22,6 +22,13 @@ parser.add_argument(
     required=True
 )
 parser.add_argument(
+    'query',
+    type=dict,
+    help='you must send the "metadata" of template as a post json request.',
+    required=False,
+    default=None
+)
+parser.add_argument(
     'count',
     type=int,
     help='you must send the "count" of template as a post json request.',
@@ -34,6 +41,7 @@ parser.add_argument(
     required=False,
     default={}
 )
+
 
 
 def add(api):
@@ -51,14 +59,16 @@ def add(api):
             args = parser.parse_args()
 
             tags = args['tags']
+            query = args['query']
             count = args['count']
             metadata = args['metadata']
 
-            templates = list(mongo_client.template_manager.templates.aggregate([
-                {'$match': {'__state': 'in_use'}},
-                {'$match': {'tags': {'$in': tags}}},
-                {'$sample': {'size': count}},
-            ]))
+            pipeline = []
+            pipeline += [{'$match': {'tags': {'$in': tags}}}] if tags is not None else []
+            pipeline += [{'$sample': {'size': count}}] if count is not None else []
+            pipeline += [{'$match': query}] if query is not None else []
+
+            templates = list(mongo_client.template_manager.templates.aggregate(pipeline))
 
             logger.debug(f'after query for template, number of templates that we found: {len(templates)}')
 
