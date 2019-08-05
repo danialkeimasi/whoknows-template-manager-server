@@ -56,3 +56,11 @@ def test(template):
     template = mongo_client.template_manager.templates.find_one({'_id': ObjectId(template)})
     template_updated_dict = Template(template).test_update().dict()
     pprint(template_updated_dict)
+
+
+@cli.command()
+@click.argument('command', type=str)
+@click.option('--template', '-t', required=True , help="the template oid.")
+def run(command, template):
+    response = Template(template).parse(run_command=command)
+    pprint(response)

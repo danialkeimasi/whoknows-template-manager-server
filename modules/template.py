@@ -65,7 +65,7 @@ class Template:
         """
         return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
-    def parse(self, metadata, bool_answer=True):
+    def parse(self, metadata={}, bool_answer=True, run_command=None):
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
@@ -77,6 +77,8 @@ class Template:
         Returns:
             Template: parsed template, replaced every variable with datasets.
         """
+
+        metadata = self.get_metadata(metadata)
         template = copy.deepcopy(self.__template)
 
         dbs = load_template_datasets(self.__template['datasets'])
@@ -106,6 +108,9 @@ class Template:
                 raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
 
         # template.update({'values': values_dict})
+
+        if run_command:
+            return eval(run_command)
 
         q_type_names = Template(template).get_question_types()
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
@@ -203,19 +208,7 @@ class Template:
             Question: [description]
         """
 
-        default_metadata = {
-            'NOC': 3,
-            'NOS': 4,
-            'NOA': random.randint(1, 4),
-            'level': random.randint(1, 10),
-        }
-
-        input_metadata = copy.deepcopy(metadata)
-        for found_metadata_name in [i for i in default_metadata if i in metadata]:
-            default_metadata.pop(found_metadata_name)
-
-        input_metadata.update(default_metadata)
-        metadata = input_metadata
+        metadata = self.get_metadata(metadata)
 
         question_type = choose(self.get_question_types(), 0) if question_type is None else \
             f'{config.format.question.exist}{question_type}'
@@ -519,6 +512,22 @@ class Template:
         self.__template['__state'] = config.template.states[state_number]
 
         return self
+
+    @staticmethod
+    def get_metadata(metadata):
+        default_metadata = {
+            'NOC': 3,
+            'NOS': 4,
+            'NOA': random.randint(1, 4),
+            'level': random.randint(1, 10),
+        }
+
+        input_metadata = copy.deepcopy(metadata)
+        for found_metadata_name in [i for i in default_metadata if i in metadata]:
+            default_metadata.pop(found_metadata_name)
+
+        input_metadata.update(default_metadata)
+        return input_metadata
 
 
 def load_data(dataset_name):
