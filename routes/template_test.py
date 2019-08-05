@@ -21,7 +21,7 @@ parser.add_argument(
 
 
 def add(api):
-    @api.route('/template/test_save')
+    @api.route('/template/test')
     class TemplateTestRoute(flask_restplus.Resource):
         """
         test the template and update the state

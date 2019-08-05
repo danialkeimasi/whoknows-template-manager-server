@@ -11,3 +11,4 @@ colorlog
 Flask-Cors
 jsonschema
 flask-restplus
+click
