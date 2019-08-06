@@ -64,7 +64,7 @@ def add(api):
             count = args['count']
             metadata = args['metadata']
 
-            pipeline = [{'$match': {'tags': {'$in': tags}}}]
+            pipeline = [{'$match': {'__state': 'in_use'}}]
             pipeline += [{'$match': {'tags': {'$in': tags}}}] if tags is not None else []
             pipeline += [{'$sample': {'size': count}}] if count is not None else []
             pipeline += [{'$match': query}] if query is not None else []
