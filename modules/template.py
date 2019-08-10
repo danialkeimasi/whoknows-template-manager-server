@@ -409,7 +409,7 @@ class Template:
 
             try:
                 question = self.generate_question()
-                mongo_client.template_manager.questions.insert_one(question.dict())
+                question_list.append(question.dict())
                 if question.is_ok():
                     success_count += 1
                 else:
@@ -436,6 +436,9 @@ class Template:
         })
 
         is_ok = (success_percent) >= acceptable_percent
+
+        if is_ok:
+            mongo_client.template_manager.questions.insert_many(question_list)
 
         self.__template['__test_info']['generation'] = {
             'problems': problem_set,
