@@ -168,6 +168,7 @@ class Template:
         question = template[question_type]
 
         question.update({
+            'template_id': template['_id'],
             'type': question_type[len(config.format.question.exist):],
             'tags': template['tags'],
             'usage': template['usage'],
@@ -398,19 +399,21 @@ class Template:
             bool: return True if success_rate reach the goal.
         """
 
-
+        mongo_client.template_manager.questions.remove({'template_id': self.__template['_id']})
         success_count = 0
         acceptable_percent = 75
 
         problem_list = []
+        question_list = []
         for try_count in range(count):
 
             try:
-                ques = self.generate_question()
-                if ques.is_ok():
+                question = self.generate_question()
+                mongo_client.template_manager.questions.insert_one(question.dict())
+                if question.is_ok():
                     success_count += 1
                 else:
-                    raise TypeError(f"question error: {ques.problems()}")
+                    raise TypeError(f"question error: {question.problems()}")
 
             except Exception as e:
                 error_message = traceback_shortener(traceback.format_exc())
