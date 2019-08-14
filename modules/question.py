@@ -70,7 +70,8 @@ class Question:
             problems.append('there is no "type" field in question')
 
         q_type = question['type']
-        q_field_required = [q_field for q_field in self.__template_formatter[f'{config.format.question.exist}{q_type}'] if self.__template_formatter[f'{config.format.question.exist}{q_type}'][q_field]]
+        q_field_required = [q_field for q_field in self.__template_formatter[f'{config.format.question.exist}{q_type}']
+                            if self.__template_formatter[f'{config.format.question.exist}{q_type}'][q_field]]
         not_found_field = list(set(q_field_required) - set(question.keys()))
 
         if not_found_field != []:
@@ -80,34 +81,38 @@ class Question:
             if item in question:
                 for typ in question[item]:
                     if not all([typ == find_format(value)] for value in question[item][typ]):
-                        problems.append(f'there is a bad format (use other some type of data in the wrong place) in the {item}')
+                        problems.append(
+                            f'there is a bad format (use other some type of data in the wrong place) in the {item}')
 
         if metadata:
             if q_type == 'choose':
 
                 for item in ['choice', 'answer']:
-                    if not(item in question):
+                    if not (item in question):
                         question[item] = None
                         problems.append(f'there is no {item} in question with type of choose')
 
                 choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
                 answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
-                if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (choice_lengths[0] - answer_lengths[0] == metadata['NOC'])):
-                    problems.append(f'{choice_lengths}, {answer_lengths} NOC: {metadata["NOC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
+                if not ((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (
+                        choice_lengths[0] - answer_lengths[0] == metadata['NOC'])):
+                    problems.append(
+                        f'{choice_lengths}, {answer_lengths} NOC: {metadata["NOC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
 
             elif q_type == 'select':
 
                 for item in ['choice', 'answer']:
-                    if not(item in question):
+                    if not (item in question):
                         question[item] = None
                         problems.append(f'there is no {item} in question with type of select')
 
                 choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
                 answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
 
-                if not((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (answer_lengths[0] == metadata['NOA'])):
-                        problems.append(f'{choice_lengths}, {answer_lengths} NOA: {metadata["NOA"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
-
+                if not ((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (
+                        answer_lengths[0] == metadata['NOA'])):
+                    problems.append(
+                        f'{choice_lengths}, {answer_lengths} NOA: {metadata["NOA"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
 
         self.__problems += problems
         return problems != []

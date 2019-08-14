@@ -39,12 +39,11 @@ class Template:
     __empty_template = json.load(open(config.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
 
-
     def __init__(self, inp, mode='dict'):
 
         self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
-                          inp                                   if mode == 'dict' else \
-                          None
+            inp if mode == 'dict' else \
+                None
 
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
@@ -128,7 +127,7 @@ class Template:
 
                             except Exception as e:
                                 raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
-                                    "['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
+                                              "['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
 
                         else:
                             while re.search(reg_str, raw_str):
@@ -137,7 +136,7 @@ class Template:
                                     eval_result = eval(exp)
                                 except Exception as e:
                                     raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
-                                        "['{q_property_format_name}'][{i}]: `{exp}`: {e}") from e
+                                                  "['{q_property_format_name}'][{i}]: `{exp}`: {e}") from e
 
                                 # TODO: check if eval_result is list or not, its true if eval_result is not list
 
@@ -180,7 +179,7 @@ class Template:
             if question['title'][type] != []:
                 question['title'][type] = choose(
                     [t for i, t in enumerate(question['title'][type])
-                        if i % 2 == int(bool_answer)],
+                     if i % 2 == int(bool_answer)],
                 ) if len(question['title'][type]) > 1 else question['title'][type]
 
         if question['type'] == 'bool':
@@ -256,7 +255,7 @@ class Template:
 
         acceptance_bool = votes_len >= config.template.min_vote
 
-        acceptance_bool = True # tmp
+        acceptance_bool = True  # tmp
 
         if not acceptance_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
@@ -288,7 +287,7 @@ class Template:
         not_found_datasets = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
 
         datasets_list = found_datasets + \
-            [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
+                        [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
 
         for ds in datasets_list:
             if not ds['ok'] and ds['headers']['state'] == 'null':
@@ -334,7 +333,6 @@ class Template:
 
             return False
 
-
     def __test_structure(self):
         """ check's the format of template.
 
@@ -344,11 +342,11 @@ class Template:
 
         test_bool = True
         sections = []
-        template_consts = ['usage', 'values', 'datasets',  'tags', '__state', '__test_info', '__idea']
+        template_consts = ['usage', 'values', 'datasets', 'tags', '__state', '__test_info', '__idea']
 
         for key in template_consts:
             if key in self.__template:
-                sections.append({'name': key, 'ok': True, 'problem':[]})
+                sections.append({'name': key, 'ok': True, 'problem': []})
             else:
                 test_bool = False if test_bool else test_bool
                 sections.append({'name': key, 'ok': False,
@@ -368,8 +366,8 @@ class Template:
                     problems.append(f'there is an undefined field in "{q_type}" question in template: {q_prop}')
 
             q_prop_requires_list = [item for item in
-                              set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
-                              if self.__template_formatter[q_type][item]]
+                                    set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
+                                    if self.__template_formatter[q_type][item]]
 
             if q_prop_requires_list:
                 problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
@@ -381,7 +379,6 @@ class Template:
         for sec in sections:
             problems += sec['problems'] if 'problems' in sec else []
 
-
         self.__template['__test_info']['structure'] = {
             'problems': problems,
             'sections': sections,
@@ -389,7 +386,7 @@ class Template:
         }
         return test_bool
 
-    def __test_generation(self, count = 50):
+    def __test_generation(self, count=50):
         """ test the template by generate a number of question
 
         Args:
@@ -448,7 +445,6 @@ class Template:
 
         return is_ok
 
-
     def __test_manual(self):
         """ test the generated questions by a human and vote if its ok
 
@@ -466,7 +462,7 @@ class Template:
         votes_len = len(self.__template['__test_info']['manual']['votes'])
 
         manual_tes_bool = votes_len >= config.template.min_vote
-        manual_tes_bool = True # tmp
+        manual_tes_bool = True  # tmp
 
         if not manual_tes_bool:
             problems.append(f"there was {votes_len} voted, it's not enough!")
@@ -477,7 +473,6 @@ class Template:
         }
 
         return manual_tes_bool
-
 
     def __test_usage_tagging(self):
         problems = []
@@ -495,21 +490,20 @@ class Template:
 
         return usage_test_bool
 
-
     def test_update(self):
 
         tests = config.template.tests
         self.__template['__state'] = config.template.states[0]
 
         for test_name in self.__template['__test_info']:
-            self.__template['__test_info'][test_name].update({'ok': False, 'problems':[]})
+            self.__template['__test_info'][test_name].update({'ok': False, 'problems': []})
 
         state_number = 0
         test_functions = []
 
         for state in config.template.states[1:]:
 
-            test_functions = { t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
+            test_functions = {t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
             if not all(test_functions.values()):
                 break
             else:
@@ -538,7 +532,6 @@ class Template:
 
 
 def load_data(dataset_name):
-
     """ Load one dataset and returns it
 
     Args:
