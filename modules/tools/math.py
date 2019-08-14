@@ -1,12 +1,9 @@
-import math as pymath
 import itertools
-
+import math as pymath
 from decimal import Decimal
 from math import *
 
 from modules.tools.functions import choose
-import random
-
 
 """
 ['acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign',
@@ -22,7 +19,6 @@ def expression(operands, operators):
 
 
 def pretty(exp):
-
     operators = {
         '*': '×',
         '/': '÷'
@@ -39,7 +35,6 @@ def randint(begin, end, func=None):
 
 
 def number(begin, end, step=1, func=None):
-
     numbers = []
     begin, end = (begin, end) if begin <= end else (end, begin)
     step = int(step)
@@ -54,7 +49,6 @@ def number(begin, end, step=1, func=None):
 
 
 def calc(exp):
-
     operators = {
         '×': '*',
         '÷': '/'
@@ -68,7 +62,6 @@ def calc(exp):
 
 
 def guess_operand(num, level):
-
     r = max(5, int(num // pymath.log(pymath.fabs(num) + 2, 2)))
     operand_range = number(float(Decimal(str(num)) - Decimal(str(r))), float(Decimal(str(num)) + Decimal(str(r))), 1)
     operand_range = list(set(operand_range))
@@ -95,7 +88,7 @@ def choice_generator(operands, operators, level):
 
     part = 10 - level
     r = len(choices) // 11 * part
-    choices = choices[ r :  r + 10]
+    choices = choices[r:  r + 10]
 
     return choices
 
@@ -118,4 +111,3 @@ def is_prime(n):
 
 def is_composite(n):
     return n > 1 and not is_prime(n)
-

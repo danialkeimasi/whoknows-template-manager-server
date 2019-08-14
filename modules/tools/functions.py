@@ -1,6 +1,7 @@
-import random
 import os
+import random
 import re
+
 from config.config import config
 
 
@@ -64,7 +65,6 @@ def to_list(data):
 
 
 def traceback_shortener(long_error):
-
     error_list = [trace.strip() for trace in long_error.strip().split('\n')[1::]]
     # return error_list[-1]
 
@@ -106,4 +106,3 @@ def find_format(val):
 
 def generate(data, count):
     return [choose(data, 0) for i in range(count)]
-

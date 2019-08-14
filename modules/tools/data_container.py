@@ -1,5 +1,4 @@
 import itertools
-
 from collections.abc import Iterable
 
 from config.config import logger
