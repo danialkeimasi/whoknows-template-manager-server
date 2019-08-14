@@ -398,8 +398,9 @@ class Template:
         Returns:
             bool: return True if success_rate reach the goal.
         """
+        if '_id' in self.__template:
+            mongo_client.template_manager.questions.remove({'template_id': self.__template['_id']})
 
-        mongo_client.template_manager.questions.remove({'template_id': self.__template['_id']})
         success_count = 0
         acceptable_percent = 75
 
