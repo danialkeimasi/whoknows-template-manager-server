@@ -1,22 +1,18 @@
+import json
 import copy
 import json
-import os
-import traceback
 import random
 import re
+import traceback
 
-import pandas as pd
 import jsonschema
+import pandas as pd
 
-from config.config import logger, mongo_client, ListHandler, config
+from config.config import logger, mongo_client, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate
 from modules.tools import math
-from bson import json_util
-from pprint import pprint
-import copy
-
 
 class Template:
     """ a simple class that implemented to work with a json_type question template.
