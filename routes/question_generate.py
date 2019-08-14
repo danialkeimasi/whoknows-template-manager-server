@@ -1,9 +1,7 @@
-import flask_restplus
-from flask_restplus import fields, inputs
-from werkzeug import datastructures
-import json
 import traceback
-from flask import json, request
+
+import flask_restplus
+from flask import json
 
 from config.config import mongo_client, logger, config
 from modules.template import Template
@@ -11,7 +9,6 @@ from modules.tools import json_tools
 from modules.tools.functions import traceback_shortener
 
 questions_sample = json.load(open(config.dir.sample_questions, encoding='utf-8'))
-
 
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(
@@ -42,7 +39,6 @@ parser.add_argument(
     required=False,
     default={}
 )
-
 
 
 def add(api):
@@ -79,7 +75,8 @@ def add(api):
             while (len(questions) < count) and (i < count * try_count):
                 for _ in range(try_count):
                     try:
-                        questions.append(Template(templates[i % len(templates)]).generate_question(metadata=metadata).raise_if_problems().dict())
+                        questions.append(Template(templates[i % len(templates)]).generate_question(
+                            metadata=metadata).raise_if_problems().dict())
                         break
                     except Exception as e:
                         error_message = traceback_shortener(traceback.format_exc())

@@ -1,9 +1,7 @@
 import flask_restplus
-from bson import json_util
-from flask import json, request
+from flask import json
 
 from config.config import config, mongo_client
-
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -26,7 +24,6 @@ def add(api):
         """
 
         def post(self):
-
             args = parser.parse_args()
 
             idea = args['idea']

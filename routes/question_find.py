@@ -1,13 +1,8 @@
 import flask_restplus
 
-from bson import json_util
-from flask import json, request
-
-from flask_restful import reqparse, Api, Resource
 from config.config import mongo_client
 
 from modules.tools import json_tools
-
 
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(
@@ -37,7 +32,6 @@ def add(api):
         """
 
         def post(self):
-
             args = parser.parse_args()
 
             count = args['count']

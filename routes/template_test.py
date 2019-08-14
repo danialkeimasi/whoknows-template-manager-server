@@ -1,14 +1,11 @@
 import flask_restplus
-from bson import json_util
 from flask import json, request
 
 from config.config import mongo_client
 from modules.template import Template
-from flask_restful import reqparse, Api, Resource
 
 from modules.tools import json_tools
 from pprint import pprint
-
 
 parser = flask_restplus.reqparse.RequestParser()
 
@@ -42,7 +39,8 @@ def add(api):
                 update_response = mongo_client.template_manager.templates.insert_one(updated_template)
                 _id = update_response.inserted_id
             else:
-                update_response = mongo_client.template_manager.templates.replace_one(query, updated_template, upsert=True)
+                update_response = mongo_client.template_manager.templates.replace_one(query, updated_template,
+                                                                                      upsert=True)
                 _id = template['_id']
 
             template_updated = mongo_client.template_manager.templates.find_one({'_id': _id})
