@@ -49,8 +49,8 @@ def add(api):
 
             response_list = []
             for dataset_name in set(dataset_names):
+                dataset = list(mongo_client.data[dataset_name].find())
                 if len(dataset) != 0:
-                    dataset = list(mongo_client.data[dataset_name].find())
                     if not os.path.isdir(f'{dataset_dir}'):
                         os.mkdir(f'{dataset_dir}')
 
