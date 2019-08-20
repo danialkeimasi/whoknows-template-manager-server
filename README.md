@@ -15,12 +15,12 @@ Setting up is simple, just follow these steps.
     
     2. Clone the repository:
         ```sh
-        git clone https://github.com/danialkeimasi/whoknows-template-manager
+        git clone http://89.32.250.57/danial/template-manager-server.git
         ```
     
     3. Go to repository folder:
         ```sh
-        cd whoknows-template-manager
+        cd template-manager-server
         ```
     
     4. Install dependencies:
@@ -37,22 +37,22 @@ Setting up is simple, just follow these steps.
     
     1. Clone the repository:
         ```sh
-        git clone https://github.com/danialkeimasi/whoknows-template-manager
+        git clone http://89.32.250.57/danial/template-manager-server.git
         ```
     
     2. Go to repository folder:
         ```sh
-        cd whoknows-template-manager
+        cd template-manager-server
         ```
     
     3. Build image from dockerfile:
         ```sh
-        docker build . -t whoknows-template-manager
+        docker build . -t template-manager-server
         ```
     
     4. Run docker image:
         ```sh
-        docker run -it whoknows-template-manager
+        docker run -it template-manager-server
         ```
 
 ## :mag: What it does?
