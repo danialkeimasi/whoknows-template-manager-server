@@ -21,6 +21,14 @@ from bson.objectid import ObjectId
 from modules.template import Template
 
 
+app = Flask(__name__)
+api = Api(app)
+CORS(app)
+
+for file in [basename(path).split('.')[0] for path in glob('./routes/*.py') if not basename(path).startswith('__')]:
+    import_module(f'routes.{file}').add(api)
+
+
 @click.group()
 def cli():
     pass
@@ -32,12 +40,6 @@ def cli():
 @click.option('--debug', '-d', default=False, is_flag=True, help="flask debug mode.")
 def runserver(host, port, debug):
     global app
-    app = Flask(__name__)
-    api = Api(app)
-    CORS(app)
-
-    for file in [basename(path).split('.')[0] for path in glob('./routes/*.py') if not basename(path).startswith('__')]:
-        import_module(f'routes.{file}').add(api)
 
     app.run(debug=debug, host=host, port=port)
 
