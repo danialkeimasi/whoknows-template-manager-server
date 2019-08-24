@@ -31,7 +31,7 @@ def cli():
 @click.option('--port', '-p', default="3001", help="the port that you want to run the server.")
 @click.option('--debug', '-d', default=False, is_flag=True, help="flask debug mode.")
 def runserver(host, port, debug):
-
+    global app
     app = Flask(__name__)
     api = Api(app)
     CORS(app)
