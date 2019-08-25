@@ -44,7 +44,7 @@ class Template:
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
 
-    def dict(self):
+    def dict(self) -> dict:
         """ returns question template as a dict object.
 
         Returns:
@@ -52,7 +52,7 @@ class Template:
         """
         return self.__template
 
-    def get_question_types(self):
+    def get_question_types(self) -> list:
         """ get all the question types that can make with the template.
 
         Returns:
@@ -60,7 +60,7 @@ class Template:
         """
         return [key for key in self.__template.keys() if key.startswith(config.format.question.exist)]
 
-    def parse(self, metadata={}, bool_answer=True, run_command=None):
+    def parse(self, metadata: dict = {}, bool_answer: bool = True, run_command: str = ''):
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
@@ -144,7 +144,7 @@ class Template:
         # free_template_datasets(self.__template['datasets'])
         return Template(template)
 
-    def get_question(self, bool_answer, question_type, format):
+    def get_question(self, bool_answer: bool, question_type: str, format: str) -> Question:
         """
         change a template structure to the question structure.
         we do it after parsing a template.
@@ -189,7 +189,7 @@ class Template:
         question['metadata'] = template['metadata'] if 'metadata' in template else None
         return Question(question)
 
-    def generate_question(self, metadata={}, question_type=None, format={}):
+    def generate_question(self, metadata: dict = {}, question_type: str = '', format: dict = {}) -> Question:
         """ generate question by this template.
 
         this function executed on a given template,
@@ -206,7 +206,7 @@ class Template:
 
         metadata = self.get_metadata(metadata)
 
-        question_type = choose(self.get_question_types(), 0) if question_type is None else \
+        question_type = choose(self.get_question_types(), 0) if not question_type else \
             f'{config.format.question.exist}{question_type}'
 
         bool_answer = rand([True, False])
@@ -216,7 +216,7 @@ class Template:
 
         return question_object
 
-    def __test_duplication(self):
+    def __test_duplication(self) -> bool:
         """ finds duplicate templates that we found in the database.
 
         Returns:
@@ -232,7 +232,7 @@ class Template:
 
         return is_ok
 
-    def __test_acceptance(self):
+    def __test_acceptance(self) -> bool:
         """ check acceptance of the idea.
 
         Returns:
@@ -263,7 +263,7 @@ class Template:
 
         return acceptance_bool
 
-    def __test_data(self):
+    def __test_data(self) -> bool:
         """ check if necessary databases for this template is exist.
 
         Returns:
@@ -303,7 +303,7 @@ class Template:
 
         return is_ok
 
-    def __test_schema(self):
+    def __test_schema(self) -> bool:
         """ schema test for template that proves structure of template.
 
         Returns:
@@ -329,7 +329,7 @@ class Template:
 
             return False
 
-    def __test_structure(self):
+    def __test_structure(self) -> bool:
         """ check's the format of template.
 
         Returns:
@@ -382,7 +382,7 @@ class Template:
         }
         return test_bool
 
-    def __test_generation(self, count=50):
+    def __test_generation(self, count: int = 50) -> bool:
         """ test the template by generate a number of question
 
         Args:
@@ -441,7 +441,7 @@ class Template:
 
         return is_ok
 
-    def __test_manual(self):
+    def __test_manual(self) -> bool:
         """ test the generated questions by a human and vote if its ok
 
         Returns:
@@ -470,7 +470,7 @@ class Template:
 
         return manual_tes_bool
 
-    def __test_usage_tagging(self):
+    def __test_usage_tagging(self) -> bool:
         problems = []
 
         usage_list = self.__template['usage']
@@ -511,7 +511,7 @@ class Template:
         return self
 
     @staticmethod
-    def get_metadata(metadata):
+    def get_metadata(metadata: dict) -> dict:
         default_metadata = {
             'NOC': 3,
             'NOS': 4,
@@ -527,7 +527,7 @@ class Template:
         return input_metadata
 
 
-def load_data(dataset_name):
+def load_data(dataset_name: str) -> pd.DataFrame:
     """ Load one dataset and returns it
 
     Args:
@@ -551,7 +551,7 @@ def load_data(dataset_name):
     return data
 
 
-def load_template_datasets(necesery_datasets):
+def load_template_datasets(necesery_datasets: list) -> list:
     """ load the datasets that given one by one.
 
     Args:
@@ -570,7 +570,7 @@ def load_template_datasets(necesery_datasets):
     return dbs
 
 
-def free_template_datasets(datasets):
+def free_template_datasets(datasets: list) -> None:
     """ free the datasts from ram
 
     Args:
