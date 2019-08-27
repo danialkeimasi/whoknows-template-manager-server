@@ -22,7 +22,7 @@ class Question:
         self.__problems = []
         self.test_question()
 
-    def dict(self):
+    def dict(self) -> dict:
         """ get the question as dict
 
         Returns:
@@ -30,7 +30,7 @@ class Question:
         """
         return self.__question
 
-    def problems(self):
+    def problems(self) -> list:
         """ question problems
 
         Returns:
@@ -38,7 +38,7 @@ class Question:
         """
         return self.__problems
 
-    def is_ok(self):
+    def is_ok(self) -> bool:
         """ check if question is ok
 
         Returns:
@@ -56,7 +56,7 @@ class Question:
             raise TypeError(f"question error: {self.problems()}")
         return self
 
-    def __test_structure(self):
+    def __test_structure(self) -> bool:
         """ test the structure of template
 
         Returns:
