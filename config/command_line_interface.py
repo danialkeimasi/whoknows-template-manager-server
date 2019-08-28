@@ -68,11 +68,3 @@ def run(command, template):
     template = mongo_client.template_manager.templates.find_one({'_id': ObjectId(template)})
     response = Template(template).parse(run_command=command)
     pprint(response)
-
-
-@cli.command()
-def runtest():
-    print('ppppooooo')
-    for file in [basename(path).split('.')[0] for path in glob('./test/*.py') if not basename(path).startswith('__')]:
-        import_module(f'test.{file}').main()
-
