@@ -8,7 +8,6 @@ from pprint import pprint
 from modules.template import Template
 from config.config import mongo_client, logger
 
-
 from importlib import import_module
 from os.path import basename
 from glob import glob

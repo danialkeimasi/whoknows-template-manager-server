@@ -1,6 +1,6 @@
 import os
-import random
 import re
+import random
 
 from config.config import config
 
