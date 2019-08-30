@@ -77,10 +77,14 @@ def add(api):
                     try:
                         questions.append(Template(templates[i % len(templates)]).generate_question(
                             metadata=metadata).raise_if_problems().dict())
-                        break
+
                     except Exception as e:
                         error_message = traceback_shortener(traceback.format_exc())
                         logger.error(f'failed in generate question => {error_message}')
+
+                    else:
+                        break
+
                 else:
                     # TODO: do some report for this template to the database
                     pass

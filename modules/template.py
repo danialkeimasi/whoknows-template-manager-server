@@ -18,9 +18,7 @@ class Template:
     """ a simple class that implemented to work with a json_type question template.
 
     Args:
-        inp (dict): the question template in a dict.
-        inp (str): the file address of template.
-        mode (str): its specified the "inp" arg and can be 'file_address' or 'dict'.
+        template_dict (dict): the question template in a dict.
 
     Attributes:
         __template_formatter (dict): a formater that explaines required parts of template. used in __test_structure().
@@ -35,11 +33,9 @@ class Template:
     __empty_template = json.load(open(config.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(config.dir.template_schema)))
 
-    def __init__(self, inp, mode='dict'):
+    def __init__(self, template_dict: dict):
 
-        self.__template = json.load(open(inp, encoding='utf8')) if mode == 'file' else \
-            inp if mode == 'dict' else \
-                None
+        self.__template = template_dict
 
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
@@ -82,7 +78,6 @@ class Template:
 
         template['metadata'] = metadata
 
-        problems = []
         val = DataContainer()
         setattr(val, 'bool_answer', bool_answer)
 
@@ -96,11 +91,13 @@ class Template:
 
             try:
                 eval_result = eval(value)
-                # values_dict.update({key: eval_result})
-                setattr(val, key, eval_result)
 
             except Exception as e:
                 raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
+
+            else:
+                # values_dict.update({key: eval_result})
+                setattr(val, key, eval_result)
 
         # template.update({'values': values_dict})
 
@@ -141,10 +138,9 @@ class Template:
 
                             template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
 
-        # free_template_datasets(self.__template['datasets'])
         return Template(template)
 
-    def get_question(self, bool_answer: bool, question_type: str, format: str) -> Question:
+    def get_question(self, bool_answer: bool, question_type: str, question_format: str) -> Question:
         """
         change a template structure to the question structure.
         we do it after parsing a template.
@@ -153,7 +149,7 @@ class Template:
         Args:
             bool_answer (bool): a randomly generated boolean that use for bool question_type.
             question_type (str): question type that we want.
-            format (str): format of title and choices. range of text, photo, audio, video.
+            question_format (str): format of title and choices. can be text, photo, audio, video.
 
         Returns:
             Question: generated question.
@@ -167,16 +163,15 @@ class Template:
             'type': question_type[len(config.format.question.exist):],
             'tags': template['tags'],
             'usage': template['usage'],
-            # 'values': template['values'],
             'datasets': template['datasets'],
+            # 'values': template['values'],
         })
 
-        for type in question['title']:
-            if question['title'][type] != []:
-                question['title'][type] = choose(
-                    [t for i, t in enumerate(question['title'][type])
-                     if i % 2 == int(bool_answer)],
-                ) if len(question['title'][type]) > 1 else question['title'][type]
+        for type_ in question['title']:
+            if question['title'][type_] != []:
+                question['title'][type_] = choose(
+                    [t for i, t in enumerate(question['title'][type_]) if i % 2 == int(bool_answer)],
+                ) if len(question['title'][type_]) > 1 else question['title'][type_]
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
@@ -189,7 +184,7 @@ class Template:
         question['metadata'] = template['metadata'] if 'metadata' in template else None
         return Question(question)
 
-    def generate_question(self, metadata: dict = {}, question_type: str = '', format: dict = {}) -> Question:
+    def generate_question(self, metadata: dict = {}, question_type: str = '', question_format: dict = {}) -> Question:
         """ generate question by this template.
 
         this function executed on a given template,
@@ -198,21 +193,19 @@ class Template:
         Args:
             metadata (dict, optional): necessery data for creating question from template. Defaults to {}.
             question_type ([type], optional): exact question_type that we want. Defaults to None.
-            format (dict, optional): format of title and choices. range of text, photo, audio, video. Defaults to {}.
+            question_format (dict, optional): format of title and choices. range of text, photo, audio, video. Defaults to {}.
 
         Returns:
             Question: [description]
         """
 
+        bool_answer = rand([True, False])
         metadata = self.get_metadata(metadata)
-
         question_type = choose(self.get_question_types(), 0) if not question_type else \
             f'{config.format.question.exist}{question_type}'
 
-        bool_answer = rand([True, False])
-
-        parsed_template = self.parse(metadata=metadata, bool_answer=bool_answer)
-        question_object = parsed_template.get_question(bool_answer, question_type, format)
+        question_object = self.parse(metadata=metadata, bool_answer=bool_answer)
+                              .get_question(bool_answer=bool_answer, question_type, question_format)
 
         return question_object
 
@@ -250,7 +243,6 @@ class Template:
         votes_len = len(self.__template['__test_info']['acceptance']['votes'])
 
         acceptance_bool = votes_len >= config.template.min_vote
-
         acceptance_bool = True  # tmp
 
         if not acceptance_bool:
@@ -281,7 +273,6 @@ class Template:
         ]))
 
         not_found_datasets = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
-
         datasets_list = found_datasets + \
                         [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
 
@@ -312,10 +303,8 @@ class Template:
 
         try:
             self.__schema_validator.validate(self.__template)
-            return True
 
         except Exception as error:
-
             error_message = traceback_shortener(traceback.format_exc())
 
             if 'structure' not in self.__template['__test_info']:
@@ -328,6 +317,8 @@ class Template:
             self.__template['__test_info']['structure']['ok'] = False
 
             return False
+        else:
+            return True
 
     def __test_structure(self) -> bool:
         """ check's the format of template.
@@ -404,6 +395,7 @@ class Template:
             try:
                 question = self.generate_question()
                 question_list.append(question.dict())
+
                 if question.is_ok():
                     success_count += 1
                 else:
@@ -540,13 +532,17 @@ def load_data(dataset_name: str) -> pd.DataFrame:
     data = pd.DataFrame()
 
     for try_count in range(5):
+
         try:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
             data = pd.DataFrame(json.load(open(f'{config.dir.dataset}/{dataset_name}db.json', encoding='utf-8')))
             logger.info(f'loading {dataset_name} dataset is done.')
-            break
+
         except Exception as error:
             logger.error(f'could not open dataset {dataset_name} from {config.dir.dataset} directory because {error}')
+
+        else:
+            break
 
     return data
 
@@ -568,16 +564,3 @@ def load_template_datasets(necesery_datasets: list) -> list:
         dbs[db] = load_data(db)
 
     return dbs
-
-
-def free_template_datasets(datasets: list) -> None:
-    """ free the datasts from ram
-
-    Args:
-        datasets (list): dataset list.
-    """
-
-    logger.debug(f'free: {datasets}')
-
-    for db in datasets:
-        globals().pop(db)
