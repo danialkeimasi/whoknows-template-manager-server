@@ -11,7 +11,7 @@ import pandas as pd
 from config.config import logger, mongo_client, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
-from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate
+from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict
 from modules.tools import math
 
 class Template:
@@ -104,7 +104,7 @@ class Template:
         if run_command:
             return eval(run_command)
 
-        q_type_names = Template(template).get_question_types()
+        q_type_names = self.get_question_types()
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
 
         for q_type_name in q_type_names:
