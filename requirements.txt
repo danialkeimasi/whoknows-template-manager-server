@@ -12,3 +12,4 @@ Flask-Cors
 jsonschema
 flask-restplus
 click
+pytest
