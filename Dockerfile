@@ -10,4 +10,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD python3 app.py runserver --debug
+CMD python3 app.py runserver
