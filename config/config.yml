@@ -8,7 +8,7 @@ dir:
   templates: ./templates/main
   questions: ./modules
   result: ./template_engine/result
-  dataset: ../datasets
+  dataset: ./datasets
   empty_template: ./config/samples/empty_template.json
   template_schema: ./config/samples/template_schema.json
   template_formatter: ./config/samples/template_formatter.json
