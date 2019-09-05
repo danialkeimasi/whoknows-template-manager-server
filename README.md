@@ -68,11 +68,11 @@ Template manager implements functionality for the followings concepts:
 ## :question: How to use?
 - ### API Documentation
 
-1. [question generate](documents/routes/question_generate.md)
-2. [template edit](documents/routes/template_edit.md)
-3. [template find](documents/routes/template_find.md)
-4. [template new](documents/routes/template_new.md)
-5. [template test](documents/routes/template_test.md)
+1. [question generate](docs/routes/question_generate.md)
+2. [template edit](docs/routes/template_edit.md)
+3. [template find](docs/routes/template_find.md)
+4. [template new](docs/routes/template_new.md)
+5. [template test](docs/routes/template_test.md)
   
 - ### Templates Documentation
     1. you can read about templates and learn how to write a template [here](templates/).

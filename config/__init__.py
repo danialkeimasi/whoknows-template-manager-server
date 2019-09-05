@@ -4,8 +4,6 @@ import yaml
 import attrdict
 
 from pymongo import MongoClient
-from log4mongo.handlers import MongoHandler
-from pprint import pprint
 
 with open("./config/settings.yml", 'r') as yamlfileobj:
     config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
@@ -21,9 +19,6 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler(f'{config.dir.project}/config/last_run.log', mode='w+', encoding='utf8', delay=0),
         stream_handler,
-        # MongoHandler(host=config.mongo.ip, port=config.mongo.port,
-        #              username=config.mongo.username, password=config.mongo.password,
-        #              authentication_db=config.mongo.authentication_db, database_name='template_manager', collection='log'),
     ]
 )
 logger = logging.getLogger('TemplateEngine')
