@@ -13,3 +13,4 @@ jsonschema
 flask-restplus
 click
 pytest
+gunicorn

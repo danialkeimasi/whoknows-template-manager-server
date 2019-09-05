@@ -10,4 +10,5 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD python3 app.py runserver
+CMD gunicorn -c config/gunicorn.py app:app
+# CMD python3 app.py runserver
