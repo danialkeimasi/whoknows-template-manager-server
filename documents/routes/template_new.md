@@ -1,6 +1,6 @@
 # Template new
 
-add a new template by given idea
+add a new template by given name
 
 * #### URL
 
@@ -14,7 +14,7 @@ add a new template by given idea
 
      **Required:**
  
-   `idea=string`
+   `name=string`
 
 * #### Success Response:
 

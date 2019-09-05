@@ -6,9 +6,9 @@ from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(
-    'idea',
+    'name',
     type=str,
-    help='you must send the "idea" of template as a post json request.',
+    help='you must send the "name" of template as a post json request.',
     required=True
 )
 
@@ -26,10 +26,10 @@ def add(api):
         def post(self):
             args = parser.parse_args()
 
-            idea = args['idea']
+            name = args['name']
 
             empty_template = json.load(open(config.dir.empty_template))
-            empty_template['__idea'] = idea
+            empty_template['__name'] = name
 
             insert_object = mongo_client.template_manager.templates.insert_one(empty_template)
 

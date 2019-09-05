@@ -226,7 +226,7 @@ class Template:
         return is_ok
 
     def __test_acceptance(self) -> bool:
-        """ check acceptance of the idea.
+        """ check acceptance of the name.
 
         Returns:
             bool: return True if votes in this template reach the goal.
@@ -329,7 +329,7 @@ class Template:
 
         test_bool = True
         sections = []
-        template_consts = ['usage', 'values', 'datasets', 'tags', '__state', '__test_info', '__idea']
+        template_consts = ['usage', 'values', 'datasets', 'tags', '__state', '__test_info', '__name']
 
         for key in template_consts:
             if key in self.__template:
