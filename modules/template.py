@@ -272,9 +272,9 @@ class Template:
                           'ok': {'$eq': ["$headers.state", 'in_use']}}}
         ]))
 
-        not_found_datasets = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
+        not_found_tags = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
         datasets_list = found_datasets + \
-                        [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_datasets]
+                        [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_tags]
 
         for ds in datasets_list:
             if not ds['ok'] and ds['headers']['state'] == 'null':
@@ -288,6 +288,41 @@ class Template:
 
         self.__template['__test_info']['data'] = {
             'datasets': datasets_list,
+            'problems': problems,
+            'ok': is_ok,
+        }
+
+        return is_ok
+
+
+    def __test_tags(self) -> bool:
+        """ check if tags is valid for this template.
+
+        Returns:
+            bool: return True if we have all tags in valid tags.
+        """
+
+        problems = []
+
+        template_tags = self.__template['tags']
+
+        allowed_tags = mongo_client.main_server.tags.find()
+        allowed_tags = [tag['title'] for tag in allowed_tags] + [tag['persianTitle'] for tag in allowed_tags]
+
+        tags = []
+        for tag in template_tags:
+            tags.append({
+                'name': tag,
+                'ok': tag in allowed_tags
+            })
+
+            if not tag in allowed_tags:
+                problems.append(f'this tag is not allowed: {tag}.')
+
+        is_ok = all([tag['ok'] for tag in tags])
+
+        self.__template['__test_info']['tags'] = {
+            'datasets': tags,
             'problems': problems,
             'ok': is_ok,
         }

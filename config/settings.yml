@@ -55,6 +55,7 @@ template:
       required:
         - duplication
         - acceptance
+        - tags
         - data
 
     repair:
