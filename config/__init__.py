@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from log4mongo.handlers import MongoHandler
 from pprint import pprint
 
-with open("./config/config.yml", 'r') as yamlfileobj:
+with open("./config/settings.yml", 'r') as yamlfileobj:
     config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
 stream_handler = colorlog.StreamHandler()
