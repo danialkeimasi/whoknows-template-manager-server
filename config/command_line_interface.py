@@ -6,7 +6,7 @@ import unittest
 
 from pprint import pprint
 from modules.template import Template
-from config.config import mongo_client, logger
+from config import mongo_client, logger
 
 from importlib import import_module
 from os.path import basename
@@ -16,7 +16,6 @@ from flask import Flask
 from flask_cors import CORS
 from flask_restplus import Api
 
-from config.config import mongo_client
 from bson.objectid import ObjectId
 from modules.template import Template
 

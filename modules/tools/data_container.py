@@ -1,7 +1,7 @@
 import itertools
 from collections.abc import Iterable
 
-from config.config import logger
+from config import logger
 from modules.tools.functions import choose
 
 

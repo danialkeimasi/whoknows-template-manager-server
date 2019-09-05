@@ -1,7 +1,7 @@
 import flask_restplus
 from flask import json, request
 
-from config.config import mongo_client
+from config import mongo_client
 from modules.template import Template
 
 from modules.tools import json_tools

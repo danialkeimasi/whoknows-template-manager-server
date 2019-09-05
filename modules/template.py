@@ -8,7 +8,7 @@ import traceback
 import jsonschema
 import pandas as pd
 
-from config.config import logger, mongo_client, config
+from config import logger, mongo_client, config
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict

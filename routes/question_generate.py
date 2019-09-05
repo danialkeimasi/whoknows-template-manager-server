@@ -3,7 +3,7 @@ import traceback
 import flask_restplus
 from flask import json
 
-from config.config import mongo_client, logger, config
+from config import mongo_client, logger, config
 from modules.template import Template
 from modules.tools import json_tools
 from modules.tools.functions import traceback_shortener

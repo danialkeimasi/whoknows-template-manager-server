@@ -1,6 +1,6 @@
 import json
 
-from config.config import config
+from config import config
 from modules.tools.functions import find_format
 
 

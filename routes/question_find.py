@@ -1,6 +1,6 @@
 import flask_restplus
 
-from config.config import mongo_client
+from config import mongo_client
 
 from modules.tools import json_tools
 

@@ -2,7 +2,7 @@ import os
 import re
 import random
 
-from config.config import config
+from config import config
 
 
 def rand(needList, count=0, exceptions=[], accept_empty=False):
