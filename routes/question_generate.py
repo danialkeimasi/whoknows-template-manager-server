@@ -62,7 +62,7 @@ def add(api):
 
             pipeline = [{'$match': {'__state': 'in_use'}}]
             pipeline += [{'$match': {'tags': {'$in': tags}}}] if tags is not None else []
-            pipeline += [{'$sample': {'size': max(3 ,count)}}] if count is not None else []
+            pipeline += [{'$sample': {'size': max(3, count)}}] if count is not None else []
             pipeline += [{'$match': query}] if query is not None else []
 
             templates = list(mongo_client.template_manager.templates.aggregate(pipeline))

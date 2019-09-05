@@ -1,8 +1,8 @@
 import logging
+
+import attrdict
 import colorlog
 import yaml
-import attrdict
-
 from pymongo import MongoClient
 
 with open("./config/settings.yml", 'r') as yamlfileobj:
@@ -17,7 +17,7 @@ logging.basicConfig(
 
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(f'{config.dir.project}/config/last_run.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{config.dir.project}/__last.log', mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )

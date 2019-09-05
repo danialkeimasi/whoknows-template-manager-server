@@ -1,10 +1,6 @@
 import flask_restplus
 
-from flask import json, request
-
 from config import mongo_client
-from bson.objectid import ObjectId
-
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()

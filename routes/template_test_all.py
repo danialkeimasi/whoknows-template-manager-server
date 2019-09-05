@@ -1,9 +1,7 @@
 import flask_restplus
-from bson import json_util
 
 from config import mongo_client
 from modules.template import Template
-
 from modules.tools import json_tools
 
 

@@ -1,6 +1,5 @@
 import itertools
 import math as pymath
-
 from decimal import Decimal
 from math import *
 

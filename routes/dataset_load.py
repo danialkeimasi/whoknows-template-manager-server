@@ -1,14 +1,11 @@
 import os
-
-from os.path import basename
 from glob import glob
+from os.path import basename
 
 import flask_restplus
-
-from flask import json, request
+from flask import json
 
 from config import mongo_client, config
-
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -36,7 +33,7 @@ def add(api):
             dataset_query = args['query']
 
             dataset_names = list(map(lambda i: i['headers']['name'],
-                                mongo_client.data_manager.datasets.find(dataset_query)))
+                                     mongo_client.data_manager.datasets.find(dataset_query)))
 
             response_list = []
             for dataset_name in dataset_names:
@@ -58,7 +55,7 @@ def add(api):
                 })
 
             datasets_in_data_manager = list(map(lambda i: i['headers']['name'],
-                                            mongo_client.data_manager.datasets.find(dataset_query)))
+                                                mongo_client.data_manager.datasets.find(dataset_query)))
 
             for file in [basename(path).split('.')[0] for path in glob(f'{config.dir.dataset}/*')]:
                 if file[:-2] not in datasets_in_data_manager:
@@ -68,6 +65,7 @@ def add(api):
                 'ok': all([i['ok'] for i in response_list]),
                 'updated_datasets': response_list,
                 'problems': [
-                    f"there is some problem with '{dataset['name']}' dataset" for dataset in response_list if not dataset['ok']
+                    f"there is some problem with '{dataset['name']}' dataset" for dataset in response_list if
+                    not dataset['ok']
                 ],
             }

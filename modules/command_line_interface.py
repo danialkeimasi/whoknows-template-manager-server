@@ -1,24 +1,16 @@
-import os
-import sys
-import json
-import click
-import unittest
-
-from pprint import pprint
-from modules.template import Template
-from config import mongo_client, logger
-
+from glob import glob
 from importlib import import_module
 from os.path import basename
-from glob import glob
+from pprint import pprint
 
+import click
+from bson.objectid import ObjectId
 from flask import Flask
 from flask_cors import CORS
 from flask_restplus import Api
 
-from bson.objectid import ObjectId
+from config import mongo_client
 from modules.template import Template
-
 
 app = Flask(__name__)
 api = Api(app)
@@ -44,7 +36,7 @@ def runserver(host, port, debug):
 
 
 @cli.command()
-@click.option('--template', '-t', required=True , help="the template oid.")
+@click.option('--template', '-t', required=True, help="the template oid.")
 def generate(template):
     template = mongo_client.template_manager.templates.find_one({'_id': ObjectId(template)})
     question_dict = Template(template).generate_question().dict()
@@ -52,7 +44,7 @@ def generate(template):
 
 
 @cli.command()
-@click.option('--template', '-t', required=True , help="the template oid.")
+@click.option('--template', '-t', required=True, help="the template oid.")
 def test(template):
     template = mongo_client.template_manager.templates.find_one({'_id': ObjectId(template)})
     template_updated_dict = Template(template).test_update().dict()
@@ -61,7 +53,7 @@ def test(template):
 
 @cli.command()
 @click.argument('command', type=str)
-@click.option('--template', '-t', required=True , help="the template oid.")
+@click.option('--template', '-t', required=True, help="the template oid.")
 def run(command, template):
     template = mongo_client.template_manager.templates.find_one({'_id': ObjectId(template)})
     response = Template(template).parse(run_command=command)

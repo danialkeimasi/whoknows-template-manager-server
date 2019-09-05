@@ -165,6 +165,7 @@ access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
 
 proc_name = None
 
+
 #
 # Server hooks
 #
@@ -208,11 +209,11 @@ def worker_int(worker):
     id2name = {th.ident: th.name for th in threading.enumerate()}
     code = []
     for threadId, stack in sys._current_frames().items():
-        code.append("\n# Thread: %s(%d)" % (id2name.get(threadId,""),
-            threadId))
+        code.append("\n# Thread: %s(%d)" % (id2name.get(threadId, ""),
+                                            threadId))
         for filename, lineno, name, line in traceback.extract_stack(stack):
             code.append('File: "%s", line %d, in %s' % (filename,
-                lineno, name))
+                                                        lineno, name))
             if line:
                 code.append("  %s" % (line.strip()))
     worker.log.debug("\n".join(code))
