@@ -364,7 +364,7 @@ class Template:
 
         test_bool = True
         sections = []
-        template_consts = ['usage', 'values', 'datasets', 'tags', '__state', '__test_info', '__name']
+        template_consts = ['usage', 'values', 'datasets', 'tags', '__state', '__test_info', 'name']
 
         for key in template_consts:
             if key in self.__template:

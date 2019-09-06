@@ -29,7 +29,7 @@ def add(api):
             name = args['name']
 
             empty_template = json.load(open(config.dir.empty_template))
-            empty_template['__name'] = name
+            empty_template['name'] = name
 
             insert_object = mongo_client.template_manager.templates.insert_one(empty_template)
 
