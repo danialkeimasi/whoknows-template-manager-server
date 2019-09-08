@@ -40,11 +40,11 @@ def add(api):
                                                                                       upsert=True)
                 _id = template['_id']
 
-            template_updated = mongo_client.template_manager.templates.find_one({'_id': _id})
+            updated_template.update({'_id': _id})
             response = {
                 'ok': update_response.acknowledged,
                 '_id': _id,
-                'template': template_updated
+                'template': updated_template
             }
 
             return json_tools.to_extended(response)
