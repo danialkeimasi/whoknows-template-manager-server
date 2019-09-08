@@ -28,32 +28,32 @@ def test_question_generate():
     assert response_data['ok']
 
 
-def test_shell():
-    response = app.test_client().post(
-        '/shell',
-        json={'command': 'test'},
-    )
+# def test_shell():
+#     response = app.test_client().post(
+#         '/shell',
+#         json={'command': 'test'},
+#     )
 
-    response_data = json.loads(response.get_data(as_text=True))
+#     response_data = json.loads(response.get_data(as_text=True))
 
-    assert 'response' in response_data
-    assert response_data['response'] != []
+#     assert 'response' in response_data
+#     assert response_data['response'] != []
 
 
-def test_template_test():
-    response = app.test_client().post(
-        '/template/test',
-        json={
-            'template': list(mongo_client.template_manager.templates.aggregate([
-                {'$match': {'__state': 'in_use'}},
-                {'$sample': {'size': 1}}
-            ]))[0]
-        }
-    )
+# def test_template_test():
+#     response = app.test_client().post(
+#         '/template/test',
+#         json={
+#             'template': list(mongo_client.template_manager.templates.aggregate([
+#                 {'$match': {'__state': 'in_use'}},
+#                 {'$sample': {'size': 1}}
+#             ]))[0]
+#         }
+#     )
 
-    response_data = json.loads(response.get_data(as_text=True))
+#     response_data = json.loads(response.get_data(as_text=True))
 
-    assert 'ok' in response_data
-    assert response_data['ok']
-    assert response_data['template']['__state'] == 'in_use'
+#     assert 'ok' in response_data
+#     assert response_data['ok']
+#     assert response_data['template']['__state'] == 'in_use'
 
