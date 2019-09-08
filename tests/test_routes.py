@@ -1,6 +1,5 @@
 from flask import json
 
-from modules.tools.json_tools import to_shell_mode
 from config import mongo_client
 from app import app
 
@@ -11,7 +10,7 @@ def test_dataset_load():
         json={},
     )
 
-    response_data = to_shell_mode(json.loads(response.get_data(as_text=True)))
+    response_data = json.loads(response.get_data(as_text=True))
 
     assert 'ok' in response_data
     assert response_data['ok']
@@ -23,7 +22,7 @@ def test_question_generate():
         json={'count': 10},
     )
 
-    response_data = to_shell_mode(json.loads(response.get_data(as_text=True)))
+    response_data = json.loads(response.get_data(as_text=True))
 
     assert 'ok' in response_data and 'questions' in response_data
     assert response_data['ok']
@@ -35,7 +34,7 @@ def test_shell():
         json={'command': 'test'},
     )
 
-    response_data = to_shell_mode(json.loads(response.get_data(as_text=True)))
+    response_data = json.loads(response.get_data(as_text=True))
 
     assert 'response' in response_data
     assert response_data['response'] != []
@@ -52,7 +51,7 @@ def test_template_test():
         }
     )
 
-    response_data = to_shell_mode(json.loads(response.get_data(as_text=True)))
+    response_data = json.loads(response.get_data(as_text=True))
 
     assert 'ok' in response_data
     assert response_data['ok']
