@@ -6,7 +6,6 @@ requests
 bs4
 pyyaml
 attrdict
-log4mongo
 colorlog
 Flask-Cors
 jsonschema
