@@ -25,7 +25,7 @@ RUN addgroup nginx root
 
 # --- Expose and CMD ---
 EXPOSE 8080
-CMD gunicorn --bind 0.0.0.0:3001 wsgi --chdir /usr/src/app/app & nginx -g "daemon off;"
+CMD gunicorn --bind 0.0.0.0:3001 app:app & nginx -g "daemon off;"
 
 
 
