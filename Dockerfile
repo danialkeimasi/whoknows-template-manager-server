@@ -36,13 +36,13 @@ FROM python:3.7-slim-buster
 
 WORKDIR /app
 
-# RUN apt-get update -y && apt-get install -y python3 python3-pip
+RUN apt-get update -y && apt-get install -y python3 python3-pip
 
-# COPY ./requirements.txt ./
+COPY ./requirements.txt ./
 
-# RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
-# COPY . .
+COPY . .
 
 EXPOSE 8080
 
