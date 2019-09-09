@@ -24,7 +24,7 @@ RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 RUN addgroup nginx root
 
 # --- Expose and CMD ---
-EXPOSE 8081
+EXPOSE 8080
 CMD gunicorn --bind 0.0.0.0:3001 wsgi --chdir /usr/src/app/app & nginx -g "daemon off;"
 
 
