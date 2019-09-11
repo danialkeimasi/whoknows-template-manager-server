@@ -6,7 +6,7 @@ import yaml
 from pymongo import MongoClient
 
 with open("./config/settings.yml", 'r') as yamlfileobj:
-    config = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
+    CONFIG = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
 stream_handler = colorlog.StreamHandler()
 stream_handler.setFormatter(colorlog.ColoredFormatter())
@@ -17,7 +17,7 @@ logging.basicConfig(
 
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(f'{config.dir.project}/__last.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(f'{CONFIG.dir.project}/__last.log', mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )
@@ -25,5 +25,5 @@ logger = logging.getLogger('TemplateEngine')
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
 mongo_client = MongoClient(
-    f'mongodb://{config.mongo.username}:{config.mongo.password}@{config.mongo.ip}:{config.mongo.port}'
-    f'/?authSource={config.mongo.authentication_db}')
+    f'mongodb://{CONFIG.mongo.username}:{CONFIG.mongo.password}@{CONFIG.mongo.ip}:{CONFIG.mongo.port}'
+    f'/?authSource={CONFIG.mongo.authentication_db}')

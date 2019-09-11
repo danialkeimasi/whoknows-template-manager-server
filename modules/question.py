@@ -1,6 +1,6 @@
 import json
 
-from config import config
+from config import CONFIG
 from modules.tools.functions import find_format
 
 
@@ -14,7 +14,7 @@ class Question:
         __question (dict): question object as dict
         __problems (list): list of problems
     """
-    __template_formatter = json.load(open(config.dir.template_formatter))
+    __template_formatter = json.load(open(CONFIG.dir.template_formatter))
 
     def __init__(self, question_dict):
         self.__question = question_dict
@@ -70,8 +70,8 @@ class Question:
             problems.append('there is no "type" field in question')
 
         q_type = question['type']
-        q_field_required = [q_field for q_field in self.__template_formatter[f'{config.format.question.exist}{q_type}']
-                            if self.__template_formatter[f'{config.format.question.exist}{q_type}'][q_field]]
+        q_field_required = [q_field for q_field in self.__template_formatter[f'{CONFIG.format.question.exist}{q_type}']
+                            if self.__template_formatter[f'{CONFIG.format.question.exist}{q_type}'][q_field]]
         not_found_field = list(set(q_field_required) - set(question.keys()))
 
         if not_found_field != []:

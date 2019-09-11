@@ -2,7 +2,7 @@ import os
 import random
 import re
 
-from config import config
+from config import CONFIG
 
 
 def rand(needList, count=0, exceptions=[], accept_empty=False):
@@ -92,13 +92,13 @@ def find_format(val):
                 "http://www.host.com/audio.mp3" ---> audio
     """
 
-    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.photo]):
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in CONFIG.file_formats.photo]):
         return 'photo'
 
-    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.audio]):
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in CONFIG.file_formats.audio]):
         return 'audio'
 
-    if any([val.strip().lower().find(f) == len(val) - len(f) for f in config.file_formats.video]):
+    if any([val.strip().lower().find(f) == len(val) - len(f) for f in CONFIG.file_formats.video]):
         return 'video'
 
     return 'text'
