@@ -31,20 +31,19 @@ def test_question_generate():
 
 
 
-def test_shell():
-    template_id = json_tools.to_extended(list(mongo_client.template_manager.templates.aggregate([
-                {'$match': {'__state': 'in_use'}},
-                {'$sample': {'size': 1}}
-            ]))[0]['_id'])['$oid']
+# def test_shell():
+#     template_id = json_tools.to_extended(list(mongo_client.template_manager.templates.aggregate([
+#                 {'$match': {'__state': 'in_use'}},
+#                 {'$sample': {'size': 1}}
+#             ]))[0]['_id'])['$oid']
 
-    response = app.test_client().post(
-        '/shell',
-        json={'command': f'test -t {template_id}'},
-    )
-    response_data = json.loads(response.get_data(as_text=True))
-    print(response_data)
-    assert 'response' in response_data
-    assert response_data['response'] != []
+#     response = app.test_client().post(
+#         '/shell',
+#         json={'command': f'test -t {template_id}'},
+#     )
+#     response_data = json.loads(response.get_data(as_text=True))
+#     assert 'response' in response_data
+#     assert response_data['response'] != []
 
 
 
