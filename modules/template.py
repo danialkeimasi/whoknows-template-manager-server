@@ -1,3 +1,4 @@
+import os
 import json
 import copy
 import json
@@ -570,7 +571,12 @@ def load_data(dataset_name: str) -> pd.DataFrame:
 
         try:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
-            data = pd.DataFrame(json.load(open(f'{CONFIG.dir.dataset}/{dataset_name}db.json', encoding='utf-8')))
+            data = pd.DataFrame(
+                json.load(
+                    open(os.path.join(CONFIG.dir.dataset, f'{dataset_name}db.json'),
+                    encoding='utf-8')
+                )
+            )
             logger.info(f'loading {dataset_name} dataset is done.')
 
         except Exception as error:

@@ -39,12 +39,12 @@ def add(api):
             for dataset_name in dataset_names:
                 dataset = list(mongo_client.data[dataset_name].find())
                 if len(dataset) != 0:
-                    if not os.path.isdir(f'{CONFIG.dir.dataset}'):
-                        os.mkdir(f'{CONFIG.dir.dataset}')
+                    if not os.path.isdir(CONFIG.dir.dataset):
+                        os.mkdir(CONFIG.dir.dataset)
 
                     json.dump(
                         json_tools.to_extended(dataset),
-                        open(f'{CONFIG.dir.dataset}/{dataset_name}db.json', mode='w+', encoding='utf-8'),
+                        open(os.path.join(CONFIG.dir.dataset, f'{dataset_name}db.json'), mode='w+', encoding='utf-8'),
                         indent=4, ensure_ascii=False
                     )
 
@@ -59,7 +59,7 @@ def add(api):
 
             for file in [basename(path).split('.')[0] for path in glob(f'{CONFIG.dir.dataset}/*')]:
                 if file[:-2] not in datasets_in_data_manager:
-                    os.remove(f'{CONFIG.dir.dataset}/{file}.json')
+                    os.remove(os.path.join(CONFIG.dir.dataset, f'{file}.json'))
 
             return {
                 'ok': all([i['ok'] for i in response_list]),

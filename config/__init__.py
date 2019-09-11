@@ -1,3 +1,4 @@
+import os
 import logging
 
 import attrdict
@@ -17,7 +18,7 @@ logging.basicConfig(
 
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(f'{CONFIG.dir.project}/__last.log', mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(os.path.join(CONFIG.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )
