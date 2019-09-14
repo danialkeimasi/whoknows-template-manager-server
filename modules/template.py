@@ -14,6 +14,7 @@ from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict
 from modules.tools import math
+from modules.tools.json_tools import nested_to_dotted, dotted_to_nested
 
 class Template:
     """ a simple class that implemented to work with a json_type question template.
@@ -105,40 +106,40 @@ class Template:
         if run_command:
             return eval(run_command)
 
-        q_type_names = self.get_question_types()
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
+        dotted_question_part = nested_to_dotted({i: template[i] for i in template if i.startswith('&&')})
 
-        for q_type_name in q_type_names:
-            for q_property_name in template[q_type_name]:
-                for q_property_format_name in template[q_type_name][q_property_name]:
-                    for i, raw_str in enumerate(template[q_type_name][q_property_name][q_property_format_name]):
+        for key, types_list in dotted_question_part.items():
 
-                        if raw_str.startswith('$'):
-                            try:
-                                exp = raw_str[1:]
-                                template[q_type_name][q_property_name][q_property_format_name] = \
-                                    list(map(str, to_list(eval(exp))))
+            if not types_list:
+                continue
 
-                            except Exception as e:
-                                raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
-                                              "['{q_property_format_name}'][{i}]: {raw_str}: {e}") from e
+            for i, raw_str in enumerate(types_list):
+                if raw_str.startswith('$'):
+                    try:
+                        exp = raw_str[1:]
+                        dotted_question_part[key] = list(map(str, to_list(eval(exp))))
 
-                        else:
-                            while re.search(reg_str, raw_str):
-                                exp = re.search(reg_str, raw_str).group(1)
-                                try:
-                                    eval_result = eval(exp)
-                                except Exception as e:
-                                    raise type(e)(f"in the validating ['{q_type_name}']['{q_property_name}']"
-                                                  "['{q_property_format_name}'][{i}]: `{exp}`: {e}") from e
+                    except Exception as e:
+                        raise type(e)(f"in the validating {key} {raw_str}: {e}") from e
 
-                                # TODO: check if eval_result is list or not, its true if eval_result is not list
 
-                                raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
-                                    isinstance(eval_result, list) else str(eval_result))
+                else:
+                    while re.search(reg_str, raw_str):
+                        exp = re.search(reg_str, raw_str).group(1)
+                        try:
+                            eval_result = eval(exp)
+                        except Exception as e:
+                            raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
 
-                            template[q_type_name][q_property_name][q_property_format_name][i] = raw_str
+                        # TODO: check if eval_result is list or not, its true if eval_result is not list
 
+                        raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
+                            isinstance(eval_result, list) else str(eval_result))
+
+                    dotted_question_part[key][i] = raw_str
+
+        template.update(dotted_to_nested(dotted_question_part))
         return Template(template)
 
     def get_question(self, bool_answer: bool, question_type: str, question_format: str) -> Question:
@@ -205,7 +206,7 @@ class Template:
         question_type = choose(self.get_question_types(), 0) if not question_type else \
             f'{CONFIG.format.question.exist}{question_type}'
 
-        question_object = self.parse(metadata=metadata, bool_answer=bool_answer) \
+        question_object = self.(metadata=metadata, bool_answer=bool_answer) \
                               .get_question(bool_answer, question_type, question_format)
 
         return question_object
