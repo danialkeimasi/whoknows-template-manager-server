@@ -13,3 +13,4 @@ flask-restplus
 click
 pytest
 gunicorn
+dict-deep==2.0.2
