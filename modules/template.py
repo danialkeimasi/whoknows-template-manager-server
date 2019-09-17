@@ -206,7 +206,7 @@ class Template:
         question_type = choose(self.get_question_types(), 0) if not question_type else \
             f'{CONFIG.format.question.exist}{question_type}'
 
-        question_object = self.(metadata=metadata, bool_answer=bool_answer) \
+        question_object = self.parse(metadata=metadata, bool_answer=bool_answer) \
                               .get_question(bool_answer, question_type, question_format)
 
         return question_object
