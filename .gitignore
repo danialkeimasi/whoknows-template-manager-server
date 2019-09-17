@@ -11,10 +11,10 @@ __pycache__/
 .idea/
 .vscode
 datasets/
+jupyter/
 
 *.py[cod]
 *$py.class
-
 
 # C extensions
 *.so
