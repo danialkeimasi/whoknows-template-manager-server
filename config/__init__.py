@@ -25,6 +25,4 @@ logging.basicConfig(
 logger = logging.getLogger('TemplateEngine')
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
-mongo_client = MongoClient(
-    f'mongodb://{CONFIG.mongo.username}:{CONFIG.mongo.password}@{CONFIG.mongo.ip}:{CONFIG.mongo.port}'
-    f'/?authSource={CONFIG.mongo.authentication_db}')
+mongo_client = MongoClient(CONFIG.mongo.uri)

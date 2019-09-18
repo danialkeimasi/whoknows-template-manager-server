@@ -29,11 +29,7 @@ datasets:
   - volleyballTeam
 
 mongo:
-  ip: s7.liara.ir
-  port: 31102
-  username: root
-  password: Js17EZXZNFtIWnjKLlEtJifx
-  authentication_db: admin
+  uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
 
 
 template:
@@ -55,7 +51,6 @@ template:
       required:
         - duplication
         - acceptance
-        - tags
         - data
 
     repair:
