@@ -4,25 +4,28 @@ import logging
 import attrdict
 import colorlog
 import yaml
+
 from pymongo import MongoClient
 
 with open("./config/settings.yml", 'r') as yamlfileobj:
     CONFIG = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
 stream_handler = colorlog.StreamHandler()
-stream_handler.setFormatter(colorlog.ColoredFormatter())
+stream_handler.setFormatter(colorlog.ColoredFormatter(
+    '%(log_color)s%(levelname)-7s :[%(asctime)s][%(filename)15s:%(lineno)4s]:%(reset)s %(message)s',
+    datefmt='%m-%d %H:%M:%S',
+    style='%'
+))
 
 logging.basicConfig(
-    datefmt='%y-%b-%d %H:%M:%S',
-    format='%(levelname)8s:[%(asctime)s][%(filename)20s:%(lineno)4s -%(funcName)20s() ]: %(message)s',
-
     level=logging.DEBUG,
     handlers=[
         logging.FileHandler(os.path.join(CONFIG.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )
-logger = logging.getLogger('TemplateEngine')
+
+logger = logging.getLogger('tms')
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
 mongo_client = MongoClient(CONFIG.mongo.uri)

@@ -5,7 +5,7 @@ from os.path import basename
 import flask_restplus
 from flask import json
 
-from config import mongo_client, CONFIG
+from config import mongo_client, CONFIG, logger
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -31,6 +31,8 @@ def add(api):
         def post(self):
             args = parser.parse_args()
             dataset_query = args['query']
+
+            logger.critical(f'dataset_query: {dataset_query}')
 
             dataset_names = list(map(lambda i: i['headers']['name'],
                                      mongo_client.data_manager.datasets.find(dataset_query)))
