@@ -17,8 +17,10 @@ def add(api):
             results = []
             for template in templates:
                 updated_template = Template(template).test_update().dict()
-                replace_response = mongo_client.template_manager.templates.replace_one({'_id': template['_id']},
-                                                                                       updated_template)
+                replace_response = mongo_client.template_manager.templates.replace_one(
+                    {'_id': template['_id']},
+                    updated_template
+                )
                 results.append(replace_response.acknowledged)
 
             response = {
