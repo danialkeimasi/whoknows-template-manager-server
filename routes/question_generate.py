@@ -3,12 +3,12 @@ import traceback
 import flask_restplus
 from flask import json
 
-from config import mongo_client, logger, CONFIG
+from config import mongo_client, logger, SETTINGS
 from modules.template import Template
 from modules.tools import json_tools
 from modules.tools.functions import traceback_shortener
 
-questions_sample = json.load(open(CONFIG.dir.sample_questions, encoding='utf-8'))
+questions_sample = json.load(open(SETTINGS.dir.sample_questions, encoding='utf-8'))
 
 parser = flask_restplus.reqparse.RequestParser()
 parser.add_argument(

@@ -9,7 +9,7 @@ import traceback
 import jsonschema
 import pandas as pd
 
-from config import logger, mongo_client, CONFIG
+from config import logger, mongo_client, SETTINGS
 from modules.question import Question
 from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict
@@ -31,9 +31,9 @@ class Template:
 
     """
 
-    __template_formatter = json.load(open(CONFIG.dir.template_formatter))
-    __empty_template = json.load(open(CONFIG.dir.empty_template))
-    __schema_validator = jsonschema.Draft3Validator(json.load(open(CONFIG.dir.template_schema)))
+    __template_formatter = json.load(open(SETTINGS.dir.template_formatter))
+    __empty_template = json.load(open(SETTINGS.dir.empty_template))
+    __schema_validator = jsonschema.Draft3Validator(json.load(open(SETTINGS.dir.template_schema)))
 
     def __init__(self, template_dict: dict):
 
@@ -56,7 +56,7 @@ class Template:
         Returns:
             list: all the question types that we can make.
         """
-        return [key for key in self.__template.keys() if key.startswith(CONFIG.format.question.exist)]
+        return [key for key in self.__template.keys() if key.startswith(SETTINGS.format.question.exist)]
 
     def parse(self, metadata: dict = {}, bool_answer: bool = True, run_command: str = ''):
         """
@@ -162,7 +162,7 @@ class Template:
 
         question.update({
             'template_id': template['_id'],
-            'type': question_type[len(CONFIG.format.question.exist):],
+            'type': question_type[len(SETTINGS.format.question.exist):],
             'tags': template['tags'],
             'usage': template['usage'],
             'datasets': template['datasets'],
@@ -204,7 +204,7 @@ class Template:
         bool_answer = rand([True, False])
         metadata = self.get_metadata(metadata)
         question_type = choose(self.get_question_types(), 0) if not question_type else \
-            f'{CONFIG.format.question.exist}{question_type}'
+            f'{SETTINGS.format.question.exist}{question_type}'
 
         question_object = self.parse(metadata=metadata, bool_answer=bool_answer) \
                               .get_question(bool_answer, question_type, question_format)
@@ -244,7 +244,7 @@ class Template:
 
         votes_len = len(self.__template['__test_info']['acceptance']['votes'])
 
-        acceptance_bool = votes_len >= CONFIG.template.min_vote
+        acceptance_bool = votes_len >= SETTINGS.template.min_vote
         acceptance_bool = True  # tmp
 
         if not acceptance_bool:
@@ -486,7 +486,7 @@ class Template:
 
         votes_len = len(self.__template['__test_info']['manual']['votes'])
 
-        manual_tes_bool = votes_len >= CONFIG.template.min_vote
+        manual_tes_bool = votes_len >= SETTINGS.template.min_vote
         manual_tes_bool = True  # tmp
 
         if not manual_tes_bool:
@@ -517,8 +517,8 @@ class Template:
 
     def test_update(self):
 
-        tests = CONFIG.template.tests
-        self.__template['__state'] = CONFIG.template.states[0]
+        tests = SETTINGS.template.tests
+        self.__template['__state'] = SETTINGS.template.states[0]
 
         for test_name in self.__template['__test_info']:
             self.__template['__test_info'][test_name].update({'ok': False, 'problems': []})
@@ -526,7 +526,7 @@ class Template:
         state_number = 0
         test_functions = []
 
-        for state in CONFIG.template.states[1:]:
+        for state in SETTINGS.template.states[1:]:
 
             test_functions = {t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
             if not all(test_functions.values()):
@@ -535,7 +535,7 @@ class Template:
                 state_number += 1
 
         self.__template['__last_test'] = test_functions
-        self.__template['__state'] = CONFIG.template.states[state_number]
+        self.__template['__state'] = SETTINGS.template.states[state_number]
 
         return self
 
@@ -574,14 +574,14 @@ def load_data(dataset_name: str) -> pd.DataFrame:
             logger.info(f'trying to load {dataset_name} dataset from hard disk...')
             data = pd.DataFrame(
                 json.load(
-                    open(os.path.join(CONFIG.dir.dataset, f'{dataset_name}db.json'),
-                    encoding='utf-8')
+                    open(os.path.join(SETTINGS.dir.dataset, f'{dataset_name}db.json'),
+                         encoding='utf-8')
                 )
             )
             logger.info(f'loading {dataset_name} dataset is done.')
 
         except Exception as error:
-            logger.error(f'could not open dataset {dataset_name} from {CONFIG.dir.dataset} directory because {error}')
+            logger.error(f'could not open dataset {dataset_name} from {SETTINGS.dir.dataset} directory because {error}')
 
         else:
             break

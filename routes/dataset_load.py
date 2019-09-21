@@ -5,7 +5,7 @@ from os.path import basename
 import flask_restplus
 from flask import json
 
-from config import mongo_client, CONFIG, logger
+from config import mongo_client, SETTINGS, logger
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -41,12 +41,12 @@ def add(api):
             for dataset_name in dataset_names:
                 dataset = list(mongo_client.data[dataset_name].find())
                 if len(dataset) != 0:
-                    if not os.path.isdir(CONFIG.dir.dataset):
-                        os.mkdir(CONFIG.dir.dataset)
+                    if not os.path.isdir(SETTINGS.dir.dataset):
+                        os.mkdir(SETTINGS.dir.dataset)
 
                     json.dump(
                         json_tools.to_extended(dataset),
-                        open(os.path.join(CONFIG.dir.dataset, f'{dataset_name}db.json'), mode='w+', encoding='utf-8'),
+                        open(os.path.join(SETTINGS.dir.dataset, f'{dataset_name}db.json'), mode='w+', encoding='utf-8'),
                         indent=4, ensure_ascii=False
                     )
 
@@ -59,9 +59,9 @@ def add(api):
             datasets_in_data_manager = list(map(lambda i: i['headers']['name'],
                                                 mongo_client.data_manager.datasets.find(dataset_query)))
 
-            for file in [basename(path).split('.')[0] for path in glob(f'{CONFIG.dir.dataset}/*')]:
+            for file in [basename(path).split('.')[0] for path in glob(f'{SETTINGS.dir.dataset}/*')]:
                 if file[:-2] not in datasets_in_data_manager:
-                    os.remove(os.path.join(CONFIG.dir.dataset, f'{file}.json'))
+                    os.remove(os.path.join(SETTINGS.dir.dataset, f'{file}.json'))
 
             return {
                 'ok': all([i['ok'] for i in response_list]),

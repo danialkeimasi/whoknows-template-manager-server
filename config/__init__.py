@@ -8,7 +8,7 @@ import yaml
 from pymongo import MongoClient
 
 with open("./config/settings.yml", 'r') as yamlfileobj:
-    CONFIG = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
+    SETTINGS = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
 stream_handler = colorlog.StreamHandler()
 stream_handler.setFormatter(colorlog.ColoredFormatter(
@@ -20,7 +20,7 @@ stream_handler.setFormatter(colorlog.ColoredFormatter(
 logging.basicConfig(
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(os.path.join(CONFIG.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
+        logging.FileHandler(os.path.join(SETTINGS.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )
@@ -28,4 +28,4 @@ logging.basicConfig(
 logger = logging.getLogger('tms')
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
-mongo_client = MongoClient(CONFIG.mongo.uri)
+mongo_client = MongoClient(SETTINGS.mongo.uri)
