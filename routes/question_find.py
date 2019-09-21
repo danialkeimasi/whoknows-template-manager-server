@@ -40,8 +40,10 @@ def add(api):
             pipeline += [{'$match': query}] if query is not None else []
             pipeline += [{'$limit': count}] if count is not None else []
 
-            logger.critical(f'question_query: {query}, count: {count}')
+
             questions = list(mongo_client.template_manager.questions.aggregate(pipeline))
+
+            logger.critical(f'question_query: {query}, count: {count} -> we found {len(questions)} question.')
 
             response = {
                 'ok': True,

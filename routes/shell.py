@@ -3,6 +3,7 @@ import subprocess
 
 import flask_restplus
 
+from config import logger
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -26,6 +27,8 @@ def add(api):
 
             proc = subprocess.Popen(["python3", "app.py"] + command, stdout=subprocess.PIPE)
             response_list = [line for line in io.TextIOWrapper(proc.stdout, encoding="utf-8")]
+
+            logger.critical(f'command: {command} -> response_list: {response_list}')
 
             return json_tools.to_extended({
                 'response': response_list

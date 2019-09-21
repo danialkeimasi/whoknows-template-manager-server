@@ -67,7 +67,7 @@ def add(api):
 
             templates = list(mongo_client.template_manager.templates.aggregate(pipeline))
 
-            logger.debug(f'after query for template, number of templates that we found: {len(templates)}')
+            logger.critical(f'pipeline for aggregation: {pipeline} -> we found {len(templates)}.')
 
             questions = []
             try_count = 5
@@ -90,6 +90,8 @@ def add(api):
                     pass
 
                 i += 1
+
+            logger.critical(f'after genere questions -> ok={len(questions) == count} and we make {len(questions)} questions.')
 
             return json_tools.to_extended({
                 'ok': len(questions) == count,
