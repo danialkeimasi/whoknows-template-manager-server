@@ -1,6 +1,6 @@
 import flask_restplus
 
-from config import mongo_client
+from config import mongo_client, logger
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -40,6 +40,7 @@ def add(api):
             pipeline += [{'$match': query}] if query is not None else []
             pipeline += [{'$limit': count}] if count is not None else []
 
+            logger.critical(f'question_query: {query}, count: {count}')
             questions = list(mongo_client.template_manager.questions.aggregate(pipeline))
 
             response = {

@@ -37,6 +37,8 @@ def add(api):
             dataset_names = list(map(lambda i: i['headers']['name'],
                                      mongo_client.data_manager.datasets.find(dataset_query)))
 
+            logger.critical(f'dataset_names that we found: {dataset_names}')
+
             response_list = []
             for dataset_name in dataset_names:
                 dataset = list(mongo_client.data[dataset_name].find())
@@ -63,7 +65,7 @@ def add(api):
                 if file[:-2] not in datasets_in_data_manager:
                     os.remove(os.path.join(SETTINGS.dir.dataset, f'{file}.json'))
 
-            return {
+            final_response = {
                 'ok': all([i['ok'] for i in response_list]),
                 'updated_datasets': response_list,
                 'problems': [
@@ -71,3 +73,6 @@ def add(api):
                     not dataset['ok']
                 ],
             }
+
+            logger.critical(f'final_response: {final_response}')
+            return final_response
