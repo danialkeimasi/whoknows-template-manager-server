@@ -12,7 +12,7 @@ with open("./config/settings.yml", 'r') as yamlfileobj:
 
 stream_handler = colorlog.StreamHandler()
 stream_handler.setFormatter(colorlog.ColoredFormatter(
-    '%(log_color)s%(levelname)-7s :[%(asctime)s][%(filename)15s:%(lineno)4s]:%(reset)s %(message)s',
+    '%(log_color)s%(levelname)-7s :[%(asctime)s][%(filename)15s:%(lineno)1s -> %(funcName)8s()]:%(reset)s %(message)s',
     datefmt='%m-%d %H:%M:%S',
     style='%'
 ))
