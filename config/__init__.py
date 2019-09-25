@@ -8,6 +8,7 @@ import yaml
 from pymongo import MongoClient
 from environs import Env, EnvError
 
+
 environment_variables = Env()
 environment_variables.read_env()
 
@@ -27,12 +28,14 @@ SETTING_FILES = {
 with open(SETTING_FILES[ENV], 'r') as yamlfileobj:
     SETTINGS = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
+
 stream_handler = colorlog.StreamHandler()
 stream_handler.setFormatter(colorlog.ColoredFormatter(
     '%(log_color)s%(levelname)-8s:[%(asctime)s][%(filename)20s:%(lineno)3s ~%(funcName)15s()]:%(reset)s %(message)s',
     datefmt='%m-%d %H:%M:%S',
     style='%'
 ))
+
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -42,7 +45,9 @@ logging.basicConfig(
     ]
 )
 
+
 logger = logging.getLogger('tms')
 logging.getLogger("matplotlib").setLevel(logging.WARNING)
+
 
 mongo_client = MongoClient(SETTINGS.mongo.uri)
