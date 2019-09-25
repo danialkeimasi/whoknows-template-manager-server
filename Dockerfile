@@ -46,4 +46,6 @@ COPY . .
 
 EXPOSE 3001
 
+RUN export ENV=production
+
 CMD gunicorn -c config/gunicorn.py app:app

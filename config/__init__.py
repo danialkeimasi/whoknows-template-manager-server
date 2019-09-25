@@ -6,8 +6,25 @@ import colorlog
 import yaml
 
 from pymongo import MongoClient
+from environs import Env, EnvError
 
-with open("./config/settings.yml", 'r') as yamlfileobj:
+environment_variables = Env()
+environment_variables.read_env()
+
+
+try:
+    ENV = environment_variables("ENV").lower()
+except EnvError:
+    ENV = 'debug'
+
+
+SETTING_FILES = {
+    'production': './config/settings-production.yml',
+    'debug': './config/settings-debug.yml'
+}
+
+
+with open(SETTING_FILES[ENV], 'r') as yamlfileobj:
     SETTINGS = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
 
 stream_handler = colorlog.StreamHandler()
