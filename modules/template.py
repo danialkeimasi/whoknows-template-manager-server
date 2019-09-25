@@ -107,7 +107,7 @@ class Template:
             return eval(run_command)
 
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
-        dotted_question_part = nested_to_dotted({i: template[i] for i in template if i.startswith('&&')})
+        dotted_question_part = nested_to_dotted({i: template[i] for i in template if i.startswith(SETTINGS.format.question.exist)})
 
         for key, types_list in dotted_question_part.items():
 
