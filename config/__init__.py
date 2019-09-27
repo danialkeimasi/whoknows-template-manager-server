@@ -19,6 +19,9 @@ except EnvError:
     ENV = 'debug'
 
 
+print(f'program is in {ENV} profile!')
+
+
 SETTING_FILES = {
     'production': './config/profile-production.yml',
     'debug': './config/profile-debug.yml'
