@@ -20,13 +20,17 @@ except EnvError:
 
 
 SETTING_FILES = {
-    'production': './config/settings-production.yml',
-    'debug': './config/settings-debug.yml'
+    'production': './config/profile-production.yml',
+    'debug': './config/profile-debug.yml'
 }
 
 
-with open(SETTING_FILES[ENV], 'r') as yamlfileobj:
+with open('./config/settings.yml', 'r') as yamlfileobj:
     SETTINGS = attrdict.AttrDict(yaml.safe_load(yamlfileobj))
+
+
+with open(SETTING_FILES[ENV], 'r') as yamlfileobj:
+    SETTINGS.update(attrdict.AttrDict(yaml.safe_load(yamlfileobj)))
 
 
 stream_handler = colorlog.StreamHandler()

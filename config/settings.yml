@@ -1,8 +1,3 @@
-debug: True
-language: fa
-main_server_ip: https://31.184.132.183:30000
-
-
 dir:
   project: .
   templates: ./templates/main
@@ -13,10 +8,6 @@ dir:
   template_schema: ./config/samples/template_schema.json
   template_formatter: ./config/samples/template_formatter.json
   sample_questions: ./config/samples/sample_questions.json
-
-
-mongo:
-  uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
 
 
 template:

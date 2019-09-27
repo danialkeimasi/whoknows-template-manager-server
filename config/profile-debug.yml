@@ -1,0 +1,5 @@
+debug: True
+
+
+mongo:
+  uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
