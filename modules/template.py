@@ -542,9 +542,9 @@ class Template:
     @staticmethod
     def get_metadata(metadata: dict) -> dict:
         default_metadata = {
-            'NOC': 3,
+            'NOFC': 3,
             'NOS': 4,
-            'NOA': random.randint(1, 4),
+            'NOTC': random.randint(1, 4),
             'level': random.randint(1, 10),
         }
 
