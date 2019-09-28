@@ -16,3 +16,4 @@ gunicorn
 dict-deep==2.0.2
 scalpl
 environs
+schedule
