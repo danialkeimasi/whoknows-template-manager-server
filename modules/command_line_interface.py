@@ -1,23 +1,37 @@
 from glob import glob
 from importlib import import_module
-from os.path import basename
+from os.path import basename, isdir
 from pprint import pprint
 
 import click
+import schedule
+
 from bson.objectid import ObjectId
 from flask import Flask
 from flask_cors import CORS
 from flask_restplus import Api
 
-from config import mongo_client
+from config import mongo_client, SETTINGS
 from modules.template import Template
 
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
+
 for file in [basename(path).split('.')[0] for path in glob('./routes/*.py') if not basename(path).startswith('__')]:
     import_module(f'routes.{file}').add(api)
+
+
+if not isdir(SETTINGS.dir.dataset):
+    app.test_client().post('/dataset/load', json={})
+
+
+def reload():
+    app.test_client().post('/dataset/load', json={})
+
+
+schedule.every(SETTINGS.reload_period).minutes.do(reload)
 
 
 @click.group()
