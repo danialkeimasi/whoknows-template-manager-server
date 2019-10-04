@@ -1,6 +1,6 @@
 import flask_restplus
 
-from config import mongo_client
+from config import mongo_client, logger
 from modules.tools import json_tools
 
 parser = flask_restplus.reqparse.RequestParser()
@@ -57,4 +57,5 @@ def add(api):
                 'templates': templates,
             }
 
+            logger.critical(f'tags: {tags}, count: {count}, query: {query} -> response[ok]: {response["ok"]}')
             return json_tools.to_extended(response)
