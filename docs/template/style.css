@@ -436,13 +436,16 @@ pre tt {
 }
 
 .background {
-    width: 50%;
+    width: 60%;
+    min-width: 500px;
     padding: 3%;
     background: #F5F5F5;
 }
 
 .info {
-
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
     background: #FAFAFA;
 }
 
