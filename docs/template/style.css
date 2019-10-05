@@ -445,3 +445,12 @@ pre tt {
 
     background: #FAFAFA;
 }
+
+table {
+    margin: 0 auto;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
