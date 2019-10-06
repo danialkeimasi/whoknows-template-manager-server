@@ -47,7 +47,7 @@ stream_handler.setFormatter(colorlog.ColoredFormatter(
 logging.basicConfig(
     level=logging.DEBUG,
     handlers=[
-        logging.FileHandler(os.path.join(SETTINGS.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
+        # logging.FileHandler(os.path.join(SETTINGS.dir.project, '__last.log'), mode='w+', encoding='utf8', delay=0),
         stream_handler,
     ]
 )
