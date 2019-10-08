@@ -9,8 +9,8 @@ from config import SETTINGS
 def reload():
     app.test_client().post('/dataset/load', json={})
 
-reload()
-if SETTINGS.data_reload:
+
+if not os.path.isdir(SETTINGS.dir.dataset):
     reload()
 
 
