@@ -10,8 +10,7 @@ def reload():
     app.test_client().post('/dataset/load', json={})
 
 
-if not os.path.isdir(SETTINGS.dir.dataset):
-    reload()
+reload()
 
 
 def run_schedule():
