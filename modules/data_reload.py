@@ -9,6 +9,7 @@ from config import SETTINGS
 def reload():
     app.test_client().post('/dataset/load', json={})
 
+reload()
 if SETTINGS.data_reload:
     reload()
 
