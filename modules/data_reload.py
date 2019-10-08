@@ -16,6 +16,5 @@ if not os.path.isdir(SETTINGS.dir.dataset):
 
 def run_schedule():
     while True:
-        print('loop')
         schedule.run_pending()
         time.sleep(1)
