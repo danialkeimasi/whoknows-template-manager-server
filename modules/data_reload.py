@@ -15,6 +15,7 @@ if not os.path.isdir(SETTINGS.dir.dataset):
 
 
 def run_schedule():
+    print('data reload is activated!')
     while True:
         schedule.run_pending()
         time.sleep(1)
