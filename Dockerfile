@@ -33,6 +33,7 @@
 
 
 FROM python:3.7-slim-buster
+USER root
 
 WORKDIR /app
 
