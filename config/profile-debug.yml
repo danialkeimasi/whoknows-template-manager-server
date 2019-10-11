@@ -1,6 +1,4 @@
 debug: True
-data_reload: False
-reload_period: 1
 
 mongo:
   uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
