@@ -6,18 +6,6 @@ from app import app
 from modules.tools import json_tools
 
 
-def test_dataset_load():
-    response = app.test_client().post(
-        '/dataset/load',
-        json={},
-    )
-
-    response_data = json.loads(response.get_data(as_text=True))
-
-    assert 'ok' in response_data
-    assert response_data['ok']
-
-
 def test_question_generate():
     response = app.test_client().post(
         '/question/generate',
