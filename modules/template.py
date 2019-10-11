@@ -11,7 +11,6 @@ import pandas as pd
 
 from config import logger, mongo_client, SETTINGS
 from modules.question import Question
-from modules.tools.data_container import DataContainer, db, listSub
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict
 from modules.tools import math, leveling
 from modules.tools.json_tools import nested_to_dotted, dotted_to_nested
@@ -35,7 +34,7 @@ class Template:
     __empty_template = json.load(open(SETTINGS.dir.empty_template))
     __schema_validator = jsonschema.Draft3Validator(json.load(open(SETTINGS.dir.template_schema)))
 
-    def __init__(self, template_dict: dict):
+    def __init__(self, template_dict):
 
         self.__template = template_dict
 
@@ -74,17 +73,8 @@ class Template:
         metadata = self.get_metadata(metadata)
         template = copy.deepcopy(self.__template)
 
-        dbs = load_template_datasets(self.__template['datasets'])
-        for key, value in dbs.items():
-            locals()[key] = value
-
-        template['metadata'] = metadata
-
-        val = DataContainer()
-        setattr(val, 'bool_answer', bool_answer)
-
-        for key, value in metadata.items():
-            setattr(val, key, value)
+        val = {'bool_answer': bool_answer}
+        val.update(template['metadata'])
 
         # get the values to the "val"
         # values_dict = {}
@@ -99,7 +89,7 @@ class Template:
 
             else:
                 # values_dict.update({key: eval_result})
-                setattr(val, key, eval_result)
+                val.update({key: eval_result})
 
         # template.update({'values': values_dict})
 
@@ -554,55 +544,3 @@ class Template:
 
         input_metadata.update(default_metadata)
         return input_metadata
-
-
-def load_data(dataset_name: str) -> pd.DataFrame:
-    """ Load one dataset and returns it
-
-    Args:
-        dataset_name (str): name of dataset
-
-    Returns:
-        pd.DataFrame: the given dataset as a pandas data frame
-    """
-
-    data = pd.DataFrame()
-
-    for try_count in range(5):
-
-        try:
-            logger.info(f'trying to load {dataset_name} dataset from hard disk...')
-            data = pd.DataFrame(
-                json.load(
-                    open(os.path.join(SETTINGS.dir.dataset, f'{dataset_name}db.json'),
-                         encoding='utf-8')
-                )
-            )
-            logger.info(f'loading {dataset_name} dataset is done.')
-
-        except Exception as error:
-            logger.error(f'could not open dataset {dataset_name} from {SETTINGS.dir.dataset} directory because {error}')
-
-        else:
-            break
-
-    return data
-
-
-def load_template_datasets(necesery_datasets: list) -> list:
-    """ load the datasets that given one by one.
-
-    Args:
-        necesery_datasets (list): dataset list.
-
-    Returns:
-        list: list of pandas dataFrames
-    """
-
-    logger.debug(f'load: {necesery_datasets}')
-
-    dbs = {}
-    for db in necesery_datasets:
-        dbs[db] = load_data(db)
-
-    return dbs
