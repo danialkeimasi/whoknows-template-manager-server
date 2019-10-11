@@ -70,6 +70,8 @@ class Template:
             Template: parsed template, replaced every variable with datasets.
         """
 
+        db = mongo_client.datasets
+
         metadata = self.get_metadata(metadata)
         template = copy.deepcopy(self.__template)
 
