@@ -154,20 +154,12 @@ class Template:
         template = self.__template
         question = template[question_type]
 
-        question.update({
-            'template_id': template['_id'],
-            'type': question_type[len(SETTINGS.format.question.exist):],
-            'tags': template['tags'],
-            'usage': template['usage'],
-            'datasets': template['datasets'],
-            # 'values': template['values'],
-        })
-
-        for type_ in question['title']:
-            if question['title'][type_] != []:
-                question['title'][type_] = choose(
-                    [t for i, t in enumerate(question['title'][type_]) if i % 2 == int(bool_answer)],
-                ) if len(question['title'][type_]) > 1 else question['title'][type_]
+        for question_field in question:
+            for type_ in question[question_field]:
+                if question[question_field][type_] != []:
+                    question[question_field][type_] = random.choice(
+                        [t for i, t in enumerate(question[question_field][type_]) if i % 2 == int(bool_answer)]
+                    ) if len(question[question_field][type_]) > 1 else question[question_field][type_]
 
         if question['type'] == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
@@ -178,6 +170,16 @@ class Template:
                 random.shuffle(question['choice'][field])
 
         question['metadata'] = template['metadata'] if 'metadata' in template else None
+
+        question.update({
+            'template_id': template['_id'],
+            'type': question_type[len(SETTINGS.format.question.exist):],
+            'tags': template['tags'],
+            'usage': template['usage'],
+            'datasets': template['datasets'],
+            'values': template['values'],
+        })
+
         return Question(question)
 
     def generate_question(self, metadata: dict = {}, question_type: str = '', question_format: dict = {}) -> Question:
