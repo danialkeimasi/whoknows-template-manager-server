@@ -108,29 +108,16 @@ class Template:
 
             for i, raw_str in enumerate(types_list):
 
+                if raw_str.startswith('`') and raw_str.endswith('`') and
+                        len(raw_str[1:-1]) == len(re.search(reg_str, raw_str).group(1)):
 
-            #     if raw_str[1] == 
-            #     while re.search(reg_str, raw_str):
-            #         exp = re.search(reg_str, raw_str).group(1)
-            #         try:
-            #             eval_result = eval(exp)
-            #         except Exception as e:
-            #             raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
-            #         else:
-            #             raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
-            #                 isinstance(eval_result, list) else str(eval_result))
-
-            #     dotted_question_part[key][i] = raw_str
-
-
-
-                if raw_str.startswith('$'):
+                    exp = raw_str[1:-1]
                     try:
-                        exp = raw_str[1:]
-                        # dotted_question_part[key] = list(map(str, to_list(eval(exp))))
-
+                        eval_result = eval(exp)
                     except Exception as e:
-                        raise type(e)(f"in the validating {key} {raw_str}: {e}") from e
+                        raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
+                    else:
+                        dotted_question_part[key][i] = eval_result
 
                 else:
                     while re.search(reg_str, raw_str):
@@ -139,13 +126,12 @@ class Template:
                             eval_result = eval(exp)
                         except Exception as e:
                             raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
-
-                        # TODO: check if eval_result is list or not, its true if eval_result is not list
-
-                        raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
-                            isinstance(eval_result, list) else str(eval_result))
+                        else:
+                            raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
+                                isinstance(eval_result, list) else str(eval_result))
 
                     dotted_question_part[key][i] = raw_str
+
 
         template.update(dotted_to_nested(dotted_question_part))
         return Template(template)
