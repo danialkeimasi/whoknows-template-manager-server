@@ -209,6 +209,7 @@ class Template:
 
         bool_answer = rand([True, False])
         metadata = self.get_metadata(metadata)
+
         if self.get_question_types() == []:
             raise ValueError('this template is not have any question type')
 
