@@ -150,6 +150,7 @@ class Template:
         Returns:
             Question: generated question.
         """
+        question_type_exact = question_type[len(SETTINGS.format.question.exist):],
 
         template = self.__template
         question = template[question_type]
@@ -161,7 +162,7 @@ class Template:
                         [t for i, t in enumerate(question[question_field][type_]) if i % 2 == int(bool_answer)]
                     ) if len(question[question_field][type_]) > 1 else question[question_field][type_]
 
-        if question['type'] == 'bool':
+        if question_type_exact == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
 
         if 'choice' in question:
@@ -173,7 +174,7 @@ class Template:
 
         question.update({
             'template_id': template['_id'],
-            'type': question_type[len(SETTINGS.format.question.exist):],
+            'type': question_type_exact,
             'tags': template['tags'],
             'usage': template['usage'],
             'datasets': template['datasets'],
