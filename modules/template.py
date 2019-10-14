@@ -110,11 +110,10 @@ class Template:
                 if raw_str.startswith('$'):
                     try:
                         exp = raw_str[1:]
-                        dotted_question_part[key] = list(map(str, to_list(eval(exp))))
+                        # dotted_question_part[key] = list(map(str, to_list(eval(exp))))
 
                     except Exception as e:
                         raise type(e)(f"in the validating {key} {raw_str}: {e}") from e
-
 
                 else:
                     while re.search(reg_str, raw_str):
@@ -195,7 +194,10 @@ class Template:
 
         bool_answer = rand([True, False])
         metadata = self.get_metadata(metadata)
-        question_type = choose(self.get_question_types(), 0) if not question_type else \
+        if self.get_question_types() == []:
+            raise ValueError('this template is not have any question type')
+
+        question_type = random.choice(self.get_question_types()) if not question_type else \
             f'{SETTINGS.format.question.exist}{question_type}'
 
         question_object = self.parse(metadata=metadata, bool_answer=bool_answer) \
