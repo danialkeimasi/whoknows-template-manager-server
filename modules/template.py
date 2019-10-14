@@ -108,7 +108,7 @@ class Template:
 
             for i, raw_str in enumerate(types_list):
 
-                if raw_str.startswith('`') and raw_str.endswith('`') and
+                if raw_str.startswith('`') and raw_str.endswith('`') and \
                         len(raw_str[1:-1]) == len(re.search(reg_str, raw_str).group(1)):
 
                     exp = raw_str[1:-1]
