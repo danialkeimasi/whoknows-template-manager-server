@@ -107,6 +107,21 @@ class Template:
                 continue
 
             for i, raw_str in enumerate(types_list):
+                if raw_str[1] == 
+                while re.search(reg_str, raw_str):
+                    exp = re.search(reg_str, raw_str).group(1)
+                    try:
+                        eval_result = eval(exp)
+                    except Exception as e:
+                        raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
+                    else:
+                        raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
+                            isinstance(eval_result, list) else str(eval_result))
+
+                dotted_question_part[key][i] = raw_str
+
+
+
                 if raw_str.startswith('$'):
                     try:
                         exp = raw_str[1:]
@@ -371,6 +386,10 @@ class Template:
                                  'problems': [f'template object must have a "{key}" in it']})
 
         question_types = self.get_question_types()
+
+        if question_types == []:
+            raise ValueError('this template is not have any question type')
+
         logger.critical(f"found this question types: {question_types}")
 
         for q_type in question_types:
