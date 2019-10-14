@@ -107,6 +107,7 @@ class Template:
                 continue
 
             for i, raw_str in enumerate(types_list):
+                raw_str = str(raw_str)
 
                 if raw_str.startswith('`') and raw_str.endswith('`') and \
                         len(raw_str[1:-1]) == len(re.search(reg_str, raw_str).group(1)):
