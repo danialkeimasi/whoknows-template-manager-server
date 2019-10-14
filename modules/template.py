@@ -76,7 +76,7 @@ class Template:
         template = copy.deepcopy(self.__template)
 
         val = {'bool_answer': bool_answer}
-        val.update(template['metadata'])
+        val.update(metadata)
 
         # get the values to the "val"
         # values_dict = {}
