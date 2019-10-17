@@ -78,8 +78,6 @@ class Template:
         val = {'bool_answer': bool_answer}
         val.update(metadata)
 
-        # get the values to the "val"
-        # values_dict = {}
         for key, value in template['values'].items():
             logger.info(f'{key} is going to eval')
 
@@ -90,10 +88,7 @@ class Template:
                 raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
 
             else:
-                # values_dict.update({key: eval_result})
                 val.update({key: eval_result})
-
-        # template.update({'values': values_dict})
 
         if run_command:
             return eval(run_command)
