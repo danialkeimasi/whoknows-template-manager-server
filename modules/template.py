@@ -146,8 +146,7 @@ class Template:
         Returns:
             Question: generated question.
         """
-        question_type_exact = question_type[len(SETTINGS.format.question.exist):],
-
+        question_type_exact = question_type[len(SETTINGS.format.question.exist):]
         template = self.__template
         question = template[question_type]
 
