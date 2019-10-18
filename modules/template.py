@@ -387,9 +387,10 @@ class Template:
                                  'problems': [f'template object must have a "{key}" in it']})
 
         question_types = self.get_question_types()
+        problems_general = []
 
         if question_types == []:
-            raise ValueError('this template is not have any question type')
+            problems_general.append('this template is not have any question type')
 
         logger.critical(f"found this question types: {question_types}")
 
@@ -413,12 +414,11 @@ class Template:
             test_bool = problems == [] if test_bool else test_bool
             sections.append({'name': q_type, 'ok': problems == [], 'problems': problems})
 
-        problems = []
         for sec in sections:
-            problems += sec['problems'] if 'problems' in sec else []
+            problems_general += sec['problems'] if 'problems' in sec else []
 
         self.__template['__test_info']['structure'] = {
-            'problems': problems,
+            'problems': problems_general,
             'sections': sections,
             'ok': test_bool
         }
