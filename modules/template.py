@@ -110,6 +110,11 @@ class Template:
                     exp = raw_str[1:-1]
                     try:
                         eval_result = eval(exp)
+                        if isinstance(eval_result, list):
+                            eval_result = list(map(str, eval_result))
+                        else:
+                            eval_result = str(eval_result)
+
                     except Exception as e:
                         raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
                     else:
@@ -150,12 +155,20 @@ class Template:
         template = self.__template
         question = template[question_type]
 
+        logger.debug(f'question after parse {question}')
+
         for question_field in question:
             for type_ in question[question_field]:
                 if question[question_field][type_] != []:
                     question[question_field][type_] = random.choice(
                         [t for i, t in enumerate(question[question_field][type_]) if i % 2 == int(bool_answer)]
-                    ) if len(question[question_field][type_]) > 1 else question[question_field][type_]
+                    ) if len(question[question_field][type_]) > 1 else question[question_field][type_][0]
+
+                question[question_field][type_] = to_list(question[question_field][type_])
+
+        logger.debug(f'question after choose staff {question}')
+
+
 
         if question_type_exact == 'bool':
             question['answer'] = {'text': [str(bool_answer).lower()]}
@@ -173,9 +186,10 @@ class Template:
             'tags': template['tags'],
             'usage': template['usage'],
             'datasets': template['datasets'],
-            'values': template['values'],
+            # 'values': template['values'],
         })
 
+        logger.debug(f'question ready {question}')
         return Question(question)
 
     def generate_question(self, metadata: dict = {}, question_type: str = '', question_format: dict = {}) -> Question:
@@ -410,7 +424,7 @@ class Template:
         }
         return test_bool
 
-    def __test_generation(self, count: int = 50) -> bool:
+    def __test_generation(self, count: int = SETTINGS.generation_count) -> bool:
         """ test the template by generate a number of question
 
         Args:
