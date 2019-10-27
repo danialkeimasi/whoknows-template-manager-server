@@ -1,5 +1,5 @@
 debug: True
-generation_count: 10
+generation_count: 1
 
 
 mongo:

@@ -79,7 +79,7 @@ class Template:
         val.update(metadata)
 
         for key, value in template['values'].items():
-            logger.info(f'{key} is going to eval')
+            logger.info(f'values["{key}"] is going to eval')
 
             try:
                 eval_result = eval(value)
@@ -97,17 +97,17 @@ class Template:
         dotted_question_part = nested_to_dotted({i: template[i] for i in template if i.startswith(SETTINGS.format.question.exist)})
 
         for key, types_list in dotted_question_part.items():
-
+            logger.debug('-------------------')
+            logger.debug(f'{key}, {types_list}')
             if not types_list:
                 continue
 
-            for i, raw_str in enumerate(types_list):
-                raw_str = str(raw_str)
+            for i, field_dict in enumerate(types_list):
+                raw_str = str(field_dict['content'])
 
-                if raw_str.startswith('`') and raw_str.endswith('`') and \
-                        len(raw_str[1:-1]) == len(re.search(reg_str, raw_str).group(1)):
+                if field_dict['type'] == 'generator':
 
-                    exp = raw_str[1:-1]
+                    exp = raw_str
                     try:
                         eval_result = eval(exp)
                         if isinstance(eval_result, list):
@@ -118,9 +118,10 @@ class Template:
                     except Exception as e:
                         raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
                     else:
-                        dotted_question_part[key][i] = eval_result
+                        field_dict.update({'content': eval_result})
+                        dotted_question_part[key][i] = field_dict
 
-                else:
+                elif field_dict['type'] == 'string':
                     while re.search(reg_str, raw_str):
                         exp = re.search(reg_str, raw_str).group(1)
                         try:
@@ -131,8 +132,9 @@ class Template:
                             raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
                                 isinstance(eval_result, list) else str(eval_result))
 
-                    dotted_question_part[key][i] = raw_str
-
+                    field_dict.update({'content': raw_str})
+                    dotted_question_part[key][i] = field_dict
+                logger.debug(f'{dotted_question_part[key][i]}')
 
         template.update(dotted_to_nested(dotted_question_part))
         return Template(template)
@@ -164,7 +166,7 @@ class Template:
                         [t for i, t in enumerate(question[question_field][type_]) if i % 2 == int(bool_answer)]
                     ) if len(question[question_field][type_]) > 1 else question[question_field][type_][0]
 
-                question[question_field][type_] = to_list(question[question_field][type_])
+                question[question_field][type_] = to_list(question[question_field][type_]['content'])
 
         logger.debug(f'question after choose staff {question}')
 
