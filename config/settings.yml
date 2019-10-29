@@ -34,7 +34,7 @@ template:
     repair:
       required:
         - structure
-        - schema
+        # - schema
 
     ready:
       required:

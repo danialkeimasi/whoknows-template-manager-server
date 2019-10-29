@@ -49,21 +49,23 @@ class Template:
         """
         return self.__template
 
+    def fields_filter(self, key, value):
+        return [field for field in self.__template['fields'] if field[key] == value]
+
     def get_question_types(self) -> list:
         """ get all the question types that can make with the template.
 
         Returns:
             list: all the question types that we can make.
         """
-        return [key for key in self.__template.keys() if key.startswith(SETTINGS.format.question.exist)]
+        return list(set([question_type['question_type'] for question_type in self.__template['fields']]))
 
-    def parse(self, metadata: dict = {}, bool_answer: bool = True, run_command: str = ''):
+    def parse(self, metadata: dict = {}, run_command: str = ''):
         """
         eval the variables in the template with data that we have in datasets,
         and return a new template object that has no variable in sentences.
 
         Args:
-            bool_answer (bool, optional): a randomly generated boolean that use for bool question_type. Defaults to True.
             metadata (dict): needed metadata for parsing template.
 
         Returns:
@@ -75,10 +77,13 @@ class Template:
         metadata = self.get_metadata(metadata)
         template = copy.deepcopy(self.__template)
 
-        val = {'bool_answer': bool_answer}
+        val = {}
         val.update(metadata)
+        template['metadata'] = metadata
 
-        for key, value in template['values'].items():
+        for value_dict in template['values']:
+            key, value = value_dict['key'], value_dict['content']
+
             logger.info(f'values["{key}"] is going to eval')
 
             try:
@@ -90,105 +95,137 @@ class Template:
             else:
                 val.update({key: eval_result})
 
+        template['values'] = val
+
         if run_command:
             return eval(run_command)
 
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
-        dotted_question_part = nested_to_dotted({i: template[i] for i in template if i.startswith(SETTINGS.format.question.exist)})
 
-        for key, types_list in dotted_question_part.items():
-            logger.debug('-------------------')
-            logger.debug(f'{key}, {types_list}')
-            if not types_list:
-                continue
+        for i, field_dict in enumerate(template['fields']):
+            raw_str = str(field_dict['content'])
 
-            for i, field_dict in enumerate(types_list):
-                raw_str = str(field_dict['content'])
+            if field_dict['type'] == 'generator':
 
-                if field_dict['type'] == 'generator':
+                exp = raw_str
+                try:
+                    eval_result = eval(exp)
+                    if isinstance(eval_result, list):
+                        eval_result = list(map(str, eval_result))
+                    else:
+                        eval_result = str(eval_result)
 
-                    exp = raw_str
+                except Exception as e:
+                    raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
+                else:
+                    field_dict.update({'content': eval_result})
+
+            elif field_dict['type'] == 'str':
+                while re.search(reg_str, raw_str):
+                    exp = re.search(reg_str, raw_str).group(1)
                     try:
                         eval_result = eval(exp)
-                        if isinstance(eval_result, list):
-                            eval_result = list(map(str, eval_result))
-                        else:
-                            eval_result = str(eval_result)
-
                     except Exception as e:
                         raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
                     else:
-                        field_dict.update({'content': eval_result})
-                        dotted_question_part[key][i] = field_dict
+                        raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
+                            isinstance(eval_result, list) else str(eval_result))
 
-                elif field_dict['type'] == 'string':
-                    while re.search(reg_str, raw_str):
-                        exp = re.search(reg_str, raw_str).group(1)
-                        try:
-                            eval_result = eval(exp)
-                        except Exception as e:
-                            raise type(e)(f"in the validating [{key}][{i}]: `{exp}`: {e}") from e
-                        else:
-                            raw_str = raw_str.replace(f'`{exp}`', eval_result[0] if \
-                                isinstance(eval_result, list) else str(eval_result))
+                field_dict.update({'content': raw_str})
 
-                    field_dict.update({'content': raw_str})
-                    dotted_question_part[key][i] = field_dict
-                logger.debug(f'{dotted_question_part[key][i]}')
+            template['fields'][i] = field_dict
 
-        template.update(dotted_to_nested(dotted_question_part))
         return Template(template)
 
-    def get_question(self, bool_answer: bool, question_type: str, question_format: str) -> Question:
+    def get_question(self, question_type: str, question_format: str) -> Question:
         """
         change a template structure to the question structure.
         we do it after parsing a template.
 
 
         Args:
-            bool_answer (bool): a randomly generated boolean that use for bool question_type.
             question_type (str): question type that we want.
             question_format (str): format of title and choices. can be text, photo, audio, video.
 
         Returns:
             Question: generated question.
         """
-        question_type_exact = question_type[len(SETTINGS.format.question.exist):]
         template = self.__template
-        question = template[question_type]
+        fields = self.fields_filter('question_type', question_type)
+        metadata = template['metadata']
 
-        logger.debug(f'question after parse {question}')
+        if question_type == 'bool':
+            metadata.update({'NOTC': 1, 'NOFC': 1})
+        elif question_type == 'choose':
+            metadata.update({'NOTC': 1})
+        elif question_type == 'write':
+            metadata.update({'NOFC': 0})
 
-        for question_field in question:
-            for type_ in question[question_field]:
-                if question[question_field][type_] != []:
-                    question[question_field][type_] = random.choice(
-                        [t for i, t in enumerate(question[question_field][type_]) if i % 2 == int(bool_answer)]
-                    ) if len(question[question_field][type_]) > 1 else question[question_field][type_][0]
+        logger.info(f'question_type: {question_type}, metadata: {metadata}')
+        logger.debug(f'fields after parse {fields}')
 
-                question[question_field][type_] = to_list(question[question_field][type_]['content'])
+        # handling generators
+        final_fields = []
 
-        logger.debug(f'question after choose staff {question}')
+        for field in fields:
+            if field['type'] == 'generator':
+                for item in field['content']:
+                    field_new = field.copy()
+                    field_new.update({'type': 'str', 'content': item})
 
+                    final_fields.append(field_new)
+            else:
+                final_fields.append(field)
 
+        fields = final_fields
 
-        if question_type_exact == 'bool':
-            question['answer'] = {'text': [str(bool_answer).lower()]}
+        # handling choices and answers correct
+        for i, field in enumerate(fields):
+            if field['section'] == 'choice':
+                fields[i]['correct'] = False
 
-        if 'choice' in question:
-            for field in question['choice']:
-                question['choice'][field] += question['answer'][field]
-                random.shuffle(question['choice'][field])
+        for i, field in enumerate(fields):
+            if field['section'] == 'answer':
+                fields[i]['section'] = 'choice'
+                fields[i]['correct'] = True
 
-        question['metadata'] = template['metadata'] if 'metadata' in template else None
+        logger.debug(f'fields after expand {final_fields}')
+
+        # handle titles
+        fields_without_titles = [field for field in fields if field['section'] != 'title']
+        titles = [field for field in fields if field['section'] == 'title']
+        fields = fields_without_titles + [random.choice(titles)]
+
+        #handle choices
+        fields_without_choice = [field for field in fields if field['section'] != 'choice']
+        choices = [field for field in fields if field['section'] == 'choice']
+        if choices and question_type != 'write':
+            choices_True = random.sample([choice for choice in choices if choice['correct'] == True], metadata['NOTC'])
+            choices_False = random.sample([choice for choice in choices if choice['correct'] == False], metadata['NOFC'])
+
+            choices = choices_False + choices_True
+            random.shuffle(choices_False + choices_True)
+
+            fields = fields_without_choice + choices
+
+        #handle subtitles
+        fields_without_subtitles = [field for field in fields if field['section'] != 'subtitle']
+        subtitles = [field for field in fields if field['section'] == 'subtitle']
+        if subtitles:
+            subtitles = random.sample(subtitles, metadata['NOS'])
+            fields = fields_without_subtitles + subtitles
+
+        #generate question
+        question = {'fields': fields}
+        question['metadata'] = metadata
 
         question.update({
             'template_id': template['_id'],
-            'type': question_type_exact,
+            'type': question_type,
             'tags': template['tags'],
             'usage': template['usage'],
             'datasets': template['datasets'],
-            # 'values': template['values'],
+            'values': template['values'],
         })
 
         logger.debug(f'question ready {question}')
@@ -209,17 +246,15 @@ class Template:
             Question: [description]
         """
 
-        bool_answer = rand([True, False])
         metadata = self.get_metadata(metadata)
 
         if self.get_question_types() == []:
             raise ValueError('this template is not have any question type')
 
-        question_type = random.choice(self.get_question_types()) if not question_type else \
-            f'{SETTINGS.format.question.exist}{question_type}'
+        question_type = random.choice(self.get_question_types()) if not question_type else question_type
 
-        question_object = self.parse(metadata=metadata, bool_answer=bool_answer) \
-                              .get_question(bool_answer, question_type, question_format)
+        question_object = self.parse(metadata=metadata) \
+                              .get_question(question_type, question_format)
 
         return question_object
 
@@ -389,35 +424,37 @@ class Template:
                                  'problems': [f'template object must have a "{key}" in it']})
 
         question_types = self.get_question_types()
-        problems_general = []
-
-        if question_types == []:
-            problems_general.append('this template is not have any question type')
-
         logger.critical(f"found this question types: {question_types}")
 
-        for q_type in question_types:
+        problems_general = []
+
+        if self.__template['fields'] == []:
+            problems_general.append('this template is not have any fields')
+
+        for questuin_type in question_types:
             problems = []
 
-            if not (q_type in self.__template_formatter):
-                problems.append(f"there is an undefined question type in template: {q_type}")
+            if not (questuin_type in self.__template_formatter):
+                problems.append(f"there is an undefined question type in template: {questuin_type}")
 
-            for q_prop in self.__template[q_type]:
-                if not (q_prop in self.__template_formatter[q_type]):
-                    problems.append(f'there is an undefined field in "{q_type}" question in template: {q_prop}')
+            for question_section in self.fields_filter('question_type', questuin_type):
+                if not (question_section['section'] in self.__template_formatter[questuin_type]):
+                    problems.append(f'there is an undefined field for "{questuin_type}" question in template: {question_section}')
 
-            q_prop_requires_list = [item for item in
-                                    set(self.__template_formatter[q_type].keys()) - set(self.__template[q_type].keys())
-                                    if self.__template_formatter[q_type][item]]
+            question_sections_required = [
+                item for item in
+                set(self.__template_formatter[questuin_type].keys()) - set(map(lambda a: a['section'], self.fields_filter('question_type', questuin_type)))
+                if self.__template_formatter[questuin_type][item]
+            ]
 
-            if q_prop_requires_list:
-                problems.append(f"there is no {q_prop_requires_list} in {q_type} question")
+            if question_sections_required:
+                problems.append(f"there is no {question_sections_required} in {questuin_type} question")
 
             test_bool = problems == [] if test_bool else test_bool
-            sections.append({'name': q_type, 'ok': problems == [], 'problems': problems})
+            sections.append({'name': questuin_type, 'ok': problems == [], 'problems': problems})
 
-        for sec in sections:
-            problems_general += sec['problems'] if 'problems' in sec else []
+        for section in sections:
+            problems_general += section['problems'] if 'problems' in section else []
 
         self.__template['__test_info']['structure'] = {
             'problems': problems_general,
@@ -559,7 +596,7 @@ class Template:
     def get_metadata(metadata: dict) -> dict:
         default_metadata = {
             'NOFC': 3,
-            'NOS': 4,
+            'NOS': 1,
             'NOTC': random.randint(1, 4),
             'level': random.randint(1, 10),
         }

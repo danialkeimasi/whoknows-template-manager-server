@@ -49,7 +49,7 @@ class Question:
     def test_question(self):
         """ run the question test function again """
         self.__problems = []
-        self.__test_structure()
+        # self.__test_structure()
 
     def raise_if_problems(self):
         if not self.is_ok():
