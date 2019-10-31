@@ -358,8 +358,8 @@ class Template:
 
         template_tags = self.__template['tags']
 
-        allowed_tags = mongo_client.main_server.tags.find()
-        allowed_tags = [tag['title'] for tag in allowed_tags] + [tag['persianTitle'] for tag in allowed_tags]
+        allowed_tags = list(mongo_client.main_server.tags.find())
+        allowed_tags = [tag['name'] for tag in allowed_tags] + [tag['persianName'] for tag in allowed_tags]
 
         tags = []
         for tag in template_tags:
@@ -374,7 +374,7 @@ class Template:
         is_ok = all([tag['ok'] for tag in tags])
 
         self.__template['__test_info']['tags'] = {
-            'datasets': tags,
+            'tags': tags,
             'problems': problems,
             'ok': is_ok,
         }
@@ -594,17 +594,17 @@ class Template:
             self.__template['__test_info'][test_name].update({'ok': False, 'problems': []})
 
         state_number = 0
-        test_functions = []
-
+        all_test_functions = {}
         for state in SETTINGS.template.states[1:]:
 
-            test_functions = {t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
+            test_functions = {test: getattr(self, f'_Template__test_{test}')() for test in tests[state]['required'] if test}
+            all_test_functions.update(test_functions)
             if all(test_functions.values()):
                 state_number += 1
             else:
                 break
 
-        self.__template['__last_test'] = test_functions
+        self.__template['__last_test'] = all_test_functions
         self.__template['__state'] = SETTINGS.template.states[state_number]
 
         return self
@@ -619,7 +619,7 @@ class Template:
         }
 
         input_metadata = copy.deepcopy(metadata)
-        for found_metadata_name in [i for i in default_metadata if i in metadata]:
+        for found_metadata_name in [d_metadata for d_metadata in default_metadata if d_metadata in metadata]:
             default_metadata.pop(found_metadata_name)
 
         input_metadata.update(default_metadata)

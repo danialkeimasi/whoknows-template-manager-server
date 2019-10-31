@@ -30,6 +30,7 @@ template:
         - duplication
         - acceptance
         - data
+        - tags
 
     repair:
       required:
