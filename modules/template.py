@@ -35,19 +35,19 @@ class Template:
     __schema_validator = jsonschema.Draft3Validator(json.load(open(SETTINGS.dir.template_schema)))
 
     def __init__(self, template_dict):
-
+        """ template constractor """
         self.__template = template_dict
+        self.__template['problems'] = []
 
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
-
-        self.__template['problems'] = []
 
     def dict(self) -> dict:
         """ returns question template as a dict object. """
         return self.__template
 
-    def fields_filter(self, key, value):
+    def fields_filter(self, key: str, value: str):
+        """ filter the fields with key and value """
         return [field for field in self.__template['fields'] if field[key] == value]
 
     def get_question_types(self) -> list:
