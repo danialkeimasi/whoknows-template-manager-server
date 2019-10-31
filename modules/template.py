@@ -276,8 +276,8 @@ class Template:
             'ok': is_ok
         }
 
-        if problems:
-            self.__template['problems'].append({'duplication': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'duplication', 'error': problem})
 
         return is_ok
 
@@ -308,8 +308,8 @@ class Template:
             'problems': problems,
             'ok': acceptance_bool
         }
-        if problems:
-            self.__template['problems'].append({'acceptance': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'acceptance', 'error': problem})
 
         return acceptance_bool
 
@@ -349,8 +349,8 @@ class Template:
             'problems': problems,
             'ok': is_ok,
         }
-        if problems:
-            self.__template['problems'].append({'data': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'data', 'error': problem})
 
         return is_ok
 
@@ -386,8 +386,8 @@ class Template:
             'problems': problems,
             'ok': is_ok,
         }
-        if problems:
-            self.__template['problems'].append({'tags': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'tags', 'error': problem})
 
         return is_ok
 
@@ -474,8 +474,8 @@ class Template:
             'sections': sections,
             'ok': test_bool
         }
-        if problems_general:
-            self.__template['problems'].append({'structure': problems_general})
+        for problem in problems_general:
+            self.__template['problems'].append({'test': 'structure', 'error': problem})
 
         return test_bool
 
@@ -537,8 +537,8 @@ class Template:
             'ok': is_ok
         }
 
-        if problem_set:
-            self.__template['problems'].append({'generation': problem_set})
+        for problem in problem_set:
+            self.__template['problems'].append({'test': 'generation', 'error': problem})
 
         return is_ok
 
@@ -569,8 +569,8 @@ class Template:
             'ok': manual_tes_bool
         }
 
-        if problems:
-            self.__template['problems'].append({'manual': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'manual', 'error': problem})
 
         return manual_tes_bool
 
@@ -588,8 +588,8 @@ class Template:
             'ok': usage_test_bool
         })
 
-        if problems:
-            self.__template['problems'].append({'usage_tagging': problems})
+        for problem in problems:
+            self.__template['problems'].append({'test': 'usage_tagging', 'error': problem})
 
         return usage_test_bool
 
