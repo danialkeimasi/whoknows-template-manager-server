@@ -44,11 +44,7 @@ class Template:
         self.__template['problems'] = []
 
     def dict(self) -> dict:
-        """ returns question template as a dict object.
-
-        Returns:
-            dict: question template.
-        """
+        """ returns question template as a dict object. """
         return self.__template
 
     def fields_filter(self, key, value):
@@ -253,7 +249,7 @@ class Template:
         if self.get_question_types() == []:
             raise ValueError('this template is not have any question type')
 
-        question_type = random.choice(self.get_question_types()) if not question_type else question_type
+        question_type = question_type if question_type else random.choice(self.get_question_types())
 
         question_object = self.parse(metadata=metadata) \
                               .get_question(question_type, question_format)
@@ -330,19 +326,19 @@ class Template:
                           'ok': {'$eq': ["$headers.state", 'in_use']}}}
         ]))
 
-        not_found_tags = list(set(template_datasets) - set([ds['headers']['name'] for ds in found_datasets]))
+        not_found_tags = list(set(template_datasets) - set([dataset['headers']['name'] for dataset in found_datasets]))
         datasets_list = found_datasets + \
-                        [{'headers': {'name': ds, 'state': 'null'}, 'ok': False} for ds in not_found_tags]
+                        [{'headers': {'name': dataset, 'state': 'null'}, 'ok': False} for dataset in not_found_tags]
 
-        for ds in datasets_list:
-            if not ds['ok'] and ds['headers']['state'] == 'null':
-                problems.append(f"{ds['headers']['name']} dataset is not found on datasets! {found_datasets}")
-            elif not ds['ok'] and ds['headers']['state'] != 'in_use':
-                problems.append(f"{ds['headers']['name']} dataset is not ready to use yet!")
-            elif not ds['ok']:
-                problems.append(f"something wrong happend about {ds['headers']['name']}!")
+        for dataset in datasets_list:
+            if not dataset['ok'] and dataset['headers']['state'] == 'null':
+                problems.append(f"{dataset['headers']['name']} dataset is not found on datasets! {found_datasets}")
+            elif not dataset['ok'] and dataset['headers']['state'] != 'in_use':
+                problems.append(f"{dataset['headers']['name']} dataset is not ready to use yet!")
+            elif not dataset['ok']:
+                problems.append(f"something wrong happend about {dataset['headers']['name']}!")
 
-        is_ok = all([ds['ok'] for ds in datasets_list])
+        is_ok = all([dataset['ok'] for dataset in datasets_list])
 
         self.__template['__test_info']['data'] = {
             'datasets': datasets_list,
@@ -401,7 +397,7 @@ class Template:
         try:
             self.__schema_validator.validate(self.__template)
 
-        except Exception as error:
+        except Exception:
             error_message = traceback_shortener(traceback.format_exc())
 
             if 'structure' not in self.__template['__test_info']:
@@ -496,7 +492,7 @@ class Template:
 
         problem_list = []
         question_list = []
-        for try_count in range(count):
+        for _ in range(count):
 
             try:
                 question = self.generate_question()
@@ -507,7 +503,7 @@ class Template:
                 else:
                     raise TypeError(f"question error: {question.problems()}")
 
-            except Exception as e:
+            except Exception:
                 error_message = traceback_shortener(traceback.format_exc())
                 problem_list.append(error_message)
 
@@ -607,10 +603,10 @@ class Template:
         for state in SETTINGS.template.states[1:]:
 
             test_functions = {t: getattr(self, f'_Template__test_{t}')() for t in tests[state]['required'] if t}
-            if not all(test_functions.values()):
-                break
-            else:
+            if all(test_functions.values()):
                 state_number += 1
+            else:
+                break
 
         self.__template['__last_test'] = test_functions
         self.__template['__state'] = SETTINGS.template.states[state_number]
