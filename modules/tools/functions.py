@@ -66,7 +66,6 @@ def to_list(data):
 
 def traceback_shortener(long_error):
     error_list = [trace.strip() for trace in long_error.strip().split('\n')[1::]]
-    # return error_list[-1]
 
     short_error = f'Error: {error_list[-1]} => Traceback: {" || ".join(error_list[0:-1])}'
 
@@ -106,20 +105,3 @@ def find_format(val):
 
 def generate(data, count):
     return [choose(data, 0) for i in range(count)]
-
-
-def map_on_nested_dict(nested_dict: dict, function) -> None:
-    """do operation on strings that existed in a nested dictionary
-
-    """
-    for key, value in nested_dict.items():
-        if isinstance(value, dict):
-            map_on_nested_dict(value, function)
-
-        elif isinstance(value, list):
-            for i, item in enumerate(value):
-                if isinstance(item, str):
-                    value[i] = function(item)
-
-        elif isinstance(value, str):
-            nested_dict[key] = function(value)

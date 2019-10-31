@@ -11,7 +11,7 @@ import pandas as pd
 
 from config import logger, mongo_client, SETTINGS
 from modules.question import Question
-from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate, map_on_nested_dict
+from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate
 from modules.tools import math, leveling
 from modules.tools.json_tools import nested_to_dotted, dotted_to_nested
 
