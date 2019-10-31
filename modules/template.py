@@ -41,6 +41,8 @@ class Template:
         if not ('__test_info' in self.__template and self.__template['__test_info'] != {}):
             self.__template['__test_info'] = self.__empty_template['__test_info']
 
+        self.__template['problems'] = []
+
     def dict(self) -> dict:
         """ returns question template as a dict object.
 
@@ -266,11 +268,16 @@ class Template:
 
         """
         is_ok = True
+        problems = []
+
         self.__template['__test_info']['duplication'] = {
             'similars': [],
-            'problems': [],
+            'problems': problems,
             'ok': is_ok
         }
+
+        if problems:
+            self.__template['problems'].append({'duplication': problems})
 
         return is_ok
 
@@ -301,6 +308,8 @@ class Template:
             'problems': problems,
             'ok': acceptance_bool
         }
+        if problems:
+            self.__template['problems'].append({'acceptance': problems})
 
         return acceptance_bool
 
@@ -340,6 +349,8 @@ class Template:
             'problems': problems,
             'ok': is_ok,
         }
+        if problems:
+            self.__template['problems'].append({'data': problems})
 
         return is_ok
 
@@ -375,6 +386,8 @@ class Template:
             'problems': problems,
             'ok': is_ok,
         }
+        if problems:
+            self.__template['problems'].append({'tags': problems})
 
         return is_ok
 
@@ -461,6 +474,9 @@ class Template:
             'sections': sections,
             'ok': test_bool
         }
+        if problems_general:
+            self.__template['problems'].append({'structure': problems_general})
+
         return test_bool
 
     def __test_generation(self, count: int = SETTINGS.generation_count) -> bool:
@@ -521,6 +537,9 @@ class Template:
             'ok': is_ok
         }
 
+        if problem_set:
+            self.__template['problems'].append({'generation': problem_set})
+
         return is_ok
 
     def __test_manual(self) -> bool:
@@ -550,6 +569,9 @@ class Template:
             'ok': manual_tes_bool
         }
 
+        if problems:
+            self.__template['problems'].append({'manual': problems})
+
         return manual_tes_bool
 
     def __test_usage_tagging(self) -> bool:
@@ -565,6 +587,9 @@ class Template:
             'problems': problems,
             'ok': usage_test_bool
         })
+
+        if problems:
+            self.__template['problems'].append({'usage_tagging': problems})
 
         return usage_test_bool
 
