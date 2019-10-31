@@ -71,7 +71,6 @@ class Template:
         """
 
         db = mongo_client.datasets
-
         template = copy.deepcopy(self.__template)
 
         val = {}
@@ -81,7 +80,6 @@ class Template:
             key, value = value_dict['key'], value_dict['content']
 
             logger.info(f'values["{key}"] is going to eval')
-
             try:
                 eval_result = eval(value)
 
@@ -356,13 +354,11 @@ class Template:
 
         problems = []
 
-        template_tags = self.__template['tags']
-
         allowed_tags = list(mongo_client.main_server.tags.find())
         allowed_tags = [tag['name'] for tag in allowed_tags] + [tag['persianName'] for tag in allowed_tags]
 
         tags = []
-        for tag in template_tags:
+        for tag in self.__template['tags']:
             tags.append({
                 'name': tag,
                 'ok': tag in allowed_tags
