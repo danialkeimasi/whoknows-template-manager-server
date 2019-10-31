@@ -72,12 +72,10 @@ class Template:
 
         db = mongo_client.datasets
 
-        metadata = self.get_metadata(metadata)
         template = copy.deepcopy(self.__template)
 
         val = {}
         val.update(metadata)
-        template['metadata'] = metadata
 
         for value_dict in template['values']:
             key, value = value_dict['key'], value_dict['content']
@@ -135,7 +133,7 @@ class Template:
 
         return Template(template)
 
-    def get_question(self, question_type: str, question_format: str) -> Question:
+    def get_question(self, question_type: str, question_format: str, metadata: dict) -> Question:
         """
         change a template structure to the question structure.
         we do it after parsing a template.
@@ -150,7 +148,6 @@ class Template:
         """
         template = self.__template
         fields = self.fields_filter('question_type', question_type)
-        metadata = template['metadata']
 
         if question_type == 'bool':
             metadata.update({'NOTC': 1, 'NOFC': 1})
@@ -251,8 +248,7 @@ class Template:
 
         question_type = question_type if question_type else random.choice(self.get_question_types())
 
-        question_object = self.parse(metadata=metadata) \
-                              .get_question(question_type, question_format)
+        question_object = self.parse(metadata=metadata).get_question(question_type, question_format, metadata)
 
         return question_object
 
