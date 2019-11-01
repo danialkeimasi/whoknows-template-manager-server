@@ -49,7 +49,7 @@ class Question:
     def test_question(self):
         """ run the question test function again """
         self.__problems = []
-        # self.__test_structure()
+        self.__test_structure()
 
     def raise_if_problems(self):
         if not self.is_ok():
@@ -69,50 +69,13 @@ class Question:
         if 'type' not in question:
             problems.append('there is no "type" field in question')
 
-        q_type = question['type']
-        q_field_required = [q_field for q_field in self.__template_formatter[f'{SETTINGS.format.question.exist}{q_type}']
-                            if self.__template_formatter[f'{SETTINGS.format.question.exist}{q_type}'][q_field]]
-        not_found_field = list(set(q_field_required) - set(question.keys()))
+        question_type = question['type']
+        required_section = \
+        [section for section in self.__template_formatter[question_type] if self.__template_formatter[question_type][section]]
+        not_found_section = list(set(required_section) - set([field['section'] for field in question['fields']]))
 
-        if not_found_field != []:
-            problems.append(f'question must have the following fields: {not_found_field}')
-
-        for item in ['title', 'subtitle', 'choice', 'answer']:
-            if item in question:
-                for typ in question[item]:
-                    if not all([typ == find_format(value)] for value in question[item][typ]):
-                        problems.append(
-                            f'there is a bad format (use other some type of data in the wrong place) in the {item}')
-
-        if metadata:
-            if q_type == 'choose':
-
-                for item in ['choice', 'answer']:
-                    if not (item in question):
-                        question[item] = None
-                        problems.append(f'there is no {item} in question with type of choose')
-
-                choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
-                answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
-                if not ((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (
-                        choice_lengths[0] - answer_lengths[0] == metadata['NOFC'])):
-                    problems.append(
-                        f'{choice_lengths}, {answer_lengths} NOFC: {metadata["NOFC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
-
-            elif q_type == 'select':
-
-                for item in ['choice', 'answer']:
-                    if not (item in question):
-                        question[item] = None
-                        problems.append(f'there is no {item} in question with type of select')
-
-                choice_lengths = list(set([len(item) for item in question["choice"].values()]) - set([0]))
-                answer_lengths = list(set([len(item) for item in question["answer"].values()]) - set([0]))
-
-                if not ((len(choice_lengths) == 1 and len(answer_lengths) == 1) and (
-                        answer_lengths[0] == metadata['NOTC'])):
-                    problems.append(
-                        f'{choice_lengths}, {answer_lengths} NOTC: {metadata["NOTC"]} - choice_part: {question["choice"]} - answer_part: {question["answer"]}')
+        if not_found_section != []:
+            problems.append(f'question must have the following sections: {not_found_section}')
 
         self.__problems += problems
         return problems != []
