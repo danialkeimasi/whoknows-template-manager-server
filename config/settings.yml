@@ -49,12 +49,6 @@ template:
       required:
         - usage_tagging
 
-
-format:
-  question:
-    exist: "&&"
-    not-exotst: "&"
-
 file_formats:
   photo:
     - png
