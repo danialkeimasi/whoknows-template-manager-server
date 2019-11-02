@@ -47,5 +47,5 @@ def add(api):
                 'template': updated_template
             }
 
-            logger.critical(f'template _id : {_id} -> response[ok]: {response["ok"]}')
+            logger.critical(f'{_id = } | {response["ok"] = }')
             return json_tools.to_extended(response)

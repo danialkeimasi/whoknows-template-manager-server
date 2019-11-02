@@ -33,5 +33,5 @@ def add(api):
                 'n': mongo_response['n']
             }
 
-            logger.critical(f'query: {query} -> response: {response}')
+            logger.critical(f'{query = } -> {response = }')
             return json_tools.to_extended(response)

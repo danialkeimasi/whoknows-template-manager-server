@@ -34,16 +34,16 @@ def add(api):
             args = parser.parse_args()
 
             count = args['count']
-            query = args['query']
+            question_query = args['query']
 
             pipeline = []
-            pipeline += [{'$match': query}] if query is not None else []
+            pipeline += [{'$match': question_query}] if question_query is not None else []
             pipeline += [{'$limit': count}] if count is not None else []
 
 
             questions = list(mongo_client.template_manager.questions.aggregate(pipeline))
 
-            logger.critical(f'question_query: {query}, count: {count} -> we found {len(questions)} question.')
+            logger.critical(f'{question_query = } | {count = } -> we found {len(questions)} question.')
 
             response = {
                 'ok': True,
