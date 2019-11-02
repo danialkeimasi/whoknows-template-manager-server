@@ -115,8 +115,8 @@ class Template:
                     field_dict.update({'content': eval_result})
 
             elif field_dict['type'] == 'str':
-                while re.search(reg_str, raw_str):
-                    exp = re.search(reg_str, raw_str).group(1)
+                while regex_groups := re.search(reg_str, raw_str):
+                    exp = regex_groups.group(1)
                     try:
                         eval_result = eval(exp)
                     except Exception as e:
