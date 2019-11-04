@@ -2,4 +2,5 @@ debug: False
 generation_count: 50
 
 mongo:
-  uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
+  # uri: mongodb://root:Js17EZXZNFtIWnjKLlEtJifx@s7.liara.ir:31102/?authSource=admin
+  uri: mongodb://root:cKXnd8qb34wQQGOhGzsJuAYr@s8.liara.ir:30080/?authSource=admin&replicaSet=rs0
