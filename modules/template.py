@@ -9,6 +9,8 @@ import traceback
 import jsonschema
 import pandas as pd
 
+from pymongo.cursor import Cursor
+
 from config import logger, mongo_client, SETTINGS
 from modules.question import Question
 from modules.tools.functions import choose, rand, to_list, traceback_shortener, generate
@@ -82,6 +84,7 @@ class Template:
             logger.info(f'values["{key}"] is going to eval')
             try:
                 eval_result = eval(value)
+                eval_result = list(eval_result) if isinstance(eval_result, Cursor) else eval_result
 
             except Exception as e:
                 raise type(e)(f'in the validating values[\'{key}\']: {e}') from e
@@ -94,6 +97,7 @@ class Template:
         if run_command:
             return eval(run_command)
 
+        db = None
         reg_str = r'[^`]*?`([^`]*?)`[^`]*?'
 
         for i, field_dict in enumerate(template['fields']):

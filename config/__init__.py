@@ -6,6 +6,7 @@ import colorlog
 import yaml
 
 from pymongo import MongoClient
+
 from environs import Env, EnvError
 
 
