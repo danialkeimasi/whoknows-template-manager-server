@@ -69,6 +69,12 @@ def add(api):
 
             logger.critical(f'pipeline for aggregation: {pipeline} -> we found {len(templates)}.')
 
+            if templates == []:
+                return json_tools.to_extended({
+                    'ok': False,
+                    'problem': 'there is no template match.',
+                })
+
             questions = []
             try_count = 5
             i = 0
