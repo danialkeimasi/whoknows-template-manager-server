@@ -80,7 +80,7 @@ def add(api):
 
                     except Exception as e:
                         error_message = traceback_shortener(traceback.format_exc())
-                        logger.error(f'failed in generate question => {error_message = }')
+                        logger.error(f'failed in generate question => {error_message}')
 
                     else:
                         break

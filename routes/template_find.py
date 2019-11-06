@@ -57,5 +57,5 @@ def add(api):
                 'templates': templates,
             }
 
-            logger.critical(f'{tags = } | {count = } | {query = } -> {response["ok"] = }')
+            logger.critical(f'tags: {tags}, count: {count}, query: {query} -> response[ok]: {response["ok"]}')
             return json_tools.to_extended(response)

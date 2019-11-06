@@ -158,8 +158,8 @@ class Template:
         elif question_type == 'write':
             metadata.update({'NOFC': 0})
 
-        logger.info(f'{question_type = } | {metadata = }')
-        logger.debug(f'fields after parse {fields = }')
+        logger.info(f'question_type: {question_type}, metadata: {metadata}')
+        logger.debug(f'fields after parse {fields}')
 
         # handling generators
         final_fields = []
@@ -186,7 +186,7 @@ class Template:
                 fields[i]['section'] = 'choice'
                 fields[i]['correct'] = True
 
-        logger.debug(f'fields after expand {final_fields = }')
+        logger.debug(f'fields after expand {final_fields}')
 
         # handle titles
         fields_without_titles = [field for field in fields if field['section'] != 'title']
@@ -225,7 +225,7 @@ class Template:
             'values': template['values'],
         })
 
-        logger.debug(f'question ready {question = }')
+        logger.debug(f'question ready {question}')
         return Question(question)
 
     def generate_question(self, metadata: dict = {}, question_type: str = '', question_format: dict = {}) -> Question:
@@ -429,7 +429,7 @@ class Template:
                                  'problems': [f'template object must have a "{key}" in it']})
 
         question_types = self.get_question_types()
-        logger.critical(f"found this question types: {question_types = }")
+        logger.critical(f"found this question types: {question_types}")
 
         problems_general = []
 
