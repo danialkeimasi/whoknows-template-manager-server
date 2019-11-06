@@ -176,16 +176,6 @@ class Template:
 
         fields = final_fields
 
-        # handling choices and answers correct
-        for i, field in enumerate(fields):
-            if field['section'] == 'choice':
-                fields[i]['correct'] = False
-
-        for i, field in enumerate(fields):
-            if field['section'] == 'answer':
-                fields[i]['section'] = 'choice'
-                fields[i]['correct'] = True
-
         logger.debug(f'fields after expand {final_fields}')
 
         # handle titles

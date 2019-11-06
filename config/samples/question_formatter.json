@@ -11,6 +11,7 @@
     },
     "write": {
       "title": true,
+      "choice": true,
       "subtitle": false
     },
     "bool": {
