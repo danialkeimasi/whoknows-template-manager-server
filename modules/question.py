@@ -14,7 +14,7 @@ class Question:
         __question (dict): question object as dict
         __problems (list): list of problems
     """
-    __template_formatter = json.load(open(SETTINGS.dir.template_formatter))
+    __question_formatter = json.load(open(SETTINGS.dir.question_formatter))
 
     def __init__(self, question_dict):
         self.__question = question_dict
@@ -71,7 +71,7 @@ class Question:
 
         question_type = question['type']
         required_section = \
-        [section for section in self.__template_formatter[question_type] if self.__template_formatter[question_type][section]]
+        [section for section in self.__question_formatter[question_type] if self.__question_formatter[question_type][section]]
         not_found_section = list(set(required_section) - set([field['section'] for field in question['fields']]))
 
         if not_found_section != []:

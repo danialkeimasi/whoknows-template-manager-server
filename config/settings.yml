@@ -7,6 +7,7 @@ dir:
   empty_template: ./config/samples/empty_template.json
   template_schema: ./config/samples/template_schema.json
   template_formatter: ./config/samples/template_formatter.json
+  question_formatter: ./config/samples/question_formatter.json
   sample_questions: ./config/samples/sample_questions.json
 
 

@@ -1,0 +1,20 @@
+{
+    "choose": {
+      "title": true,
+      "subtitle": false,
+      "choice": true
+    },
+    "select": {
+      "title": true,
+      "subtitle": false,
+      "choice": true
+    },
+    "write": {
+      "title": true,
+      "subtitle": false
+    },
+    "bool": {
+      "title": true,
+      "subtitle": false
+    }
+}
