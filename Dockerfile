@@ -27,7 +27,7 @@
 # EXPOSE 8080
 # CMD gunicorn --bind 0.0.0.0:3001 app:app & nginx -g "daemon off;"
 
-FROM python:3.8-slim-buster
+FROM python:latest
 USER root
 
 WORKDIR /app
