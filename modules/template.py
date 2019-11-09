@@ -195,6 +195,27 @@ class Template:
 
             fields = fields_without_choice + choices
 
+        if question_type == 'bool':
+            title = [field for field in fields if field['section'] == 'title'][0]
+            fields += [
+                {
+                    "question_type": "bool",
+                    "section": "choice",
+                    "format": "text",
+                    "type": "str",
+                    "content": "صحیح",
+                    "correct": title['correct']
+                },
+                {
+                    "question_type": "bool",
+                    "section": "choice",
+                    "format": "text",
+                    "type": "str",
+                    "content": "غلط",
+                    "correct": not title['correct']
+                },
+            ]
+
         #handle subtitles
         fields_without_subtitles = [field for field in fields if field['section'] != 'subtitle']
         subtitles = [field for field in fields if field['section'] == 'subtitle']
