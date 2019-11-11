@@ -203,7 +203,7 @@ class Template:
                     "section": "choice",
                     "format": "text",
                     "type": "str",
-                    "content": "صحیح",
+                    "content": "true",
                     "correct": title['correct']
                 },
                 {
@@ -211,7 +211,7 @@ class Template:
                     "section": "choice",
                     "format": "text",
                     "type": "str",
-                    "content": "غلط",
+                    "content": "false",
                     "correct": not title['correct']
                 },
             ]
